@@ -22,7 +22,9 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
+        "models/beer.ts",
         "public/javascript/app.ts",
+        "public/javascript/controllers/createBeerController.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",

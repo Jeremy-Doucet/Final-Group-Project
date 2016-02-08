@@ -4,8 +4,13 @@ var app;
     var Services;
     (function (Services) {
         var HomeService = (function () {
-            function HomeService() {
+            function HomeService($resource) {
+                this.$resource = $resource;
+                this.BeerResource = $resource('/api/beer/:id');
             }
+            HomeService.prototype.saveBeer = function (beer) {
+                return this.BeerResource.save(beer).$promise;
+            };
             return HomeService;
         }());
         Services.HomeService = HomeService;

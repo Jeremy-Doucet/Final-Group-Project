@@ -11,6 +11,11 @@ namespace App {
       controller: app.Controllers.HomeController,
       controllerAs: 'vm'
     })
+    .when('/addBeer', {
+      templateUrl: '/templates/createBeer.html',
+      controller: app.Controllers.BeerCreateController,
+      controllerAs: 'vm'
+    })
     .otherwise({ redirectTo: '/' });
 
     $locationProvider.html5Mode(true);

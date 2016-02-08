@@ -1,0 +1,58 @@
+<h1>Add a Beer Post</h1>
+<hr>
+<form ng-submit="">
+  <h3>Beer Info</h3>
+  <label>Name of Beer: </label>
+  <input ng-model="">
+  <label>Type of Beer: </label>
+  <select ng-model="" name="beertype">
+    <option value="Pale">Pale</option>
+    <option value="Mild">Mild</option>
+    <option value="Wheat">Wheat</option>
+    <option value="Lambic">Lambic</option>
+    <option value="Lager">Lager</option>
+    <option value="Stout">Stout</option>
+  </select><br>
+  <label>Location: </label>
+  <input ng-model=""><br>
+  <label>Image URL: </label>
+  <input ng-model=""><br><br>
+  <label>Review of Beer: </label><br>
+  <textarea ng-model="" rows="8" cols="40"></textarea>
+  <hr>
+  <h3>Beer Attributes (breweryDB)</h3>
+  <label>ABV: </label>
+  <input ng-model="">
+  <label>Organic: </label>
+  <select ng-model="" name="organic">
+    <option value="true">YES</option>
+    <option value="false">NO</option>
+  </select>
+  <h3>Beer Ratings: </h3>
+  <label>Hoppiness: </label>
+  <select ng-model="" name="hoppy">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <label>Maltiness: </label>
+  <select ng-model="" name="malty">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <label>Body: </label>
+  <select ng-model="" name="body">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  <hr>
+  <button type="submit">Submit</button>
+</form>

@@ -11,7 +11,10 @@ const app = express();
 
 import mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, function(err){
+  if (err) console.log(err);
+  else console.log('youre connected');
+});
 
 // view engine setup
 app.set('views', './views');
