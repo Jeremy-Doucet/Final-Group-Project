@@ -18,6 +18,11 @@ var app;
             controller: app.Controllers.uCtrl,
             controllerAs: "vm"
         })
+            .when("/:username", {
+            templateUrl: "/templates/uHome.html",
+            controller: app.Controllers.uHomeCtrl,
+            controllerAs: "vm"
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

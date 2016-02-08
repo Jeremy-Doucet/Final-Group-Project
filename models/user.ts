@@ -15,13 +15,10 @@ let mongoose = require("mongoose");
 let UserSchema = new mongoose.Schema({
   username: {type: String, unique: true, lowercase: true},
   email: {type: String, unique: true, lowercase: true},
+  avatarUrl: String,
   passwordHash: String,
   salt: String,
-  token: Object,
-  uPosts: {
-    postsOwn: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
-    postsOthers: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
-  }
+  token: Object
 });
 
 UserSchema.method("setPassword", function(password) {

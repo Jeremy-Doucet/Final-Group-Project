@@ -37,7 +37,7 @@ router.post("/register", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   if (!req.body.username) return next("Invalid username");
   if (!req.body.password) return next("Invalid password");
-  passport.authenticate("local", (error, user, info) => {
+  passport.authenticate("local", (error, user, info): any => {
     if (error) return next(error);
     if (user) return res.json({token: user.generateJWT()});
     return res.send(info);
@@ -52,7 +52,6 @@ router.get("/:username", (req, res, next) => {
   User.findOne({username: req.params["username"]})
   .populate("uPosts.postsOwn")
   .populate("uPosts.postsOthers")
-  .populate("uComments")
   .exec((error, user) => {
     if (error) return next(error);
     if (!user) return next({message: "No user"});

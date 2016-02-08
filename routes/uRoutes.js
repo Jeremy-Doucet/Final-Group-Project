@@ -34,7 +34,6 @@ router.get("/:username", function (req, res, next) {
     User.findOne({ username: req.params["username"] })
         .populate("uPosts.postsOwn")
         .populate("uPosts.postsOthers")
-        .populate("uComments")
         .exec(function (error, user) {
         if (error)
             return next(error);

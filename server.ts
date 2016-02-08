@@ -28,15 +28,6 @@ require("./models/user");
 require("./passport/passport");
 
 ////////////////////////
-///Express static
-////////////////////////
-
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
-app.use("/models", express.static(__dirname + "/models"));
-
-////////////////////////
 ///Views: EJS
 ////////////////////////
 
@@ -54,6 +45,23 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize());
+
+////////////////////////
+///Require routes
+////////////////////////
+
+let uRoutes = require("./routes/uRoutes");
+
+app.use("/usershell", uRoutes);
+
+////////////////////////
+///Express static
+////////////////////////
+
+app.use(express.static('./public'));
+app.use('/scripts', express.static('bower_components'));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
 
 ////////////////////////
 ///Data: MongoDB, Mongoose, Mongo Express
@@ -66,14 +74,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   console.log("Connected to GroupFinal DB");
 });
-
-////////////////////////
-///Require routes
-////////////////////////
-
-let uRoutes = require("./routes/uRoutes");
-
-app.use("/usershell", uRoutes);
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });

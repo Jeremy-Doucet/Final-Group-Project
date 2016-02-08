@@ -27,6 +27,7 @@
         "public/javascript/app.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/controllers/uCtrl.ts",
+        "public/javascript/controllers/uHomeCtrl.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",
         "public/javascript/services/uSvc.ts",
