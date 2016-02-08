@@ -6,6 +6,12 @@ var BeerSchema = new mongoose.Schema({
     location: { type: String, required: true },
     imgurl: { type: String, required: true },
     review: { type: String, required: true },
+    brewerydb: {
+        name: { type: String, required: true },
+        abv: { type: Number },
+        organic: { type: Boolean },
+        breweryinfo: { type: String }
+    },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     createdBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     created: { type: Number, default: Date.now },
