@@ -1,0 +1,18 @@
+<h3>Register:</h3>
+<form>
+
+  <label>Username: </label>
+  <input ng-model = "vm.newUser.username" type = "text" placeholder = "Enter username"><br><br>
+
+  <label>Email: </label>
+  <input ng-model = "vm.newUser.email" type = "email" placeholder = "Enter email"><br><br>
+
+  <label>Password: </label>
+  <input ng-model = "vm.newUser.password" type = "password" placeholder = "Enter password"><br><br>
+
+  <label>Confirm Password: </label>
+  <input ng-model = "vm.newUser.pwdConfirm" type = "password" placeholder = "Confirm password"><br><br><br>
+
+  <input ng-click = "vm.register()" type = "submit" value = "Register">
+
+</form>

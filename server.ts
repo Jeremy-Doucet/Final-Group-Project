@@ -1,17 +1,52 @@
 "use strict";
-// require("dotenv").config({ silent: true });
+
+////////////////////////
+///Require modules
+////////////////////////
+
+require("dotenv").config({ silent: true });
 import express = require('express');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
+import passport = require("passport");
+let mongoose = require("mongoose");
+
+////////////////////////
+///Constants
+////////////////////////
 
 const app = express();
 
-// view engine setup
+////////////////////////
+///Require models
+////////////////////////
+
+require("./models/user");
+
+require("./passport/passport");
+
+////////////////////////
+///Express static
+////////////////////////
+
+app.use(express.static('./public'));
+app.use('/scripts', express.static('bower_components'));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
+app.use("/models", express.static(__dirname + "/models"));
+
+////////////////////////
+///Views: EJS
+////////////////////////
+
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+
+////////////////////////
+///Parse
+////////////////////////
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,9 +55,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
+////////////////////////
+///Data: MongoDB, Mongoose, Mongo Express
+////////////////////////
 
+mongoose.connect(process.env.MONGO_URL);
+
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  console.log("Connected to GroupFinal DB");
+});
+
+////////////////////////
+///Require routes
+////////////////////////
+
+let uRoutes = require("./routes/uRoutes");
+
+app.use("/usershell", uRoutes);
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });
@@ -46,7 +97,7 @@ app.use(function(req, res, next) {
 
   app.use(function(err: any, req, res, next) {
     res.status(err.status || 500);
-    // if (err.name = 'CastError') err.message = 'Invalid ID';
+    if (err.name === 'CastError') err.message = 'Invalid ID';
     // Don't leak stack trace if not in development
     let error = (app.get('env') === 'development') ? err : {};
     res.send({
