@@ -8,7 +8,7 @@ var app;
                 this.HomeService = HomeService;
             }
             return HomeController;
-        })();
+        }());
         Controllers.HomeController = HomeController;
         angular.module('app').controller('HomeController', HomeController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
