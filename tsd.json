@@ -1,0 +1,72 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "serve-static/serve-static.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "mime/mime.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "express/express.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "mongoose/mongoose.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "node/node.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "angularjs/angular-resource.d.ts": {
+      "commit": "984a41af67d76b5134e0d4991a30f813dfb8561f"
+    },
+    "angularjs/angular-route.d.ts": {
+      "commit": "984a41af67d76b5134e0d4991a30f813dfb8561f"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "f85b83dbbffbc0d490b232b34f0664b424e8ce33"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "f85b83dbbffbc0d490b232b34f0664b424e8ce33"
+    },
+    "serve-favicon/serve-favicon.d.ts": {
+      "commit": "f85b83dbbffbc0d490b232b34f0664b424e8ce33"
+    },
+    "angular-ui-bootstrap/angular-ui-bootstrap.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "npm/npm.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "passport/passport.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "jsonwebtoken/jsonwebtoken.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "express-unless/express-unless.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "express-jwt/express-jwt.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "ejs/ejs.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    },
+    "passport-local/passport-local.d.ts": {
+      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+    }
+  }
+}
