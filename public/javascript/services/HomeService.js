@@ -7,7 +7,7 @@ var app;
             function HomeService() {
             }
             return HomeService;
-        })();
+        }());
         Services.HomeService = HomeService;
         angular.module('app').service('HomeService', HomeService);
     })(Services = app.Services || (app.Services = {}));

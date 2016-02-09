@@ -8,6 +8,12 @@ import bodyParser = require('body-parser');
 
 const app = express();
 
+// Models
+
+import mongoose = require('mongoose');
+require('./models/Comments');
+
+
 // view engine setup
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -19,6 +25,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//  Routes
+
+  let CommentsRoutes = require('./routes/CommentsRoutes');
+  app.use('/comments', CommentsRoutes);
+
+  let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
+  app.use('/')
+
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

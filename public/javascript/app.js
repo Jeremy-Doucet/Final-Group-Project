@@ -8,6 +8,9 @@ var App;
             controller: app.Controllers.HomeController,
             controllerAs: 'vm'
         })
+            .when('register', {
+            templateUrl: 'templates/'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

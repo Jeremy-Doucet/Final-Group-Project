@@ -1,14 +1,15 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start": "nodemon ./bin/www"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.0",
     "angular-animate": "^1.5.0",
+    "angular-route": "^1.5.0",
     "angular-ui-bootstrap": "^1.1.2",
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
@@ -25,5 +26,16 @@
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0",
     "then": "0.0.1"
-  }
+  },
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremy-Doucet/Final-Group-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jeremy-Doucet/Final-Group-Project/issues"
+  },
+  "homepage": "https://github.com/Jeremy-Doucet/Final-Group-Project#readme",
+  "description": ""
 }
