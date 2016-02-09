@@ -25,6 +25,7 @@
         "models/user.ts",
         "passport/passport.ts",
         "public/javascript/app.ts",
+        "public/javascript/controllers/fbCtrl.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/controllers/uCtrl.ts",
         "public/javascript/controllers/uHomeCtrl.ts",

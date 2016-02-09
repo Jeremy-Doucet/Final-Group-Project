@@ -28,7 +28,7 @@ router.post("/register", (req, res, next) => {
   newUser.email = req.body.email;
   newUser.setPassword(req.body.password);
   newUser.token = newUser.generateJWT();
-  newUser.save((error, user, token) => {
+  newUser.save((error, user, token): any => {
     if (error) return next(error);
     res.send(user);
   });

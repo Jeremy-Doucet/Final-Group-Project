@@ -22,7 +22,7 @@ app.use("/usershell", uRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
