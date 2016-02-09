@@ -6,8 +6,11 @@ var app;
         var HomeService = (function () {
             function HomeService($resource) {
                 this.$resource = $resource;
-                this.BeerResource = $resource('/api/beer/:id');
+                this.BeerResource = $resource('/api/v1/beer/:id');
             }
+            HomeService.prototype.getAll = function () {
+                return this.BeerResource.query();
+            };
             HomeService.prototype.saveBeer = function (beer) {
                 return this.BeerResource.save(beer).$promise;
             };

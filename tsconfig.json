@@ -24,10 +24,12 @@
     "files": [
         "models/beer.ts",
         "public/javascript/app.ts",
+        "public/javascript/controllers/beerPageController.ts",
         "public/javascript/controllers/createBeerController.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",
+        "routes/beerRoutes.ts",
         "server.ts",
         "typings/angularjs/angular-resource.d.ts",
         "typings/angularjs/angular-route.d.ts",

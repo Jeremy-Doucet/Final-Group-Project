@@ -10,11 +10,12 @@ import bodyParser = require('body-parser');
 const app = express();
 
 import mongoose = require('mongoose');
+require('./models/beer');
 
-mongoose.connect(process.env.MONGO_URL, function(err){
-  if (err) console.log(err);
-  else console.log('youre connected');
-});
+if (process.env.NODE_ENV === 'test')
+  mongoose.connect(process.env.MONGO_TEST);
+else
+  mongoose.connect(process.env.MONGO_URL)
 
 // view engine setup
 app.set('views', './views');
@@ -30,6 +31,10 @@ app.use(cookieParser());
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
+
+//ROUTES
+let beerRoutes = require('./routes/beerRoutes');
+app.use('/api/v1/beer', beerRoutes);
 
 
 app.get('/*', function(req, res, next) {

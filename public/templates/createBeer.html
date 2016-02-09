@@ -1,11 +1,11 @@
 <h1>Add a Beer Post</h1>
 <hr>
-<form ng-submit="">
+<form ng-submit="vm.createBeer()">
   <h3>Beer Info</h3>
   <label>Name of Beer: </label>
-  <input ng-model="">
+  <input ng-model="vm.beer.name">
   <label>Type of Beer: </label>
-  <select ng-model="" name="beertype">
+  <select ng-model="vm.beer.type" name="beertype">
     <option value="Pale">Pale</option>
     <option value="Mild">Mild</option>
     <option value="Wheat">Wheat</option>
@@ -14,23 +14,24 @@
     <option value="Stout">Stout</option>
   </select><br>
   <label>Location: </label>
-  <input ng-model=""><br>
+  <input ng-model="vm.beer.location"><br>
   <label>Image URL: </label>
-  <input ng-model=""><br><br>
+  <input ng-model="vm.beer.imgurl"><br><br>
   <label>Review of Beer: </label><br>
-  <textarea ng-model="" rows="8" cols="40"></textarea>
+  <textarea ng-model="vm.beer.review" rows="8" cols="40"></textarea>
   <hr>
   <h3>Beer Attributes (breweryDB)</h3>
   <label>ABV: </label>
-  <input ng-model="">
+  <input>
   <label>Organic: </label>
-  <select ng-model="" name="organic">
+  <select name="organic">
     <option value="true">YES</option>
     <option value="false">NO</option>
   </select>
+  <label>Brewery Information</label>
   <h3>Beer Ratings: </h3>
   <label>Hoppiness: </label>
-  <select ng-model="" name="hoppy">
+  <select ng-model="vm.beer.beerscores.hoppiness" name="hoppy">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -38,7 +39,7 @@
     <option value="5">5</option>
   </select>
   <label>Maltiness: </label>
-  <select ng-model="" name="malty">
+  <select ng-model="vm.beer.beerscores.maltiness" name="malty">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -46,7 +47,7 @@
     <option value="5">5</option>
   </select>
   <label>Body: </label>
-  <select ng-model="" name="body">
+  <select ng-model="vm.beer.beerscores.body" name="body">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>

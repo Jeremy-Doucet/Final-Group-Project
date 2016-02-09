@@ -9,10 +9,15 @@ let BeerSchema = new mongoose.Schema({
   imgurl: { type: String, required: true },
   review: { type: String, required: true },
   brewerydb: {
-    name: { type: String, required: true },
+    name: { type: String },
     abv: { type: Number },
     organic: { type: Boolean },
     breweryinfo: { type: String }
+  },
+  beerscores: {
+    hoppiness: { type: Number },
+    maltiness: { type: Number },
+    body: { type: Number }
   },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   createdBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],

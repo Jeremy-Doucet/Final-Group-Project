@@ -6,12 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL, function (err) {
-    if (err)
-        console.log(err);
-    else
-        console.log('youre connected');
-});
+require('./models/beer');
+if (process.env.NODE_ENV === 'test')
+    mongoose.connect(process.env.MONGO_TEST);
+else
+    mongoose.connect(process.env.MONGO_URL);
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -21,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
+var beerRoutes = require('./routes/beerRoutes');
+app.use('/api/v1/beer', beerRoutes);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|javascript/.test(req.path))
         return next({ status: 404, message: 'Not Found' });

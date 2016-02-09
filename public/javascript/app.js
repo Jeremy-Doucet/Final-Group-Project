@@ -1,6 +1,6 @@
 'use strict';
-var App;
-(function (App) {
+var app;
+(function (app) {
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
@@ -13,8 +13,13 @@ var App;
             controller: app.Controllers.BeerCreateController,
             controllerAs: 'vm'
         })
+            .when('/beerPage', {
+            templateUrl: '/templates/beerPage.html',
+            controller: app.Controllers.BeerPageController,
+            controllerAs: 'vm'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');
     });
-})(App || (App = {}));
+})(app || (app = {}));

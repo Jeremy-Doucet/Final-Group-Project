@@ -1,6 +1,6 @@
 'use strict';
-namespace app.Controllers{
-  export class BeerCreateController{
+namespace app.Controllers {
+  export class BeerCreateController {
     public beer = {};
 
     public createBeer(){
