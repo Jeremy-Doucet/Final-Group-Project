@@ -2,8 +2,9 @@
 namespace app.Controllers {
   export class HomeController {
 
-    constructor(private HomeService: app.Services.HomeService) {
 
+    constructor(private HomeService: app.Services.HomeService) {
+  
     }
   }
 

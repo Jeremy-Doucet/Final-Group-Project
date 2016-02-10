@@ -1,5 +1,6 @@
 "use strict";
-// require("dotenv").config({ silent: true });
+
+require("dotenv").config({ silent: true });
 import express = require('express');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
@@ -8,6 +9,14 @@ import bodyParser = require('body-parser');
 
 const app = express();
 
+import mongoose = require('mongoose');
+require('./models/beer');
+
+if (process.env.NODE_ENV === 'test')
+  mongoose.connect(process.env.MONGO_TEST);
+else
+  mongoose.connect(process.env.MONGO_URL)
+
 // view engine setup
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -15,13 +24,18 @@ app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+if (process.env.NODE_ENV != 'test')
+  app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
+
+//ROUTES
+let beerRoutes = require('./routes/beerRoutes');
+app.use('/api/v1/beer', beerRoutes);
 
 
 app.get('/*', function(req, res, next) {

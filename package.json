@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha test --recursive"
   },
   "author": "",
   "license": "ISC",
@@ -15,15 +16,24 @@
     "cookie-parser": "^1.4.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
-    "express": "^4.13.3",
+    "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "install": "^0.4.2",
+    "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.4.2",
     "morgan": "^1.6.1",
     "npm": "^3.7.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0",
+    "should": "^8.2.2",
+    "supertest": "^1.1.0",
     "then": "0.0.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "should": "^8.2.2",
+    "supertest": "^1.1.0"
   }
 }
