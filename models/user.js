@@ -4,6 +4,7 @@ var jwt = require("jsonwebtoken");
 var mongoose = require("mongoose");
 var UserSchema = new mongoose.Schema({
     username: { type: String, unique: true, lowercase: true, required: true },
+    facebookId: String,
     email: { type: String, unique: true, lowercase: true, required: true },
     avatarUrl: String,
     passwordHash: { type: String, required: true },

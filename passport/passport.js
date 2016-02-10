@@ -2,6 +2,7 @@
 var mongoose = require("mongoose");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var FacebookStrategy = require("passport-facebook").Strategy;
 var User = mongoose.model("User");
 var newUser = mongoose.model("newUser");
 passport.serializeUser(function (user, done) {
@@ -19,5 +20,21 @@ passport.use(new LocalStrategy(function (username, password, done) {
         if (!user.validatePassword(password))
             return done(null, false, { message: "Invalid password" });
         return done(null, user);
+    });
+}));
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    passReqToCallback: true,
+    profileFields: ["id", "name"]
+}, function (req, accessToken, refreshToken, profile, done) {
+    User.findOne({ facebookId: profile.id }, function (error, user) {
+        if (error)
+            return done(error, null);
+        if (user) {
+            req["tempUser"] = user;
+            return done(null, user);
+        }
     });
 }));

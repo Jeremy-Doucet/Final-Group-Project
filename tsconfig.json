@@ -51,6 +51,7 @@
         "typings/morgan/morgan.d.ts",
         "typings/node/node.d.ts",
         "typings/npm/npm.d.ts",
+        "typings/passport-facebook/passport-facebook.d.ts",
         "typings/passport-local/passport-local.d.ts",
         "typings/passport/passport.d.ts",
         "typings/serve-favicon/serve-favicon.d.ts",

@@ -7,6 +7,7 @@
 import mongoose = require("mongoose");
 import passport = require("passport");
 let LocalStrategy = require("passport-local").Strategy;
+let FacebookStrategy = require("passport-facebook").Strategy;
 
 ////////////////////////
 ///Require model
@@ -35,3 +36,21 @@ passport.use(new LocalStrategy((username, password, done) => {
     return done(null, user);
   });
 }));
+
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    passReqToCallback: true,
+    profileFields: ["id", "name"]
+  },
+  function(req, accessToken, refreshToken, profile, done) {
+    User.findOne({ facebookId: profile.id }, function (error, user) {
+      if (error) return done(error, null);
+      if (user) {
+        req["tempUser"] = user;
+        return done(null, user);
+      }
+    });
+  }
+));
