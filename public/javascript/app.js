@@ -8,9 +8,12 @@ var App;
             controller: app.Controllers.HomeController,
             controllerAs: 'vm'
         })
-            .when('register', {
-            templateUrl: 'templates/'
+            .when('/Comments', {
+            templateUrl: '/templates/comments.html',
+            controller: app.Controllers.CommentsController,
+            controllerAs: 'vm'
         })
+            .when('')
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

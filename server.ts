@@ -1,5 +1,5 @@
 "use strict";
-// require("dotenv").config({ silent: true });
+require("dotenv").config({ silent: true });
 import express = require('express');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
@@ -12,7 +12,11 @@ const app = express();
 
 import mongoose = require('mongoose');
 require('./models/Comments');
+require('./models/User');
 
+
+(process.env.NODE_ENV === 'test')
+  mongoose.connect("mongodb://localhost/Beer-test");
 
 // view engine setup
 app.set('views', './views');

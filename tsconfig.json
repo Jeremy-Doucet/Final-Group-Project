@@ -23,6 +23,7 @@
     "buildOnSave": false,
     "files": [
         "models/Comments.ts",
+        "models/User.ts",
         "public/javascript/app.ts",
         "public/javascript/controllers/CommentsController.ts",
         "public/javascript/controllers/DeleteAddBeerController.ts",
