@@ -17,6 +17,8 @@ namespace app.Services {
       return this.uLoginResource.save(user).$promise;
     };
 
+    public loginFB() {};
+
     public setToken(token) {
       this.$window.localStorage.setItem("token", token);
     };

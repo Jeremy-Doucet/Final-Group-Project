@@ -21,6 +21,8 @@ var app;
                 return this.uLoginResource.save(user).$promise;
             };
             ;
+            uSvc.prototype.loginFB = function () { };
+            ;
             uSvc.prototype.setToken = function (token) {
                 this.$window.localStorage.setItem("token", token);
             };

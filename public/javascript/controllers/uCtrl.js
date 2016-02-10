@@ -40,6 +40,8 @@ var app;
                 });
             };
             ;
+            uCtrl.prototype.loginFB = function () { };
+            ;
             ;
             return uCtrl;
         }());

@@ -13,4 +13,5 @@
 </form>
 
 <h3>...or via FaceBook:</h3>
-<img ng-src = "/css/img/fbLogin.png">
+<form action="/Account/ExternalLogin?ReturnUrl=" method="post"><input name="__RequestVerificationToken" type="hidden" />
+<button type = "submit"><img ng-src = "/css/img/fbLogin.png"></button>

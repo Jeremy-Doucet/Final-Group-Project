@@ -2,6 +2,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var passport = require("passport");
+var FacebookStrategy = require("passport-facebook").Strategy;
 var User = mongoose.model("User");
 var newUser = mongoose.model("User");
 var router = express.Router();
@@ -30,6 +31,8 @@ router.post("/login", function (req, res, next) {
         return res.send(info);
     })(req, res, next);
 });
+router.get("/loginFB", passport.authenticate("facebook"));
+router.get("/loginFB/return", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res, next) { res.redirect("/"); });
 router.get("/:username", function (req, res, next) {
     User.findOne({ username: req.params["username"] })
         .populate("uPosts.postsOwn")

@@ -35,6 +35,8 @@ namespace app.Controllers {
       });
     };
 
+    public loginFB() {};
+
     constructor(
       private uSvc: app.Services.uSvc,
       private $location: ng.ILocationService,

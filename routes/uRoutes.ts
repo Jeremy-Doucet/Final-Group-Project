@@ -8,6 +8,7 @@ import express = require("express");
 import jwt = require("jsonwebtoken");
 let mongoose = require("mongoose");
 import passport = require("passport");
+let FacebookStrategy = require("passport-facebook").Strategy;
 
 let User = mongoose.model("User");
 let newUser = mongoose.model("User");
@@ -43,6 +44,14 @@ router.post("/login", (req, res, next) => {
     return res.send(info);
   }) (req, res, next);
 });
+
+////////////////////////
+///GET: FB login
+////////////////////////
+
+router.get("/loginFB", passport.authenticate("facebook"));
+
+router.get("/loginFB/return", passport.authenticate("facebook", {failureRedirect: "/login"}), (req, res, next) => {res.redirect("/")});
 
 ////////////////////////
 ///GET: User for uHome
