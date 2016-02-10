@@ -16,9 +16,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(require("express-session")({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
-app.use(passport.session());
+app.get("/auth/facebook", passport.authenticate("facebook"));
+app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res) {
+    res.redirect("/");
+});
 var uRoutes = require("./routes/uRoutes");
 app.use("/usershell", uRoutes);
 app.use(express.static('./public'));

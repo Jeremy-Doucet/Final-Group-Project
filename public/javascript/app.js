@@ -18,16 +18,6 @@ var app;
             controller: app.Controllers.uCtrl,
             controllerAs: "vm"
         })
-            .when("/loginFB", {
-            templateUrl: "/templates/loginFB.html",
-            controller: app.Controllers.uCtrl,
-            controllerAs: "vm"
-        })
-            .when("/loginFB/return", {
-            templateUrl: "/templates/home.html",
-            controller: app.Controllers.uCtrl,
-            controllerAs: "vm"
-        })
             .when("/:username", {
             templateUrl: "/templates/uHome.html",
             controller: app.Controllers.uHomeCtrl,

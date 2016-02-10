@@ -22,28 +22,3 @@ passport.use(new LocalStrategy(function (username, password, done) {
         return done(null, user);
     });
 }));
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/",
-    passReqToCallback: true,
-    profileFields: ["id", "name", "email"]
-}, function (req, accessToken, refreshToken, profile, done) {
-    User.findOne({ email: profile.email }, function (error, user) {
-        if (error)
-            return done(error, null);
-        if (user) {
-            req["tempUser"] = user;
-            return done(null, user);
-        }
-        var newUser = new User();
-        newUser.email = profile.email;
-        newUser.facebookId = profile.id;
-        newUser.save(function (error, userSaved) {
-            if (error)
-                return error;
-            req["tempUser"] = userSaved;
-            return (error, userSaved);
-        });
-    });
-}));
