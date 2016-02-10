@@ -18,18 +18,27 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
+    "express-session": "^1.13.0",
     "install": "^0.4.2",
     "jsonwebtoken": "^5.5.4",
+    "kerberos": "0.0.18",
     "mongoose": "^4.4.2",
     "morgan": "^1.6.1",
     "npm": "^3.7.1",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0",
     "should": "^8.2.2",
     "supertest": "^1.1.0",
     "then": "0.0.1"
   },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremy-Doucet/Final-Group-Project.git"
+  },
+
   "devDependencies": {
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
