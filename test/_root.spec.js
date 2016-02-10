@@ -10,9 +10,6 @@ before((done)=>{
   async.parallel([
     (cb) => {
       Beer.collection.remove(cb);
-    },
-    (cb) => {
-      User.collection.remove(cb);
     }
   ], done);
 });

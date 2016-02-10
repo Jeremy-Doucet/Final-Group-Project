@@ -8,7 +8,15 @@ var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
-router.post('/', auth, function (req, res, next) {
+router.get('/', function (req, res, next) {
+    Beer.find({})
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
+router.post('/', function (req, res, next) {
     var newBeer = new Beer(req.body);
     newBeer.save(function (err, beer) {
         if (err)
