@@ -22,12 +22,12 @@
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
-<<<<<<< HEAD
+
         "models/beer.ts",
-=======
+
         "models/user.ts",
         "passport/passport.ts",
->>>>>>> users
+
         "public/javascript/app.ts",
         "public/javascript/controllers/beerPageController.ts",
         "public/javascript/controllers/createBeerController.ts",
@@ -36,12 +36,12 @@
         "public/javascript/controllers/uHomeCtrl.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",
-<<<<<<< HEAD
+
         "routes/beerRoutes.ts",
-=======
+
         "public/javascript/services/uSvc.ts",
         "routes/uRoutes.ts",
->>>>>>> users
+
         "server.ts",
         "typings/angularjs/angular-resource.d.ts",
         "typings/angularjs/angular-route.d.ts",
@@ -58,11 +58,10 @@
         "typings/mongoose/mongoose.d.ts",
         "typings/morgan/morgan.d.ts",
         "typings/node/node.d.ts",
-<<<<<<< HEAD
-=======
+
         "typings/npm/npm.d.ts",
         "typings/passport-facebook/passport-facebook.d.ts",
->>>>>>> users
+
         "typings/passport-local/passport-local.d.ts",
         "typings/passport/passport.d.ts",
         "typings/serve-favicon/serve-favicon.d.ts",

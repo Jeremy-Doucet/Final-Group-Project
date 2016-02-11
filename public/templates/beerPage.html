@@ -1,5 +1,9 @@
 <h1>This is the beer page <small></small></h1>
 
+<hr>
+
 <div ng-repeat="b in vm.beers">
-  {{vm.beers}}
+  <h1><a ng-href="#"></a>{{b.name}}</h1><br>
+  location: {{b.location}}<br>
+  img: {{b.imgurl}}
 </div>
