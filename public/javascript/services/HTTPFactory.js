@@ -9,9 +9,6 @@ var app;
                     config.headers = config.headers || {};
                     config.headers['Accepts'] = 'application/json';
                     config.headers['Content-Type'] = 'application/json';
-                    if ($window.localStorage.getItem('token')) {
-                        config.headers['Authorization'] = "Bearer " + $window.localStorage.getItem('token');
-                    }
                     return config;
                 }
             };
