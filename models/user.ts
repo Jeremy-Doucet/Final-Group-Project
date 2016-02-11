@@ -13,11 +13,18 @@ let mongoose = require("mongoose");
 ////////////////////////
 
 let UserSchema = new mongoose.Schema({
-  username: {type: String, unique: true, lowercase: true, required: true},
-  facebookId: String,
-  email: {type: String, unique: true, lowercase: true, required: true},
+  username: {type: String, unique: true, lowercase: true},
+  email: {type: String, unique: true, lowercase: true},
   avatarUrl: String,
-  passwordHash: {type: String, required: true},
+  facebook: {
+      id: {type: String, unique: true, sparse: true},
+      token: String,
+      name: String,
+      email: String,
+      gender: String,
+      profileUrl: String
+    },
+  passwordHash: String,
   salt: String,
   token: Object
 });
@@ -33,10 +40,12 @@ UserSchema.method("validatePassword", function(password) {
 });
 
 UserSchema.method("generateJWT", function() {
+  let facebook = (this.facebook.token) ? true : false;
   return jwt.sign({
     _id: this._id,
     username: this.username,
-    email: this.email
+    email: this.email,
+    facebook: facebook
   }, process.env.JWT_SECRET);
 });
 

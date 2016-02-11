@@ -18,7 +18,7 @@ namespace app.Controllers {
         this.uSvc.registerUser(this.newUser).then((res) => {
           this.uSvc.setToken(res.token);
           this.uSvc.setUser();
-          this.$window.localStorage.setItem("username", this.newUser.username);
+          this.$window.localStorage.setItem("username", res["payload.username"]);
           this.$location.path(this.newUser.username);
         });
       } else {
@@ -30,12 +30,10 @@ namespace app.Controllers {
       this.uSvc.login(this.user).then((res) => {
         this.uSvc.setToken(res.token);
         this.uSvc.setUser();
-        this.$window.localStorage.setItem("username", this.user.username);
+        this.$window.localStorage.setItem("username", res["payload.username"]);
         this.$location.path(this.user.username);
       });
     };
-
-    public loginFB() {};
 
     constructor(
       private uSvc: app.Services.uSvc,

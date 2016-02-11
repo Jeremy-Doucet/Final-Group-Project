@@ -1,7 +1,7 @@
 'use strict';
 namespace app {
 
-  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
 
   .config((
     $routeProvider: ng.route.IRouteProvider,

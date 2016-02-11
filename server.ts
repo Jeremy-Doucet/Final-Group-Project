@@ -20,7 +20,7 @@ require('./models/beer');
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.MONGO_TEST);
 else
-  mongoose.connect(process.env.MONGO_URL)
+  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb")
 
 ////////////////////////
 ///Require models
@@ -50,17 +50,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-////////////////////////
-///Passport FB Stuff
-////////////////////////
-
 app.use(passport.initialize());
-
-app.get("/auth/facebook", passport.authenticate("facebook"));
-
-app.get("/auth/facebook/callback", passport.authenticate("facebook", {failureRedirect: "/login"}), function(req, res) {
-  res.redirect("/");
-});
 
 ////////////////////////
 ///Require routes
@@ -100,15 +90,15 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-  app.use(function(err: any, req, res, next) {
-    res.status(err.status || 500);
-    if (err.name === 'CastError') err.message = 'Invalid ID';
-    // Don't leak stack trace if not in development
-    let error = (app.get('env') === 'development') ? err : {};
-    res.send({
-      message: err.message,
-      error: error
-    });
+app.use(function(err: any, req, res, next) {
+  res.status(err.status || 500);
+  if (err.name === 'CastError') err.message = 'Invalid ID';
+  // Don't leak stack trace if not in development
+  let error = (app.get('env') === 'development') ? err : {};
+  res.send({
+    message: err.message,
+    error: error
   });
+});
 
 export = app;

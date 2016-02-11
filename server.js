@@ -11,7 +11,7 @@ require('./models/beer');
 if (process.env.NODE_ENV === 'test')
     mongoose.connect(process.env.MONGO_TEST);
 else
-    mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
 require("./models/user");
 require("./passport/passport");
 app.set('views', './views');
@@ -23,10 +23,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.get("/auth/facebook", passport.authenticate("facebook"));
-app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res) {
-    res.redirect("/");
-});
 var beerRoutes = require('./routes/beerRoutes');
 var uRoutes = require("./routes/uRoutes");
 app.use('/api/v1/beer', beerRoutes);

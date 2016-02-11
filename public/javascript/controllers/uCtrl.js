@@ -21,7 +21,7 @@ var app;
                     this.uSvc.registerUser(this.newUser).then(function (res) {
                         _this.uSvc.setToken(res.token);
                         _this.uSvc.setUser();
-                        _this.$window.localStorage.setItem("username", _this.newUser.username);
+                        _this.$window.localStorage.setItem("username", res["payload.username"]);
                         _this.$location.path(_this.newUser.username);
                     });
                 }
@@ -35,12 +35,10 @@ var app;
                 this.uSvc.login(this.user).then(function (res) {
                     _this.uSvc.setToken(res.token);
                     _this.uSvc.setUser();
-                    _this.$window.localStorage.setItem("username", _this.user.username);
+                    _this.$window.localStorage.setItem("username", res["payload.username"]);
                     _this.$location.path(_this.user.username);
                 });
             };
-            ;
-            uCtrl.prototype.loginFB = function () { };
             ;
             ;
             return uCtrl;
