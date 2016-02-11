@@ -1,0 +1,17 @@
+<h3>Login:</h3>
+
+<form>
+
+  <label>Username: </label>
+  <input ng-model = "vm.user.username" type = "text" placeholder = "Enter username"><br><br>
+
+  <label>Password: </label>
+  <input ng-model = "vm.user.password" type = "password" placeholder = "Enter password"><br><br><br>
+
+  <input ng-click = "vm.login()" type = "submit" value = "Login">
+
+</form>
+
+<h3>...or via FaceBook:</h3>
+<form action="/Account/ExternalLogin?ReturnUrl=" method="post"><input name="__RequestVerificationToken" type="hidden" />
+<button type = "submit"><img ng-src = "/css/img/fbLogin.png"></button>

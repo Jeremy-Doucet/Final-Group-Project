@@ -2,3 +2,5 @@
 /typings
 /node_modules
 .env
+gmfb
+.DS_Store
