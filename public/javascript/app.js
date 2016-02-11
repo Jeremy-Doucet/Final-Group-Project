@@ -18,6 +18,11 @@ var app;
             controller: app.Controllers.BeerPageController,
             controllerAs: 'vm'
         })
+            .when('/details/:id', {
+            templateUrl: '/templates/deerDetails.html',
+            controller: app.Controllers.BeerDetailsController,
+            controllerAs: 'vm'
+        })
             .when("/register", {
             templateUrl: "/templates/register.html",
             controller: app.Controllers.uCtrl,
