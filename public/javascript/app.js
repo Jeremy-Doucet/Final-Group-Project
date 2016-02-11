@@ -8,6 +8,11 @@ var app;
             controller: app.Controllers.HomeController,
             controllerAs: 'vm'
         })
+            .when('/Comments', {
+            templateUrl: '/templates/comments.html',
+            controller: app.Controllers.CommentsController,
+            controllerAs: 'vm'
+        })
             .when('/addBeer', {
             templateUrl: '/templates/createBeer.html',
             controller: app.Controllers.BeerCreateController,

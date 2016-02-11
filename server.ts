@@ -1,5 +1,4 @@
 "use strict";
-
 require("dotenv").config({ silent: true });
 import express = require('express');
 import favicon = require('serve-favicon');
@@ -14,25 +13,26 @@ import passport = require("passport");
 
 const app = express();
 
-import mongoose = require('mongoose');
-require('./models/beer');
+// Models
 
+import mongoose = require('mongoose');
+require('./models/Comments');
+require('./models/User');
+require('./models/beer');
+require("./passport/passport");
 if (process.env.NODE_ENV === 'test')
   mongoose.connect(process.env.MONGO_TEST);
 else
   mongoose.connect(process.env.MONGO_URL)
 
-////////////////////////
-///Require models
-////////////////////////
 
-require("./models/user");
 
-require("./passport/passport");
+
 
 ////////////////////////
 ///Views: EJS
 ////////////////////////
+
 
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -49,6 +49,11 @@ if (process.env.NODE_ENV != 'test')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+
+//  Routes
+
+
 
 ////////////////////////
 ///Passport FB Stuff
@@ -68,6 +73,11 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {failureRed
 
 let beerRoutes = require('./routes/beerRoutes');
 let uRoutes = require("./routes/uRoutes");
+let CommentsRoutes = require('./routes/CommentsRoutes');
+app.use('/comments', CommentsRoutes);
+
+// let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
+// app.use('/')
 
 app.use('/api/v1/beer', beerRoutes);
 app.use("/usershell", uRoutes);
@@ -75,6 +85,7 @@ app.use("/usershell", uRoutes);
 ////////////////////////
 ///Express static
 ////////////////////////
+
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

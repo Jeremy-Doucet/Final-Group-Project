@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "mocha test --recursive"
@@ -9,7 +8,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.0",
     "angular-animate": "^1.5.0",
+    "angular-route": "^1.5.0",
     "angular-ui-bootstrap": "^1.1.2",
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
@@ -33,14 +34,26 @@
     "supertest": "^1.1.0",
     "then": "0.0.1"
   },
+<<<<<<< HEAD
+=======
+  "main": "server.js",
+>>>>>>> cruddelete
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jeremy-Doucet/Final-Group-Project.git"
   },
+<<<<<<< HEAD
+=======
+  "bugs": {
+    "url": "https://github.com/Jeremy-Doucet/Final-Group-Project/issues"
+  },
+  "homepage": "https://github.com/Jeremy-Doucet/Final-Group-Project#readme",
+>>>>>>> cruddelete
   "devDependencies": {
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "should": "^8.2.2",
     "supertest": "^1.1.0"
   }
+
 }
