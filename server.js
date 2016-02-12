@@ -7,14 +7,13 @@ var bodyParser = require('body-parser');
 var passport = require("passport");
 var app = express();
 var mongoose = require('mongoose');
-require('./models/Comments');
-require('./models/User');
 require('./models/beer');
-require("./passport/passport");
 if (process.env.NODE_ENV === 'test')
     mongoose.connect(process.env.MONGO_TEST);
 else
     mongoose.connect(process.env.MONGO_URL);
+require("./models/user");
+require("./passport/passport");
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -30,8 +29,6 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
 });
 var beerRoutes = require('./routes/beerRoutes');
 var uRoutes = require("./routes/uRoutes");
-var CommentsRoutes = require('./routes/CommentsRoutes');
-app.use('/comments', CommentsRoutes);
 app.use('/api/v1/beer', beerRoutes);
 app.use("/usershell", uRoutes);
 app.use(express.static('./public'));
