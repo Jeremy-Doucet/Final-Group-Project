@@ -2,7 +2,7 @@
   "name": "app",
   "version": "1.0.0",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "test": "mocha test --recursive"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "angular-ui-bootstrap": "^1.1.2",
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
+    "brewerydb-node": "0.0.1",
     "cookie-parser": "^1.4.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
@@ -29,12 +30,12 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
     "passport-local": "^1.0.0",
+    "request": "^2.69.0",
     "serve-favicon": "^2.3.0",
     "should": "^8.2.2",
     "supertest": "^1.1.0",
     "then": "0.0.1"
   },
-
   "main": "server.js",
   "repository": {
     "type": "git",
@@ -50,5 +51,4 @@
     "should": "^8.2.2",
     "supertest": "^1.1.0"
   }
-
 }
