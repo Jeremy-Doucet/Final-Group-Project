@@ -7,6 +7,7 @@ var app;
             function BeerPageController(HomeService, $location) {
                 this.HomeService = HomeService;
                 this.$location = $location;
+                this.beers = HomeService.getAll();
             }
             BeerPageController.prototype.searchBeer = function () {
                 var _this = this;

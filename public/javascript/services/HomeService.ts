@@ -24,7 +24,7 @@ namespace app.Services {
 
 
     constructor(private $resource: ng.resource.IResourceService) {
-      this.BeerResource = $resource('/api/v1/beers/:id', null,
+      this.BeerResource = $resource('/api/v1/beer/:id', null,
       {
           "update": { method: "PUT"}
       });

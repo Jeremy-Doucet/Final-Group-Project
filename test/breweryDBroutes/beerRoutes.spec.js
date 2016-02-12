@@ -15,7 +15,7 @@ describe("GET /beer", () => {
     });
     it("Should return a status of 200", (done) => {
         request(app)
-        .get("/:id")
+        .get("/beers")
         .expect(200)
         .end(done);
     });

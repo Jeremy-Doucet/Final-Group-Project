@@ -32,7 +32,7 @@ var beerRoutes = require('./routes/beerRoutes');
 var uRoutes = require("./routes/uRoutes");
 var CommentsRoutes = require('./routes/CommentsRoutes');
 app.use('/comments', CommentsRoutes);
-app.use('/api/v1/beers', beerRoutes);
+app.use('/api/v1/beer', beerRoutes);
 app.use("/usershell", uRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

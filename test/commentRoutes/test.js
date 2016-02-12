@@ -7,7 +7,7 @@ let should = require('should');
 let mongoose = require('mongoose');
 let request = require('supertest');
 
-let app = require('../server');
+let app = require('../../server');
 let Comments = mongoose.model('Comments');
 
 describe('GET /Comments', () => {

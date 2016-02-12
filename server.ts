@@ -79,12 +79,12 @@ app.use('/comments', CommentsRoutes);
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
 // app.use('/')
 
-app.use('/api/v1/beers', beerRoutes);
+app.use('/api/v1/beer', beerRoutes);
 app.use("/usershell", uRoutes);
 
 ////////////////////////
 ///Express static
-////////////////////////
+////////////////////////git 
 
 
 app.use(express.static('./public'));
