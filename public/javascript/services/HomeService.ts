@@ -14,6 +14,10 @@ namespace app.Services {
       return this.BeerResource.query();
     }
 
+    public getBeer(beerId){
+      return this.BeerResource.get({ id: beerId });
+    }
+
     public saveBeer(beer){
       return this.BeerResource.save(beer).$promise;
     }

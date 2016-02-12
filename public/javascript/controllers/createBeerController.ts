@@ -16,7 +16,8 @@ namespace app.Controllers {
     constructor(
       private HomeService: app.Services.HomeService,
       private $location: ng.ILocationService
-    ){}
+    ){
+    }
   }
   angular.module('app').controller('BeerCreateController', BeerCreateController);
 }

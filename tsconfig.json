@@ -23,19 +23,35 @@
     "buildOnSave": false,
     "files": [
         "models/beer.ts",
+        "models/Comments.ts",
         "models/user.ts",
         "passport/passport.ts",
+        "models/beer.ts",
+
+        "models/user.ts",
+        "passport/passport.ts",
+
         "public/javascript/app.ts",
         "public/javascript/controllers/beerPageController.ts",
+        "public/javascript/controllers/CommentsController.ts",
         "public/javascript/controllers/createBeerController.ts",
+        "public/javascript/controllers/DeleteAddBeerController.ts",
         "public/javascript/controllers/HomeController.ts",
         "public/javascript/controllers/uCtrl.ts",
         "public/javascript/controllers/uHomeCtrl.ts",
+        "public/javascript/services/CommentsService.ts",
+        "public/javascript/services/DeleteCrudService.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",
+
+        "routes/beerRoutes.ts",
+
         "public/javascript/services/uSvc.ts",
         "routes/beerRoutes.ts",
+        "routes/CommentsRoutes.ts",
+        "routes/DeleteCrudRoutes.ts",
         "routes/uRoutes.ts",
+
         "server.ts",
         "typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts",
         "typings/angularjs/angular-resource.d.ts",
@@ -53,7 +69,12 @@
         "typings/mongoose/mongoose.d.ts",
         "typings/morgan/morgan.d.ts",
         "typings/node/node.d.ts",
+
         "typings/npm/npm.d.ts",
+
+        "typings/npm/npm.d.ts",
+        "typings/passport-facebook/passport-facebook.d.ts",
+
         "typings/passport-local/passport-local.d.ts",
         "typings/passport/passport.d.ts",
         "typings/serve-favicon/serve-favicon.d.ts",
