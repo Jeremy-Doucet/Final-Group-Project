@@ -14,16 +14,6 @@ let auth = jwt({
 });
 
 
-// GET: /books
-router.get("/", (req, res, next) => {
-  Beer.find({})
-    .exec((err, Beer) => {
-    if (err) return next(err);
-    res.json(Beer);
-  });
-});
-
-
 // POST: /api/comments
 router.post('/', auth, (req, res, next) => {
   // Check that the Beer actually exists before saving the comment
