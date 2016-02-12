@@ -29,7 +29,7 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
 });
 var beerRoutes = require('./routes/beerRoutes');
 var uRoutes = require("./routes/uRoutes");
-app.use('/api/v1/beer', beerRoutes);
+app.use('/api/v1/beers', beerRoutes);
 app.use("/usershell", uRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

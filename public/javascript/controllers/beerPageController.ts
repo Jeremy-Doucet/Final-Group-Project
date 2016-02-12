@@ -3,9 +3,28 @@ namespace app.Controllers {
   export class BeerPageController {
 
     public beers;
+    public beer;
+    public result;
+    public brew;
+    public breweries;
 
-    constructor(private HomeService: app.Services.HomeService) {
-      this.beers = HomeService.getAll();
+    public searchBeer() {
+        this.HomeService.searchBeer(this.beer).then((res) => {
+            this.result = res;
+        })
+    }
+
+    public searchBrew(brew) {
+        this.HomeService.getBrew(this.brew).then((res) => {
+            this.breweries = res;
+        })
+    }
+
+
+
+    constructor(private HomeService: app.Services.HomeService,
+                private $location: ng.ILocationService) {
+    //   this.beers = HomeService.getAll();
     }
   }
 

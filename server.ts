@@ -69,7 +69,7 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {failureRed
 let beerRoutes = require('./routes/beerRoutes');
 let uRoutes = require("./routes/uRoutes");
 
-app.use('/api/v1/beer', beerRoutes);
+app.use('/api/v1/beers', beerRoutes);
 app.use("/usershell", uRoutes);
 
 ////////////////////////

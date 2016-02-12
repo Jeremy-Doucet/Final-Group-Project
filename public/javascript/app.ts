@@ -43,6 +43,11 @@ namespace app {
       controller: app.Controllers.uHomeCtrl,
       controllerAs: "vm"
     })
+    .when("/breweryDetails/:id",{
+        templateUrl: "templates/breweryDetails.html",
+        controller: app.Controllers.BreweryDetailsController,
+        controllerAs: "vm"
+    })
 
     .otherwise({ redirectTo: '/' });
 

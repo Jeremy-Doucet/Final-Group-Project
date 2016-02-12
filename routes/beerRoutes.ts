@@ -1,10 +1,13 @@
 'use strict';
 
 import express = require('express');
+let request = require("request");
 import jwt = require('express-jwt');
 let mongoose = require('mongoose');
 let router = express.Router();
 let Beer = mongoose.model('Beer');
+let BreweryDb = require("brewerydb-node");
+let brewdb = new BreweryDb(process.env.brewdb_key);
 // let User = mongoose.model('User');
 let auth = jwt({
   userProperty: 'payload',
@@ -13,13 +16,25 @@ let auth = jwt({
 
 
 //GET: /api/v1/beer
-router.get('/', (req, res, next) => {
-  Beer.find({})
-    .exec((err, beers) =>{
-      if (err) return next(err);
-      res.json(beers)
+router.get("/beer", (req,res,next) => {
+    brewdb.search.beers({q:req.query.name}, (err, data)=> {
+        res.send(data);
     });
 });
+
+// router.get("/brew", (req,res,next) => {
+//     brewdb.search.breweries({q:req.query.name}, (err, data)=> {
+//         res.json(data);
+//     });
+// });
+
+router.get("/:id", (req,res,next) => {
+    console.log()
+    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
+        res.send(response.body)
+    })
+});
+
 
 
 //POST: api/v1/beer
