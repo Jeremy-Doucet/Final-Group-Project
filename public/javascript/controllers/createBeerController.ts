@@ -3,6 +3,10 @@ namespace app.Controllers {
   export class BeerCreateController {
     public beer = {};
 
+
+
+    
+
     public createBeer(){
       this.HomeService.saveBeer(this.beer).then((res) =>{
         this.$location.path('/')

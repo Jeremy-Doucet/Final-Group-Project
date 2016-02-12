@@ -43,6 +43,11 @@ var app;
             controller: app.Controllers.uHomeCtrl,
             controllerAs: "vm"
         })
+            .when("/breweryDetails/:id", {
+            templateUrl: "templates/breweryDetails.html",
+            controller: app.Controllers.BreweryDetailsController,
+            controllerAs: "vm"
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

@@ -29,12 +29,12 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
     "passport-local": "^1.0.0",
+    "request": "^2.69.0",
     "serve-favicon": "^2.3.0",
     "should": "^8.2.2",
     "supertest": "^1.1.0",
     "then": "0.0.1"
   },
-
   "main": "server.js",
   "repository": {
     "type": "git",
