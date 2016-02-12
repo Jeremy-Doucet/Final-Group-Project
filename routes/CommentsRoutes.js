@@ -10,6 +10,14 @@ var auth = jwt({
     secret: process.env.JWT_SECRET,
     userProperty: 'payload'
 });
+router.get("/", function (req, res, next) {
+    Beer.find({})
+        .exec(function (err, Beer) {
+        if (err)
+            return next(err);
+        res.json(Beer);
+    });
+});
 router.post('/', auth, function (req, res, next) {
     Beer.findOne({ _id: req.body.Beer }).exec(function (err, Beer) {
         if (err)
