@@ -9,7 +9,7 @@ angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
     $httpProvider: ng.IHttpProvider) => {
 
     $routeProvider.when('/', {
-      templateUrl: '/templates/Home.html',
+      templateUrl: '/templates/home.html',
       controller: app.Controllers.HomeController,
       controllerAs: 'vm'
     })

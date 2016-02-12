@@ -4,8 +4,13 @@ var app;
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: '/templates/Home.html',
+            templateUrl: '/templates/home.html',
             controller: app.Controllers.HomeController,
+            controllerAs: 'vm'
+        })
+            .when('/Comments', {
+            templateUrl: '/templates/comments.html',
+            controller: app.Controllers.CommentsController,
             controllerAs: 'vm'
         })
             .when('/addBeer', {
@@ -16,6 +21,11 @@ var app;
             .when('/beerPage', {
             templateUrl: '/templates/beerPage.html',
             controller: app.Controllers.BeerPageController,
+            controllerAs: 'vm'
+        })
+            .when('/details/:id', {
+            templateUrl: '/templates/beerDetails.html',
+            controller: app.Controllers.BeerDetailsController,
             controllerAs: 'vm'
         })
             .when("/register", {
@@ -31,6 +41,11 @@ var app;
             .when("/:username", {
             templateUrl: "/templates/uHome.html",
             controller: app.Controllers.uHomeCtrl,
+            controllerAs: "vm"
+        })
+            .when("/breweryDetails/:id", {
+            templateUrl: "templates/breweryDetails.html",
+            controller: app.Controllers.BreweryDetailsController,
             controllerAs: "vm"
         })
             .otherwise({ redirectTo: '/' });
