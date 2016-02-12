@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use strict";
 var app;
 (function (app) {
@@ -24,7 +23,7 @@ var app;
         angular.module('app').service('HomeService', HomeService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
-=======
+
 "use strict";
 var app;
 (function (app) {
@@ -47,4 +46,3 @@ var app;
         angular.module('app').service('HomeService', HomeService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
->>>>>>> cruddelete
