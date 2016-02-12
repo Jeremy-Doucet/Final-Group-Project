@@ -1,14 +1,26 @@
 <div class="container-fluid">
-  <h2>Beer | <small>{{vm.beer.name}}</small></h2>
+  <div class="row text-center">
+      <h2>{{vm.beer.name}}</h2>
+      <hr>
+  </div>
+
 
   <div class="row">
     <div class="col-sm-2">
       <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
     </div>
-    <div class="col-sm-4">
-      Review: {{vm.beer.review }}
-    </div>
     <div class="col-sm-6">
+      <h4> Review<small> {{vm.beer.review }} </small></h4><br>
+
+      <div class="text-right">
+        Posted by: <a href="#">{{vm.beer.createdBy.username}}</a> <b>|</b>
+        Posted on: {{vm.beer.created | date: fullDate }} <b>|</b>
+        <a href="#">Save beer</a>
+      </div>
+
+
+    </div>
+    <div class="col-sm-4">
       <small>BreweryDB table</small><br>
       <table class="table table-striped">
         <thead>
@@ -35,5 +47,5 @@
 
   <br>
   <br>
-  
+
 </div>
