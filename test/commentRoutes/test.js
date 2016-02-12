@@ -1,14 +1,12 @@
-
-
-
 'use strict';
 
 let should = require('should');
 let mongoose = require('mongoose');
 let request = require('supertest');
 
-let app = require('../server');
+let app = require('../../server');
 let Comments = mongoose.model('Comments');
+let User = mongoose.model('User');
 
 describe('GET /Comments', () => {
   it('Should return a status of 200', (done) => {
