@@ -5,12 +5,32 @@ let request = require('supertest');
 
 let app = require('../../server');
 let Beer = mongoose.model('Beer');
-// let User = mongoose.model('User');
+let User = mongoose.model('User');
 
 describe('-- Beer Routes --', () => {
+  let id;
   let authHeader;
+  before((done) => {
+    let u = new User();
+    u.username = "beerUser";
+    u.email = "aa@beer.com";
+    u.setPassword('secret');
+    u.save((err, user) =>{
+      // console.log(err)
+      let beer = new Beer();
+      beer.title = "Sample Title";
+      beer.author = "Sample Author";
+      beer.save((err) => {
+        authHeader = `Bearer ${user.generateJWT()}`;
+        id = beer._id.toString();
+        user.save();
+        done();
+      });
+    });
+  });
+
   describe('POST /api/v1/beer', () => {
-    it('Should return a 500 because no auth header with post to authorize', (done) => {
+    it('Should return a 401 without an auth header', (done) => {
       var b = {
         name: 'name',
         brewery: 'brewery',
@@ -20,12 +40,13 @@ describe('-- Beer Routes --', () => {
       request(app)
         .post('/api/v1/beer')
         .send(b)
-        .expect(500)
+        .expect(401)
         .end(done);
     });
     it('Should return a 500 with no body', (done) => {
       request(app)
         .post('/api/v1/beer')
+        .set('Authorization', authHeader)
         .expect(500)
         .end(done);
     });
@@ -39,6 +60,7 @@ describe('-- Beer Routes --', () => {
       };
       request(app)
         .post('/api/v1/beer')
+        .set('Authorization', authHeader)
         .send(b)
         .expect(200)
         .expect((res) => {

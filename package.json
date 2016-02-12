@@ -34,21 +34,16 @@
     "supertest": "^1.1.0",
     "then": "0.0.1"
   },
-<<<<<<< HEAD
-=======
+
   "main": "server.js",
->>>>>>> cruddelete
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jeremy-Doucet/Final-Group-Project.git"
   },
-<<<<<<< HEAD
-=======
   "bugs": {
     "url": "https://github.com/Jeremy-Doucet/Final-Group-Project/issues"
   },
   "homepage": "https://github.com/Jeremy-Doucet/Final-Group-Project#readme",
->>>>>>> cruddelete
   "devDependencies": {
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
