@@ -15,10 +15,9 @@ import passport = require("passport");
 const app = express();
 
 import mongoose = require('mongoose');
-require('./models/beer');
 
 if (process.env.NODE_ENV === 'test')
-  mongoose.connect(process.env.MONGO_TEST);
+  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
 else
   mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb")
 
@@ -26,6 +25,7 @@ else
 ///Require models
 ////////////////////////
 
+require("./models/beer");
 require("./models/user");
 
 require("./passport/passport");

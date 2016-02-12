@@ -37,6 +37,7 @@ router.post("/register", (req, res, next) => {
   newUser.username = req.body.username;
   newUser.email = req.body.email;
   newUser.avatarUrl = req.body.avatarUrl;
+  newUser.facebook = {};
   newUser.setPassword(req.body.password);
   newUser.token = newUser.generateJWT();
   newUser.save((error, user, token): any => {

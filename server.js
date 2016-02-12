@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 var passport = require("passport");
 var app = express();
 var mongoose = require('mongoose');
-require('./models/beer');
 if (process.env.NODE_ENV === 'test')
-    mongoose.connect(process.env.MONGO_TEST);
+    mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
 else
     mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
+require("./models/beer");
 require("./models/user");
 require("./passport/passport");
 app.set('views', './views');
