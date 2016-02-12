@@ -22,6 +22,16 @@ router.get('/', (req, res, next) => {
     });
 });
 
+//GET: /api/v1/beer/:id
+router.get('/:id', (req, res, next) =>{
+  Beer.findOne({ _id: req.params.id })
+    .populate('createdBy', 'username')
+    // .populate('comments')
+    .exec((err, beer) =>{
+      res.send(beer)
+    })
+})
+
 
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {

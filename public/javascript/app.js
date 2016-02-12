@@ -19,7 +19,7 @@ var app;
             controllerAs: 'vm'
         })
             .when('/details/:id', {
-            templateUrl: '/templates/deerDetails.html',
+            templateUrl: '/templates/beerDetails.html',
             controller: app.Controllers.BeerDetailsController,
             controllerAs: 'vm'
         })

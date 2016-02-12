@@ -18,6 +18,13 @@ router.get('/', function (req, res, next) {
         res.json(beers);
     });
 });
+router.get('/:id', function (req, res, next) {
+    Beer.findOne({ _id: req.params.id })
+        .populate('createdBy', 'username')
+        .exec(function (err, beer) {
+        res.send(beer);
+    });
+});
 router.post('/', auth, function (req, res, next) {
     var newBeer = new Beer(req.body);
     newBeer.createdBy = req['payload']._id;
