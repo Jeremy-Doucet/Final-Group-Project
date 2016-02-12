@@ -18,7 +18,7 @@ var app;
                 }
             }
             HomeController.prototype.logout = function () {
-                this.uSvc.removeAccess();
+                this.uSvc.removeToken();
             };
             ;
             ;

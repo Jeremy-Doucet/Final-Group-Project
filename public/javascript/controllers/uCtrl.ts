@@ -11,6 +11,7 @@ namespace app.Controllers {
       let newUser = {
       username: this.newUser.username,
       email: this.newUser.email,
+      avatarUrl: this.newUser.avatarUrl,
       password: this.newUser.password,
       pwdConfirm: this.newUser.pwdConfirm
       };
@@ -18,7 +19,7 @@ namespace app.Controllers {
         this.uSvc.registerUser(this.newUser).then((res) => {
           this.uSvc.setToken(res.token);
           this.uSvc.setUser();
-          this.$window.localStorage.setItem("username", res["payload.username"]);
+          this.$window.localStorage.setItem("username", this.newUser.username);
           this.$location.path(this.newUser.username);
         });
       } else {
@@ -30,7 +31,7 @@ namespace app.Controllers {
       this.uSvc.login(this.user).then((res) => {
         this.uSvc.setToken(res.token);
         this.uSvc.setUser();
-        this.$window.localStorage.setItem("username", res["payload.username"]);
+        this.$window.localStorage.setItem("username", this.user.username);
         this.$location.path(this.user.username);
       });
     };

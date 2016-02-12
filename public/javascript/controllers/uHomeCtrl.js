@@ -10,7 +10,7 @@ var app;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.user = uSvc.loadUHome($routeParams["username"]);
-                this.loggedInUser = uSvc.loadUHome(this.$window.localStorage.getItem("username"));
+                this.loggedInUser = this.$window.localStorage.getItem("username");
             }
             ;
             return uHomeCtrl;

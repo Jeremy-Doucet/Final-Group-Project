@@ -38,8 +38,8 @@ var app;
                 return this.uHomeResource.get({ username: username });
             };
             ;
-            uSvc.prototype.removeAccess = function () {
-                this.$window.localStorage.removeItem("token");
+            uSvc.prototype.removeToken = function () {
+                this.$window.localStorage.clear();
             };
             ;
             ;

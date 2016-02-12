@@ -35,8 +35,8 @@ namespace app.Services {
       return this.uHomeResource.get({username: username});
     };
 
-    public removeAccess() {
-      this.$window.localStorage.removeItem("token");
+    public removeToken() {
+      this.$window.localStorage.clear();
     };
 
     constructor(

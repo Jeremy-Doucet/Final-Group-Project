@@ -16,6 +16,7 @@ router.post("/register", function (req, res, next) {
     var newUser = new User();
     newUser.username = req.body.username;
     newUser.email = req.body.email;
+    newUser.avatarUrl = req.body.avatarUrl;
     newUser.setPassword(req.body.password);
     newUser.token = newUser.generateJWT();
     newUser.save(function (error, user, token) {
@@ -76,7 +77,7 @@ router.post('/connect/facebook/', auth, function (req, res, next) {
     });
 });
 router.get("/:username", function (req, res, next) {
-    User.findOne({ username: req.params["username"] })
+    User.findOne({ username: req.params["username"] }, { passwordHash: 0, salt: 0 })
         .populate("uPosts.postsOwn")
         .populate("uPosts.postsOthers")
         .exec(function (error, user) {

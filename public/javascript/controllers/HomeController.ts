@@ -7,7 +7,7 @@ namespace app.Controllers {
     public params;
 
     public logout() {
-      this.uSvc.removeAccess();
+      this.uSvc.removeToken();
     };
 
     constructor(
