@@ -14,6 +14,7 @@ var app;
                 var newUser = {
                     username: this.newUser.username,
                     email: this.newUser.email,
+                    avatarUrl: this.newUser.avatarUrl,
                     password: this.newUser.password,
                     pwdConfirm: this.newUser.pwdConfirm
                 };
@@ -39,8 +40,6 @@ var app;
                     _this.$location.path(_this.user.username);
                 });
             };
-            ;
-            uCtrl.prototype.loginFB = function () { };
             ;
             ;
             return uCtrl;

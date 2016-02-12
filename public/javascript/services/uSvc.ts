@@ -17,8 +17,6 @@ namespace app.Services {
       return this.uLoginResource.save(user).$promise;
     };
 
-    public loginFB() {};
-
     public setToken(token) {
       this.$window.localStorage.setItem("token", token);
     };
@@ -35,6 +33,10 @@ namespace app.Services {
 
     public loadUHome(username) {
       return this.uHomeResource.get({username: username});
+    };
+
+    public removeToken() {
+      this.$window.localStorage.clear();
     };
 
     constructor(

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
 </head>
 
-<body ng-controller = "HomeController">
+<body ng-controller = "HomeController as vm">
 
   <div>
 
@@ -18,7 +18,8 @@
     <a ng-href="/addBeer">Add a Beer</a>
     <a ng-href="/register">Register</a>
     <a ng-href="/login">Login</a>
-<a ng-href="/Comments"></a>
+    <a ng-href="/Comments"></a>
+    <button ng-click = "vm.logout()">Logout</button>
 
   </div>
 

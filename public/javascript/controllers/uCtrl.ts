@@ -11,6 +11,7 @@ namespace app.Controllers {
       let newUser = {
       username: this.newUser.username,
       email: this.newUser.email,
+      avatarUrl: this.newUser.avatarUrl,
       password: this.newUser.password,
       pwdConfirm: this.newUser.pwdConfirm
       };
@@ -34,8 +35,6 @@ namespace app.Controllers {
         this.$location.path(this.user.username);
       });
     };
-
-    public loginFB() {};
 
     constructor(
       private uSvc: app.Services.uSvc,

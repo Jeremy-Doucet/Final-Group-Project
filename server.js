@@ -24,10 +24,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.get("/auth/facebook", passport.authenticate("facebook"));
-app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res) {
-    res.redirect("/");
-});
 var beerRoutes = require('./routes/beerRoutes');
 var uRoutes = require("./routes/uRoutes");
 var CommentsRoutes = require('./routes/CommentsRoutes');

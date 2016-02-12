@@ -19,12 +19,14 @@ var app;
             HomeService.prototype.getAll = function () {
                 return this.BeerResource.query();
             };
+            ;
             HomeService.prototype.getBeer = function (beerId) {
                 return this.BeerResource.get({ id: beerId });
             };
             HomeService.prototype.saveBeer = function (beer) {
                 return this.BeerResource.save(beer).$promise;
             };
+            ;
             return HomeService;
         }());
         Services.HomeService = HomeService;
