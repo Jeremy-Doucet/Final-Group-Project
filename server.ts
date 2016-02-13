@@ -17,7 +17,7 @@ const app = express();
 
 import mongoose = require('mongoose');
 require('./models/Comments');
-require('./models/User');
+require('./models/user');
 require('./models/beer');
 require("./passport/passport");
 

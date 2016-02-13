@@ -8,7 +8,7 @@ var passport = require("passport");
 var app = express();
 var mongoose = require('mongoose');
 require('./models/Comments');
-require('./models/User');
+require('./models/user');
 require('./models/beer');
 require("./passport/passport");
 if (process.env.NODE_ENV === 'test')
