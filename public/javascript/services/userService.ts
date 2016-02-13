@@ -2,7 +2,7 @@
 
 namespace app.Services {
 
-  export class uSvc {
+  export class userService {
 
     public uRegResource;
     public uLoginResource;
@@ -51,5 +51,5 @@ namespace app.Services {
     };
   };
 
-  angular.module("app").service("uSvc", uSvc);
+  angular.module("app").service("userService", userService);
 };

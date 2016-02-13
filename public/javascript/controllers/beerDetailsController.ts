@@ -1,14 +1,18 @@
 'use strict';
-namespace app.Controllers{
-  export class BeerDetailsController{
+
+namespace app.Controllers {
+
+  export class beerDetailsController {
+
     public beer;
 
     constructor(
-      private HomeService: app.Services.HomeService,
+      private homeService: app.Services.homeService,
       private $routeParams: ng.route.IRouteParamsService
-    ){
-      this.beer = HomeService.getBeer( $routeParams['id'] );
-    }
-  }
-  angular.module('app').controller('BeerDetailsController', BeerDetailsController);
+    ) {
+      this.beer = homeService.getBeer( $routeParams['id'] );
+    };
+  };
+
+  angular.module('app').controller('beerDetailsController', beerDetailsController);
 }

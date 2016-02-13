@@ -1,6 +1,8 @@
 'use strict';
+
 namespace app.Controllers {
-  export class BeerPageController {
+
+  export class beerPageController {
 
     public beers;
     public beer;
@@ -9,24 +11,24 @@ namespace app.Controllers {
     public breweries;
 
     public searchBeer() {
-        this.HomeService.searchBeer(this.beer).then((res) => {
-            this.result = res;
-        })
-    }
+      this.homeService.searchBeer(this.beer).then((res) => {
+          this.result = res;
+      });
+    };
 
     public searchBrew(brew) {
-        this.HomeService.getBrew(this.brew).then((res) => {
-            this.breweries = res;
-        })
-    }
+      this.homeService.getBrew(this.brew).then((res) => {
+          this.breweries = res;
+      });
+    };
 
+    constructor(
+      private homeService: app.Services.homeService,
+      private $location: ng.ILocationService
+    ) {
+      this.beers = homeService.getAll();
+    };
+  };
 
-
-    constructor(private HomeService: app.Services.HomeService,
-                private $location: ng.ILocationService) {
-      this.beers = HomeService.getAll();
-    }
-  }
-
-  angular.module('app').controller('BeerPageController', BeerPageController);
+  angular.module('app').controller('beerPageController', beerPageController);
 }

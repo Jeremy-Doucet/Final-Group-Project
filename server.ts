@@ -1,11 +1,15 @@
 "use strict";
+
 require("dotenv").config({ silent: true });
+
+import bodyParser = require('body-parser');
+import cookieParser = require('cookie-parser');
 import express = require('express');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
-import cookieParser = require('cookie-parser');
-import bodyParser = require('body-parser');
+import mongoose = require('mongoose');
 import passport = require("passport");
+
 
 ////////////////////////
 ///Constants
@@ -13,23 +17,29 @@ import passport = require("passport");
 
 const app = express();
 
-// Models
+////////////////////////
+///Models
+////////////////////////
 
-import mongoose = require('mongoose');
-require('./models/Comments');
-require('./models/user');
 require('./models/beer');
+require('./models/comment');
+require('./models/user');
+
 require("./passport/passport");
 
-if (process.env.NODE_ENV === 'test')
-  mongoose.connect(process.env.MONGO_TEST);
-else
-  mongoose.connect(process.env.MONGO_URL)
+////////////////////////
+///MongoDB
+////////////////////////
+
+if (process.env.NODE_ENV === 'test') {
+  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
+} else {
+  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
+}
 
 ////////////////////////
 ///Views: EJS
 ////////////////////////
-
 
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -53,24 +63,27 @@ app.use(passport.initialize());
 ////////////////////////
 
 let beerRoutes = require('./routes/beerRoutes');
-let uRoutes = require("./routes/uRoutes");
-let CommentsRoutes = require('./routes/CommentsRoutes');
-app.use('/comments', CommentsRoutes);
+let commentRoutes = require('./routes/commentRoutes');
+let userRoutes = require("./routes/userRoutes");
 
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
 // app.use('/')
 
 app.use('/api/v1/beer', beerRoutes);
-app.use("/usershell", uRoutes);
+app.use('/comments', commentRoutes);
+app.use("/usershell", userRoutes);
 
 ////////////////////////
 ///Express static
-////////////////////////git
-
+////////////////////////
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
+
+////////////////////////
+///Misc
+////////////////////////
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });
