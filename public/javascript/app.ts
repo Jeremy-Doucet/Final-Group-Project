@@ -10,7 +10,11 @@ angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
 
     $routeProvider.when('/', {
       templateUrl: '/templates/home.html',
+<<<<<<< HEAD
       controller: app.Controllers.homeController,
+=======
+      controller: app.Controllers.HomeController,
+>>>>>>> 1318ad826134883fb334263a8c2d60bef0b96a48
       controllerAs: 'vm'
     })
 

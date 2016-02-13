@@ -5,12 +5,21 @@ var app;
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
+<<<<<<< HEAD
             controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
             .when('/Comments', {
             templateUrl: '/templates/comments.html',
             controller: app.Controllers.commentController,
+=======
+            controller: app.Controllers.HomeController,
+>>>>>>> 1318ad826134883fb334263a8c2d60bef0b96a48
+            controllerAs: 'vm'
+        })
+            .when('/Comments', {
+            templateUrl: '/templates/comments.html',
+            controller: app.Controllers.CommentsController,
             controllerAs: 'vm'
         })
             .when('/addBeer', {
@@ -26,6 +35,11 @@ var app;
             .when('/details/:id', {
             templateUrl: '/templates/beerDetails.html',
             controller: app.Controllers.beerDetailsController,
+            controllerAs: 'vm'
+        })
+            .when('/details/:id', {
+            templateUrl: '/templates/beerDetails.html',
+            controller: app.Controllers.BeerDetailsController,
             controllerAs: 'vm'
         })
             .when("/register", {
@@ -46,6 +60,11 @@ var app;
             .when("/breweryDetails/:id", {
             templateUrl: "templates/breweryDetails.html",
             controller: app.Controllers.breweryDetailsController,
+            controllerAs: "vm"
+        })
+            .when("/breweryDetails/:id", {
+            templateUrl: "templates/breweryDetails.html",
+            controller: app.Controllers.BreweryDetailsController,
             controllerAs: "vm"
         })
             .otherwise({ redirectTo: '/' });
