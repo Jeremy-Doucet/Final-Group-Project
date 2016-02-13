@@ -4,7 +4,7 @@ import jwt = require('express-jwt');
 let mongoose = require('mongoose');
 
 let router = express.Router();
-let Comment = mongoose.model('Comments');
+let Comment = mongoose.model('Comment');
 let User = mongoose.model('User');
 let Beer = mongoose.model('Beer');
 

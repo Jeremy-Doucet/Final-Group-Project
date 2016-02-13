@@ -2,7 +2,7 @@
 
 namespace app.Controllers {
 
-  export class uCtrl {
+  export class userController {
 
     public newUser;
     public user;
@@ -16,9 +16,9 @@ namespace app.Controllers {
       pwdConfirm: this.newUser.pwdConfirm
       };
       if (this.newUser.password === this.newUser.pwdConfirm) {
-        this.uSvc.registerUser(this.newUser).then((res) => {
-          this.uSvc.setToken(res.token);
-          this.uSvc.setUser();
+        this.userService.registerUser(this.newUser).then((res) => {
+          this.userService.setToken(res.token);
+          this.userService.setUser();
           this.$window.localStorage.setItem("username", this.newUser.username);
           this.$location.path(this.newUser.username);
         });
@@ -28,20 +28,20 @@ namespace app.Controllers {
     };
 
     public login() {
-      this.uSvc.login(this.user).then((res) => {
-        this.uSvc.setToken(res.token);
-        this.uSvc.setUser();
+      this.userService.login(this.user).then((res) => {
+        this.userService.setToken(res.token);
+        this.userService.setUser();
         this.$window.localStorage.setItem("username", this.user.username);
         this.$location.path(this.user.username);
       });
     };
 
     constructor(
-      private uSvc: app.Services.uSvc,
+      private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $window: ng.IWindowService
     ) {};
   };
 
-  angular.module("app").controller("uCtrl", uCtrl);
+  angular.module("app").controller("userController", userController);
 };

@@ -2,29 +2,29 @@
 
 namespace app.Controllers {
 
-  export class HomeController {
+  export class homeController {
 
     public params;
 
     public logout() {
-      this.uSvc.removeToken();
+      this.userService.removeToken();
     };
 
     constructor(
-      private HomeService: app.Services.HomeService,
-      private uSvc: app.Services.uSvc,
+      private homeService: app.Services.homeService,
+      private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $window: ng.IWindowService
     ) {
       this.params = $location.search();
       if (this.params.code) {
-        uSvc.setToken(this.params.code);
-        uSvc.setUser();
+        userService.setToken(this.params.code);
+        userService.setUser();
         $location.search("code", null);
         $location.hash("");
-      }
+      };
     };
-  }
+  };
 
-  angular.module('app').controller('HomeController', HomeController);
-}
+  angular.module('app').controller('homeController', homeController);
+};

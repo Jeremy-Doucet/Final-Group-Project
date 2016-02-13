@@ -3,15 +3,17 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var BeerDetailsController = (function () {
-            function BeerDetailsController(HomeService, $routeParams) {
-                this.HomeService = HomeService;
+        var beerDetailsController = (function () {
+            function beerDetailsController(homeService, $routeParams) {
+                this.homeService = homeService;
                 this.$routeParams = $routeParams;
-                this.beer = HomeService.getBeer($routeParams['id']);
+                this.beer = homeService.getBeer($routeParams['id']);
             }
-            return BeerDetailsController;
+            ;
+            return beerDetailsController;
         }());
-        Controllers.BeerDetailsController = BeerDetailsController;
-        angular.module('app').controller('BeerDetailsController', BeerDetailsController);
+        Controllers.beerDetailsController = beerDetailsController;
+        ;
+        angular.module('app').controller('beerDetailsController', beerDetailsController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
