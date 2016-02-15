@@ -5,6 +5,7 @@ let async = require('async');
 let mongoose = require('mongoose');
 let Beer = mongoose.model('Beer');
 let User = mongoose.model('User');
+let Comment = mongoose.model("Comment");
 
 before((done)=>{
   async.parallel([
