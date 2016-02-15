@@ -55,7 +55,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
   let newBeer = new Beer(req.body);
@@ -69,11 +68,11 @@ router.post('/', auth, (req, res, next) => {
   });
 });
 
+//DELETE: api/v1/beer?_id={{beer_id}}
 router.delete('/',(req,res,next)=> {
-  if(!req.query._id) return next({ status: 404, })
-  // -Add A Beer- model below
+  if(!req.query._id) return next({ status: 404, message: 'Please include an ID' });
   Beer.remove({_id:req.query._id},(err,result)=> {
-    res.send({message: "Deleted."})
+    res.send({message: "Successfully deleted beer"})
   })
 })
 

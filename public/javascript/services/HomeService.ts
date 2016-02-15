@@ -10,6 +10,10 @@ namespace app.Services {
       return this.BeerResource.query({id:"beer", name: beer.name }).$promise;
     }
 
+    public deleteBeer(beerId){
+      return this.BeerResource.delete({ _id: beerId }).$promise;
+    }
+
     public getBrew(brew) {
       return this.BeerResource.get({ id:brew});
     };

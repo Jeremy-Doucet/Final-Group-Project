@@ -54,9 +54,9 @@ router.post('/', auth, function (req, res, next) {
 });
 router.delete('/', function (req, res, next) {
     if (!req.query._id)
-        return next({ status: 404, });
+        return next({ status: 404, message: 'Please include an ID' });
     Beer.remove({ _id: req.query._id }, function (err, result) {
-        res.send({ message: "Deleted." });
+        res.send({ message: "Successfully deleted beer" });
     });
 });
 module.exports = router;

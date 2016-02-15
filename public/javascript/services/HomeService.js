@@ -15,6 +15,9 @@ var app;
             homeService.prototype.searchBeer = function (beer) {
                 return this.BeerResource.query({ id: "beer", name: beer.name }).$promise;
             };
+            homeService.prototype.deleteBeer = function (beerId) {
+                return this.BeerResource.delete({ _id: beerId }).$promise;
+            };
             homeService.prototype.getBrew = function (brew) {
                 return this.BeerResource.get({ id: brew });
             };
