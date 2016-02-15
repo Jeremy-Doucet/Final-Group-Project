@@ -20,8 +20,6 @@ namespace app.Controllers {
         })
     }
 
-
-
     constructor(private HomeService: app.Services.HomeService,
                 private $location: ng.ILocationService) {
       this.beers = HomeService.getAll();

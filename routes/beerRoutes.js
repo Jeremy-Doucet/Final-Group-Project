@@ -12,6 +12,13 @@ var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
+router.get('/details/:id', function (req, res, next) {
+    Beer.findOne({ _id: req.params.id })
+        .populate('createdBy', 'username')
+        .exec(function (err, beer) {
+        res.send(beer);
+    });
+});
 router.get("/beer", function (req, res, next) {
     brewdb.search.beers({ q: req.query.name }, function (err, data) {
         res.send(data);
@@ -30,13 +37,6 @@ router.get('/', function (req, res, next) {
         if (err)
             return next(err);
         res.json(beers);
-    });
-});
-router.get('/:id', function (req, res, next) {
-    Beer.findOne({ _id: req.params.id })
-        .populate('createdBy', 'username')
-        .exec(function (err, beer) {
-        res.send(beer);
     });
 });
 router.post('/', auth, function (req, res, next) {

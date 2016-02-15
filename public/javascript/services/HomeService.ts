@@ -4,10 +4,10 @@ namespace app.Services {
     public BeerResource;
 
     public searchBeer(beer) {
-        return this.BeerResource.query({id:"beer", name: beer.name }).$promise;
+      return this.BeerResource.query({id:"beer", name: beer.name }).$promise;
     }
     public getBrew(brew) {
-        return this.BeerResource.get({ id:brew});
+      return this.BeerResource.get({ id:brew});
     }
 
     public getAll(){
@@ -15,7 +15,13 @@ namespace app.Services {
     }
 
     public getBeer(beerId){
-      return this.BeerResource.get({ id: beerId });
+      var q = this.$q.defer();
+      this.$http.get('/api/v1/beer/details/'+ beerId).then(function(res){
+        q.resolve(res.data);
+      }, function(err){
+        q.reject(err);
+      });
+      return q.promise;
     }
 
     public saveBeer(beer){
@@ -23,7 +29,11 @@ namespace app.Services {
     }
 
 
-    constructor(private $resource: ng.resource.IResourceService) {
+    constructor(
+      private $resource: ng.resource.IResourceService,
+      private $http: ng.IHttpService,
+      private $q: ng.IQService
+    ) {
       this.BeerResource = $resource('/api/v1/beer/:id', null,
       {
           "update": { method: "PUT"}

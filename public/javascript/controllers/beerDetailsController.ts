@@ -7,7 +7,9 @@ namespace app.Controllers{
       private HomeService: app.Services.HomeService,
       private $routeParams: ng.route.IRouteParamsService
     ){
-      this.beer = HomeService.getBeer( $routeParams['id'] );
+      HomeService.getBeer( $routeParams['id'] ).then((res)=>{
+        this.beer = res
+      });
     }
   }
   angular.module('app').controller('BeerDetailsController', BeerDetailsController);

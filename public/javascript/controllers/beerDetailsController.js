@@ -5,9 +5,12 @@ var app;
     (function (Controllers) {
         var BeerDetailsController = (function () {
             function BeerDetailsController(HomeService, $routeParams) {
+                var _this = this;
                 this.HomeService = HomeService;
                 this.$routeParams = $routeParams;
-                this.beer = HomeService.getBeer($routeParams['id']);
+                HomeService.getBeer($routeParams['id']).then(function (res) {
+                    _this.beer = res;
+                });
             }
             return BeerDetailsController;
         }());
