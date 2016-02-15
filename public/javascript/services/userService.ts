@@ -2,7 +2,7 @@
 
 namespace app.Services {
 
-  export class uSvc {
+  export class userService {
 
     public uRegResource;
     public uLoginResource;
@@ -16,8 +16,6 @@ namespace app.Services {
     public login(user) {
       return this.uLoginResource.save(user).$promise;
     };
-
-    public loginFB() {};
 
     public setToken(token) {
       this.$window.localStorage.setItem("token", token);
@@ -37,6 +35,10 @@ namespace app.Services {
       return this.uHomeResource.get({username: username});
     };
 
+    public removeToken() {
+      this.$window.localStorage.clear();
+    };
+
     constructor(
       private $resource: ng.resource.IResourceService,
       private $window: ng.IWindowService
@@ -49,5 +51,5 @@ namespace app.Services {
     };
   };
 
-  angular.module("app").service("uSvc", uSvc);
+  angular.module("app").service("userService", userService);
 };

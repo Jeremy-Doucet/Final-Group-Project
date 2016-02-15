@@ -21,8 +21,6 @@ var app;
                 return this.uLoginResource.save(user).$promise;
             };
             ;
-            uSvc.prototype.loginFB = function () { };
-            ;
             uSvc.prototype.setToken = function (token) {
                 this.$window.localStorage.setItem("token", token);
             };
@@ -38,6 +36,10 @@ var app;
             ;
             uSvc.prototype.loadUHome = function (username) {
                 return this.uHomeResource.get({ username: username });
+            };
+            ;
+            uSvc.prototype.removeToken = function () {
+                this.$window.localStorage.clear();
             };
             ;
             ;

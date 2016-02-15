@@ -4,7 +4,7 @@ var app;
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: '/templates/Home.html',
+            templateUrl: '/templates/home.html',
             controller: app.Controllers.HomeController,
             controllerAs: 'vm'
         })

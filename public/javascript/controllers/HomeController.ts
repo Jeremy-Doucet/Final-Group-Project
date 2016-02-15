@@ -1,12 +1,30 @@
 'use strict';
+
 namespace app.Controllers {
-  export class HomeController {
 
+  export class homeController {
 
-    constructor(private HomeService: app.Services.HomeService) {
-  
-    }
-  }
+    public params;
 
-  angular.module('app').controller('HomeController', HomeController);
-}
+    public logout() {
+      this.userService.removeToken();
+    };
+
+    constructor(
+      private homeService: app.Services.homeService,
+      private userService: app.Services.userService,
+      private $location: ng.ILocationService,
+      private $window: ng.IWindowService
+    ) {
+      this.params = $location.search();
+      if (this.params.code) {
+        userService.setToken(this.params.code);
+        userService.setUser();
+        $location.search("code", null);
+        $location.hash("");
+      };
+    };
+  };
+
+  angular.module('app').controller('homeController', homeController);
+};
