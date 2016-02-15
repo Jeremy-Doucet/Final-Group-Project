@@ -1,24 +1,27 @@
+
+
+
 'use strict';
 
 let should = require('should');
 let mongoose = require('mongoose');
 let request = require('supertest');
 
-let app = require('../../server');
-let Comments = mongoose.model('Comments');
-let User = mongoose.model('User');
+let app = require('../server');
+let Comment = mongoose.model('Comments');
+let user = mongoose.model('user');
 
-describe('GET /Comments', () => {
+describe('GET /Comment', () => {
   it('Should return a status of 200', (done) => {
     request(app)
-      .get('/Comments')
+      .get('/Comment')
       // checking the status code
       .expect(200)
       .end(done);
   });
   it('Should return an array with 1 comment in it', (done) => {
     request(app)
-      .get('/Comments')
+      .get('/Comment')
       .expect(200)
       .expect((res) => {
         should.exist(res.body);

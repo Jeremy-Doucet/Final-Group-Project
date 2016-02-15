@@ -4,7 +4,7 @@
 ///Require modules
 ////////////////////////
 
-import mongoose = require("mongoose");
+let mongoose = require("mongoose");
 import passport = require("passport");
 let LocalStrategy = require("passport-local").Strategy;
 let FacebookStrategy = require("passport-facebook").Strategy;
@@ -34,5 +34,43 @@ passport.use(new LocalStrategy((username, password, done) => {
     if (!user) return done(null, false, {message: "Invalid username"});
     if (!user.validatePassword(password)) return done(null, false, {message: "Invalid password"});
     return done(null, user);
+  });
+}));
+
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: "http://localhost:3000/usershell/auth/facebook/callback",
+  passReqToCallback: true,
+  profileFields: ['emails', 'name', 'gender', 'profileUrl']
+}, (req, accessToken, refreshToken, profile, done) => {
+  process.nextTick(() => {
+    User.findOne({
+      'facebook.id': profile.id
+    }, (err, user) => {
+      if (err) return done(err);
+      if (user) {
+        req.tempUser = user;
+        return done(null, user);
+      } else {
+        let newUser = new User();
+        newUser.facebook.id = profile.id;
+        newUser.facebook.token = accessToken;
+        newUser.facebook.email = profile.emails[0].value;
+        newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+        newUser.facebook.gender = profile.gender;
+        newUser.facebook.profileUrl = profile.profileUrl;
+        newUser.facebook.displayName = profile.displayName;
+        newUser.primaryEmail = profile.emails[0].value;
+        newUser.save((err) => {
+          if (err) return done(err);
+          req.login(newUser, (err) => {
+            if (err) return done(err);
+            req.tempUser = newUser;
+            return done(null, newUser);
+          });
+        });
+      }
+    });
   });
 }));

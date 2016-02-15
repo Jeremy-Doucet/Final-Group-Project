@@ -6,7 +6,7 @@ var app;
             function CommentsService($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
-                this.UserCommentResource = $resource('/Comments/:id', null, {
+                this.UserCommentResource = $resource('/api/comments/:id', null, {
                     'update': { method: 'PUT' }
                 });
             }
@@ -16,8 +16,8 @@ var app;
             CommentsService.prototype.getComment = function (comId) {
                 return this.UserCommentResource.get({ id: comId });
             };
-            CommentsService.prototype.saveComment = function (userComment) {
-                return this.UserCommentResource.save(userComment).$promise;
+            CommentsService.prototype.saveComment = function (comment) {
+                return this.UserCommentResource.save(comment).$promise;
             };
             CommentsService.prototype.deleteComment = function (userComment) {
                 return this.UserCommentResource.delete({ id: userComment._id }).$promise;

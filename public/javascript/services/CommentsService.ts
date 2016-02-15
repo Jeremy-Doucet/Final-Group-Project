@@ -9,8 +9,8 @@ namespace app.Services {
     public getComment(comId){
       return this.UserCommentResource.get({id: comId});
     }
-    public saveComment(userComment) {
-      return this.UserCommentResource.save(userComment).$promise;
+    public saveComment(comment) {
+      return this.UserCommentResource.save(comment).$promise;
     }
     public deleteComment(userComment){
       return this.UserCommentResource.delete({id: userComment._id}).$promise;
@@ -23,7 +23,7 @@ namespace app.Services {
     constructor(private $resource:ng.resource.IResourceService,
       private $window: ng.IWindowService){
 
-        this.UserCommentResource = $resource('/Comments/:id', null,{
+        this.UserCommentResource = $resource('/api/comments/:id', null,{
           'update':{method: 'PUT'}
         });
     }

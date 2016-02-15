@@ -4,10 +4,23 @@ var app;
     var Controllers;
     (function (Controllers) {
         var BeerPageController = (function () {
-            function BeerPageController(HomeService) {
+            function BeerPageController(HomeService, $location) {
                 this.HomeService = HomeService;
+                this.$location = $location;
                 this.beers = HomeService.getAll();
             }
+            BeerPageController.prototype.searchBeer = function () {
+                var _this = this;
+                this.HomeService.searchBeer(this.beer).then(function (res) {
+                    _this.result = res;
+                });
+            };
+            BeerPageController.prototype.searchBrew = function (brew) {
+                var _this = this;
+                this.HomeService.getBrew(this.brew).then(function (res) {
+                    _this.breweries = res;
+                });
+            };
             return BeerPageController;
         }());
         Controllers.BeerPageController = BeerPageController;
