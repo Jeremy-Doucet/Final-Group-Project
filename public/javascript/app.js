@@ -39,7 +39,7 @@ var app;
             controllerAs: "vm"
         })
             .when("/:username", {
-            templateUrl: "/templates/uHome.html",
+            templateUrl: "/templates/userHome.html",
             controller: app.Controllers.userHomeController,
             controllerAs: "vm"
         })
