@@ -37,4 +37,4 @@ namespace app.Services {
   };
 
   angular.module('app').service('homeService', homeService);
-}
+};

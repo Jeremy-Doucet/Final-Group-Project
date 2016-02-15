@@ -7,7 +7,7 @@ var app;
             function commentService($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
-                this.UserCommentResource = $resource('/Comments/:id', null, {
+                this.UserCommentResource = $resource('/comments/:id', null, {
                     'update': { method: 'PUT' }
                 });
             }

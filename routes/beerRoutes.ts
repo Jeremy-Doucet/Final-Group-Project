@@ -68,4 +68,12 @@ router.post('/', auth, (req, res, next) => {
   });
 });
 
+router.delete('/',(req,res,next)=> {
+  if(!req.query._id) return next({ status: 404, })
+  // -Add A Beer- model below
+  Beer.remove({_id:req.query._id},(err,result)=> {
+    res.send({message: "Deleted."})
+  })
+})
+
 export = router;

@@ -30,7 +30,7 @@ namespace app.Services {
       private $resource:ng.resource.IResourceService,
       private $window: ng.IWindowService
     ) {
-      this.UserCommentResource = $resource('/Comments/:id', null, {
+      this.UserCommentResource = $resource('/comments/:id', null, {
           'update':{method: 'PUT'}
       });
     };
