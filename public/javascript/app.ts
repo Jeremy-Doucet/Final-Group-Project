@@ -20,7 +20,7 @@ namespace app {
     })
     .when('/addBeer', {
       templateUrl: '/templates/createBeer.html',
-      controller: app.Controllers.BeerCreateController,
+      controller: app.Controllers.beerCreateController,
       controllerAs: 'vm'
     })
     .when('/beerPage', {
@@ -51,9 +51,9 @@ namespace app {
       controllerAs: "vm"
     })
 
-    .when("/breweryDetails/:id",{
-        templateUrl: "templates/breweryDetails.html",
-        controller: app.Controllers.BreweryDetailsController,
+    .when("/addBeer/:id",{
+        templateUrl: "templates/createBeer.html",
+        controller: app.Controllers.beerCreateController,
         controllerAs: "vm"
     })
 

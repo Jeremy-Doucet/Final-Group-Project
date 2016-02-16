@@ -7,10 +7,19 @@ namespace app.Controllers {
     public result;
     public brew;
     public breweries;
+    public mybeer;
+    public chosen;
+
 
     public searchBeer() {
         this.HomeService.searchBeer(this.beer).then((res) => {
             this.result = res;
+        })
+    }
+
+    public getMyBeer(mybeer)   {
+        this.HomeService.getMyBeer(this.mybeer).then((res) => {
+            this.chosen = res;
         })
     }
 
@@ -23,8 +32,13 @@ namespace app.Controllers {
 
 
     constructor(private HomeService: app.Services.HomeService,
-                private $location: ng.ILocationService) {
+                private $location: ng.ILocationService,
+                private $routeParams: ng.route.IRouteParamsService
+                    ) {
       this.beers = HomeService.getAll();
+      HomeService.getMyBeer( $routeParams["id"]).then((res) =>{
+          this.mybeer = res
+      });
     }
   }
 

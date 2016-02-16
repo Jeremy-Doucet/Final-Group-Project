@@ -12,20 +12,9 @@ var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
-router.get("/beer", function (req, res, next) {
-    brewdb.search.beers({ q: req.query.name }, function (err, data) {
-        res.send(data);
-    });
-});
-router.get("/:id", function (req, res, next) {
-    console.log();
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key=" + process.env.brewdb_key, function (err, response, body, data) {
-        res.send(response.body);
-    });
-});
-router.get('/', function (req, res, next) {
+router.get("/", function (req, res, next) {
     Beer.find({})
-        .populate('createdBy', 'username')
+        .populate("createdBy", "username")
         .exec(function (err, beers) {
         if (err)
             return next(err);

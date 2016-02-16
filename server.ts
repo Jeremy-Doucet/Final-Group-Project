@@ -71,7 +71,9 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {failureRed
 ///Require routes
 ////////////////////////
 
+
 let beerRoutes = require('./routes/beerRoutes');
+let brewRoutes = require("./routes/brewRoutes");
 let uRoutes = require("./routes/uRoutes");
 let CommentsRoutes = require('./routes/CommentsRoutes');
 app.use('/comments', CommentsRoutes);
@@ -80,11 +82,12 @@ app.use('/comments', CommentsRoutes);
 // app.use('/')
 
 app.use('/api/v1/beer', beerRoutes);
+app.use("/api/v1/brewdb", brewRoutes);
 app.use("/usershell", uRoutes);
 
 ////////////////////////
 ///Express static
-////////////////////////git 
+////////////////////////git
 
 
 app.use(express.static('./public'));

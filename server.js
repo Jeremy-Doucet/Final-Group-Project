@@ -29,10 +29,12 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
     res.redirect("/");
 });
 var beerRoutes = require('./routes/beerRoutes');
+var brewRoutes = require("./routes/brewRoutes");
 var uRoutes = require("./routes/uRoutes");
 var CommentsRoutes = require('./routes/CommentsRoutes');
 app.use('/comments', CommentsRoutes);
 app.use('/api/v1/beer', beerRoutes);
+app.use("/api/v1/brewdb", brewRoutes);
 app.use("/usershell", uRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

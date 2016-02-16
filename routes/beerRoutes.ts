@@ -14,37 +14,15 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
-
-//GET: /api/v1/beer
-
-router.get("/beer", (req,res,next) => {
-    brewdb.search.beers({q:req.query.name}, (err, data)=> {
-        res.send(data);
+router.get("/", (req,res,next) => {
+    Beer.find({})
+    .populate("createdBy","username")
+    .exec((err, beers) => {
+        if (err) return next(err);
+        res.json(beers)
     });
 });
 
-// router.get("/brew", (req,res,next) => {
-//     brewdb.search.breweries({q:req.query.name}, (err, data)=> {
-//         res.json(data);
-//     });
-// });
-
-router.get("/:id", (req,res,next) => {
-    console.log()
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
-        res.send(response.body)
-    })
-});
-
-
-router.get('/', (req, res, next) => {
-  Beer.find({})
-    .populate('createdBy', 'username')
-    .exec((err, beers) =>{
-      if (err) return next(err);
-      res.json(beers)
-    });
-});
 
 //GET: /api/v1/beer/:id
 router.get('/:id', (req, res, next) =>{

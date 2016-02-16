@@ -4,17 +4,29 @@ var app;
     var Services;
     (function (Services) {
         var HomeService = (function () {
-            function HomeService($resource) {
+            function HomeService($resource, $http, $q) {
                 this.$resource = $resource;
+                this.$http = $http;
+                this.$q = $q;
                 this.BeerResource = $resource('/api/v1/beer/:id', null, {
                     "update": { method: "PUT" }
                 });
+                this.brewdbResource = $resource("/api/v1/brewdb/:id", null, {});
             }
             HomeService.prototype.searchBeer = function (beer) {
-                return this.BeerResource.query({ id: "beer", name: beer.name }).$promise;
+                return this.brewdbResource.query({ id: "beer", name: beer.name }).$promise;
             };
             HomeService.prototype.getBrew = function (brew) {
-                return this.BeerResource.get({ id: brew });
+                return this.brewdbResource.get({ id: brew });
+            };
+            HomeService.prototype.getMyBeer = function (mybeer) {
+                var q = this.$q.defer();
+                this.$http.get("/api/v1/brewdb/details/" + mybeer).then(function (res) {
+                    q.resolve(res.data);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
             };
             HomeService.prototype.getAll = function () {
                 return this.BeerResource.query();
