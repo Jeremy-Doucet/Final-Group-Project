@@ -42,6 +42,8 @@ router.post("/register", (req, res, next) => {
   newUser.token = newUser.generateJWT();
   newUser.save((error, user, token): any => {
     if (error) return next(error);
+    user.passwordHash = "";
+    user.salt = "";
     res.send(user);
   });
 });

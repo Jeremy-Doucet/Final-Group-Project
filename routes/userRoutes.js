@@ -23,6 +23,8 @@ router.post("/register", function (req, res, next) {
     newUser.save(function (error, user, token) {
         if (error)
             return next(error);
+        user.passwordHash = "";
+        user.salt = "";
         res.send(user);
     });
 });
