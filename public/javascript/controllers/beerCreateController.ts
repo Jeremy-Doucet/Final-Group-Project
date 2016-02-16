@@ -6,7 +6,7 @@ namespace app.Controllers {
     public brew;
     public mybeer;
     public chosen;
-    public hide = false;
+
 
     public searchBeer() {
         this.HomeService.searchBeer(this.beer).then((res) => {
@@ -25,9 +25,7 @@ namespace app.Controllers {
         this.$location.path('/')
       })
     }
-    public show ()  {
-        this.hide = true;
-    }
+
 
     constructor(
       private HomeService: app.Services.HomeService,
