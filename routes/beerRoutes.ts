@@ -14,9 +14,17 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
+//GET: /api/v1/beer/details/:id
+router.get('/details/:id', (req, res, next) =>{
+  Beer.findOne({ _id: req.params.id })
+    .populate('createdBy', 'username')
+    // .populate('comments')
+    .exec((err, beer) =>{
+      res.send(beer)
+  });
+});
 
-//GET: /api/v1/beer
-
+//GET: BreweryDB get call
 router.get("/beer", (req,res,next) => {
     brewdb.search.beers({q:req.query.name}, (err, data)=> {
         res.send(data);
@@ -29,6 +37,7 @@ router.get("/beer", (req,res,next) => {
 //     });
 // });
 
+//GET: BreweryDB get call
 router.get("/:id", (req,res,next) => {
     console.log()
     request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
@@ -36,7 +45,7 @@ router.get("/:id", (req,res,next) => {
     })
 });
 
-
+//GET: /api/v1/beer
 router.get('/', (req, res, next) => {
   Beer.find({})
     .populate('createdBy', 'username')
@@ -46,15 +55,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-//GET: /api/v1/beer/:id
-router.get('/:id', (req, res, next) =>{
-  Beer.findOne({ _id: req.params.id })
-    .populate('createdBy', 'username')
-    // .populate('comments')
-    .exec((err, beer) =>{
-      res.send(beer)
-  });
-});
+
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
   let newBeer = new Beer(req.body);
