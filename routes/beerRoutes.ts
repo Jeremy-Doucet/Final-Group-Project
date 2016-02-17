@@ -14,17 +14,6 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
-
-router.get("/", (req,res,next) => {
-    Beer.find({})
-    .populate("createdBy","username")
-    .exec((err, beers) => {
-        if (err) return next(err);
-        res.json(beers)
-    });
-});
-
-
 //GET: /api/v1/beer/details/:id
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
@@ -49,24 +38,12 @@ router.get("/beer", (req,res,next) => {
 // });
 
 //GET: BreweryDB get call
-router.get("/:id", (req,res,next) => {
-    console.log()
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
-        res.send(response.body)
-    })
-});
-
-//GET: /api/v1/beer
-router.get('/', (req, res, next) => {
-  Beer.find({})
-    .populate('createdBy', 'username')
-    .exec((err, beers) =>{
-      if (err) return next(err);
-      res.json(beers)
-    });
-});
-
-
+//router.get("/:id", (req,res,next) => {
+    //console.log()
+    //request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
+        //res.send(response.body)
+    //})
+//});
 
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {

@@ -43,6 +43,11 @@ var app;
             controller: app.Controllers.userHomeController,
             controllerAs: "vm"
         })
+            .when("/byLocation/:region", {
+            templateUrl: "/templates/locationHome.html",
+            controller: app.Controllers.locationHomeController,
+            controllerAs: "vm"
+        })
             .when("/addBeer/:id", {
             templateUrl: "/templates/createBeer.html",
             controller: app.Controllers.beerCreateController,

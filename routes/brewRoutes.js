@@ -17,12 +17,6 @@ router.get("/beer", function (req, res, next) {
         res.send(data);
     });
 });
-router.get("/:id", function (req, res, next) {
-    console.log();
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key=" + process.env.brewdb_key, function (err, response, body, data) {
-        res.send(response.body);
-    });
-});
 router.get("/details/:id", function (req, res, next) {
     console.log();
     request("http://api.brewerydb.com/v2/beer/" + req.params.id + "?key=" + process.env.brewdb_key, function (err, response, body, data) {

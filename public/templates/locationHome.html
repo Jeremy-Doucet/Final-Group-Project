@@ -1,0 +1,18 @@
+<div class = "container-fluid lgImg">
+  <img class = "img-responsive" ng-src = "/css/img/homeMain.png">
+</div>
+
+<div id = "homePop" class = "container" style = "text-align: center">
+  <div class = "homeContentView">
+    <div class = "row postSnip" ng-repeat = "beer in vm.beersPop">
+      <div class = "col-md-3">
+        <img class = "imgHomePop" ng-src = "{{beer.imgurl}}">
+        <p><a ng-href = "_top">Back to Top</a></p>
+      </div>
+      <div class = "col-md-9">
+        <h3>{{beer.name}}</h3>
+        <p class = "textHomePop">{{beer.review}}</p>
+      </div>
+    </div>
+  </div>
+</div>
