@@ -29,7 +29,7 @@ var app;
             beerCreateController.prototype.createBeer = function () {
                 var _this = this;
                 this.homeService.saveBeer(this.beer).then(function (res) {
-                    _this.$location.path('/');
+                    _this.$location.path('/beerPage');
                 });
             };
             ;
@@ -44,3 +44,4 @@ var app;
         angular.module('app').controller('beerCreateController', beerCreateController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
+;

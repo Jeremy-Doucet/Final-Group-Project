@@ -12,10 +12,10 @@ require('./models/comment');
 require('./models/user');
 require("./passport/passport");
 if (process.env.NODE_ENV === 'test') {
-    mongoose.connect("mongodb://admin:1234@ds059115.mongolab.com:59115/beerapp-test");
+    mongoose.connect(process.env.MONGO_TEST);
 }
 else {
-    mongoose.connect("mongodb://admin:1234@ds059135.mongolab.com:59135/beer-app");
+    mongoose.connect(process.env.MONGO_URL);
 }
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -27,11 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
 var beerRoutes = require('./routes/beerRoutes');
-var brewRoutes = require("./routes/brewRoutes");
 var commentRoutes = require('./routes/commentRoutes');
 var userRoutes = require("./routes/userRoutes");
 app.use('/api/v1/beer', beerRoutes);
-app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 app.use(express.static('./public'));

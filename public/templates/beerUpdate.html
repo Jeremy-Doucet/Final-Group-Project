@@ -1,0 +1,51 @@
+<h1>Update Beer</h1>
+<hr>
+<form ng-submit="vm.update()">
+  <h3>Beer Info</h3>
+  <label>Name of Beer: </label>
+  <input ng-model="vm.beer.name">
+  <label>Type of Beer: </label>
+  <select ng-model="vm.beer.type" name="beertype">
+    <option value="Pale">Pale</option>
+    <option value="Mild">Mild</option>
+    <option value="Wheat">Wheat</option>
+    <option value="Lambic">Lambic</option>
+    <option value="Lager">Lager</option>
+    <option value="Stout">Stout</option>
+  </select><br>
+  <label>Location: </label>
+  <input ng-model="vm.beer.location"><br>
+  <label>Image URL: </label>
+  <input ng-model="vm.beer.imgurl"><br><br>
+  <label>Review of Beer: </label><br>
+  <textarea ng-model="vm.beer.review" rows="8" cols="40"></textarea>
+  <hr>
+  <h3>Beer Ratings: </h3>
+  <label>Hoppiness: </label>
+  <select ng-model="vm.beer.beerscores.hoppiness" name="hoppy">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <label>Maltiness: </label>
+  <select ng-model="vm.beer.beerscores.maltiness" name="malty">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <label>Body: </label>
+  <select ng-model="vm.beer.beerscores.body" name="body">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  <hr>
+  <button type="submit">Submit</button>
+</form>
+{{vm.beer}}
