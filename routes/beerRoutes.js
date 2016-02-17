@@ -12,6 +12,15 @@ var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
+router.get("/", function (req, res, next) {
+    Beer.find({})
+        .populate("createdBy", "username")
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
 router.get('/details/:id', function (req, res, next) {
     Beer.findOne({ _id: req.params.id })
         .populate('createdBy', 'username')
@@ -40,6 +49,7 @@ router.get('/', function (req, res, next) {
     });
 });
 router.post('/', auth, function (req, res, next) {
+    console.log(req.body);
     var newBeer = new Beer(req.body);
     newBeer.createdBy = req['payload']._id;
     newBeer.save(function (err, beer) {

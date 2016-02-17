@@ -1,51 +1,58 @@
 <div class="container-fluid">
-  <div class="row text-center">
-      <h2>{{vm.beer.name}}</h2>
-      <hr>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm-2">
-      <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
+    <div class="row text-center">
+        <h2>{{vm.beer.name}}</h2>
+        <hr>
     </div>
-    <div class="col-sm-6">
-      <h4> Review<small> {{vm.beer.review }} </small></h4><br>
-
-      <div class="text-right">
-        Posted by: <a href="#">{{vm.beer.createdBy.username}}</a> <b>|</b>
-        Posted on: {{vm.beer.created | date: fullDate }} <b>|</b>
-        <a href="#">Save beer</a>
-      </div>
 
 
+    <div class="row">
+        <div class="col-sm-2">
+            <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
+        </div>
+        <div class="col-sm-6">
+            <h4> Review<small> {{vm.beer.review }} </small></h4><br>
+            <h4> Location<small> {{vm.beer.location }} </small></h4><br>
+            <h4> Type<small> {{vm.beer.type }} </small></h4><br>
+
+            <div class="text-right">
+                Posted by: <a href="#">{{vm.beer.createdBy.username}}</a> <b>|</b>
+                Posted on: {{vm.beer.created | date: fullDate }} <b>|</b>
+                <a href="#">Save beer</a>
+            </div>
+
+
+        </div>
+        <div class="col-sm-4">
+            <small>BreweryDB table</small><br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ABV</th>
+                        <th>Type</th>
+                        <th>Brewery</th>
+                        <th>Label</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{vm.beer.brewerydb.abv}}</td>
+                        <td>{{vm.beer.brewerydb.beerType}}</td>
+                        <td>{{vm.beer.brewerydb.breweryName}}</td>
+                        <td><img src="{{vm.beer.brewerydb.labelImg}}" alt="" /></td>
+                        <td>{{vm.beer.brewerydb.breweryUrl}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
     </div>
-    <div class="col-sm-4">
-      <small>BreweryDB table</small><br>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ABV</th>
-            <th>Type</th>
-            <th>Brewery</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>(connect to api ABV)</td>
-            <td>(connect to api Type)</td>
-            <td>(connect to api brewery)</td>
-          </tr>
-        </tbody>
-      </table>
 
-    </div>
-  </div>
-
-  <h4>Comments: <small></small></h4>
+    <h4>Comments: <small></small></h4>
 
 
-  <br>
-  <br>
+    <br>
+    <br>
 
 </div>

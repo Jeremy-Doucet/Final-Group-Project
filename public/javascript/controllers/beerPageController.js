@@ -4,10 +4,15 @@ var app;
     var Controllers;
     (function (Controllers) {
         var beerPageController = (function () {
-            function beerPageController(homeService, $location) {
+            function beerPageController(homeService, $location, $routeParams) {
+                var _this = this;
                 this.homeService = homeService;
                 this.$location = $location;
+                this.$routeParams = $routeParams;
                 this.beers = homeService.getAll();
+                homeService.getMyBeer($routeParams["id"]).then(function (res) {
+                    _this.mybeer = res;
+                });
             }
             beerPageController.prototype.searchBeer = function () {
                 var _this = this;
@@ -23,11 +28,9 @@ var app;
                 });
             };
             ;
-            ;
             return beerPageController;
         }());
         Controllers.beerPageController = beerPageController;
-        ;
         angular.module('app').controller('beerPageController', beerPageController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
