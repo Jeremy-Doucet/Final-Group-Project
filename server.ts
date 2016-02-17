@@ -32,9 +32,9 @@ require("./passport/passport");
 ////////////////////////
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
+  mongoose.connect(process.env.MONGO_TEST);
 } else {
-  mongoose.connect("mongodb://lss:publicpwd@ds051524.mongolab.com:51524/grouptestdb");
+  mongoose.connect(process.env.MONGO_URL);
 }
 
 ////////////////////////

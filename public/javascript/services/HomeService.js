@@ -4,8 +4,10 @@ var app;
     var Services;
     (function (Services) {
         var homeService = (function () {
-            function homeService($resource) {
+            function homeService($resource, $http, $q) {
                 this.$resource = $resource;
+                this.$http = $http;
+                this.$q = $q;
                 this.BeerResource = $resource('/api/v1/beer/:id', null, {
                     "update": { method: "PUT" }
                 });
@@ -13,7 +15,6 @@ var app;
             homeService.prototype.searchBeer = function (beer) {
                 return this.BeerResource.query({ id: "beer", name: beer.name }).$promise;
             };
-            ;
             homeService.prototype.getBrew = function (brew) {
                 return this.BeerResource.get({ id: brew });
             };
@@ -23,9 +24,14 @@ var app;
             };
             ;
             homeService.prototype.getBeer = function (beerId) {
-                return this.BeerResource.get({ id: beerId });
+                var q = this.$q.defer();
+                this.$http.get('/api/v1/beer/details/' + beerId).then(function (res) {
+                    q.resolve(res.data);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
             };
-            ;
             homeService.prototype.saveBeer = function (beer) {
                 return this.BeerResource.save(beer).$promise;
             };

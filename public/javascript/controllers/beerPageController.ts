@@ -29,6 +29,5 @@ namespace app.Controllers {
       this.beers = homeService.getAll();
     };
   };
-
   angular.module('app').controller('beerPageController', beerPageController);
 }

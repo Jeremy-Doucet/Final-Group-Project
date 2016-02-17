@@ -8,7 +8,7 @@ namespace app.Services {
 
     public searchBeer(beer) {
       return this.BeerResource.query({id:"beer", name: beer.name }).$promise;
-    };
+    }
 
     public getBrew(brew) {
       return this.BeerResource.get({ id:brew});
@@ -18,16 +18,24 @@ namespace app.Services {
       return this.BeerResource.query();
     };
 
-    public getBeer(beerId) {
-      return this.BeerResource.get({ id: beerId });
-    };
+    public getBeer(beerId){
+      var q = this.$q.defer();
+      this.$http.get('/api/v1/beer/details/'+ beerId).then(function(res){
+        q.resolve(res.data);
+      }, function(err){
+        q.reject(err);
+      });
+      return q.promise;
+    }
 
     public saveBeer(beer) {
       return this.BeerResource.save(beer).$promise;
     };
 
     constructor(
-      private $resource: ng.resource.IResourceService
+      private $resource: ng.resource.IResourceService,
+      private $http: ng.IHttpService,
+      private $q: ng.IQService
     ) {
       this.BeerResource = $resource('/api/v1/beer/:id', null,
       {
@@ -35,6 +43,5 @@ namespace app.Services {
       });
     };
   };
-
   angular.module('app').service('homeService', homeService);
 };
