@@ -8,19 +8,28 @@ var app;
                 this.$resource = $resource;
                 this.$http = $http;
                 this.$q = $q;
-                this.BeerResource = $resource('/api/v1/beer/:id', null, {
+                this.beerResource = $resource('/api/v1/beer/:id', null, {
                     "update": { method: "PUT" }
                 });
+                this.brewdbResource = $resource("/api/v1/brewdb/:id", null, {});
             }
             homeService.prototype.searchBeer = function (beer) {
-                return this.BeerResource.query({ id: "beer", name: beer.name }).$promise;
+                return this.brewdbResource.query({ id: "beer", name: beer.name }).$promise;
             };
             homeService.prototype.getBrew = function (brew) {
-                return this.BeerResource.get({ id: brew });
+                return this.brewdbResource.get({ id: brew }).$promise;
             };
-            ;
+            homeService.prototype.getMyBeer = function (mybeer) {
+                var q = this.$q.defer();
+                this.$http.get("/api/v1/brewdb/details/" + mybeer).then(function (res) {
+                    q.resolve(res.data);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
+            };
             homeService.prototype.getAll = function () {
-                return this.BeerResource.query();
+                return this.beerResource.query();
             };
             ;
             homeService.prototype.getBeer = function (beerId) {
@@ -33,15 +42,12 @@ var app;
                 return q.promise;
             };
             homeService.prototype.saveBeer = function (beer) {
-                return this.BeerResource.save(beer).$promise;
+                return this.beerResource.save(beer).$promise;
             };
-            ;
             ;
             return homeService;
         }());
         Services.homeService = homeService;
-        ;
         angular.module('app').service('homeService', homeService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
-;

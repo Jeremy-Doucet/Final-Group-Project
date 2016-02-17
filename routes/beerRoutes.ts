@@ -14,6 +14,17 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
+
+router.get("/", (req,res,next) => {
+    Beer.find({})
+    .populate("createdBy","username")
+    .exec((err, beers) => {
+        if (err) return next(err);
+        res.json(beers)
+    });
+});
+
+
 //GET: /api/v1/beer/details/:id
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
@@ -56,8 +67,10 @@ router.get('/', (req, res, next) => {
 });
 
 
+
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
+    console.log(req.body)
   let newBeer = new Beer(req.body);
   newBeer.createdBy = req['payload']._id;
   newBeer.save((err, beer) =>{
