@@ -11,8 +11,6 @@ var app;
                 this.$window = $window;
                 this.user = userService.loadUHome($routeParams["username"]);
                 this.loggedInUser = this.$window.localStorage.getItem("username");
-                if ({ message: "No user" })
-                    this.$location.path("/");
             }
             ;
             return userHomeController;
