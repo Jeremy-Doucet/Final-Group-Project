@@ -8,7 +8,7 @@ var app;
             controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
-            .when('/Comments', {
+            .when('/comments', {
             templateUrl: '/templates/comments.html',
             controller: app.Controllers.commentController,
             controllerAs: 'vm'

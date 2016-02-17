@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  top: 0;
 }
 
 .bigTitle {
@@ -13,8 +14,9 @@ html {
   margin: 5.25% 0;
 }
 
-.beerHomeNav {
+.beerHomeNav li a {
   height: 10vh;
+  border-right: 2px solid #000;
 }
 
 .lgImg {
@@ -23,7 +25,20 @@ html {
   overflow: hidden;
 }
 
-.imgHomeSmall {
+.imgHomePop {
+  max-height: 30vh;
+}
+
+.textHomePop {
+  font-size: 1.5em;
+}
+
+#homePop {
+  max-height: 70vh;
+  overflow: scroll;
+}
+
+.imgHomeLocType {
   text-align: center;
   border: 3px solid #000;
   height: 35vh;
@@ -102,4 +117,9 @@ html {
 #stout {
   background-image: url("/css/img/stout.png");
   background-size: cover;
+}
+
+.postSnip {
+  text-align: left;
+  border-bottom: 2px solid #000;
 }

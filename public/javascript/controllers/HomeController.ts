@@ -20,8 +20,11 @@ namespace app.Controllers {
       private homeService: app.Services.homeService,
       private userService: app.Services.userService,
       private $location: ng.ILocationService,
+      private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
+
+      this.beersPop = this.homeService.getAll();
 
       this.params = $location.search();
       if (this.params.code) {

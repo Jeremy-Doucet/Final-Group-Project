@@ -14,7 +14,7 @@ angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
       controllerAs: 'vm'
     })
 
-    .when('/Comments', {
+    .when('/comments', {
       templateUrl:'/templates/comments.html',
       controller: app.Controllers.commentController,
       controllerAs: 'vm'
