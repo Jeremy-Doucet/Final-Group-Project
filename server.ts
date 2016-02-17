@@ -32,9 +32,9 @@ require("./passport/passport");
 ////////////////////////
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect("mongodb://admin:1234@ds059115.mongolab.com:59115/beerapp-test");
+  mongoose.connect(process.env.MONGO_TEST);
 } else {
-  mongoose.connect("mongodb://admin:1234@ds059135.mongolab.com:59135/beer-app");
+  mongoose.connect(process.env.MONGO_URL);
 }
 
 ////////////////////////
@@ -62,20 +62,21 @@ app.use(passport.initialize());
 ///Require routes
 ////////////////////////
 
+
 let beerRoutes = require('./routes/beerRoutes');
+let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
 
-// let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
-// app.use('/')
-
 app.use('/api/v1/beer', beerRoutes);
+app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 
 ////////////////////////
 ///Express static
 ////////////////////////
+
 
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

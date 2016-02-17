@@ -3,11 +3,19 @@
 namespace app.Controllers {
 
   export class homeController {
-
+    public status;
     public params;
+
+    public beersPop;
+
+    public beersLoc;
+
+    public beersType;
 
     public logout() {
       this.userService.removeToken();
+      this.userService.removeUser();
+      this.$location.path('/');
     };
 
     constructor(
@@ -16,6 +24,7 @@ namespace app.Controllers {
       private $location: ng.ILocationService,
       private $window: ng.IWindowService
     ) {
+
       this.params = $location.search();
       if (this.params.code) {
         userService.setToken(this.params.code);
@@ -23,6 +32,7 @@ namespace app.Controllers {
         $location.search("code", null);
         $location.hash("");
       };
+      this.status = userService.status;
     };
   };
 

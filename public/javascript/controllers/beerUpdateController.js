@@ -3,8 +3,8 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var beerDetailsController = (function () {
-            function beerDetailsController(homeService, $location, $routeParams) {
+        var beerUpdateController = (function () {
+            function beerUpdateController(homeService, $location, $routeParams) {
                 var _this = this;
                 this.homeService = homeService;
                 this.$location = $location;
@@ -13,15 +13,16 @@ var app;
                     _this.beer = res;
                 });
             }
-            beerDetailsController.prototype.deleteBeer = function (id) {
+            beerUpdateController.prototype.update = function (id) {
                 var _this = this;
-                this.homeService.deleteBeer(this.beer._id).then(function (res) {
+                this.homeService.updateBeer(this.beer).then(function (res) {
                     _this.$location.path('/beerPage');
                 });
             };
-            return beerDetailsController;
+            ;
+            return beerUpdateController;
         }());
-        Controllers.beerDetailsController = beerDetailsController;
-        angular.module('app').controller('BeerDetailsController', beerDetailsController);
+        Controllers.beerUpdateController = beerUpdateController;
+        angular.module('app').controller('beerUpdateController', beerUpdateController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));

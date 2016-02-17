@@ -4,7 +4,7 @@ var app;
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: '/templates/home.html',
+            templateUrl: '/templates/Home.html',
             controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
@@ -28,6 +28,11 @@ var app;
             controller: app.Controllers.beerDetailsController,
             controllerAs: 'vm'
         })
+            .when('/update/:id', {
+            templateUrl: '/templates/beerUpdate.html',
+            controller: app.Controllers.beerUpdateController,
+            controllerAs: 'vm'
+        })
             .when("/register", {
             templateUrl: "/templates/register.html",
             controller: app.Controllers.userController,
@@ -38,9 +43,24 @@ var app;
             controller: app.Controllers.userController,
             controllerAs: "vm"
         })
-            .when("/:username", {
+            .when("/myprofile", {
             templateUrl: "/templates/userHome.html",
             controller: app.Controllers.userHomeController,
+            controllerAs: "vm"
+        })
+            .when("/addBeer/:id", {
+            templateUrl: "/templates/createBeer.html",
+            controller: app.Controllers.beerCreateController,
+            controllerAs: "vm"
+        })
+            .when("/searchBeer", {
+            templateUrl: "/templates/searchBeer.html",
+            controller: app.Controllers.searchBeerController,
+            controllerAs: "vm"
+        })
+            .when("/userprofile/:id", {
+            templateUrl: "/templates/userDetails.html",
+            controller: app.Controllers.userDetailsController,
             controllerAs: "vm"
         })
             .when("/breweryDetails/:id", {

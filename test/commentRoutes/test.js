@@ -133,7 +133,7 @@ describe("/register", function() {
 ///register: save newUser
 ////////////////////////
 
-describe("#save()", function() {
+describe("/register", function() {
   it("should return 200, user object if newUser saved", function(done) {
     let newUser = {
       username: "ddd",

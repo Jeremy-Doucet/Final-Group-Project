@@ -4,13 +4,15 @@ var app;
     var Controllers;
     (function (Controllers) {
         var userHomeController = (function () {
-            function userHomeController(userService, $location, $routeParams, $window) {
+            function userHomeController(userService, $location, $routeParams, $window, homeService) {
                 this.userService = userService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
+                this.homeService = homeService;
                 this.user = userService.loadUHome($routeParams["username"]);
                 this.loggedInUser = this.$window.localStorage.getItem("username");
+                this.userBeers = homeService.getUserHomeBeers();
             }
             ;
             return userHomeController;
