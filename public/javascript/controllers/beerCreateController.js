@@ -12,7 +12,7 @@ var app;
             beerCreateController.prototype.createBeer = function () {
                 var _this = this;
                 this.homeService.saveBeer(this.beer).then(function (res) {
-                    _this.$location.path('/');
+                    _this.$location.path('/beerPage');
                 });
             };
             ;

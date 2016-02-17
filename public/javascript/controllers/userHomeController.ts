@@ -3,18 +3,18 @@
 namespace app.Controllers {
 
   export class userHomeController {
-
     public user;
-    public loggedInUser;
+    public userBeers;
 
     constructor(
       private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService,
-      private $window: ng.IWindowService
+      private $window: ng.IWindowService,
+      private homeService: app.Services.homeService
     ) {
       this.user = userService.loadUHome($routeParams["username"]);
-      this.loggedInUser = this.$window.localStorage.getItem("username");
+      this.userBeers = homeService.getUserHomeBeers();
     };
   };
 

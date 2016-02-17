@@ -8,7 +8,7 @@ namespace app.Controllers {
 
     public createBeer() {
       this.homeService.saveBeer(this.beer).then((res) => {
-        this.$location.path('/');
+        this.$location.path('/beerPage');
       });
     };
 

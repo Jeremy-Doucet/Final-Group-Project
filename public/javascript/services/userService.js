@@ -4,9 +4,12 @@ var app;
     var Services;
     (function (Services) {
         var userService = (function () {
-            function userService($resource, $window) {
+            function userService($resource, $window, $http, $q) {
                 this.$resource = $resource;
                 this.$window = $window;
+                this.$http = $http;
+                this.$q = $q;
+                this.status = { _id: null, email: null, username: null, avatarUrl: null };
                 this.uRegResource = $resource("/usershell/register");
                 this.uLoginResource = $resource("/usershell/login");
                 this.uHomeResource = $resource("/usershell/:username");
@@ -29,19 +32,37 @@ var app;
                 return this.$window.localStorage.getItem("token");
             };
             ;
-            userService.prototype.setUser = function () {
-                var user = JSON.parse(atob(this.$window.localStorage.getItem("token")
-                    .split(".")[1]));
-            };
-            ;
-            userService.prototype.loadUHome = function (username) {
-                return this.uHomeResource.get({ username: username });
-            };
-            ;
             userService.prototype.removeToken = function () {
                 this.$window.localStorage.clear();
             };
             ;
+            userService.prototype.setUser = function () {
+                var user = JSON.parse(atob(this.$window.localStorage.getItem("token").split(".")[1]));
+                this.status._id = user._id;
+                this.status.email = user.email;
+                this.status.username = user.username;
+                this.status.avatarUrl = user.avatarUrl;
+            };
+            ;
+            userService.prototype.removeUser = function () {
+                this.status._id = null;
+                this.status.email = null;
+                this.status.username = null;
+                this.status.avatarUrl = null;
+            };
+            userService.prototype.loadUHome = function (username) {
+                return this.uHomeResource.get({ username: username });
+            };
+            ;
+            userService.prototype.getUser = function (userId) {
+                var q = this.$q.defer();
+                this.$http.get('/usershell/users/' + userId).then(function (res) {
+                    q.resolve(res.data);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
+            };
             ;
             return userService;
         }());

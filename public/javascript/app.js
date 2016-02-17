@@ -28,6 +28,11 @@ var app;
             controller: app.Controllers.beerDetailsController,
             controllerAs: 'vm'
         })
+            .when('/update/:id', {
+            templateUrl: '/templates/beerUpdate.html',
+            controller: app.Controllers.beerUpdateController,
+            controllerAs: 'vm'
+        })
             .when("/register", {
             templateUrl: "/templates/register.html",
             controller: app.Controllers.userController,
@@ -38,9 +43,14 @@ var app;
             controller: app.Controllers.userController,
             controllerAs: "vm"
         })
-            .when("/:username", {
+            .when("/myprofile", {
             templateUrl: "/templates/userHome.html",
             controller: app.Controllers.userHomeController,
+            controllerAs: "vm"
+        })
+            .when("/userprofile/:id", {
+            templateUrl: "/templates/userDetails.html",
+            controller: app.Controllers.userDetailsController,
             controllerAs: "vm"
         })
             .when("/breweryDetails/:id", {

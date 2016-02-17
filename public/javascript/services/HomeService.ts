@@ -4,6 +4,8 @@ namespace app.Services {
 
   export class homeService {
 
+    public beerUserHomeResource;
+    public beerUserDetailsResource;
     public BeerResource;
 
     public searchBeer(beer) {
@@ -12,6 +14,10 @@ namespace app.Services {
 
     public deleteBeer(beerId){
       return this.BeerResource.delete({ _id: beerId }).$promise;
+    }
+
+    public updateBeer(beer){
+      return this.BeerResource.update({ id: beer._id }, beer).$promise;
     }
 
     public getBrew(brew) {
@@ -36,6 +42,14 @@ namespace app.Services {
       return this.BeerResource.save(beer).$promise;
     };
 
+    public getUserHomeBeers(){
+      return this.beerUserHomeResource.query();
+    }
+
+    public getUserDetailsBeers(userId){
+      return this.beerUserDetailsResource.query();
+    }
+
     constructor(
       private $resource: ng.resource.IResourceService,
       private $http: ng.IHttpService,
@@ -45,6 +59,8 @@ namespace app.Services {
       {
           "update": { method: "PUT"}
       });
+      this.beerUserHomeResource = $resource('/api/v1/beer/userHomeBeers')
+      this.beerUserDetailsResource = $resource('/api/v1/beer/userDetailsBeers/:id')
     };
   };
   angular.module('app').service('homeService', homeService);

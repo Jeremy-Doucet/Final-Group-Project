@@ -73,35 +73,17 @@ router.get('/auth/facebook/callback',  passport.authenticate('facebook', {
     // res.status(403).send("You are not authenticated.");
   // }
 });
-/* istanbul ignore next */
-router.post('/connect/facebook/', auth, (req, res, next) => {
-  https.get(`https://graph.facebook.com/v2.5/me?access_token=${req.body.accessToken}&format=json&method=get&fields=email%2Cname%2Cid%2Cgender%2Clink&pretty=0&suppress_http_code=1`, (response) => {
-    response.on('data', (d) => {
-      d = JSON.parse(d);
-      if (!d.error) {
-        User.findOne({
-          _id: req["payload._id"]
-        }).exec((err, user) => {
-          user.facebook.id = d.id;
-          user.facebook.email = d.email;
-          user.facebook.name = d.name;
-          user.facebook.token = req.body.accessToken;
-          user.facebook.profileUrl = d.link;
-          user.facebook.gender = d.link;
-          user.primaryEmail = user.primaryEmail || d.email;
-          user.save((err) => {
-            if (err) return next(err);
-            res.send({
-              token: user.generateJWT()
-            });
-          });
-        });
-      }
+
+///////////////////////////////////
+///GET: Individual User Information
+///////////////////////////////////
+
+router.get("/users/:id", (req, res, next) => {
+  User.findOne({ _id: req.params.id }).select('-salt -passwordHash') // select('-salt -password') will send the user model information WITHOUT the salt or password hash properties
+    .populate('beers', 'name imgurl')
+    .exec((err, user) =>{
+      res.send(user)
     });
-  }).on('error', (e) => {
-    console.log(`Got error: ${e.message}`);
-    return next(e);
-  });
 });
 
 ////////////////////////

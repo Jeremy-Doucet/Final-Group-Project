@@ -47,34 +47,11 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 }), function (req, res) {
     res.redirect('/?code=' + req.user.generateJWT());
 });
-router.post('/connect/facebook/', auth, function (req, res, next) {
-    https.get("https://graph.facebook.com/v2.5/me?access_token=" + req.body.accessToken + "&format=json&method=get&fields=email%2Cname%2Cid%2Cgender%2Clink&pretty=0&suppress_http_code=1", function (response) {
-        response.on('data', function (d) {
-            d = JSON.parse(d);
-            if (!d.error) {
-                User.findOne({
-                    _id: req["payload._id"]
-                }).exec(function (err, user) {
-                    user.facebook.id = d.id;
-                    user.facebook.email = d.email;
-                    user.facebook.name = d.name;
-                    user.facebook.token = req.body.accessToken;
-                    user.facebook.profileUrl = d.link;
-                    user.facebook.gender = d.link;
-                    user.primaryEmail = user.primaryEmail || d.email;
-                    user.save(function (err) {
-                        if (err)
-                            return next(err);
-                        res.send({
-                            token: user.generateJWT()
-                        });
-                    });
-                });
-            }
-        });
-    }).on('error', function (e) {
-        console.log("Got error: " + e.message);
-        return next(e);
+router.get("/users/:id", function (req, res, next) {
+    User.findOne({ _id: req.params.id }).select('-salt -passwordHash')
+        .populate('beers', 'name imgurl')
+        .exec(function (err, user) {
+        res.send(user);
     });
 });
 router.get("/:username", function (req, res, next) {

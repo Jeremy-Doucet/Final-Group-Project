@@ -32,9 +32,9 @@ require("./passport/passport");
 ////////////////////////
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect("mongodb://admin:1234@ds059115.mongolab.com:59115/beerapp-test");
+  mongoose.connect(process.env.MONGO_TEST);
 } else {
-  mongoose.connect("mongodb://admin:1234@ds059135.mongolab.com:59135/beer-app");
+  mongoose.connect(process.env.MONGO_URL);
 }
 
 ////////////////////////

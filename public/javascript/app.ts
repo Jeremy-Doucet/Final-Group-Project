@@ -36,6 +36,12 @@ angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
       controllerAs: 'vm'
     })
 
+    .when('/update/:id', {
+      templateUrl: '/templates/beerUpdate.html',
+      controller: app.Controllers.beerUpdateController,
+      controllerAs: 'vm'
+    })
+
     .when("/register", {
       templateUrl: "/templates/register.html",
       controller: app.Controllers.userController,
@@ -46,18 +52,21 @@ angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
       controller: app.Controllers.userController,
       controllerAs: "vm"
     })
-    .when("/:username", {
+    .when("/myprofile", {
       templateUrl: "/templates/userHome.html",
       controller: app.Controllers.userHomeController,
       controllerAs: "vm"
     })
-
+    .when("/userprofile/:id", {
+      templateUrl: "/templates/userDetails.html",
+      controller: app.Controllers.userDetailsController,
+      controllerAs: "vm"
+    })
     .when("/breweryDetails/:id",{
         templateUrl: "templates/breweryDetails.html",
         controller: app.Controllers.breweryDetailsController,
         controllerAs: "vm"
     })
-
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('HTTPFactory');
