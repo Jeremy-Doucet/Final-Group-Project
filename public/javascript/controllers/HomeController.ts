@@ -3,7 +3,7 @@
 namespace app.Controllers {
 
   export class homeController {
-
+    public status;
     public params;
 
     public beersPop;
@@ -14,6 +14,8 @@ namespace app.Controllers {
 
     public logout() {
       this.userService.removeToken();
+      this.userService.removeUser();
+      this.$location.path('/');
     };
 
     constructor(
@@ -33,6 +35,7 @@ namespace app.Controllers {
         $location.search("code", null);
         $location.hash("");
       };
+      this.status = userService.status;
     };
   };
 

@@ -7,13 +7,10 @@ var BeerSchema = new mongoose.Schema({
     imgurl: { type: String, required: true },
     review: { type: String, required: true },
     brewerydb: {
-        breweryName: { type: String },
-        breweryDesc: { type: String },
+        name: { type: String },
         abv: { type: Number },
-        beerType: { type: String },
-        labelImg: { type: String },
-        breweryUrl: { type: String },
-        organic: { type: Boolean }
+        organic: { type: Boolean },
+        breweryinfo: { type: String }
     },
     beerscores: {
         hoppiness: { type: Number },

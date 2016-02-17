@@ -19,9 +19,12 @@ var app;
                     $location.hash("");
                 }
                 ;
+                this.status = userService.status;
             }
             homeController.prototype.logout = function () {
                 this.userService.removeToken();
+                this.userService.removeUser();
+                this.$location.path('/');
             };
             ;
             ;

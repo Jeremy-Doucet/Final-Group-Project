@@ -20,7 +20,7 @@ namespace app.Controllers {
           this.userService.setToken(res.token);
           this.userService.setUser();
           this.$window.localStorage.setItem("username", this.newUser.username);
-          this.$location.path("/");
+          this.$location.path('/myprofile');
         });
       } else {
         alert("Passwords do not match");

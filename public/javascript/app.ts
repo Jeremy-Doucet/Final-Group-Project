@@ -33,6 +33,11 @@ namespace app {
       controller: app.Controllers.beerDetailsController,
       controllerAs: 'vm'
     })
+    .when('/update/:id', {
+      templateUrl: '/templates/beerUpdate.html',
+      controller: app.Controllers.beerUpdateController,
+      controllerAs: 'vm'
+    })
     .when("/register", {
       templateUrl: "/templates/register.html",
       controller: app.Controllers.userController,
@@ -44,7 +49,7 @@ namespace app {
       controllerAs: "vm"
     })
 
-    .when("/userprofile/:username", {
+    .when("/myprofile", {
       templateUrl: "/templates/userHome.html",
       controller: app.Controllers.userHomeController,
       controllerAs: "vm"
@@ -61,13 +66,21 @@ namespace app {
         controller: app.Controllers.beerCreateController,
         controllerAs: "vm"
     })
-
     .when("/searchBeer",{
         templateUrl: "/templates/searchBeer.html",
         controller: app.Controllers.searchBeerController,
         controllerAs: "vm"
     })
-
+    .when("/userprofile/:id", {
+      templateUrl: "/templates/userDetails.html",
+      controller: app.Controllers.userDetailsController,
+      controllerAs: "vm"
+    })
+    .when("/breweryDetails/:id",{
+        templateUrl: "templates/breweryDetails.html",
+        controller: app.Controllers.breweryDetailsController,
+        controllerAs: "vm"
+    })
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('HTTPFactory');

@@ -14,6 +14,7 @@ var UserSchema = new mongoose.Schema({
         gender: String,
         profileUrl: String
     },
+    beers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Beer' }],
     passwordHash: String,
     salt: String,
     token: Object,
@@ -36,6 +37,7 @@ UserSchema.method("generateJWT", function () {
         _id: this._id,
         username: this.username,
         email: this.email,
+        avatarUrl: this.avatarUrl,
         facebook: facebook
     }, process.env.JWT_SECRET);
 });

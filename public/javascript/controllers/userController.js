@@ -23,7 +23,7 @@ var app;
                         _this.userService.setToken(res.token);
                         _this.userService.setUser();
                         _this.$window.localStorage.setItem("username", _this.newUser.username);
-                        _this.$location.path("/");
+                        _this.$location.path('/myprofile');
                     });
                 }
                 else {

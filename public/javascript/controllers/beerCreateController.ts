@@ -1,4 +1,5 @@
 'use strict';
+
 namespace app.Controllers {
     export class beerCreateController {
         public beer:any = {name:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}};
@@ -7,10 +8,11 @@ namespace app.Controllers {
         public hide = false;
 
         public createBeer() {
-            this.homeService.saveBeer(this.beer).then((res) => {
-                this.$location.path('/');
-            });
+          this.homeService.saveBeer(this.beer).then((res) => {
+            this.$location.path('/beerPage');
+          });
         };
+
         public show()   {
             this.hide = true;
         }
@@ -33,10 +35,8 @@ namespace app.Controllers {
                 this.beer.brewerydb.abv = res.data.abv;
                 this.beer.brewerydb.beerType = res.data.style.shortName;
                 this.beer.brewerydb.organic = res.data.isOrganic
-
             });
         };
+      };
+      angular.module('app').controller('beerCreateController', beerCreateController);
     };
-
-    angular.module('app').controller('beerCreateController', beerCreateController);
-}
