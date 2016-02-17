@@ -3,8 +3,8 @@ var app;
 (function (app) {
     var Services;
     (function (Services) {
-        var uSvc = (function () {
-            function uSvc($resource, $window) {
+        var userService = (function () {
+            function userService($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
                 this.uRegResource = $resource("/usershell/register");
@@ -13,39 +13,41 @@ var app;
                 if (this.getToken())
                     this.setUser();
             }
-            uSvc.prototype.registerUser = function (newUser) {
+            userService.prototype.registerUser = function (newUser) {
                 return this.uRegResource.save(newUser).$promise;
             };
             ;
-            uSvc.prototype.login = function (user) {
+            userService.prototype.login = function (user) {
                 return this.uLoginResource.save(user).$promise;
             };
             ;
-            uSvc.prototype.loginFB = function () { };
-            ;
-            uSvc.prototype.setToken = function (token) {
+            userService.prototype.setToken = function (token) {
                 this.$window.localStorage.setItem("token", token);
             };
             ;
-            uSvc.prototype.getToken = function () {
+            userService.prototype.getToken = function () {
                 return this.$window.localStorage.getItem("token");
             };
             ;
-            uSvc.prototype.setUser = function () {
+            userService.prototype.setUser = function () {
                 var user = JSON.parse(atob(this.$window.localStorage.getItem("token")
                     .split(".")[1]));
             };
             ;
-            uSvc.prototype.loadUHome = function (username) {
+            userService.prototype.loadUHome = function (username) {
                 return this.uHomeResource.get({ username: username });
             };
             ;
+            userService.prototype.removeToken = function () {
+                this.$window.localStorage.clear();
+            };
             ;
-            return uSvc;
+            ;
+            return userService;
         }());
-        Services.uSvc = uSvc;
+        Services.userService = userService;
         ;
-        angular.module("app").service("uSvc", uSvc);
+        angular.module("app").service("userService", userService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
 ;

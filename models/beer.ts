@@ -9,9 +9,7 @@ let BeerSchema = new mongoose.Schema({
   imgurl: { type: String, required: true },
   review: { type: String, required: true },
   brewerydb: {
-      name: { type: String },
       breweryName: { type: String },
-      breweryInfo: { type: String },
       breweryDesc: { type: String },
       abv: { type: Number },
       beerType: {type: String },

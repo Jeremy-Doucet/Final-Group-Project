@@ -3,38 +3,34 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var BeerPageController = (function () {
-            function BeerPageController(HomeService, $location, $routeParams) {
+        var beerPageController = (function () {
+            function beerPageController(homeService, $location, $routeParams) {
                 var _this = this;
-                this.HomeService = HomeService;
+                this.homeService = homeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.beers = HomeService.getAll();
-                HomeService.getMyBeer($routeParams["id"]).then(function (res) {
+                this.beers = homeService.getAll();
+                homeService.getMyBeer($routeParams["id"]).then(function (res) {
                     _this.mybeer = res;
                 });
             }
-            BeerPageController.prototype.searchBeer = function () {
+            beerPageController.prototype.searchBeer = function () {
                 var _this = this;
-                this.HomeService.searchBeer(this.beer).then(function (res) {
+                this.homeService.searchBeer(this.beer).then(function (res) {
                     _this.result = res;
                 });
             };
-            BeerPageController.prototype.getMyBeer = function (mybeer) {
+            ;
+            beerPageController.prototype.searchBrew = function (brew) {
                 var _this = this;
-                this.HomeService.getMyBeer(this.mybeer).then(function (res) {
-                    _this.chosen = res;
-                });
-            };
-            BeerPageController.prototype.searchBrew = function (brew) {
-                var _this = this;
-                this.HomeService.getBrew(this.brew).then(function (res) {
+                this.homeService.getBrew(this.brew).then(function (res) {
                     _this.breweries = res;
                 });
             };
-            return BeerPageController;
+            ;
+            return beerPageController;
         }());
-        Controllers.BeerPageController = BeerPageController;
-        angular.module('app').controller('BeerPageController', BeerPageController);
+        Controllers.beerPageController = beerPageController;
+        angular.module('app').controller('beerPageController', beerPageController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));

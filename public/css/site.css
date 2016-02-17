@@ -1,1 +1,13 @@
+.pSubTBox {
+  border: 3px solid #000;
+  margin: 10px;
+}
 
+.pSubTitle {
+  text-align: center;
+}
+
+.pSectTitle {
+  text-align: left;
+  padding: 5px;
+}

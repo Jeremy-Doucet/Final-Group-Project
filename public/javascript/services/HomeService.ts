@@ -1,15 +1,15 @@
 "use strict";
+
 namespace app.Services {
-  export class HomeService {
-    public BeerResource;
+  export class homeService {
+    public beerResource;
     public brewdbResource;
 
     public searchBeer(beer) {
         return this.brewdbResource.query({id:"beer", name: beer.name }).$promise;
     }
-
     public getBrew(brew)    {
-        return this.brewdbResource.get({ id:brew});
+        return this.brewdbResource.get({ id:brew}).$promise;
     }
 
     public getMyBeer(mybeer)   {
@@ -22,45 +22,37 @@ namespace app.Services {
     return q.promise;
     }
 
-    // public getBrew(brew) {
-    //     // return this.BeerResource.get({ id:brew});
-    //     var q = this.$q.defer();
-    //     this.$http.get("/api/v1/brewdb/details" + brew ).then(function(res) {
-    //         q.resolve(res.data);
-    //     }, function(err) {
-    //         q.reject(err);
-    //     });
-    //     return q.promise;
-    // }
-
-
-    public getAll(){
-      return this.BeerResource.query();
-    }
+    public getAll() {
+      return this.beerResource.query();
+    };
 
     public getBeer(beerId){
-      return this.BeerResource.get({ id: beerId });
+      var q = this.$q.defer();
+      this.$http.get('/api/v1/beer/details/'+ beerId).then(function(res){
+        q.resolve(res.data);
+      }, function(err){
+        q.reject(err);
+      });
+      return q.promise;
     }
 
-    public saveBeer(beer){
-      return this.BeerResource.save(beer).$promise;
-    }
-
+    public saveBeer(beer) {
+      return this.beerResource.save(beer).$promise;
+    };
 
     constructor(
         private $resource: ng.resource.IResourceService,
         private $http: ng.IHttpService,
         private $q: ng.IQService
     ) {
-      this.BeerResource = $resource('/api/v1/beer/:id', null,
+      this.beerResource = $resource('/api/v1/beer/:id', null,
       {
           "update": { method: "PUT"}
       });
       this.brewdbResource = $resource("/api/v1/brewdb/:id", null,
       {
-
       });
     }
   }
-  angular.module('app').service('HomeService', HomeService);
+  angular.module('app').service('homeService', homeService);
 }

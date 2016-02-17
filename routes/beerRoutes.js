@@ -21,14 +21,35 @@ router.get("/", function (req, res, next) {
         res.json(beers);
     });
 });
-router.get('/:id', function (req, res, next) {
+router.get('/details/:id', function (req, res, next) {
     Beer.findOne({ _id: req.params.id })
         .populate('createdBy', 'username')
         .exec(function (err, beer) {
         res.send(beer);
     });
 });
+router.get("/beer", function (req, res, next) {
+    brewdb.search.beers({ q: req.query.name }, function (err, data) {
+        res.send(data);
+    });
+});
+router.get("/:id", function (req, res, next) {
+    console.log();
+    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key=" + process.env.brewdb_key, function (err, response, body, data) {
+        res.send(response.body);
+    });
+});
+router.get('/', function (req, res, next) {
+    Beer.find({})
+        .populate('createdBy', 'username')
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
 router.post('/', auth, function (req, res, next) {
+    console.log(req.body);
     var newBeer = new Beer(req.body);
     newBeer.createdBy = req['payload']._id;
     newBeer.save(function (err, beer) {
@@ -39,6 +60,13 @@ router.post('/', auth, function (req, res, next) {
                 return next(err);
             res.send(beer);
         });
+    });
+});
+router.delete('/', function (req, res, next) {
+    if (!req.query._id)
+        return next({ status: 404, });
+    Beer.remove({ _id: req.query._id }, function (err, result) {
+        res.send({ message: "Deleted." });
     });
 });
 module.exports = router;

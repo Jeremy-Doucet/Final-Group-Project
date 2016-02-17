@@ -1,46 +1,35 @@
 'use strict';
 namespace app.Controllers {
-  export class BeerPageController {
+    export class beerPageController {
+        public beers;
+        public beer;
+        public result;
+        public brew;
+        public breweries;
+        public mybeer;
+        public chosen;
 
-    public beers;
-    public beer;
-    public result;
-    public brew;
-    public breweries;
-    public mybeer;
-    public chosen;
+        public searchBeer() {
+            this.homeService.searchBeer(this.beer).then((res) => {
+                this.result = res;
+            });
+        };
 
+        public searchBrew(brew) {
+            this.homeService.getBrew(this.brew).then((res) => {
+                this.breweries = res;
+            });
+        }
 
-    public searchBeer() {
-        this.HomeService.searchBeer(this.beer).then((res) => {
-            this.result = res;
-        })
+        constructor(private homeService: app.Services.homeService,
+            private $location: ng.ILocationService,
+            private $routeParams: ng.route.IRouteParamsService
+        ) {
+            this.beers = homeService.getAll();
+            homeService.getMyBeer( $routeParams["id"]).then((res) =>{
+                this.mybeer = res
+            });
+        };
     }
-
-    public getMyBeer(mybeer)   {
-        this.HomeService.getMyBeer(this.mybeer).then((res) => {
-            this.chosen = res;
-        })
+        angular.module('app').controller('beerPageController', beerPageController);
     }
-
-    public searchBrew(brew) {
-        this.HomeService.getBrew(this.brew).then((res) => {
-            this.breweries = res;
-        })
-    }
-
-
-
-    constructor(private HomeService: app.Services.HomeService,
-                private $location: ng.ILocationService,
-                private $routeParams: ng.route.IRouteParamsService
-                    ) {
-      this.beers = HomeService.getAll();
-      HomeService.getMyBeer( $routeParams["id"]).then((res) =>{
-          this.mybeer = res
-      });
-    }
-  }
-
-  angular.module('app').controller('BeerPageController', BeerPageController);
-}

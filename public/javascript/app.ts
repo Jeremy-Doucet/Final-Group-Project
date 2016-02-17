@@ -1,6 +1,5 @@
 'use strict';
 namespace app {
-
   angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
 
   .config((
@@ -10,12 +9,12 @@ namespace app {
 
     $routeProvider.when('/', {
       templateUrl: '/templates/Home.html',
-      controller: app.Controllers.HomeController,
+      controller: app.Controllers.homeController,
       controllerAs: 'vm'
     })
     .when('/Comments', {
       templateUrl:'/templates/comments.html',
-      controller: app.Controllers.CommentsController,
+      controller: app.Controllers.commentController,
       controllerAs: 'vm'
     })
     .when('/addBeer', {
@@ -25,29 +24,27 @@ namespace app {
     })
     .when('/beerPage', {
       templateUrl: '/templates/beerPage.html',
-      controller: app.Controllers.BeerPageController,
+      controller: app.Controllers.beerPageController,
       controllerAs: 'vm'
     })
-
     .when('/details/:id', {
       templateUrl: '/templates/beerDetails.html',
-      controller: app.Controllers.BeerDetailsController,
+      controller: app.Controllers.beerDetailsController,
       controllerAs: 'vm'
     })
-
     .when("/register", {
       templateUrl: "/templates/register.html",
-      controller: app.Controllers.uCtrl,
+      controller: app.Controllers.userController,
       controllerAs: "vm"
     })
     .when("/login", {
       templateUrl: "/templates/login.html",
-      controller: app.Controllers.uCtrl,
+      controller: app.Controllers.userController,
       controllerAs: "vm"
     })
-    .when("/:username", {
-      templateUrl: "/templates/uHome.html",
-      controller: app.Controllers.uHomeCtrl,
+    .when("/userprofile/:username", {
+      templateUrl: "/templates/userHome.html",
+      controller: app.Controllers.userHomeController,
       controllerAs: "vm"
     })
 
@@ -56,6 +53,7 @@ namespace app {
         controller: app.Controllers.beerCreateController,
         controllerAs: "vm"
     })
+
     .when("/searchBeer",{
         templateUrl: "/templates/searchBeer.html",
         controller: app.Controllers.searchBeerController,

@@ -1,20 +1,22 @@
 "use strict";
 require("dotenv").config({ silent: true });
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var express = require('express');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var passport = require("passport");
 var app = express();
-var mongoose = require('mongoose');
-require('./models/Comments');
-require('./models/User');
 require('./models/beer');
+require('./models/comment');
+require('./models/user');
 require("./passport/passport");
-if (process.env.NODE_ENV === 'test')
-    mongoose.connect(process.env.MONGO_TEST);
-else
-    mongoose.connect(process.env.MONGO_URL);
+if (process.env.NODE_ENV === 'test') {
+    mongoose.connect("mongodb://admin:1234@ds059115.mongolab.com:59115/beerapp-test");
+}
+else {
+    mongoose.connect("mongodb://admin:1234@ds059135.mongolab.com:59135/beer-app");
+}
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -24,18 +26,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.get("/auth/facebook", passport.authenticate("facebook"));
-app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), function (req, res) {
-    res.redirect("/");
-});
 var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require("./routes/brewRoutes");
-var uRoutes = require("./routes/uRoutes");
-var CommentsRoutes = require('./routes/CommentsRoutes');
-app.use('/comments', CommentsRoutes);
+var commentRoutes = require('./routes/commentRoutes');
+var userRoutes = require("./routes/userRoutes");
 app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
-app.use("/usershell", uRoutes);
+app.use('/comments', commentRoutes);
+app.use("/usershell", userRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));

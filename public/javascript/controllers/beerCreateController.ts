@@ -1,42 +1,42 @@
 'use strict';
 namespace app.Controllers {
-  export class beerCreateController {
-    public beer;
-    public result;
-    public brew;
-    public mybeer;
-    public chosen;
+    export class beerCreateController {
+        public beer:any = {name:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}};
+        public mybeer;
+        public brew;
+        public hide = false;
 
+        public createBeer() {
+            this.homeService.saveBeer(this.beer).then((res) => {
+                this.$location.path('/');
+            });
+        };
+        public show()   {
+            this.hide = true;
+        }
 
-    public searchBeer() {
-        this.HomeService.searchBeer(this.beer).then((res) => {
-            this.result = res;
-        })
-    }
+        constructor(
+            private homeService: app.Services.homeService,
+            private $location: ng.ILocationService,
+            private $routeParams: ng.route.IRouteParamsService
+        ) {
+            homeService.getBrew( $routeParams["id"]).then((res) => {
+                this.brew = res.data;
+                this.beer.brewerydb.breweryName = res.data[0].name;
+                this.beer.brewerydb.labelImg = res.data[0].images.squareMedium;
+                this.beer.brewerydb.breweryDesc = res.data[0].description;
+                this.beer.brewerydb.breweryUrl = res.data[0].website;
+            });
+            homeService.getMyBeer( $routeParams["id"]).then((res:any) =>{
+                this.mybeer = res.data;
+                this.beer.name = res.data.name;
+                this.beer.brewerydb.abv = res.data.abv;
+                this.beer.brewerydb.beerType = res.data.style.shortName;
+                this.beer.brewerydb.organic = res.data.isOrganic
 
-    public getMyBeer(mybeer)   {
-        this.HomeService.getMyBeer(this.mybeer).then((res) => {
-            this.chosen = res;
-        })
-    }
+            });
+        };
+    };
 
-    public createBeer(){
-      this.HomeService.saveBeer(this.beer).then((res) =>{
-        this.$location.path('/')
-      })
-    }
-
-
-    constructor(
-      private HomeService: app.Services.HomeService,
-      private $location: ng.ILocationService,
-      private $routeParams: ng.route.IRouteParamsService
-    ){
-        this.brew = HomeService.getBrew( $routeParams["id"]);
-        this.mybeer = HomeService.getMyBeer( $routeParams["id"]).then((res:any) =>{
-            this.mybeer = res.data;
-        });
-    }
-  }
-  angular.module('app').controller('beerCreateController', beerCreateController);
+    angular.module('app').controller('beerCreateController', beerCreateController);
 }

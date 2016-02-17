@@ -4,27 +4,32 @@ var app;
     var Controllers;
     (function (Controllers) {
         var searchBeerController = (function () {
-            function searchBeerController(HomeService, $location, $routeParams) {
-                var _this = this;
-                this.HomeService = HomeService;
+            function searchBeerController(homeService, $location, $routeParams) {
+                this.homeService = homeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.brew = HomeService.getBrew($routeParams["id"]);
-                this.mybeer = HomeService.getMyBeer($routeParams["id"]).then(function (res) {
-                    _this.mybeer = res.data;
-                });
+                this.hide = false;
             }
             searchBeerController.prototype.searchBeer = function () {
                 var _this = this;
-                this.HomeService.searchBeer(this.beer).then(function (res) {
+                this.homeService.searchBeer(this.beer).then(function (res) {
                     _this.result = res;
                 });
             };
             searchBeerController.prototype.getMyBeer = function (mybeer) {
                 var _this = this;
-                this.HomeService.getMyBeer(this.mybeer).then(function (res) {
+                this.homeService.getMyBeer(this.mybeer).then(function (res) {
                     _this.chosen = res;
                 });
+            };
+            searchBeerController.prototype.searchBrew = function (brew) {
+                var _this = this;
+                this.homeService.getBrew(this.brew).then(function (res) {
+                    _this.breweries = res;
+                });
+            };
+            searchBeerController.prototype.show = function () {
+                this.hide = true;
             };
             return searchBeerController;
         }());

@@ -3,26 +3,27 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var uCtrl = (function () {
-            function uCtrl(uSvc, $location, $window) {
-                this.uSvc = uSvc;
+        var userController = (function () {
+            function userController(userService, $location, $window) {
+                this.userService = userService;
                 this.$location = $location;
                 this.$window = $window;
             }
-            uCtrl.prototype.register = function () {
+            userController.prototype.register = function () {
                 var _this = this;
                 var newUser = {
                     username: this.newUser.username,
                     email: this.newUser.email,
+                    avatarUrl: this.newUser.avatarUrl,
                     password: this.newUser.password,
                     pwdConfirm: this.newUser.pwdConfirm
                 };
                 if (this.newUser.password === this.newUser.pwdConfirm) {
-                    this.uSvc.registerUser(this.newUser).then(function (res) {
-                        _this.uSvc.setToken(res.token);
-                        _this.uSvc.setUser();
+                    this.userService.registerUser(this.newUser).then(function (res) {
+                        _this.userService.setToken(res.token);
+                        _this.userService.setUser();
                         _this.$window.localStorage.setItem("username", _this.newUser.username);
-                        _this.$location.path(_this.newUser.username);
+                        _this.$location.path("/");
                     });
                 }
                 else {
@@ -30,24 +31,22 @@ var app;
                 }
             };
             ;
-            uCtrl.prototype.login = function () {
+            userController.prototype.login = function () {
                 var _this = this;
-                this.uSvc.login(this.user).then(function (res) {
-                    _this.uSvc.setToken(res.token);
-                    _this.uSvc.setUser();
+                this.userService.login(this.user).then(function (res) {
+                    _this.userService.setToken(res.token);
+                    _this.userService.setUser();
                     _this.$window.localStorage.setItem("username", _this.user.username);
-                    _this.$location.path(_this.user.username);
+                    _this.$location.path("/");
                 });
             };
             ;
-            uCtrl.prototype.loginFB = function () { };
             ;
-            ;
-            return uCtrl;
+            return userController;
         }());
-        Controllers.uCtrl = uCtrl;
+        Controllers.userController = userController;
         ;
-        angular.module("app").controller("uCtrl", uCtrl);
+        angular.module("app").controller("userController", userController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

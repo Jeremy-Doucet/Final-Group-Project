@@ -3,26 +3,26 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var BreweryDetailsController = (function () {
-            function BreweryDetailsController(HomeService, $routeParams, $location) {
+        var breweryDetailsController = (function () {
+            function breweryDetailsController(homeService, $routeParams, $location) {
                 var _this = this;
-                this.HomeService = HomeService;
+                this.homeService = homeService;
                 this.$routeParams = $routeParams;
                 this.$location = $location;
-                this.brew = HomeService.getBrew($routeParams["id"]);
-                this.mybeer = HomeService.getMyBeer($routeParams["id"]).then(function (res) {
+                this.brew = homeService.getBrew($routeParams["id"]);
+                this.mybeer = homeService.getMyBeer($routeParams["id"]).then(function (res) {
                     _this.mybeer = res.data;
                 });
             }
-            BreweryDetailsController.prototype.getMyBeer = function (mybeer) {
+            breweryDetailsController.prototype.getMyBeer = function (mybeer) {
                 var _this = this;
-                this.HomeService.getMyBeer(this.mybeer).then(function (res) {
+                this.homeService.getMyBeer(this.mybeer).then(function (res) {
                     _this.chosen = res;
                 });
             };
-            return BreweryDetailsController;
+            return breweryDetailsController;
         }());
-        Controllers.BreweryDetailsController = BreweryDetailsController;
-        angular.module("app").controller("BreweryDetailsController", BreweryDetailsController);
+        Controllers.breweryDetailsController = breweryDetailsController;
+        angular.module("app").controller("breweryDetailsController", breweryDetailsController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));

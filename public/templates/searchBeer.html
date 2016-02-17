@@ -1,15 +1,15 @@
 
-<form ng-submit = "vm.searchBeer()">
+<form ng-submit = "vm.searchBeer()" >
   <label>Beer: </label>
   <input ng-model = "vm.beer.name" type = "text" placeholder = "name">
 
-  <button type ="submit" >Submit</button>
+  <button type ="submit" ng-click="vm.show()">Submit</button>
 </form>
 
 <hr>
 
 
-<div  class="container">
+<div  ng-show="vm.hide === true" class="container">
 <table  class="table table-striped table-bordered" width="100%">
     <thead>
         <tr>

@@ -5,12 +5,12 @@ var app;
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
             templateUrl: '/templates/Home.html',
-            controller: app.Controllers.HomeController,
+            controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
             .when('/Comments', {
             templateUrl: '/templates/comments.html',
-            controller: app.Controllers.CommentsController,
+            controller: app.Controllers.commentController,
             controllerAs: 'vm'
         })
             .when('/addBeer', {
@@ -20,27 +20,27 @@ var app;
         })
             .when('/beerPage', {
             templateUrl: '/templates/beerPage.html',
-            controller: app.Controllers.BeerPageController,
+            controller: app.Controllers.beerPageController,
             controllerAs: 'vm'
         })
             .when('/details/:id', {
             templateUrl: '/templates/beerDetails.html',
-            controller: app.Controllers.BeerDetailsController,
+            controller: app.Controllers.beerDetailsController,
             controllerAs: 'vm'
         })
             .when("/register", {
             templateUrl: "/templates/register.html",
-            controller: app.Controllers.uCtrl,
+            controller: app.Controllers.userController,
             controllerAs: "vm"
         })
             .when("/login", {
             templateUrl: "/templates/login.html",
-            controller: app.Controllers.uCtrl,
+            controller: app.Controllers.userController,
             controllerAs: "vm"
         })
-            .when("/:username", {
-            templateUrl: "/templates/uHome.html",
-            controller: app.Controllers.uHomeCtrl,
+            .when("/userprofile/:username", {
+            templateUrl: "/templates/userHome.html",
+            controller: app.Controllers.userHomeController,
             controllerAs: "vm"
         })
             .when("/addBeer/:id", {
