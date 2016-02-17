@@ -2,21 +2,21 @@
 
 namespace app.Controllers {
 
-  export class uHomeCtrl {
+  export class userHomeController {
 
     public user;
     public loggedInUser;
 
     constructor(
-      private uSvc: app.Services.uSvc,
+      private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.user = uSvc.loadUHome($routeParams["username"]);
+      this.user = userService.loadUHome($routeParams["username"]);
       this.loggedInUser = this.$window.localStorage.getItem("username");
     };
   };
 
-  angular.module("app").controller("uHomeCtrl", uHomeCtrl);
+  angular.module("app").controller("userHomeController", userHomeController);
 };

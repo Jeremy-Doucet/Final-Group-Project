@@ -3,39 +3,37 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var BeerDetailsController = (function () {
-            function BeerDetailsController(CommentsService, HomeService, $routeParams, $location) {
-                this.CommentsService = CommentsService;
-                this.HomeService = HomeService;
-                this.$routeParams = $routeParams;
+        var beerDetailsController = (function () {
+            function beerDetailsController(CommentService, $location, homeService, $routeParams) {
+                var _this = this;
+                this.CommentService = CommentService;
                 this.$location = $location;
-                this.beer = HomeService.getBeer($routeParams['id']);
+                this.homeService = homeService;
+                this.$routeParams = $routeParams;
+                this.comments = [];
+                homeService.getBeer($routeParams['id']).then(function (res) {
+                    _this.beer = res;
+                });
             }
-            BeerDetailsController.prototype.addComment = function () {
+            beerDetailsController.prototype.addComment = function () {
                 var _this = this;
                 var comment = {
                     message: this.comment.message,
                     Beer: this.$routeParams['id']
                 };
-                this.CommentsService.saveComment(comment).then(function (res) {
-                    _this.dawg.comments.push(res);
+                this.CommentService.saveComment(comment).then(function (res) {
+                    _this.beer.comments.push(res);
                 });
             };
-            BeerDetailsController.prototype.deleteComment = function (comment) {
+            beerDetailsController.prototype.deleteComment = function (comment) {
                 var _this = this;
-                this.CommentsService.deleteComment(comment).then(function (res) {
-                    _this.dawg.comments.splice(_this.dawg.comments.indexOf(comment), 1);
+                this.CommentService.deleteComment(comment).then(function (res) {
+                    _this.beer.comments.splice(_this.beer.comments.indexOf(comment), 1);
                 });
             };
-            BeerDetailsController.prototype.editComment = function (comment) {
-                var _this = this;
-                this.CommentsService.editComment(this.comment).then(function (res) {
-                    _this.$location.path("/");
-                });
-            };
-            return BeerDetailsController;
+            return beerDetailsController;
         }());
-        Controllers.BeerDetailsController = BeerDetailsController;
-        angular.module('app').controller('BeerDetailsController', BeerDetailsController);
+        Controllers.beerDetailsController = beerDetailsController;
+        angular.module('app').controller('BeerDetailsController', beerDetailsController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));

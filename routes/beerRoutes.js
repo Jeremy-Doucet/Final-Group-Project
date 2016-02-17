@@ -3,6 +3,7 @@ var express = require('express');
 var request = require("request");
 var jwt = require('express-jwt');
 var mongoose = require('mongoose');
+var Comment = mongoose.model('Comment');
 var router = express.Router();
 var Beer = mongoose.model('Beer');
 var BreweryDb = require("brewerydb-node");
@@ -11,6 +12,16 @@ var User = mongoose.model('User');
 var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
+});
+router.get('/details/:id', function (req, res, next) {
+    Beer.findOne({ _id: req.params.id })
+        .populate('createdBy', 'username')
+        .populate('comments')
+        .exec(function (err, beer) {
+        Comment.populate(beer.comments, { path: "createdBy", select: "username" }, function (err, result) {
+            res.send(beer);
+        });
+    });
 });
 router.get("/beer", function (req, res, next) {
     brewdb.search.beers({ q: req.query.name }, function (err, data) {
@@ -32,13 +43,6 @@ router.get('/', function (req, res, next) {
         res.json(beers);
     });
 });
-router.get('/:id', function (req, res, next) {
-    Beer.findOne({ _id: req.params.id })
-        .populate('createdBy', 'username')
-        .exec(function (err, beer) {
-        res.send(beer);
-    });
-});
 router.post('/', auth, function (req, res, next) {
     var newBeer = new Beer(req.body);
     newBeer.createdBy = req['payload']._id;
@@ -50,6 +54,13 @@ router.post('/', auth, function (req, res, next) {
                 return next(err);
             res.send(beer);
         });
+    });
+});
+router.delete('/', function (req, res, next) {
+    if (!req.query._id)
+        return next({ status: 404, });
+    Beer.remove({ _id: req.query._id }, function (err, result) {
+        res.send({ message: "Deleted." });
     });
 });
 module.exports = router;

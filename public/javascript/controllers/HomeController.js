@@ -3,28 +3,31 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var HomeController = (function () {
-            function HomeController(HomeService, uSvc, $location, $window) {
-                this.HomeService = HomeService;
-                this.uSvc = uSvc;
+        var homeController = (function () {
+            function homeController(homeService, userService, $location, $window) {
+                this.homeService = homeService;
+                this.userService = userService;
                 this.$location = $location;
                 this.$window = $window;
                 this.params = $location.search();
                 if (this.params.code) {
-                    uSvc.setToken(this.params.code);
-                    uSvc.setUser();
+                    userService.setToken(this.params.code);
+                    userService.setUser();
                     $location.search("code", null);
                     $location.hash("");
                 }
+                ;
             }
-            HomeController.prototype.logout = function () {
-                this.uSvc.removeToken();
+            homeController.prototype.logout = function () {
+                this.userService.removeToken();
             };
             ;
             ;
-            return HomeController;
+            return homeController;
         }());
-        Controllers.HomeController = HomeController;
-        angular.module('app').controller('HomeController', HomeController);
+        Controllers.homeController = homeController;
+        ;
+        angular.module('app').controller('homeController', homeController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
+;

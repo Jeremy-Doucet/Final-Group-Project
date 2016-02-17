@@ -3,21 +3,21 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var uHomeCtrl = (function () {
-            function uHomeCtrl(uSvc, $location, $routeParams, $window) {
-                this.uSvc = uSvc;
+        var userHomeController = (function () {
+            function userHomeController(userService, $location, $routeParams, $window) {
+                this.userService = userService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.user = uSvc.loadUHome($routeParams["username"]);
+                this.user = userService.loadUHome($routeParams["username"]);
                 this.loggedInUser = this.$window.localStorage.getItem("username");
             }
             ;
-            return uHomeCtrl;
+            return userHomeController;
         }());
-        Controllers.uHomeCtrl = uHomeCtrl;
+        Controllers.userHomeController = userHomeController;
         ;
-        angular.module("app").controller("uHomeCtrl", uHomeCtrl);
+        angular.module("app").controller("userHomeController", userHomeController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

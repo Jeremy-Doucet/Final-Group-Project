@@ -3,27 +3,31 @@ var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
-        var BeerPageController = (function () {
-            function BeerPageController(HomeService, $location) {
-                this.HomeService = HomeService;
+        var beerPageController = (function () {
+            function beerPageController(homeService, $location) {
+                this.homeService = homeService;
                 this.$location = $location;
-                this.beers = HomeService.getAll();
+                this.beers = homeService.getAll();
             }
-            BeerPageController.prototype.searchBeer = function () {
+            beerPageController.prototype.searchBeer = function () {
                 var _this = this;
-                this.HomeService.searchBeer(this.beer).then(function (res) {
+                this.homeService.searchBeer(this.beer).then(function (res) {
                     _this.result = res;
                 });
             };
-            BeerPageController.prototype.searchBrew = function (brew) {
+            ;
+            beerPageController.prototype.searchBrew = function (brew) {
                 var _this = this;
-                this.HomeService.getBrew(this.brew).then(function (res) {
+                this.homeService.getBrew(this.brew).then(function (res) {
                     _this.breweries = res;
                 });
             };
-            return BeerPageController;
+            ;
+            ;
+            return beerPageController;
         }());
-        Controllers.BeerPageController = BeerPageController;
-        angular.module('app').controller('BeerPageController', BeerPageController);
+        Controllers.beerPageController = beerPageController;
+        ;
+        angular.module('app').controller('beerPageController', beerPageController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));

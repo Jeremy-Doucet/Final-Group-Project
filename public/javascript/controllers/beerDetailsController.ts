@@ -1,12 +1,13 @@
 'use strict';
-namespace app.Controllers{
-  export class BeerDetailsController{
+namespace app.Controllers {
+
+  export class beerDetailsController {
 
     public beer;
 
     public comment;
     public dawg;
-
+    public comments = [];
 
 
         public addComment() {
@@ -14,31 +15,32 @@ namespace app.Controllers{
           message: this.comment.message,
           Beer: this.$routeParams['id']
         };
-        this.CommentsService.saveComment(comment).then((res) => {
-          this.dawg.comments.push(res);
+        this.CommentService.saveComment(comment).then((res) => {
+          this.beer.comments.push(res);
+
         });
+
       }
 
       public deleteComment(comment) {
-        this.CommentsService.deleteComment(comment).then((res) => {
-          this.dawg.comments.splice(this.dawg.comments.indexOf(comment), 1);
+        this.CommentService.deleteComment(comment).then((res) => {
+          this.beer.comments.splice(this.beer.comments.indexOf(comment), 1);
         });
       }
 
-      public editComment(comment) {
-      this.CommentsService.editComment(this.comment).then((res) => {
-        this.$location.path("/");
-      });
-    }
+
 
     constructor(
-      private CommentsService: app.Services.CommentsService,
-      private HomeService: app.Services.HomeService,
-      private $routeParams: ng.route.IRouteParamsService,
-      private $location: ng.ILocationService
+      private CommentService: app.Services.CommentService,
+      private $location: ng.ILocationService,
+      private homeService: app.Services.homeService,
+      private $routeParams: ng.route.IRouteParamsService
     ){
-      this.beer = HomeService.getBeer( $routeParams['id'] );
+      homeService.getBeer( $routeParams['id'] ).then((res)=>{
+        this.beer = res;
+        //this.comment = CommentService.getComment($routeParams["id"]);
+      });
     }
   }
-  angular.module('app').controller('BeerDetailsController', BeerDetailsController);
+  angular.module('app').controller('BeerDetailsController', beerDetailsController);
 }
