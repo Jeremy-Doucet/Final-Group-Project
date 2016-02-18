@@ -73,6 +73,12 @@ namespace app {
       controllerAs: "vm"
     })
 
+    .when("/byType/:type", {
+      templateUrl: "/templates/typeHome.html",
+      controller: app.Controllers.typeHomeController,
+      controllerAs: "vm"
+    })
+
     .when("/searchBeer",{
         templateUrl: "/templates/searchBeer.html",
         controller: app.Controllers.searchBeerController,

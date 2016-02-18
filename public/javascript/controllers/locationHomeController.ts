@@ -6,6 +6,8 @@ namespace app.Controllers {
 
     public beers;
 
+    public locHomeLocation = this.$routeParams["region"];
+
     public locHomeImg = "/css/img/" + this.$routeParams["region"] + ".png";
 
     constructor(
@@ -14,7 +16,13 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.beers = homeService.getAll();
+      this.beers = homeService.getAll().filter((beer) => {
+        if ("location" in beer === this.locHomeLocation) {
+          return true;
+        } else {
+          return false;
+        }
+      });
     };
   };
 
