@@ -53,11 +53,6 @@ var app;
             controller: app.Controllers.locationHomeController,
             controllerAs: "vm"
         })
-            .when("/addBeer/:id", {
-            templateUrl: "/templates/createBeer.html",
-            controller: app.Controllers.beerCreateController,
-            controllerAs: "vm"
-        })
             .when("/searchBeer", {
             templateUrl: "/templates/searchBeer.html",
             controller: app.Controllers.searchBeerController,
