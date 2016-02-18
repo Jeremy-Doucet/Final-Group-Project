@@ -22,10 +22,10 @@
   <div class = "homeContentView">
     <div class = "row postSnip" ng-repeat = "beer in vm.beersPop">
       <div class = "col-md-3">
-        <img class = "imgHomePop" ng-src = "{{beer.imgurl}}">
+        <a ng-href = "/details/{{beer._id}}"><img class = "imgHomePop" ng-src = "{{beer.imgurl}}"></a>
       </div>
       <div class = "col-md-9">
-        <h3>{{beer.name}}</h3>
+        <a ng-href = "/details/{{beer._id}}"><h3>{{beer.name}}</h3></a>
         <p class = "textHomePop">{{beer.review}}</p>
       </div>
     </div>

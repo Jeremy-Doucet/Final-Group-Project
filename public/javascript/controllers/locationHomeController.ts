@@ -9,12 +9,12 @@ namespace app.Controllers {
     public locHomeImg = "/css/img/" + this.$routeParams["region"] + ".png";
 
     constructor(
-      private locationService: app.Services.locationService,
+      private homeService: app.Services.homeService,
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.beers = locationService.loadLocHome($routeParams["region"]);
+      this.beers = homeService.getAll();
     };
   };
 

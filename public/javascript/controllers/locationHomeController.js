@@ -4,13 +4,13 @@ var app;
     var Controllers;
     (function (Controllers) {
         var locationHomeController = (function () {
-            function locationHomeController(locationService, $location, $routeParams, $window) {
-                this.locationService = locationService;
+            function locationHomeController(homeService, $location, $routeParams, $window) {
+                this.homeService = homeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.locHomeImg = "/css/img/" + this.$routeParams["region"] + ".png";
-                this.beers = locationService.loadLocHome($routeParams["region"]);
+                this.beers = homeService.getAll();
             }
             ;
             return locationHomeController;
