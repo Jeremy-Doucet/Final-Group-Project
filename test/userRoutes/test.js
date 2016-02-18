@@ -1,36 +1,11 @@
-
-
-
 'use strict';
 
 let should = require('should');
 let mongoose = require('mongoose');
 let request = require('supertest');
 
-let app = require('../server');
-let Comment = mongoose.model('Comments');
-let user = mongoose.model('user');
-
-describe('GET /Comment', () => {
-  it('Should return a status of 200', (done) => {
-    request(app)
-      .get('/Comment')
-      // checking the status code
-      .expect(200)
-      .end(done);
-  });
-  it('Should return an array with 1 comment in it', (done) => {
-    request(app)
-      .get('/Comment')
-      .expect(200)
-      .expect((res) => {
-        should.exist(res.body);
-        res.body.length.should.equal(1);
-      })
-      .end(done);
-  });
-});
-
+let app = require('../../server');
+let User = mongoose.model('User');
 
 ////////////////////////
 ///register: no newUser object sent
@@ -136,7 +111,7 @@ describe("/register", function() {
 ///register: save newUser
 ////////////////////////
 
-describe("#save()", function() {
+describe("/register", function() {
   it("should return 200, user object if newUser saved", function(done) {
     let newUser = {
       username: "ddd",
