@@ -58,8 +58,22 @@
         </div>
     </div>
 
-    <h4>Comments: <small></small></h4>
 
+  <h4>Comments: <small></small></h4>
+  <form ng-submit="vm.addComment()">
+    <textarea rows ="4" cols ="30" ng-model="vm.comment.message" ></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div ng-repeat="m in vm.beer.comments">
+
+
+    <h4> {{m.createdBy.username}}</h4>
+  <p> {{m.message}}</p>
+    <button type="button" ng-click="vm.deleteComment(m)">delete</button>
+<a ng-href="/update/{{m._id}}">edit</a>
+
+  </div>
 
     <br>
     <br>

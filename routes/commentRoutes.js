@@ -10,8 +10,16 @@ var auth = jwt({
     secret: process.env.JWT_SECRET,
     userProperty: 'payload'
 });
+router.get('/:id', function (req, res, next) {
+    Comment.findOne({ _id: req.params.id })
+        .exec(function (err, beer) {
+        res.send(beer);
+    });
+});
 router.post('/', auth, function (req, res, next) {
+    console.log(1);
     Beer.findOne({ _id: req.body.Beer }).exec(function (err, Beer) {
+        console.log(12);
         if (err)
             return next(err);
         if (!Beer)
@@ -37,17 +45,34 @@ router.post('/', function (req, res, next) {
         User.update({ _id: req['payload']._id }, { $push: { comments: c._id } }, function (err, result) {
             if (err)
                 return next(err);
-            c.populate('createdBy', 'email username', function (err, com) {
+            c.populate('createdBy', 'username', function (err, com) {
                 res.send(c);
             });
         });
     });
 });
-router.delete('/:id', auth, function (req, res, next) {
-    Comment.update({ _id: req.params.id }, { deleted: Date.now() }, function (err, result) {
+router.put("/:_id", function (req, res, next) {
+    Comment.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, function (err, result) {
         if (err)
             return next(err);
-        res.send({ message: 'Deleted the comment.' });
+        if (!result)
+            return next({ message: 'Could not find and update the comment.' });
+        res.send(result);
+    });
+});
+router.delete('/:id', auth, function (req, res, next) {
+    Comment.remove({ _id: req.params.id }, function (err, result) {
+        if (err)
+            return next(err);
+        User.update({ _id: req['payload']._id }, { $pull: { comments: req.params.id } }, function (err, result) {
+            if (err)
+                return next(err);
+            Beer.update({ comments: req.params.id }, { $pull: { comments: req.params.id } }, function (err, result) {
+                if (err)
+                    return next(err);
+                res.send({ message: 'Deleted the comment.' });
+            });
+        });
     });
 });
 module.exports = router;

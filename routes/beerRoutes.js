@@ -3,6 +3,7 @@ var express = require('express');
 var request = require("request");
 var jwt = require('express-jwt');
 var mongoose = require('mongoose');
+var Comment = mongoose.model('Comment');
 var router = express.Router();
 var Beer = mongoose.model('Beer');
 var BreweryDb = require("brewerydb-node");
@@ -24,8 +25,11 @@ router.get("/", function (req, res, next) {
 router.get('/details/:id', function (req, res, next) {
     Beer.findOne({ _id: req.params.id })
         .populate('createdBy', 'username')
+        .populate('comments')
         .exec(function (err, beer) {
-        res.send(beer);
+        Comment.populate(beer.comments, { path: "createdBy", select: "username" }, function (err, result) {
+            res.send(beer);
+        });
     });
 });
 router.get('/', function (req, res, next) {

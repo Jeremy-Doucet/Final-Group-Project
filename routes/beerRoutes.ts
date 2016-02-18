@@ -4,6 +4,7 @@ import express = require('express');
 let request = require("request");
 import jwt = require('express-jwt');
 let mongoose = require('mongoose');
+let Comment = mongoose.model('Comment');
 let router = express.Router();
 let Beer = mongoose.model('Beer');
 let BreweryDb = require("brewerydb-node");
@@ -13,6 +14,7 @@ let auth = jwt({
   userProperty: 'payload',
   secret: process.env.JWT_SECRET
 });
+
 
 router.get("/", (req,res,next) => {
     Beer.find({})
@@ -25,12 +27,21 @@ router.get("/", (req,res,next) => {
 
 
 //GET: INDIVIDUAL BEER DETAILS -- /api/v1/beer/details/:id
+
+//GET: /api/v1/beer/details/:id
+//
+//add .populate for comments
+//This is linking it
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
     .populate('createdBy', 'username')
-    // .populate('comments')
+    .populate('comments')
     .exec((err, beer) =>{
-      res.send(beer)
+      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+        res.send(beer);
+
+      })
+
   });
 });
 

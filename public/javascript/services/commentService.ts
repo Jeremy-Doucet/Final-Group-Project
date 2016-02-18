@@ -2,7 +2,7 @@
 
 namespace app.Services {
 
-  export class commentService{
+  export class CommentService{
 
     public UserCommentResource;
 
@@ -22,8 +22,8 @@ namespace app.Services {
       return this.UserCommentResource.delete({id: userComment._id}).$promise;
     };
 
-    public editComment(userComment) {
-      return this.UserCommentResource.update({id: userComment._id}).$promise;
+    public updateComment(userComment) {
+      return this.UserCommentResource.update({id: userComment._id}, userComment).$promise;
     };
 
     constructor(
@@ -36,5 +36,5 @@ namespace app.Services {
     };
   };
 
-  angular.module('app').service('commentService', commentService);
+  angular.module('app').service('CommentService', CommentService);
 }

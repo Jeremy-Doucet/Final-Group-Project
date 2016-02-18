@@ -12,11 +12,6 @@ namespace app {
       controller: app.Controllers.homeController,
       controllerAs: 'vm'
     })
-    .when('/Comments', {
-      templateUrl:'/templates/comments.html',
-      controller: app.Controllers.commentController,
-      controllerAs: 'vm'
-    })
     .when('/addBeer', {
       templateUrl: '/templates/createBeer.html',
       controller: app.Controllers.beerCreateController,
@@ -72,6 +67,11 @@ namespace app {
         controller: app.Controllers.breweryDetailsController,
         controllerAs: "vm"
     })
+    .when('/update/:id', {
+        templateUrl: '/templates/commentEdit.html',
+        controller: app.Controllers.updateCommentController,
+        controllerAs: 'vm'
+      })
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('HTTPFactory');
