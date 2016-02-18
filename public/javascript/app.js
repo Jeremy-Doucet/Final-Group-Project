@@ -18,6 +18,11 @@ var app;
             controller: app.Controllers.beerCreateController,
             controllerAs: 'vm'
         })
+            .when('/addBeer/:id', {
+            templateUrl: '/templates/createBeer.html',
+            controller: app.Controllers.beerCreateController,
+            controllerAs: 'vm'
+        })
             .when('/beerPage', {
             templateUrl: '/templates/beerPage.html',
             controller: app.Controllers.beerPageController,

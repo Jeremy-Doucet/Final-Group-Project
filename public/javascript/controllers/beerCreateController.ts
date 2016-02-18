@@ -4,7 +4,7 @@ namespace app.Controllers {
     export class beerCreateController {
         public beer:any = {name:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}};
         public mybeer;
-        public brew;
+        public brew:any;
         public hide = false;
 
         public createBeer() {

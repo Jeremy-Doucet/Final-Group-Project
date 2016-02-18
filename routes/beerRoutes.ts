@@ -15,16 +15,15 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
-router.get('/details/:id', (req, res, next) =>{
+//GET: beer details
+router.get('/details/:id', (req, res, next) => {
   Beer.findOne({ _id: req.params.id })
     .populate('createdBy', 'username')
     .populate('comments')
-    .exec((err, beer) =>{
-      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+    .exec((err, beer) => {
+      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result) => {
         res.send(beer);
-
-      })
-
+      });
   });
 });
 
@@ -33,9 +32,9 @@ router.post('/addBeer', auth, (req, res, next) => {
     console.log(req.body)
   let newBeer = new Beer(req.body);
   newBeer.createdBy = req['payload']._id;
-  newBeer.save((err, beer) =>{
+  newBeer.save((err, beer) => {
     if(err) return next(err);
-    User.update({ _id: req['payload']._id}, { $push: { 'beers': beer._id}}, (err, results) =>{
+    User.update({ _id: req['payload']._id}, { $push: { 'beers': beer._id}}, (err, results) => {
       if (err) return next(err);
       res.send(beer);
     });
@@ -48,29 +47,30 @@ router.put('/details/:_id', (req, res, next) => {
     if (err) return next(err);
     if (!result) return next({ message: 'Could not find and update the beer.' });
     res.send(result);
-  })
-})
+  });
+});
 
 //DELETE: api/v1/beer?_id={{beer_id}}
-router.delete('/details/:_id',(req,res,next)=> {
+router.delete('/details/:_id', (req,res,next) => {
   if(!req.query._id) return next({ status: 404, message: 'Please include an ID' });
-  Beer.remove({_id:req.query._id},(err,result)=> {
+  Beer.remove({_id:req.query._id},(err,result) => {
     res.send({message: "Successfully deleted beer"})
-  })
-})
+  });
+});
 
 //GET: BreweryDB get call
 router.get("/breweryDetails/:id", (req,res,next) => {
-    console.log()
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
-        res.send(response.body)
-    })
+  console.log()
+  request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data) => {
+      res.send(response.body);
+  });
 });
 
 //GET: BreweryDB get call
 router.get("/searchBeer", (req,res,next) => {
-    brewdb.search.beers({q:req.query.name}, (err, data)=> {
-        res.send(data);
-    });
+  brewdb.search.beers({q:req.query.name}, (err, data) => {
+    res.send(data);
+  });
 });
+
 export = router;

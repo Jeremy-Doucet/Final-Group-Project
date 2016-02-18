@@ -77,6 +77,7 @@ app.use("/node_modules", express.static(__dirname + "/node_modules"));
 let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
+let locationRoutes = require("./routes/locationRoutes");
 let userRoutes = require("./routes/userRoutes");
 
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
@@ -85,6 +86,7 @@ let userRoutes = require("./routes/userRoutes");
 app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
+app.use("/locshell", locationRoutes);
 app.use("/usershell", userRoutes);
 
 ////////////////////////
