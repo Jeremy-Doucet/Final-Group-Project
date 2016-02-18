@@ -4,6 +4,7 @@ import express = require('express');
 let request = require("request");
 import jwt = require('express-jwt');
 let mongoose = require('mongoose');
+let Comment = mongoose.model('Comment');
 let router = express.Router();
 let Beer = mongoose.model('Beer');
 let BreweryDb = require("brewerydb-node");
@@ -17,9 +18,13 @@ let auth = jwt({
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
     .populate('createdBy', 'username')
-    // .populate('comments')
+    .populate('comments')
     .exec((err, beer) =>{
-      res.send(beer)
+      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+        res.send(beer);
+
+      })
+
   });
 });
 

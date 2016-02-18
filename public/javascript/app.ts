@@ -15,7 +15,7 @@ namespace app {
 
     .when('/comments', {
       templateUrl:'/templates/comments.html',
-      controller: app.Controllers.commentController,
+      controller: app.Controllers.updateCommentController,
       controllerAs: 'vm'
     })
 
@@ -84,6 +84,12 @@ namespace app {
         controller: app.Controllers.breweryDetailsController,
         controllerAs: "vm"
     })
+
+    .when('/update/:id', {
+        templateUrl: '/templates/commentEdit.html',
+        controller: app.Controllers.updateCommentController,
+        controllerAs: 'vm'
+      })
 
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);

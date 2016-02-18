@@ -15,7 +15,6 @@ namespace app.Services {
         return this.brewdbResource.get({ id:brew}).$promise;
     }
 
-
     public getMyBeer(mybeer)   {
     var q = this.$q.defer();
     this.$http.get("/api/v1/brewdb/details/" + mybeer).then(function(res){
@@ -34,9 +33,6 @@ namespace app.Services {
       return this.BeerResource.update({ id: beer._id }, beer).$promise;
     }
 
-    public getBrew(brew) {
-      return this.BeerResource.get({ id:brew});
-    };
 
 
     public getAll() {

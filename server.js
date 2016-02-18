@@ -26,6 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use(express.static('./public'));
+app.use('/scripts', express.static(__dirname + 'bower_components'));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
 var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require("./routes/brewRoutes");
 var commentRoutes = require('./routes/commentRoutes');
@@ -48,6 +51,7 @@ app.get('/*', function (req, res, next) {
     }
 });
 app.use(function (req, res, next) {
+    console.log(req.path);
     var err = new Error('Not Found');
     err['status'] = 404;
     next(err);
