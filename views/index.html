@@ -20,31 +20,16 @@
         </div>
         <div class = "col-md-5">
           <ul class = "nav navbar-nav beerHomeNav">
-            <li><a ng-href="/beerPage">Check out beerPage |</a></li>
-            <li><a ng-href="/addBeer">Add a Beer |</a></li>
-            <li><a ng-href="/register">Register |</a></li>
-            <li><a ng-href="/login">Login |</a></li>
+            <li><a ng-href="/beerPage">Check out beerPage</a></li>
+            <li><a ng-href="/addBeer">Add a Beer</a></li>
+            <li><a ng-href="/register">Register</a></li>
+            <li><a ng-href="/login">Login</a></li>
             <li><button ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</button><br></li>
             <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
           </ul>
         </div>
       </div>
-<<<<<<< HEAD
-      <div class = "col-md-5">
-        <ul class = "nav navbar-nav beerHomeNav">
-          <li><a ng-href="/beerPage">Check out beerPage</a></li>
-          <li><a ng-href="/addBeer">Add a Beer</a></li>
-          <li><a ng-href="/register">Register</a></li>
-          <li><a ng-href="/login">Login</a></li>
-          <li><a role = "button" ng-click = "vm.logout()">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-=======
     </nav>
->>>>>>> development
 
   </div>
 
@@ -63,18 +48,13 @@
   <script src="/scripts/angular-animate/angular-animate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
 
-
   <!-- General -->
 
   <script src="/javascript/app.js"></script>
 
-
-
-
   <!-- Controllers -->
 
   <script src="/javascript/controllers/beerCreateController.js"></script>
-
   <script src = "/javascript/controllers/beerDeleteController.js"></script>
   <script src="/javascript/controllers/searchBeerController.js"></script>
   <script src="/javascript/controllers/beerDetailsController.js"></script>
@@ -86,6 +66,7 @@
   <script src="/javascript/controllers/userController.js"></script>
   <script src="/javascript/controllers/userHomeController.js"></script>
   <script src="/javascript/controllers/beerUpdateController.js"></script>
+  <script src="/javascript/controllers/updateCommentController.js"></script>
 
   <!-- Services -->
 

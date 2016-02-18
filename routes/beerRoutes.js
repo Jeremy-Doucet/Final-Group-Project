@@ -3,6 +3,7 @@ var express = require('express');
 var request = require("request");
 var jwt = require('express-jwt');
 var mongoose = require('mongoose');
+var Comment = mongoose.model('Comment');
 var router = express.Router();
 var Beer = mongoose.model('Beer');
 var BreweryDb = require("brewerydb-node");
@@ -12,41 +13,30 @@ var auth = jwt({
     userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
+router.get("/", function (req, res, next) {
+    Beer.find({})
+        .populate("createdBy", "username")
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
 router.get('/details/:id', function (req, res, next) {
     Beer.findOne({ _id: req.params.id })
         .populate('createdBy', 'username')
+        .populate('comments')
         .exec(function (err, beer) {
-        res.send(beer);
+        Comment.populate(beer.comments, { path: "createdBy", select: "username" }, function (err, result) {
+            res.send(beer);
+        });
     });
 });
-router.get('/', function (req, res, next) {
-    Beer.find({})
-        .populate('createdBy', 'username')
-        .exec(function (err, beers) {
-        if (err)
-            return next(err);
-        res.json(beers);
+router.get("/beer", function (req, res, next) {
+    brewdb.search.beers({ q: req.query.name }, function (err, data) {
+        res.send(data);
     });
 });
-<<<<<<< HEAD
-=======
-router.get('/userHomeBeers', auth, function (req, res, next) {
-    Beer.find({ createdBy: req['payload']._id })
-        .exec(function (err, beers) {
-        if (err)
-            return next(err);
-        res.json(beers);
-    });
-});
-router.get('/userBeers/:id', auth, function (req, res, next) {
-    Beer.find({ createdBy: req.params.id })
-        .exec(function (err, beers) {
-        if (err)
-            return next(err);
-        res.json(beers);
-    });
-});
->>>>>>> development
 router.post('/', auth, function (req, res, next) {
     console.log(req.body);
     var newBeer = new Beer(req.body);

@@ -36,10 +36,6 @@ var app;
             homeService.prototype.updateBeer = function (beer) {
                 return this.BeerResource.update({ id: beer._id }, beer).$promise;
             };
-            homeService.prototype.getBrew = function (brew) {
-                return this.BeerResource.get({ id: brew });
-            };
-            ;
             homeService.prototype.getAll = function () {
                 return this.beerResource.query();
             };

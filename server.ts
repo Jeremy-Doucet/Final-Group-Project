@@ -21,6 +21,8 @@ const app = express();
 ///Models
 ////////////////////////
 
+
+
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
@@ -59,6 +61,15 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 ////////////////////////
+///Express static
+////////////////////////git
+
+
+app.use(express.static('./public'));
+app.use('/scripts', express.static(__dirname + 'bower_components'));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
+
+////////////////////////
 ///Require routes
 ////////////////////////
 
@@ -67,6 +78,9 @@ let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
+
+// let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
+// app.use('/')
 
 app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
@@ -99,6 +113,7 @@ app.get('/*', function(req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log(req.path);
   var err = new Error('Not Found');
   err['status'] = 404;
   next(err);
