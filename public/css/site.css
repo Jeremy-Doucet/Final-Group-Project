@@ -1,9 +1,43 @@
+#sBeer{
+    margin-top: 75px;
+    margin-left: 1300px;
+    width: 316px;
+    border: .3px solid lightgrey;
+    border-left-style: dotted;;
+    border-top-style: dotted;
+    box-shadow:19px 22px 10px #888888;
+}
+#sTitle{
+    font-size: 30px;
+}
+.bSearch {
+    background-color: lightsteelblue;
+    color:black;
+    font-weight: bold;
+    width: 298px;
+}
+.bList{
+    margin-left: 100px;
+    margin-top: -134px;
+}
+.searchPage{
+
+    background-image: url("http://i.imgur.com/s4ywviP.jpg");
+    height: 4000px;
+    width: 1900px;
+
+}
+#sInput{
+    width: 300px;
+    height: 45px;
+}
 html {
   scroll-behavior: smooth;
 }
 
 .bigTitle {
   font-size: 4em;
+  color: black;
 }
 .customHSpacer1 {
   width: 12.5%;
@@ -15,6 +49,11 @@ html {
 
 .beerHomeNav {
   height: 10vh;
+}
+.beerHomeNav li a{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .lgImg {
@@ -32,7 +71,7 @@ html {
 
 .pSubTBox {
   border: 3px solid #000;
-  margin: 10px;
+
 }
 
 .pSubTitle {
