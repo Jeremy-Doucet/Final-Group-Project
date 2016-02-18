@@ -25,8 +25,13 @@
         <a ng-href = "/details/{{beer._id}}"><img class = "imgHomePop" ng-src = "{{beer.imgurl}}"></a>
       </div>
       <div class = "col-md-9">
-        <a ng-href = "/details/{{beer._id}}"><h3>{{beer.name}}</h3></a>
-        <p class = "textHomePop">{{beer.review}}</p>
+        <div class = "row"><a ng-href = "/details/{{beer._id}}"><h3>{{beer.name}}</h3></a></div>
+        <div class = "row"><p class = "textHomePop">{{beer.review}}</p></div>
+        <div class = "row">
+          Posted by: <a href="#">{{beer.createdBy.username}}</a> <b>|</b>
+          Posted on: {{beer.created | date: fullDate }} <b>|</b>
+          <a href="#">Save beer</a>
+        </div>
       </div>
     </div>
   </div>

@@ -9,9 +9,6 @@
 
 
   <div class="row">
-    <div class="col-sm-2">
-      <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
-    </div>
 
 
     <div class="row">
@@ -20,7 +17,7 @@
         </div>
         <div class="col-sm-6">
             <h4> Review<small> {{vm.beer.review }} </small></h4><br>
-            <h4> Location<small> {{vm.beer.location }} </small></h4><br>
+            <h4> Location<small> <a ng-href = "/byLocation/{{vm.beer.location}}">{{vm.beer.location }}</a> </small></h4><br>
             <h4> Type<small> {{vm.beer.type }} </small></h4><br>
 
             <div class="text-right">
