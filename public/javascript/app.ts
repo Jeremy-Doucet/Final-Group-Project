@@ -8,7 +8,7 @@ namespace app {
     $httpProvider: ng.IHttpProvider) => {
 
     $routeProvider.when('/', {
-      templateUrl: '/templates/Home.html',
+      templateUrl: '/templates/home.html',
       controller: app.Controllers.homeController,
       controllerAs: 'vm'
     })
@@ -64,6 +64,12 @@ namespace app {
     .when("/myprofile", {
       templateUrl: "/templates/userHome.html",
       controller: app.Controllers.userHomeController,
+      controllerAs: "vm"
+    })
+
+    .when("/popular", {
+      templateUrl: "/templates/popularHome.html",
+      controller: app.Controllers.homeController,
       controllerAs: "vm"
     })
 

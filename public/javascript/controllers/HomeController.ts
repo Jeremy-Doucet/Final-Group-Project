@@ -3,7 +3,9 @@
 namespace app.Controllers {
 
   export class homeController {
+
     public status;
+
     public params;
 
     public beersPop;

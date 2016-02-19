@@ -18,10 +18,10 @@
         <div class="col-sm-6">
             <h4> Review<small> {{vm.beer.review }} </small></h4><br>
             <h4> Location<small> <a ng-href = "/byLocation/{{vm.beer.location}}">{{vm.beer.location }}</a> </small></h4><br>
-            <h4> Type<small> {{vm.beer.type }} </small></h4><br>
+            <h4> Type<small> <a ng-href = "/byType/{{vm.beer.type }}">{{vm.beer.type }}</a> </small></h4><br>
 
             <div class="text-right">
-                Posted by: <a href="#">{{vm.beer.createdBy.username}}</a> <b>|</b>
+                Posted by: <a ng-href="/userprofile/{{vm.beer.createdBy._id}}">{{vm.beer.createdBy.username}}</a> <b>|</b>
                 Posted on: {{vm.beer.created | date: fullDate }} <b>|</b>
                 <a href="#">Save beer</a>
             </div>

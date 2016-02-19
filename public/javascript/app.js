@@ -4,7 +4,7 @@ var app;
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: '/templates/Home.html',
+            templateUrl: '/templates/home.html',
             controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
@@ -51,6 +51,11 @@ var app;
             .when("/myprofile", {
             templateUrl: "/templates/userHome.html",
             controller: app.Controllers.userHomeController,
+            controllerAs: "vm"
+        })
+            .when("/popular", {
+            templateUrl: "/templates/popularHome.html",
+            controller: app.Controllers.homeController,
             controllerAs: "vm"
         })
             .when("/byLocation/:region", {
