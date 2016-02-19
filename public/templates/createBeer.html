@@ -4,8 +4,10 @@
     <hr>
     <form ng-submit="vm.createBeer()">
         <h3>Beer Info</h3>
-        <label>Name of Beer: </label>
-        <input disabled ng-model="vm.beer.name"/>
+        <div ng-hide="vm.mybeer.name == true">
+          <label>Name of Beer: </label>
+          <input disabled ng-model="vm.beer.name"/>
+        </div>
         <label>Type of Beer: </label>
         <select ng-model="vm.beer.type" name="beertype">
             <option value="Pale">Pale</option>
@@ -64,11 +66,6 @@
         <button type="submit">Submit</button>
     </form>
 </div>
-</div>
-</div>
-
-
-
 
 <div class="">
     <div class="container-fluid">

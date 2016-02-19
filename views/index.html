@@ -7,6 +7,12 @@
   <base href="/" />
   <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
   <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
+
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body ng-controller = "homeController as gc">
@@ -15,17 +21,20 @@
 
     <nav class = "navbar beerHomeNav">
       <div class = "container-fluid">
-        <div class = "col-md-3">
-          <a class = "navbar-brand bigTitle" ng-href = "/">A Big Title</a>
+        <div class = "col-md-2">
+          <a class = "navbar-brand intro-text" ng-href = "/">A Big Title</a>
         </div>
-        <div class = "col-md-5">
+        <div class = "col-md-8">
           <ul class = "nav navbar-nav beerHomeNav">
-            <li><a ng-href="/beerPage">Beer Page</a></li>
-            <li><a ng-href="/searchBeer">Search Beer</a></li>
-            <li><a ng-href="/addBeer">Add a Beer</a></li>
-            <li><a ng-href="/register">Register</a></li>
-            <li><a ng-href="/login">Login</a></li>
-            <li><button ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</button><br></li>
+            <li><a ng-href="/beerPage">Check out beerPage </a></li>
+            <li><a ng-href="/searchBeer">Search </a></li>
+            <li><a ng-href="/register">Register </a></li>
+            <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
+            <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <ul class="nav navbar-nav beerHomeNav">
             <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
           </ul>
         </div>
@@ -75,6 +84,9 @@
   <script src="/javascript/services/HTTPFactory.js"></script>
   <script src="/javascript/services/userService.js"></script>
   <script src="/javascript/services/categoryService.js"></script>
+
+  <!-- Directives -->
+  <script src="/javascript/directives/modal.js"></script>
 
 </body>
 

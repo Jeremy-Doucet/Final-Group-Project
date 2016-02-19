@@ -4,8 +4,12 @@ namespace app.Controllers {
 
     public beer;
     public comment;
-    public dawg;
     public comments = [];
+    public showModal = false;
+
+    public toggleModal(){
+      this.showModal = !this.showModal;
+    }
 
     public deleteBeer(id){
       this.homeService.deleteBeer(this.beer._id).then((res) =>{
@@ -13,34 +17,29 @@ namespace app.Controllers {
       })
     }
 
+    public addComment() {
+      let comment = {
+        message: this.comment.message,
+        Beer: this.$routeParams['id']
+      };
+      this.commentService.saveComment(comment).then((res) => {
+        this.beer.comments.push(res);
+      });
+    }
 
-
-        public addComment() {
-        let comment = {
-          message: this.comment.message,
-          Beer: this.$routeParams['id']
-        };
-        this.CommentService.saveComment(comment).then((res) => {
-          this.beer.comments.push(res);
-
-        });
-
-      }
-
-      public deleteComment(comment) {
-        this.CommentService.deleteComment(comment).then((res) => {
-          this.beer.comments.splice(this.beer.comments.indexOf(comment), 1);
-        });
-      }
+    public deleteComment(comment) {
+      this.commentService.deleteComment(comment).then((res) => {
+        this.beer.comments.splice(this.beer.comments.indexOf(comment), 1);
+      });
+    }
     constructor(
-      private CommentService: app.Services.CommentService,
+      private commentService: app.Services.commentService,
       private $location: ng.ILocationService,
       private homeService: app.Services.homeService,
       private $routeParams: ng.route.IRouteParamsService
     ){
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
-        //this.comment = CommentService.getComment($routeParams["id"]);
       });
     }
   }
