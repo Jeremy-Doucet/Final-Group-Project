@@ -4,15 +4,15 @@ var app;
     var Controllers;
     (function (Controllers) {
         var updateCommentController = (function () {
-            function updateCommentController(commentService, $location, $routeParams) {
-                this.commentService = commentService;
+            function updateCommentController(CommentService, $location, $routeParams) {
+                this.CommentService = CommentService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.comment = commentService.getComment($routeParams["id"]);
+                this.comment = CommentService.getComment($routeParams["id"]);
             }
             updateCommentController.prototype.updateComment = function (comment) {
                 var _this = this;
-                this.commentService.updateComment(this.comment).then(function (res) {
+                this.CommentService.updateComment(this.comment).then(function (res) {
                     _this.$location.path("/");
                 });
             };

@@ -3,39 +3,39 @@ var app;
 (function (app) {
     var Services;
     (function (Services) {
-        var commentService = (function () {
-            function commentService($resource, $window) {
+        var CommentService = (function () {
+            function CommentService($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
                 this.UserCommentResource = $resource('/comments/:id', null, {
                     'update': { method: 'PUT' }
                 });
             }
-            commentService.prototype.getAllComments = function () {
+            CommentService.prototype.getAllComments = function () {
                 return this.UserCommentResource.query();
             };
             ;
-            commentService.prototype.getComment = function (comId) {
+            CommentService.prototype.getComment = function (comId) {
                 return this.UserCommentResource.get({ id: comId });
             };
             ;
-            commentService.prototype.saveComment = function (userComment) {
+            CommentService.prototype.saveComment = function (userComment) {
                 return this.UserCommentResource.save(userComment).$promise;
             };
             ;
-            commentService.prototype.deleteComment = function (userComment) {
+            CommentService.prototype.deleteComment = function (userComment) {
                 return this.UserCommentResource.delete({ id: userComment._id }).$promise;
             };
             ;
-            commentService.prototype.updateComment = function (userComment) {
+            CommentService.prototype.updateComment = function (userComment) {
                 return this.UserCommentResource.update({ id: userComment._id }, userComment).$promise;
             };
             ;
             ;
-            return commentService;
+            return CommentService;
         }());
-        Services.commentService = commentService;
+        Services.CommentService = CommentService;
         ;
-        angular.module('app').service('commentService', commentService);
+        angular.module('app').service('CommentService', CommentService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));

@@ -4,9 +4,7 @@ var BeerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     type: { type: String, required: true },
     location: { type: String, required: true },
-    beerdesc: { type: String },
-    imgurl: { type: String },
-    imgbeer: { type: String },
+    imgurl: { type: String, required: true },
     review: { type: String, required: true },
     brewerydb: {
         breweryName: { type: String },
