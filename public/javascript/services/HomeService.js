@@ -14,6 +14,7 @@ var app;
                 this.brewdbResource = $resource("/api/v1/brewdb/:id", null, {});
                 this.beerUserHomeResource = $resource('/api/v1/beer/userHomeBeers');
                 this.beerUserDetailsResource = $resource('/api/v1/beer/userDetailsBeers/:id');
+                this.beerLocalResource = $resource("/api/v1/beer/byLocation/:region");
             }
             homeService.prototype.searchBeer = function (beer) {
                 return this.brewdbResource.query({ id: "beer", name: beer.name }).$promise;
@@ -59,6 +60,11 @@ var app;
             homeService.prototype.getUserDetailsBeers = function (userId) {
                 return this.beerUserDetailsResource.query();
             };
+            ;
+            homeService.prototype.getLocalBeers = function (region) {
+                return this.beerLocalResource.get({ location: region });
+            };
+            ;
             ;
             return homeService;
         }());

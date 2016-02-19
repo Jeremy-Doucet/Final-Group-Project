@@ -10,13 +10,13 @@
 
 <div id = "homePop" class = "container" style = "text-align: center">
   <div class = "homeContentView">
-    <div class = "row postSnip" ng-repeat = "beer in vm.beers">
+    <div class = "row postSnip" ng-repeat = "i in vm.locBeers">
       <div class = "col-md-3">
-        <img class = "imgHomePop" ng-src = "{{beer.imgurl}}">
+        <img class = "imgHomePop" ng-src = "{{i.imgurl}}">
       </div>
       <div class = "col-md-9">
-        <h3>{{beer.name}}</h3>
-        <p class = "textHomePop">{{beer.review}}</p>
+        <h3>{{i.name}}</h3>
+        <p class = "textHomePop">{{i.review}}</p>
       </div>
     </div>
   </div>

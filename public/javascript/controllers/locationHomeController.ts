@@ -16,13 +16,7 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.beers = homeService.getAll().filter((beer) => {
-        if ("location" in beer === this.locHomeLocation) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+      this.beers = homeService.getLocalBeers(this.locHomeLocation);
     };
   };
 

@@ -8,12 +8,6 @@ namespace app.Controllers {
 
     public params;
 
-    public beersPop;
-
-    public beersLoc;
-
-    public beersType;
-
     public logout() {
       this.userService.removeToken();
       this.userService.removeUser();
@@ -27,8 +21,6 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-
-      this.beersPop = this.homeService.getAll();
 
       this.params = $location.search();
       if (this.params.code) {

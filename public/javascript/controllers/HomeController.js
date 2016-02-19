@@ -10,7 +10,6 @@ var app;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.beersPop = this.homeService.getAll();
                 this.params = $location.search();
                 if (this.params.code) {
                     userService.setToken(this.params.code);
