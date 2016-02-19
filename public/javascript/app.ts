@@ -43,7 +43,7 @@ namespace app {
       controllerAs: 'vm'
     })
 
-    .when('/update/:id', {
+    .when('/updateBeer/:id', {
       templateUrl: '/templates/beerUpdate.html',
       controller: app.Controllers.beerUpdateController,
       controllerAs: 'vm'
@@ -103,7 +103,7 @@ namespace app {
         controllerAs: "vm"
     })
 
-    .when('/update/:id', {
+    .when('/updateComment/:id', {
         templateUrl: '/templates/commentEdit.html',
         controller: app.Controllers.updateCommentController,
         controllerAs: 'vm'
