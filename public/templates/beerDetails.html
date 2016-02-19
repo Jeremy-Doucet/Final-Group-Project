@@ -2,7 +2,7 @@
 
   <div class="row text-center">
       <h2>{{vm.beer.name}}</h2>
-      <a ng-hide="gc.status.username !== vm.beer.createdBy.username" href="/update/{{vm.beer._id}}">update</a>
+      <a ng-hide="gc.status.username !== vm.beer.createdBy.username" href="/updateBeer/{{vm.beer._id}}">update</a>
       <button ng-hide="gc.status.username !== vm.beer.createdBy.username" type="button" ng-click="vm.deleteBeer()">Delete</button>
       <hr>
   </div>
@@ -69,7 +69,7 @@
     <h4> {{m.createdBy.username}}</h4>
   <p> {{m.message}}</p>
     <button type="button" ng-click="vm.deleteComment(m)">delete</button>
-<a ng-href="/update/{{m._id}}">edit</a>
+<a ng-href="/updateComment/{{m._id}}">edit</a>
 
   </div>
 

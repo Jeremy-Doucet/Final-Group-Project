@@ -6,7 +6,6 @@ namespace app.Services {
     public brewdbResource;
     public beerUserHomeResource;
     public beerUserDetailsResource;
-    public BeerResource;
 
     public searchBeer(beer) {
         return this.brewdbResource.query({id:"beer", name: beer.name }).$promise;
@@ -26,11 +25,11 @@ namespace app.Services {
     }
 
     public deleteBeer(beerId){
-      return this.BeerResource.delete({ _id: beerId }).$promise;
+      return this.beerResource.delete({ _id: beerId }).$promise;
     }
 
     public updateBeer(beer){
-      return this.BeerResource.update({ id: beer._id }, beer).$promise;
+      return this.beerResource.update({ id: beer._id }, beer).$promise;
     }
 
 

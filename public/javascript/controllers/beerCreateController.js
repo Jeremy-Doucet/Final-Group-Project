@@ -9,7 +9,7 @@ var app;
                 this.homeService = homeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.beer = { name: "", brewerydb: { abv: "", breweryName: "", beerType: "", labelImg: "", breweryUrl: "", breweryDesc: "", organic: "" } };
+                this.beer = { name: "", brewerydb: { abv: "", breweryName: "", beerType: "", labelImg: "", breweryUrl: "", breweryDesc: "", organic: "" }, ranking: 0 };
                 this.hide = false;
                 homeService.getBrew($routeParams["id"]).then(function (res) {
                     _this.brew = res.data;
