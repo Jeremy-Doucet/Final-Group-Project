@@ -27,8 +27,11 @@ var app;
             };
             ;
             beerDetailsController.prototype.rateBeer = function (rating) {
-                this.beer.ranking = this.beer.ranking + rating;
-                this.homeService.updateBeer(this.beer);
+                var _this = this;
+                this.homeService.getBeer(this.beer._id).then(function (res) {
+                    _this.beer.ranking = _this.beer.ranking + rating;
+                    _this.homeService.updateBeer(_this.beer);
+                });
             };
             ;
             beerDetailsController.prototype.addComment = function () {

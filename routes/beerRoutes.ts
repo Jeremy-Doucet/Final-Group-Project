@@ -81,7 +81,7 @@ router.post('/', auth, (req, res, next) => {
 });
 
 //PUT: api/v1/beer/:id
-router.put('/details/:_id', (req, res, next) => {
+router.put('/:_id', (req, res, next) => {
   Beer.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, (err, result) => {
     if (err) return next(err);
     if (!result) return next({ message: 'Could not find and update the beer.' });
