@@ -32,8 +32,6 @@ namespace app.Services {
       return this.beerResource.update({ id: beer._id }, beer).$promise;
     }
 
-
-
     public getAll() {
       return this.beerResource.query();
     };
