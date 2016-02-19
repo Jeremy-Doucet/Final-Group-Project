@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'test') {
     mongoose.connect(process.env.MONGO_TEST);
 }
 else {
-    mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect(process.env.MONGO_TEST);
 }
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);

@@ -1,76 +1,123 @@
-<div  class="container">
 
-    <h1>Add a Beer Post for: <span style="font-size:50px;color:red">{{vm.mybeer.name}}</span></h1>
+<!-- Heading Row -->
+<div class="container">
+
+
+<div class="row">
+    <div class="col-md-8" style="margin-top:30px">
+        <img class="img-responsive img-rounded" ng-src="{{vm.beer.imgbeer}}" alt="">
+        <h1>{{vm.mybeer.name}}</h1>
+        <p>{{vm.beer.beerdesc}}</p><br>
+        <h5>Type of Beer: {{vm.beer.brewerydb.beerType}}</h5><br>
+        <h5>ABV: {{vm.beer.brewerydb.abv}}</h5><br>
+        <a class="btn btn-primary btn-lg" href="#">Brewery Info!</a>
+        <a class="btn btn-primary btn-lg" ng-hide="dirForm.toggle" ng-click="dirForm.toggle = true" >Add Beer Review</a>
+        <a class="btn btn-primary btn-lg" ng-hide="!dirForm.toggle" ng-click="dirForm.toggle = false" >Hide Form</a>
     <hr>
-    <form ng-submit="vm.createBeer()">
-        <h3>Beer Info</h3>
-        <label>Name of Beer: </label>
-        <input disabled ng-model="vm.beer.name"/>
-        <label>Type of Beer: </label>
-        <select ng-model="vm.beer.type" name="beertype">
-            <option value="Pale">Pale</option>
-            <option value="Mild">Mild</option>
-            <option value="Wheat">Wheat</option>
-            <option value="Lambic">Lambic</option>
-            <option value="Lager">Lager</option>
-            <option value="Stout">Stout</option>
-        </select><br>
-        <label>Location: </label>
-        <input ng-model="vm.beer.location"><br>
-        <label>Image URL: </label>
-        <input ng-model="vm.beer.imgurl"><br><br>
-        <label>Review of Beer: </label><br>
-        <textarea ng-model="vm.beer.review" rows="8" cols="40"></textarea>
-        <hr>
-        <label>BreweryName</label>
-        <input disabled ng-model="vm.beer.brewerydb.breweryName">
-        <label>ABV</label>
-        <input disabled ng-model="vm.beer.brewerydb.abv">
-        <label>Brewery Description</label>
-        <input disabled ng-model="vm.beer.brewerydb.beerType">
-        <label>Label Image</label>
-        <img  src ="{{vm.beer.brewerydb.labelImg}}"></img>
-        <a href="{{vm.beer.brewerydb.breweryUrl}}">{{vm.beer.brewerydb.breweryName}} Brewerey Website</a><br>
-        <label>Brewery Info</label>
-        <p ng-model="vm.beer.brewerydb.breweryDesc">{{vm.beer.brewerydb.breweryDesc}}</p>
-        <label>Organic</label>
-        <p ng-model="vm.beer.brewerydb.organic">{{vm.beer.brewerydb.organic}}</p>
-        <h3>Beer Ratings: </h3>
-        <label>Hoppiness: </label>
-        <select ng-model="vm.beer.beerscores.hoppiness" name="hoppy">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <label>Maltiness: </label>
-        <select ng-model="vm.beer.beerscores.maltiness" name="malty">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <label>Body: </label>
-        <select ng-model="vm.beer.beerscores.body" name="body">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br>
-        <hr>
-        <button type="submit">Submit</button>
-    </form>
+
+    </div>
+
+
+    <!-- /.col-md-8 -->
+    <div ng-class="{'hidden': !dirForm.toggle}" class="col-md-4">
+        <div style="margin-top:30px">
+
+            <h1>Post your review of: <span style="font-size:50px;color:blue">{{vm.mybeer.name}}</span></h1>
+            <hr>
+            <form class="form-group"ng-submit="vm.createBeer()">
+
+                <label>Type of Beer: </label>
+                <select class="form-control" ng-model="vm.beer.type" name="beertype">
+                    <option value="Pale">Pale</option>
+                    <option value="Mild">Mild</option>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Lambic">Lambic</option>
+                    <option value="Lager">Lager</option>
+                    <option value="Stout">Stout</option>
+                </select><br>
+                <label>Location: </label>
+                <input class="form-control" ng-model="vm.beer.location"><br>
+                <label>Image URL: </label>
+                <input class="form-control" ng-model="vm.beer.imgurl"><br><br>
+                <label>Review of Beer: </label><br>
+                <textarea  class="form-control" ng-model="vm.beer.review" rows="8" cols="40"></textarea>
+                <input ng-hide="true" ng-model="vm.beer.beerdesc">
+                <img ng-hide="true" ng-model="vm.beer.imgbeer"></img>
+
+
+                <hr>
+
+
+                <!-- Start Beer Rating -->
+                <div>
+                    <h3>Beer Ratings: </h3>
+                    <label>Hoppiness: </label>
+                    <select ng-model="vm.beer.beerscores.hoppiness" name="hoppy">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label>Maltiness: </label>
+                    <select ng-model="vm.beer.beerscores.maltiness" name="malty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label>Body: </label>
+                    <select ng-model="vm.beer.beerscores.body" name="body">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select><br>
+                </div>
+                <!-- End Beer Ratings -->
+                <hr>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- /.col-md-4 -->
 </div>
+<!-- /.row -->
+
+<hr>
+
+<!-- Content Row -->
+<div class="row">
+    <div class="col-md-4">
+        <h2>Heading 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+        <a class="btn btn-default" href="#">More Info</a>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+        <h2>Heading 2</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+        <a class="btn btn-default" href="#">More Info</a>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+        <h2>Heading 3</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+        <a class="btn btn-default" href="#">More Info</a>
+    </div>
+    <!-- /.col-md-4 -->
 </div>
+<!-- /.row -->
 </div>
 
 
 
 
-<div class="">
+
     <div class="container-fluid">
         <table class="table table-striped table-bordered" width="120%">
             <thead>
@@ -81,13 +128,13 @@
                     <th>ABV</th>
                     <th>Beer Type</th>
                     <th>Organic</th>
-                    <th>Label</th>
+                    <th>Brewery Label</th>
                     <th>Brewery URL</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="b in vm.brew" >
-                    <h1>Brewery for: <a href="#"><span style="font-size:50px;color:red">{{vm.mybeer.name}}</span></a></h1>
+                    <h1>Brewery for: <span style="font-size:50px;color:blue">{{vm.mybeer.name}}</span></h1>
                     <td style="word-wrap: break-word;width:200px">{{b.name}}</td>
                     <td style="word-wrap: break-word;max-width: 250px">{{b.description}}</td>
                     <td style="word-wrap: break-word;max-width: 250px">{{vm.mybeer.style.description}}<a></a></td>
