@@ -11,7 +11,14 @@ namespace app.Controllers {
       this.homeService.deleteBeer(this.beer._id).then((res) =>{
         this.$location.path('/beerPage')
       })
-    }
+    };
+
+    public rateBeer(rating) {
+      this.homeService.getBeer(this.beer._id).then((res) => {
+        this.beer.ranking = this.beer.ranking + rating;
+        this.homeService.updateBeer(this.beer);
+      });
+    };
 
 
 

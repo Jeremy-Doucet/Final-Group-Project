@@ -13,7 +13,8 @@
 
     <div class="row">
         <div class="col-sm-2">
-            <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
+            <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" /><br>
+            <a role = "button" ng-click = "vm.rateBeer(1)">Like!</a><a role = "button" ng-click = "vm.rateBeer(-1)">Do Not Like!</a>
         </div>
         <div class="col-sm-6">
             <h4> Review<small> {{vm.beer.review }} </small></h4><br>

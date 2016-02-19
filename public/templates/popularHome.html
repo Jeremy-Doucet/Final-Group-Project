@@ -1,24 +1,15 @@
-<div class = "pSubTBox">
-  <div class = "row" style = "text-align: center">
-    <h3>Popular</h3>
-  </div>
-</div>
-
-<div class = "container" style = "text-align: center">
-  <div class = "homeContentView">
-    <div class = "row postSnip" ng-repeat = "beer in vm.beersPop">
-      <div class = "col-md-3">
-        <a ng-href = "/details/{{beer._id}}"><img class = "imgHomePop" ng-src = "{{beer.imgurl}}"></a>
-      </div>
-      <div class = "col-md-9">
-        <div class = "row"><a ng-href = "/details/{{beer._id}}"><h3>{{beer.name}}</h3></a></div>
-        <div class = "row"><p class = "textHomePop">{{beer.review}}</p></div>
-        <div class = "row">
-          Posted by: <a ng-href = "/userprofile/{{beer.createdBy._id}}">{{beer.createdBy.username}}</a> <b>|</b>
-          Posted on: {{beer.created | date: fullDate }} <b>|</b>
-          <a href="#">Save beer</a>
-        </div>
-      </div>
+<div class="container-fluid">
+  <div class="row" ng-repeat = "i in vm.beersPopular">
+    <div  class="col-sm-2">
+      <img class="img-responsive"  src="{{i.imgurl}}" alt="" />
     </div>
+    <div class="col-sm-10">
+      <h1><a ng-href="/details/{{i._id}}">{{i.name}}</a></h1><br>
+      location: <a ng-href = "/byLocation/{{i.location}}">{{i.location}}</a><br>
+      created by: <a href="/userprofile/{{i.createdBy._id}}">{{i.createdBy.username}}</a><br>
+    </div>
+    <br>
+    <hr>
   </div>
+
 </div>
