@@ -55,17 +55,17 @@ var app;
         })
             .when("/popular", {
             templateUrl: "/templates/popularHome.html",
-            controller: app.Controllers.homeController,
+            controller: app.Controllers.categoryHomeController,
             controllerAs: "vm"
         })
-            .when("/byLocation/:region", {
+            .when("/byLocation/:location", {
             templateUrl: "/templates/locationHome.html",
-            controller: app.Controllers.locationHomeController,
+            controller: app.Controllers.categoryHomeController,
             controllerAs: "vm"
         })
             .when("/byType/:type", {
             templateUrl: "/templates/typeHome.html",
-            controller: app.Controllers.typeHomeController,
+            controller: app.Controllers.categoryHomeController,
             controllerAs: "vm"
         })
             .when("/searchBeer", {

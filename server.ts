@@ -21,8 +21,6 @@ const app = express();
 ///Models
 ////////////////////////
 
-
-
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
@@ -78,6 +76,7 @@ let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
+let categoryRoutes = require("./routes/categoryRoutes");
 
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
 // app.use('/')
@@ -86,6 +85,7 @@ app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
+app.use("/catshell", categoryRoutes);
 
 ////////////////////////
 ///Express static

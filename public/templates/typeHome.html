@@ -2,22 +2,20 @@
   <img class = "img-responsive lgImg" ng-src = "{{vm.typeHomeImg}}">
 </div>
 
-<div class = "pSubTBox">
-  <div class = "row" style = "text-align: center">
-    <h3>{{vm.typeHomeType}}</h3>
-  </div>
-</div>
+<h1>{{vm.$routeParams["type"]}}<small></small></h1>
 
-<div id = "homePop" class = "container" style = "text-align: center">
-  <div class = "homeContentView">
-    <div class = "row postSnip" ng-repeat = "beer in vm.beers">
-      <div class = "col-md-3">
-        <img class = "imgHomePop" ng-src = "{{beer.imgurl}}">
-      </div>
-      <div class = "col-md-9">
-        <h3>{{beer.name}}</h3>
-        <p class = "textHomePop">{{beer.review}}</p>
-      </div>
+<div class="container-fluid">
+  <div class="row" ng-repeat = "i in vm.beersType">
+    <div  class="col-sm-2">
+      <img class="img-responsive"  src="{{i.imgurl}}" alt="" />
     </div>
+    <div class="col-sm-10">
+      <h1><a ng-href="/details/{{i._id}}">{{i.name}}</a></h1><br>
+      location: <a ng-href = "/byLocation/{{i.location}}">{{i.location}}</a><br>
+      created by: <a href="/userprofile/{{i.createdBy._id}}">{{i.createdBy.username}}</a><br>
+    </div>
+    <br>
+    <hr>
   </div>
+
 </div>

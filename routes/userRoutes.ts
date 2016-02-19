@@ -89,21 +89,6 @@ router.get("/users/:id", (req, res, next) => {
 });
 
 ////////////////////////
-///GET: User for uHome
-////////////////////////
-
-router.get("/:username", (req, res, next) => {
-  User.findOne({username: req.params["username"]}, {passwordHash: 0, salt: 0})
-  .populate("uPosts.postsOwn")
-  .populate("uPosts.postsOthers")
-  .exec((error, user) => {
-    if (error) return next(error);
-    if (!user) return next({message: "No user"});
-    res.send(user);
-  });
-});
-
-////////////////////////
 ///Export
 ////////////////////////
 

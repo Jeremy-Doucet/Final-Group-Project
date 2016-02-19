@@ -56,16 +56,4 @@ router.get("/users/:id", function (req, res, next) {
         res.send(user);
     });
 });
-router.get("/:username", function (req, res, next) {
-    User.findOne({ username: req.params["username"] }, { passwordHash: 0, salt: 0 })
-        .populate("uPosts.postsOwn")
-        .populate("uPosts.postsOthers")
-        .exec(function (error, user) {
-        if (error)
-            return next(error);
-        if (!user)
-            return next({ message: "No user" });
-        res.send(user);
-    });
-});
 module.exports = router;

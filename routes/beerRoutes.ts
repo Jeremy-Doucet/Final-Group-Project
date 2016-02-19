@@ -66,15 +66,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-//GET: local beers
-router.get("/byLocation/:region", (req, res, next) => {
-  Beer.find({location: req.params["region"]})
-  .exec((error, beers) => {
-    if (error) return next(error);
-    res.send(beers);
-  });
-});
-
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
     console.log(req.body)

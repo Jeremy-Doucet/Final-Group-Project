@@ -7,7 +7,6 @@ namespace app.Services {
     public beerUserHomeResource;
     public beerUserDetailsResource;
     public BeerResource;
-    public beerLocalResource;
 
     public searchBeer(beer) {
         return this.brewdbResource.query({id:"beer", name: beer.name }).$promise;
@@ -62,10 +61,6 @@ namespace app.Services {
       return this.beerUserDetailsResource.query();
     };
 
-    public getLocalBeers(region) {
-      return this.beerLocalResource.get({location: region});
-    };
-
     constructor(
         private $resource: ng.resource.IResourceService,
         private $http: ng.IHttpService,
@@ -80,8 +75,6 @@ namespace app.Services {
       });
       this.beerUserHomeResource = $resource('/api/v1/beer/userHomeBeers');
       this.beerUserDetailsResource = $resource('/api/v1/beer/userDetailsBeers/:id');
-
-      this.beerLocalResource = $resource("/api/v1/beer/byLocation/:region");
     };
   };
   angular.module('app').service('homeService', homeService);

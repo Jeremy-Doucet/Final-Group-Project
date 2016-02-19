@@ -48,14 +48,6 @@ router.get('/', function (req, res, next) {
         res.json(beers);
     });
 });
-router.get("/byLocation/:region", function (req, res, next) {
-    Beer.find({ location: req.params["region"] })
-        .exec(function (error, beers) {
-        if (error)
-            return next(error);
-        res.send(beers);
-    });
-});
 router.post('/', auth, function (req, res, next) {
     console.log(req.body);
     var newBeer = new Beer(req.body);
