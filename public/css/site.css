@@ -1,40 +1,72 @@
 #sBeer{
     margin-top: 75px;
-    margin-left: 1300px;
+    margin-left: 1155px;
     width: 316px;
-    border: .3px solid lightgrey;
-    border-left-style: dotted;;
-    border-top-style: dotted;
+    border: 1px solid lightgrey;
     box-shadow:19px 22px 10px #888888;
+    height: 155px;
+    background-color:#2B2726
+}
+.sTable{
+    width:55%;
+}
+.ctype th {
+    color:#907651;
+}
+.sResult tr td a{
+    color:#907651;
 }
 #sTitle{
     font-size: 30px;
+    margin-left: 20px;
+    color:white;
+}
+#aBeer{
+    margin-left: 6px;
 }
 .bSearch {
     background-color: lightsteelblue;
     color:black;
     font-weight: bold;
     width: 298px;
+    margin-left: 9px;
+    margin-top: -4px;
 }
 .bList{
     margin-left: 100px;
-    margin-top: -134px;
+    margin-top: -152px;
+    margin-left: 408px;
+}
+.label{
+    margin-top: 15px;
+    padding:10px;
+}
+.top    {
+    margin-top: 10px;
 }
 .searchPage{
-
     background-image: url("http://i.imgur.com/s4ywviP.jpg");
     height: 4000px;
     width: 1900px;
-
+}
+.beerSel{
+    float: left;
+    width: 33%;
+    margin-left: 21px;
+    height: 350px;
+    margin-bottom: 5px
+}
+.beerlabel{
+    margin-top: 10px;
 }
 #sInput{
     width: 300px;
     height: 45px;
+    margin-left: 8px;
 }
 html {
   scroll-behavior: smooth;
 }
-
 .bigTitle {
   font-size: 4em;
   color: black;
