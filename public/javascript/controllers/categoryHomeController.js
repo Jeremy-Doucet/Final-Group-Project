@@ -11,13 +11,12 @@ var app;
                 this.$window = $window;
                 this.locHomeImg = "/css/img/" + this.$routeParams["location"] + ".png";
                 this.typeHomeImg = "/css/img/" + this.$routeParams["type"] + ".png";
-                this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
-                this.beersType = categoryService.getBeersType($routeParams["type"]);
-                this.beersPopular = categoryService.getBeersPopular().sort(function (a, b) {
-                    var x = a["ranking"];
-                    var y = b["ranking"];
-                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-                });
+                if (this.$routeParams["location"])
+                    this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
+                if (this.$routeParams["type"])
+                    this.beersType = categoryService.getBeersType($routeParams["type"]);
+                if (this.$location.path() === "/popular")
+                    this.beersPopular = categoryService.getBeersPopular();
             }
             ;
             return categoryHomeController;

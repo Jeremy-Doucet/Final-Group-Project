@@ -23,7 +23,7 @@
             <li><a ng-href="/searchBeer">Search </a></li>
             <li><a ng-href="/register">Register </a></li>
             <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
-            <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
+            <li><a role = "button" ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
           </ul>
         </div>
         <div class="col-md-2">

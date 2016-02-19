@@ -21,6 +21,7 @@ let router = express.Router();
 
 router.get("/byLocation/:location", (req, res, next) => {
   Beer.find({location: req.params["location"]})
+  .populate("createdBy")
   .exec((error, beersLocal) => {
     if (error) return next(error);
     if (!beersLocal) res.send([]);
@@ -34,6 +35,7 @@ router.get("/byLocation/:location", (req, res, next) => {
 
 router.get("/byType/:type", (req, res, next) => {
   Beer.find({type: req.params["type"]})
+  .populate("createdBy")
   .exec((error, beersType) => {
     if (error) return next(error);
     if (!beersType) return next([]);
@@ -47,6 +49,7 @@ router.get("/byType/:type", (req, res, next) => {
 
 router.get("/popular", (req, res, next) => {
   Beer.find({})
+  .populate("createdBy")
   .exec((error, beersPopular) => {
     if (error) return next(error);
     if (!beersPopular) return next([]);
