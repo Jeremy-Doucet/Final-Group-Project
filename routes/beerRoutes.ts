@@ -80,6 +80,16 @@ router.post('/', auth, (req, res, next) => {
   });
 });
 
+//PUT: api/v1/beer/:id
+router.put('/:_id', (req, res, next) => {
+  Beer.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, (err, result) => {
+    if (err) return next(err);
+    if (!result) return next({ message: 'Could not find and update the beer.' });
+    res.send(result);
+  })
+});
+
+//DELETE
 router.delete('/',(req,res,next)=> {
   if(!req.query._id) return next({ status: 404, })
   // -Add A Beer- model below

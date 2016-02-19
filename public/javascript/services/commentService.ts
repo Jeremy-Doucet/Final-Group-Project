@@ -2,7 +2,7 @@
 
 namespace app.Services {
 
-  export class CommentService{
+  export class commentService{
 
     public UserCommentResource;
 
@@ -36,5 +36,5 @@ namespace app.Services {
     };
   };
 
-  angular.module('app').service('CommentService', CommentService);
+  angular.module('app').service('commentService', commentService);
 }

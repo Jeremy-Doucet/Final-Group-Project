@@ -24,6 +24,8 @@ var app;
                     _this.beer.brewerydb.abv = res.data.abv;
                     _this.beer.brewerydb.beerType = res.data.style.shortName;
                     _this.beer.brewerydb.organic = res.data.isOrganic;
+                    _this.beer.imgbeer = res.data.labels.medium;
+                    _this.beer.beerdesc = res.data.style.description;
                 });
             }
             beerCreateController.prototype.createBeer = function () {

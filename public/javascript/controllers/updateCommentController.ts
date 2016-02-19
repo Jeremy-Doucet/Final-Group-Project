@@ -7,15 +7,15 @@ namespace app.Controllers {
     public oldcomment;
 
     public updateComment(comment) {
-    this.CommentService.updateComment(this.comment).then((res) => {
+    this.commentService.updateComment(this.comment).then((res) => {
       this.$location.path("/");
     });
   }
-  constructor(private CommentService: app.Services.CommentService,
+  constructor(private commentService: app.Services.commentService,
        private $location: ng.ILocationService,
        private $routeParams: ng.route.IRouteParamsService) {
       // $routeParams['id'] is linked to :id on the /update route on app.ts
-      this.comment = CommentService.getComment($routeParams["id"]);
+      this.comment = commentService.getComment($routeParams["id"]);
     };
 
 

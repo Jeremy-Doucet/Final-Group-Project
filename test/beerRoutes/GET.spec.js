@@ -1,4 +1,5 @@
 "use strict";
+process.env.NODE_ENV='test';
 let should = require('should');
 let mongoose = require('mongoose');
 let request = require('supertest');
