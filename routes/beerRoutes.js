@@ -18,7 +18,7 @@ router.get("/", function (req, res, next) {
         .exec(function (err, beers) {
         if (err)
             return next(err);
-        res.json(beers);
+        res.send(beers);
     });
 });
 router.get('/details/:id', function (req, res, next) {

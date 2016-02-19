@@ -20,7 +20,7 @@ router.get("/", (req,res,next) => {
     .populate("createdBy","username")
     .exec((err, beers) => {
         if (err) return next(err);
-        res.json(beers)
+        res.send(beers)
     });
 });
 
