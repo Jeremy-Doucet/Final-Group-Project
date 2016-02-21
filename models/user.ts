@@ -24,7 +24,7 @@ let UserSchema = new mongoose.Schema({
       gender: String,
       profileUrl: String
     },
-  beers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'}],  
+  beers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'}],
   passwordHash: String,
   salt: String,
   token: Object,
