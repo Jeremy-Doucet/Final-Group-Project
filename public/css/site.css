@@ -1,3 +1,7 @@
+body{
+  background-color: #E9E9E9;
+}
+
 #sBeer{
     margin-top: 75px;
     margin-left: 1155px;
@@ -100,7 +104,7 @@ html {
   margin: 5.25% 0;
 }
 
-.beerHomeNav li a {
+/*.beerHomeNav li a {
   height: 10vh;
   border-right: 2px solid #000;
 }
@@ -108,7 +112,7 @@ html {
     color: black;
     font-size: 15px;
     font-weight: bold;
-}
+}*/
 
 .lgImg {
   width: 100%;
@@ -214,4 +218,80 @@ html {
 .postSnip {
   text-align: left;
   border-bottom: 2px solid #000;
+}
+
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+/*  --------BeerPages Animation stagger effect-------------*/
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+
+
+.company.ng-enter-stagger, .company.ng-leave-stagger, .repeat-animation.ng-move-stagger {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    -webkit-transition-duration: 0;
+    transition-duration: 0;
+}
+.company.ng-enter {
+    -webkit-transition:0.3s linear all;
+    transition:0.3s linear all;
+    opacity: 0;
+    -webkit-transform:scale(1.15)!important;
+    transform:scale(1.15)!important;
+}
+.company.ng-enter.ng-enter-active {
+    opacity: 1;
+    -webkit-transform:scale(1)!important;
+    transform:scale(1)!important;
+}
+.company.ng-leave {
+    -webkit-transition:0.1s linear all;
+    transition:0.1s linear all;
+    opacity: 1;
+}
+.company.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.centerbeer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+/*  --------FONTS-------------*/
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+
+.outer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+
+}
+
+.inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 10px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #00c;
 }

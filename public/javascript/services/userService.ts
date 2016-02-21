@@ -5,7 +5,6 @@ namespace app.Services {
   export class userService {
     public status = { _id: null, email: null, username: null, avatarUrl: null };
     public uRegResource;
-    public uHomeResource;
     public uLoginResource;
 
     public registerUser(newUser) {
@@ -44,9 +43,6 @@ namespace app.Services {
       this.status.avatarUrl = null;
     }
 
-    public loadUHome(username) {
-     return this.uHomeResource.get({username: username});
-    };
 
     public getUser(userId){
       var q = this.$q.defer();
@@ -66,7 +62,6 @@ namespace app.Services {
     ) {
       this.uRegResource = $resource("/usershell/register");
       this.uLoginResource = $resource("/usershell/login");
-      this.uHomeResource = $resource("/usershell/:username");
       if (this.getToken()) this.setUser();
     };
   };
