@@ -10,113 +10,78 @@
 </head>
 <body ng-controller = "homeController as gc">
 
-  <div class = "pSubTBox">
+    <div >
 
-    <nav class = "navbar beerHomeNav">
-      <div class = "container-fluid">
-        <div class = "col-md-2">
-          <a class = "navbar-brand intro-text" ng-href = "/">A Big Title</a>
-        </div>
-        <div class = "col-md-8">
-          <ul class = "nav navbar-nav beerHomeNav">
-            <li><a ng-href="/beerPage">Check out beerPage </a></li>
-            <li><a ng-href="/searchBeer">Search </a></li>
-            <li><a ng-href="/register">Register </a></li>
-            <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
-            <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
-          </ul>
-        </div>
-        <div class="col-md-2">
-          <ul class="nav navbar-nav beerHomeNav">
-            <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <nav class = "navbar ">
+            <div class = "container-fluid">
+                <div class = "col-md-2">
+                    <a class = "navbar-brand intro-text" ng-href = "/">A Big Title</a>
+                </div>
+                <div class = "col-md-8">
+                    <ul class = "nav navbar-nav ">
+                        <li><a ng-href="/beerPage">Check out beerPage </a></li>
+                        <li><a ng-href="/searchBeer">Search </a></li>
+                        <li><a ng-href="/register">Register </a></li>
+                        <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
+                        <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <ul class="nav navbar-nav beerHomeNav">
+                        <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-<ng-view></ng-view>
+        <ng-view></ng-view>
 
-    <!-- Bootstrap -->
+        <!-- Bootstrap -->
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <!-- Angular -->
+        <!-- Angular -->
 
-    <script src="/scripts/angular/angular.min.js"></script>
-    <script src="/scripts/angular-route/angular-route.min.js"></script>
-    <script src="/scripts/angular-resource/angular-resource.min.js"></script>
-    <script src="/scripts/angular-animate/angular-animate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
-
-    <script src = "/node_modules/angular-animate/angular-animate.js"></script>
-    <script src = "/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+        <script src="/scripts/angular/angular.min.js"></script>
+        <script src="/scripts/angular-route/angular-route.min.js"></script>
+        <script src="/scripts/angular-resource/angular-resource.min.js"></script>
+        <script src="/scripts/angular-animate/angular-animate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
 
 
-<<<<<<< HEAD
-  <!-- General -->
-=======
-    <!-- General -->
+        <!-- General -->
 
-    <script src="/javascript/app.js"></script>
->>>>>>> api
+        <script src="/javascript/app.js"></script>
 
+        <!-- Controllers -->
 
-<<<<<<< HEAD
-  <!-- Controllers -->
-
-  <script src="/javascript/controllers/beerCreateController.js"></script>
-  <script src="/javascript/controllers/searchBeerController.js"></script>
-  <script src="/javascript/controllers/beerDetailsController.js"></script>
-  <script src="/javascript/controllers/userDetailsController.js"></script>
-  <script src="/javascript/controllers/beerPageController.js"></script>
-  <script src="/javascript/controllers/breweryDetailsController.js"></script>
-  <script src="/javascript/controllers/homeController.js"></script>
-  <script src="/javascript/controllers/userController.js"></script>
-  <script src="/javascript/controllers/userHomeController.js"></script>
-  <script src="/javascript/controllers/beerUpdateController.js"></script>
-  <script src="/javascript/controllers/updateCommentController.js"></script>
-  <script src="/javascript/controllers/categoryHomeController.js"></script>
-=======
+        <script src="/javascript/controllers/beerCreateController.js"></script>
+        <script src="/javascript/controllers/searchBeerController.js"></script>
+        <script src="/javascript/controllers/beerDetailsController.js"></script>
+        <script src="/javascript/controllers/userDetailsController.js"></script>
+        <script src="/javascript/controllers/beerPageController.js"></script>
+        <script src="/javascript/controllers/breweryDetailsController.js"></script>
+        <script src="/javascript/controllers/homeController.js"></script>
+        <script src="/javascript/controllers/userController.js"></script>
+        <script src="/javascript/controllers/userHomeController.js"></script>
+        <script src="/javascript/controllers/beerUpdateController.js"></script>
+        <script src="/javascript/controllers/updateCommentController.js"></script>
+        <script src="/javascript/controllers/categoryHomeController.js"></script>
 
 
-    <!-- Controllers -->
+        <!-- Services -->
 
-    <script src="/javascript/controllers/beerCreateController.js"></script>
-    <script src = "/javascript/controllers/beerDeleteController.js"></script>
-    <script src="/javascript/controllers/searchBeerController.js"></script>
-    <script src="/javascript/controllers/beerDetailsController.js"></script>
-    <script src="/javascript/controllers/beerPageController.js"></script>
-    <script src="/javascript/controllers/breweryDetailsController.js"></script>
-    <script src = "javascript/controllers/commentController.js"></script>
-    <script src="/javascript/controllers/homeController.js"></script>
-    <script src="/javascript/controllers/userController.js"></script>
-    <script src="/javascript/controllers/userHomeController.js"></script>
+        <script src="/javascript/services/commentService.js"></script>
+        <script src="/javascript/services/homeService.js"></script>
+        <script src="/javascript/services/HTTPFactory.js"></script>
+        <script src="/javascript/services/userService.js"></script>
+        <script src="/javascript/services/categoryService.js"></script>
 
-    <!-- Services -->
->>>>>>> api
+        <!-- Directives -->
+        <script src="/javascript/directives/autofocus.js"></script>
+        <script src="/javascript/directives/modal.js"></script>
 
-    <script src="/javascript/services/beerDeleteService.js"></script>
-    <script src="/javascript/services/commentService.js"></script>
-    <script src="/javascript/services/homeService.js"></script>
-    <script src="/javascript/services/HTTPFactory.js"></script>
-    <script src="/javascript/services/userService.js"></script>
+    </body>
 
-<<<<<<< HEAD
-  <script src="/javascript/services/commentService.js"></script>
-  <script src="/javascript/services/homeService.js"></script>
-  <script src="/javascript/services/HTTPFactory.js"></script>
-  <script src="/javascript/services/userService.js"></script>
-  <script src="/javascript/services/categoryService.js"></script>
-=======
-    <!-- Directives -->
-    <script src="/javascript/directives/autofocus.js"></script>
-
->>>>>>> api
-
-  <!-- Directives -->
-  <script src="/javascript/directives/modal.js"></script>
-
-</body>
-
-</html>
+    </html>

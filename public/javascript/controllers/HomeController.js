@@ -23,7 +23,6 @@ var app;
             homeController.prototype.logout = function () {
                 this.userService.removeToken();
                 this.userService.removeUser();
-                this.$location.path('/');
             };
             ;
             ;

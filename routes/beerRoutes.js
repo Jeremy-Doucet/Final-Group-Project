@@ -28,17 +28,6 @@ router.get('/details/:id', function (req, res, next) {
         res.send(beer);
     });
 });
-router.get("/beer", function (req, res, next) {
-    brewdb.search.beers({ q: req.query.name }, function (err, data) {
-        res.send(data);
-    });
-});
-router.get("/:id", function (req, res, next) {
-    console.log();
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key=" + process.env.brewdb_key, function (err, response, body, data) {
-        res.send(response.body);
-    });
-});
 router.get('/', function (req, res, next) {
     Beer.find({})
         .populate('createdBy', 'username')
@@ -55,7 +44,7 @@ router.post('/', auth, function (req, res, next) {
     newBeer.save(function (err, beer) {
         if (err)
             return next(err);
-        User.update({ _id: req['payload']._id }, { $push: { 'beer': beer._id } }, function (err, results) {
+        User.update({ _id: req['payload']._id }, { $push: { 'beers': beer._id } }, function (err, results) {
             if (err)
                 return next(err);
             res.send(beer);
@@ -76,6 +65,22 @@ router.delete('/', function (req, res, next) {
         return next({ status: 404, });
     Beer.remove({ _id: req.query._id }, function (err, result) {
         res.send({ message: "Deleted." });
+    });
+});
+router.get('/userHomeBeers', auth, function (req, res, next) {
+    Beer.find({ createdBy: req['payload']._id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
+router.get('/userBeers/:id', auth, function (req, res, next) {
+    Beer.find({ createdBy: req.params.id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
     });
 });
 module.exports = router;

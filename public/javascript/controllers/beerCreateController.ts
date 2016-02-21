@@ -16,12 +16,14 @@ namespace app.Controllers {
         public show()   {
             this.hide = true;
         }
+    
         constructor(
             private homeService: app.Services.homeService,
             private $location: ng.ILocationService,
             private $routeParams: ng.route.IRouteParamsService
         ) {
             homeService.getBrew( $routeParams["id"]).then((res) => {
+                if (!res.data[0].images)res.data[0].images = {};
                 this.brew = res.data;
                 this.beer.brewerydb.breweryName = res.data[0].name;
                 this.beer.brewerydb.labelImg = res.data[0].images.squareMedium;

@@ -11,7 +11,7 @@ namespace app.Controllers {
     public logout() {
       this.userService.removeToken();
       this.userService.removeUser();
-      this.$location.path('/');
+    //   this.$location.path('/');
     };
 
     constructor(

@@ -1,12 +1,38 @@
 #sBeer{
-    margin-top: 75px;
-    margin-left: 1155px;
+    margin-top: 40px;
+    margin-left: 22%;
+    margin-bottom: 37px;
     width: 316px;
     border: 1px solid lightgrey;
     box-shadow:19px 22px 10px #888888;
     height: 155px;
-    background-color:#2B2726
+    background-color:white;
+    color: black;
+
 }
+.cBeer{
+    border:1px solid black;
+    background-color: #4D2C17;
+}
+.bot{
+    margin-bottom:50px;
+}
+.brbtm{
+    margin-bottom: 15px;
+}
+.cBeer1 {
+    color: white;
+}
+.gld    {
+    color:#FBA711;
+}
+.brn{
+    background-color: #4A2A03;
+}
+body{
+    background-color: #E9E9E9;
+}
+
 .sTable{
     width:55%;
 }
@@ -19,7 +45,7 @@
 #sTitle{
     font-size: 30px;
     margin-left: 20px;
-    color:white;
+    color:black;
 }
 #aBeer{
     margin-left: 6px;
@@ -44,20 +70,22 @@
 .top    {
     margin-top: 10px;
 }
-.searchPage{
-    background-image: url("http://i.imgur.com/s4ywviP.jpg");
-    height: 4000px;
-    width: 1900px;
-}
+
 .beerSel{
     float: left;
-    width: 33%;
+    width: 32%;
     margin-left: 21px;
     height: 350px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    background-color: #2B2726;
 }
-.beerlabel{
-    margin-top: 10px;
+.bPage{
+    float: left;
+    width: 33%;
+}
+#beerlabel{
+    margin-top: 15px;
+    margin-left: 26%;
 }
 #sInput{
     width: 300px;

@@ -12,6 +12,8 @@ var app;
                 this.beer = { name: "", beerdesc: "", imgbeer: "", brewerydb: { abv: "", breweryName: "", beerType: "", labelImg: "", breweryUrl: "", breweryDesc: "", organic: "" } };
                 this.hide = false;
                 homeService.getBrew($routeParams["id"]).then(function (res) {
+                    if (!res.data[0].images)
+                        res.data[0].images = {};
                     _this.brew = res.data;
                     _this.beer.brewerydb.breweryName = res.data[0].name;
                     _this.beer.brewerydb.labelImg = res.data[0].images.squareMedium;
