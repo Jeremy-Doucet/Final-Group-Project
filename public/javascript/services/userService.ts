@@ -3,7 +3,7 @@
 namespace app.Services {
 
   export class userService {
-    public status = { _id: null, email: null, username: null, avatarUrl: null };
+    public status = { _id: null, email: null, username: null, avatarUrl: null, facebook: {email: null, name: null}};
     public uRegResource;
     public uLoginResource;
 
@@ -34,6 +34,8 @@ namespace app.Services {
         this.status.email = user.email;
         this.status.username = user.username;
         this.status.avatarUrl = user.avatarUrl;
+        this.status.facebook.name = user.facebook_name;
+        this.status.facebook.email = user.facebook_email;
     };
 
     public removeUser(){
@@ -41,6 +43,8 @@ namespace app.Services {
       this.status.email = null;
       this.status.username = null;
       this.status.avatarUrl = null;
+      this.status.facebook.name = null;
+      this.status.facebook.email = null;
     }
 
 

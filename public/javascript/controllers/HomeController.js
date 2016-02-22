@@ -10,11 +10,11 @@ var app;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.params = $location.search();
-                if (this.params.code) {
-                    userService.setToken(this.params.code);
+                var params = $location.search();
+                if (params.code) {
+                    userService.setToken(params.code);
                     userService.setUser();
-                    $location.search("code", null);
+                    $location.search('code', null);
                     $location.hash("");
                 }
                 ;
