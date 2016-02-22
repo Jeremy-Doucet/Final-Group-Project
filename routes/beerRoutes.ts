@@ -102,12 +102,11 @@ router.delete('/',(req,res,next)=> {
   if(!req.query._id) return next({ status: 404, message: 'Please include an ID' });
   Beer.remove({_id:req.query._id},(err,result)=> {
     res.send({message: "Successfully deleted beer"})
-  })
+  }) 
 })
 
 //GET: BreweryDB get call
 router.get("/:id", (req,res,next) => {
-    console.log()
     request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
         res.send(response.body)
     })

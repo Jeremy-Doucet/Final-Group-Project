@@ -21,12 +21,9 @@ const app = express();
 ///Models
 ////////////////////////
 
-
-
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
-
 require("./passport/passport");
 
 ////////////////////////
@@ -61,23 +58,14 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 ////////////////////////
-///Express static
-////////////////////////git
-
-
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
-
-////////////////////////
 ///Require routes
 ////////////////////////
-
-
+///
 let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
+let resetPasswordRoutes = require('./routes/resetPasswordRoutes');
 
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
 // app.use('/')
@@ -86,6 +74,7 @@ app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
+app.use('/forgot', resetPasswordRoutes);
 
 ////////////////////////
 ///Express static
@@ -99,6 +88,8 @@ app.use("/node_modules", express.static(__dirname + "/node_modules"));
 ////////////////////////
 ///Misc
 ////////////////////////
+
+
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });
@@ -123,6 +114,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err: any, req, res, next) {
   res.status(err.status || 500);
+  console.log(err);
   if (err.name === 'CastError') err.message = 'Invalid ID';
   // Don't leak stack trace if not in development
   let error = (app.get('env') === 'development') ? err : {};

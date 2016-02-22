@@ -26,17 +26,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
 var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require("./routes/brewRoutes");
 var commentRoutes = require('./routes/commentRoutes');
 var userRoutes = require("./routes/userRoutes");
+var resetPasswordRoutes = require('./routes/resetPasswordRoutes');
 app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
+app.use('/forgot', resetPasswordRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));
 app.use("/node_modules", express.static(__dirname + "/node_modules"));
@@ -58,6 +57,7 @@ app.use(function (req, res, next) {
 });
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
+    console.log(err);
     if (err.name === 'CastError')
         err.message = 'Invalid ID';
     var error = (app.get('env') === 'development') ? err : {};

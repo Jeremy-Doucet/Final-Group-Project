@@ -5,6 +5,8 @@ var mongoose = require("mongoose");
 var UserSchema = new mongoose.Schema({
     username: { type: String, unique: true, lowercase: true },
     email: { type: String, unique: true, lowercase: true },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     avatarUrl: String,
     facebook: {
         id: { type: String, unique: true, sparse: true },
