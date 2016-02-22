@@ -7,8 +7,7 @@
     <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
     <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
     <link rel="stylesheet" href="/css/animate.css">
-
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -34,11 +33,17 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li><a href="/beerPage">Beers</a></li>
-                      <li><a ng-href="/searchBeer">Search </a></li>
                   </ul>
-
+              </ul>
+              <form class="navbar-form navbar-left" role="search" ng-submit = "gc.searchBeer()" >
+                <div id="sBox" class="form-group">
+                Search for a beer  <input  autofocus ng-model = "gc.beer.name" type = "text" placeholder = "Beer Search">
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><p class="navbar-text" ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></p></li>
+                    <li><p class="navbar-text" ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username | uppercase }}</a></p></li>
                     <li><a ng-show="gc.status.username == null" ng-href="/register">Register </a></li>
                     <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
                     <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>

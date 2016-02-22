@@ -23,8 +23,16 @@ var app;
             homeController.prototype.logout = function () {
                 this.userService.removeToken();
                 this.userService.removeUser();
+                this.$location.path('/');
             };
             ;
+            homeController.prototype.searchBeer = function () {
+                var _this = this;
+                this.homeService.searchBeer(this.beer).then(function (res) {
+                    _this.result = res;
+                    _this.$location.path("/searchBeer");
+                });
+            };
             ;
             return homeController;
         }());

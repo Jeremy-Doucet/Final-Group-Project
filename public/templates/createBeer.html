@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-7 brbtm" style="margin-top:30px">
         <img class="img-rounded" ng-src="{{vm.beer.imgbeer}}" alt=""><span><img src="http://il6.picdn.net/shutterstock/videos/7141753/thumb/1.jpg?i10c=img.resize(height:160)" alt="" height="200px" /></span></img>
-        <h1 class="gld">{{vm.mybeer.name}}&nbsp;&nbsp
+        <h1 class="gld bName">{{vm.mybeer.name}}<br>
             <a class="brn btn btn-warning btn-lg" ng-href="/login" ng-show="gc.status.username === null" >Login to post review</a>
             <a class="brn btn btn-primary btn-lg" ng-hide="dirForm.toggle || gc.status.username === null" ng-click="dirForm.toggle = true" >Add Beer Review</a>
             <a class="brn btn btn-primary btn-lg" ng-hide="!dirForm.toggle" ng-click="dirForm.toggle = false" >Hide Form</a></h1>

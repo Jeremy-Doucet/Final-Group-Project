@@ -1,10 +1,12 @@
 body{
   background-color: #E9E9E9;
 }
-
+#sBox{
+    margin-left:-15px;
+}
 #sBeer{
     margin-top: 40px;
-    margin-left: 22%;
+    margin-left: 17%;
     margin-bottom: 37px;
     width: 316px;
     border: 1px solid lightgrey;
@@ -12,11 +14,16 @@ body{
     height: 155px;
     background-color:white;
     color: black;
-
+}
+.bName{
+    margin-left: -5px;
 }
 .cBeer{
     border:1px solid black;
     background-color: #4D2C17;
+}
+.sRes{
+        margin-right: -8%;
 }
 .bot{
     margin-bottom:50px;
@@ -76,12 +83,7 @@ body{
 }
 
 .beerSel{
-    float: left;
-    width: 32%;
-    margin-left: 21px;
-    height: 350px;
-    margin-bottom: 5px;
-    background-color: #2B2726;
+    margin-left: 84px;
 }
 .bPage{
     float: left;
