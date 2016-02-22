@@ -77,6 +77,7 @@ let brewRoutes = require("./routes/brewRoutes");
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
 let categoryRoutes = require("./routes/categoryRoutes");
+let likedRoutes = require('./routes/likedRoutes');
 
 // let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
 // app.use('/')
@@ -86,6 +87,7 @@ app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 app.use("/catshell", categoryRoutes);
+app.use('/api/v1/likedBeers', likedRoutes);
 
 ////////////////////////
 ///Express static

@@ -4,13 +4,15 @@ var app;
     var Controllers;
     (function (Controllers) {
         var userHomeController = (function () {
-            function userHomeController(userService, $location, $routeParams, $window, homeService) {
+            function userHomeController(userService, $location, $routeParams, $window, homeService, commentService) {
                 this.userService = userService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.homeService = homeService;
+                this.commentService = commentService;
                 this.userBeers = homeService.getUserHomeBeers();
+                this.likedBeers = commentService.getAllLikes();
             }
             ;
             return userHomeController;

@@ -1,8 +1,11 @@
 <div class = "container-fluid lgImg">
-  <img class = "img-responsive lgImg" ng-src = "{{vm.locHomeImg}}">
+  <img class = "img-responsive" ng-src = "{{vm.locHomeImg}}">
+  <div class="intro-text text-center backtext">
+      <div class="intro-heading"><h1>{{vm.$routeParams["location"]}}</h1></div>
+      <div class="intro-lead-in">Locations</div>
+      <!-- <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a> -->
+  </div>
 </div>
-
-<h1>{{vm.$routeParams["location"]}}<small></small></h1>
 
 <div class="container-fluid">
   <div class="row" ng-repeat = "i in vm.beersLocal">

@@ -12,10 +12,14 @@ var app;
                 this.$routeParams = $routeParams;
                 this.comments = [];
                 this.showModal = false;
+                this.heart = false;
                 homeService.getBeer($routeParams['id']).then(function (res) {
                     _this.beer = res;
                 });
             }
+            beerDetailsController.prototype.toggleLike = function () {
+                this.heart = !this.heart;
+            };
             beerDetailsController.prototype.toggleModal = function () {
                 this.showModal = !this.showModal;
             };
@@ -39,6 +43,20 @@ var app;
                 var _this = this;
                 this.commentService.deleteComment(comment).then(function (res) {
                     _this.beer.comments.splice(_this.beer.comments.indexOf(comment), 1);
+                });
+            };
+            beerDetailsController.prototype.likeBeer = function () {
+                var _this = this;
+                var likedBeer = {
+                    beer: this.beer._id,
+                };
+                this.commentService.saveLikedBeer(likedBeer).then(function (res) {
+                    _this.$location.path('/beerPage');
+                });
+            };
+            beerDetailsController.prototype.unlikeBeer = function (beer) {
+                this.commentService.deleteLikedBeer(beer).then(function (res) {
+                    console.log('Beer was unliked');
                 });
             };
             return beerDetailsController;

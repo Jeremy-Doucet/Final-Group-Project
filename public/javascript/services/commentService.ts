@@ -5,6 +5,7 @@ namespace app.Services {
   export class commentService{
 
     public UserCommentResource;
+    public likedBeerResource;
 
     public getAllComments() {
       return this.UserCommentResource.query();
@@ -26,6 +27,18 @@ namespace app.Services {
       return this.UserCommentResource.update({id: userComment._id}, userComment).$promise;
     };
 
+    public getAllLikes(){
+      return this.likedBeerResource.query();
+    }
+
+    public saveLikedBeer(likedBeer){
+      return this.likedBeerResource.save(likedBeer).$promise
+    }
+
+    public deleteLikedBeer(likedBeer){
+      return this.likedBeerResource.delete({ id: likedBeer._id}).$promise
+    }
+
     constructor(
       private $resource:ng.resource.IResourceService,
       private $window: ng.IWindowService
@@ -33,6 +46,7 @@ namespace app.Services {
       this.UserCommentResource = $resource('/comments/:id', null, {
           'update':{method: 'PUT'}
       });
+      this.likedBeerResource = $resource('/api/v1/likedBeers/:id')
     };
   };
 

@@ -5,7 +5,7 @@
   <div class="outer">
     <div class="company" ng-repeat="b in vm.beers" >
         <div class="col-sm-4 text-center centerbeer" style="max-height: 380px; min-height: 380px">
-          <a href="#">
+          <a href="/details/{{b._id}}">
             <img class="img-responsive centerbeer" ng-src="{{b.imgurl || b.imgbeer}}">
           </a>
           <h4>

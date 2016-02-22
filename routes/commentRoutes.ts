@@ -15,13 +15,8 @@ let auth = jwt({
 
 router.get('/:id', (req, res, next) =>{
   Comment.findOne({ _id: req.params.id })
-
     .exec((err, beer) =>{
-
         res.send(beer);
-
-
-
   });
 });
 

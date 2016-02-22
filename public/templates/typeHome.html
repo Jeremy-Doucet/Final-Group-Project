@@ -1,8 +1,11 @@
 <div class = "container-fluid lgImg">
-  <img class = "img-responsive lgImg" ng-src = "{{vm.typeHomeImg}}">
+  <img class = "img-responsive" ng-src = "{{vm.typeHomeImg}}">
+  <div class="intro-text text-center">
+      <div class="intro-heading"><h1>{{vm.$routeParams["type"]}}</h1></div>
+      <div class="intro-lead-in">Beer</div>
+  </div>
 </div>
 
-<h1>{{vm.$routeParams["type"]}}<small></small></h1>
 
 <div class="container-fluid">
   <div class="row" ng-repeat = "i in vm.beersType">

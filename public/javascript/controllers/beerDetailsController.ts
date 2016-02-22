@@ -6,6 +6,11 @@ namespace app.Controllers {
     public comment;
     public comments = [];
     public showModal = false;
+    public heart = false;
+
+    public toggleLike(){
+      this.heart = !this.heart;
+    }
 
     public toggleModal(){
       this.showModal = !this.showModal;
@@ -32,6 +37,22 @@ namespace app.Controllers {
         this.beer.comments.splice(this.beer.comments.indexOf(comment), 1);
       });
     }
+
+    public likeBeer(){
+      let likedBeer = {
+        beer: this.beer._id,
+      };
+      this.commentService.saveLikedBeer(likedBeer).then((res) =>{
+        this.$location.path('/beerPage')
+      })
+    }
+
+    public unlikeBeer(beer){
+      this.commentService.deleteLikedBeer(beer).then((res) =>{
+        console.log('Beer was unliked')
+      })
+    }
+
     constructor(
       private commentService: app.Services.commentService,
       private $location: ng.ILocationService,

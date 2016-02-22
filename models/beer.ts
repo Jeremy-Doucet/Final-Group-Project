@@ -26,6 +26,7 @@ let BeerSchema = new mongoose.Schema({
   },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  likedByUsers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   created: { type: Number, default: Date.now },
   repostedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   ranking: { type: Number }
