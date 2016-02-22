@@ -21,6 +21,7 @@ let https = require("https");
 
 let User = mongoose.model("User");
 let newUser = mongoose.model("User");
+let Beer = mongoose.model("Beer");
 
 ////////////////////////
 ///Router

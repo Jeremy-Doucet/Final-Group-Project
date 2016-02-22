@@ -48,6 +48,22 @@ router.get('/', function (req, res, next) {
         res.json(beers);
     });
 });
+router.get('/userHomeBeers', auth, function (req, res, next) {
+    Beer.find({ createdBy: req['payload']._id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
+router.get('/userBeers/:id', auth, function (req, res, next) {
+    Beer.find({ createdBy: req.params.id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
 router.post('/', auth, function (req, res, next) {
     console.log(req.body);
     var newBeer = new Beer(req.body);
@@ -55,7 +71,7 @@ router.post('/', auth, function (req, res, next) {
     newBeer.save(function (err, beer) {
         if (err)
             return next(err);
-        User.update({ _id: req['payload']._id }, { $push: { 'beer': beer._id } }, function (err, results) {
+        User.update({ _id: req['payload']._id }, { $push: { 'beers': beer._id } }, function (err, results) {
             if (err)
                 return next(err);
             res.send(beer);

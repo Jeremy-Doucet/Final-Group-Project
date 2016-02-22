@@ -54,10 +54,10 @@ var app;
             };
             ;
             homeService.prototype.getUserHomeBeers = function () {
-                return this.beerUserHomeResource.query();
+                return this.beerUserHomeResource.get();
             };
             homeService.prototype.getUserDetailsBeers = function (userId) {
-                return this.beerUserDetailsResource.query();
+                return this.beerUserDetailsResource.get();
             };
             ;
             ;

@@ -66,6 +66,24 @@ router.get('/', (req, res, next) => {
     });
 });
 
+//GET: USERHOME Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userHomeBeers', auth, (req, res, next) => {
+  Beer.find({ createdBy: req['payload']._id })
+  .exec((err, beers) =>{
+  if (err) return next(err);
+  res.json(beers)
+  })
+})
+
+//GET: userDETAILS Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userBeers/:id', auth, (req, res, next) => {
+  Beer.find({ createdBy: req.params.id })
+  .exec((err, beers) =>{
+  if (err) return next(err);
+  res.json(beers)
+  })
+})
+
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
     console.log(req.body)
@@ -73,7 +91,7 @@ router.post('/', auth, (req, res, next) => {
   newBeer.createdBy = req['payload']._id;
   newBeer.save((err, beer) =>{
     if(err) return next(err);
-    User.update({ _id: req['payload']._id}, { $push: { 'beer': beer._id}}, (err, results) =>{
+    User.update({ _id: req['payload']._id}, { $push: { 'beers': beer._id}}, (err, results) =>{
       if (err) return next(err);
       res.send(beer);
     });

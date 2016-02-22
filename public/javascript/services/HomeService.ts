@@ -51,11 +51,11 @@ namespace app.Services {
     };
 
     public getUserHomeBeers(){
-      return this.beerUserHomeResource.query();
+      return this.beerUserHomeResource.get();
     }
 
     public getUserDetailsBeers(userId){
-      return this.beerUserDetailsResource.query();
+      return this.beerUserDetailsResource.get();
     };
 
     constructor(

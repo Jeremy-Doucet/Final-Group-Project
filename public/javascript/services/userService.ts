@@ -44,10 +44,6 @@ namespace app.Services {
       this.status.avatarUrl = null;
     }
 
-    public loadUHome(username) {
-     return this.uHomeResource.get({username: username});
-    };
-
     public getUser(userId){
       var q = this.$q.defer();
       this.$http.get('/usershell/users/' + userId).then(function(res){
@@ -66,7 +62,6 @@ namespace app.Services {
     ) {
       this.uRegResource = $resource("/usershell/register");
       this.uLoginResource = $resource("/usershell/login");
-      this.uHomeResource = $resource("/usershell/:username");
       if (this.getToken()) this.setUser();
     };
   };

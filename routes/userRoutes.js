@@ -11,6 +11,7 @@ var auth = expjwt({
 var https = require("https");
 var User = mongoose.model("User");
 var newUser = mongoose.model("User");
+var Beer = mongoose.model("Beer");
 var router = express.Router();
 router.post("/register", function (req, res, next) {
     var newUser = new User();

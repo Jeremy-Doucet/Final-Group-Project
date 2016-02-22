@@ -12,8 +12,8 @@
     <!--Beer Image-->
     <div class="col-sm-4">
       <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
-      <h5> Location: <small> {{vm.beer.location }} </small></h5>
-      <h5> Type: <small> {{vm.beer.type }} </small></h5>
+      <h5> Location: <small> <a ng-href="/byLocation/{{vm.beer.location}}">{{vm.beer.location }}</a> </small></h5>
+      <h5> Type: <small> <a ng-href="/byType/{{vm.beer.type}}">{{vm.beer.type }}</a> </small></h5>
     </div>
 
     <div class="row">
