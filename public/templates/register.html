@@ -41,7 +41,7 @@
           <p ng-show = 'vm.newUser.password !== vm.newUser.pwdConfirm' style = 'color:red'>Passwords do not match!</p>
         </div>
 
-        <input ng-disabled = 'vm.newUser.password ! =  =  vm.newUser.pwdConfirm' class = 'btn btn-info pull-right btn-block' ng-click  =  'vm.register()' type  =  'submit' value  =  'Register'>
+        <input ng-disabled = 'vm.newUser.password !== vm.newUser.pwdConfirm' class = 'btn btn-info pull-right btn-block' ng-click  =  'vm.register()' type = 'submit' value = 'Register'>
       </div>
     </form>
   </div>
