@@ -48,7 +48,7 @@ namespace app.Controllers {
     }
 
     public unlikeBeer(beer){
-      this.commentService.deleteLikedBeer(beer).then((res) =>{
+      this.commentService.deleteLikedBeer(this.beer).then((res) =>{
         console.log('Beer was unliked')
       })
     }

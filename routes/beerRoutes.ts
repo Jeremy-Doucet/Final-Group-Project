@@ -15,7 +15,6 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
-
 //GET: INDIVIDUAL BEER DETAILS -- /api/v1/beer/details/:id
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
@@ -86,6 +85,24 @@ router.delete('/',(req,res,next)=> {
   Beer.remove({_id:req.query._id},(err,result)=> {
     res.send({message: "Deleted."})
   })
+})
+
+//GET: USERHOME Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userHomeBeers', auth, (req, res, next) => {
+ Beer.find({ createdBy: req['payload']._id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
+})
+
+//GET: userDETAILS Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userBeers/:id', auth, (req, res, next) => {
+ Beer.find({ createdBy: req.params.id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
 })
 
 export = router;

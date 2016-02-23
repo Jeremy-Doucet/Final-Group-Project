@@ -78,4 +78,20 @@ router.delete('/', function (req, res, next) {
         res.send({ message: "Deleted." });
     });
 });
+router.get('/userHomeBeers', auth, function (req, res, next) {
+    Beer.find({ createdBy: req['payload']._id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
+router.get('/userBeers/:id', auth, function (req, res, next) {
+    Beer.find({ createdBy: req.params.id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
 module.exports = router;

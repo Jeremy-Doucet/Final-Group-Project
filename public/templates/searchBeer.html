@@ -1,28 +1,16 @@
 
-
-<div class="animated fadeInLeftBig">
-<form  id="sBeer" ng-submit = "vm.searchBeer()" >
-  <label  id="sTitle">Search for a Beer </label><br>
-  <input  id="sInput" autofocus  ng-model = "vm.beer.name" type = "text" placeholder = "Search...."><br><br>
-  <button class="bSearch btn btn-info btn-block"  type ="submit" ng-click="vm.show()">Beer Me!</button>
-</form>
-</div><br><br>
-
-<!-- Beers -->
-<div class="container-fluid">
-
-
-       <div class="row beerSel" style="background-color:#2B2726" ng-repeat="b in vm.result | filter: {labels:{medium: ''}}">
-           <div class="col-lg-3"></div>
-           <div class="col-md-4 text-center top" display="margin-right:15px">
-               <div class="label" style="margin-top:15px">
-                   <a href="/addBeer/{{b.id}}"><img id="beerlabel" class="img-rounded" src="{{b.labels.medium}}" alt=""></a>
-                   <div class="caption">
-                       <h3 style="margin-left:30px">{{b.name}}<br>
-                       </h3>
-                       <p style="margin-left:45px"><td >{{b.style.shortName}}</td></p>
-                   </div>
-               </div>
-           </div>
-       </div><br>
-   </div>
+<div class="container">
+  <h1 class="text-center sRes">Search Results<small></small></h1>
+  <div class="outer">
+    <div class="company" ng-repeat="b in gc.result | filter: {labels:{medium: ''}}">
+        <div class="col-sm-4 text-center centerbeer" style="max-height: 380px; min-height: 380px">
+          <a href="/addBeer/{{b.id}}"><img id="beerlabel" class="img-responsive" src="{{b.labels.medium}}" alt=""></a>
+          <div class="caption beerSel">
+              <h3 style="word-wrap: break-word" class="text-center">{{b.name}}<br>
+              </h3>
+              <p style="word-wrap: break-word" class="text-center"><td >{{b.style.shortName}}</td></p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,8 @@ router.get('/', auth, function (req, res, next) {
 router.post('/', auth, function (req, res, next) {
     Beer.findOne({ _id: req.body.beer })
         .exec(function (err, beer) {
+        if (err)
+            return next(err);
         if (beer) {
             beer.likedByUsers.push(req['payload']._id);
             beer.save();
@@ -31,11 +33,24 @@ router.post('/', auth, function (req, res, next) {
 router.post('/', function (req, res, next) {
     User.findOne({ _id: req['payload']._id })
         .exec(function (err, user) {
+        if (err)
+            return next(err);
         if (user) {
             user.likedBeers.push(req.body.beer);
             user.save();
             res.send({ message: 'You have added this beer to your likes' });
         }
+    });
+});
+router.delete('/:id', auth, function (req, res, next) {
+    User.update({ _id: req['payload']._id }, { $pull: { likedBeers: req.params.id } }, function (err, result) {
+        if (err)
+            return next(err);
+        Beer.update({ _id: req.params.id }, { $pull: { likedByUsers: req['payload']._id } }, function (err, result) {
+            if (err)
+                return next(err);
+            res.send({ message: 'Beer is unliked' });
+        });
     });
 });
 module.exports = router;

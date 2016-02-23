@@ -55,7 +55,7 @@ var app;
                 });
             };
             beerDetailsController.prototype.unlikeBeer = function (beer) {
-                this.commentService.deleteLikedBeer(beer).then(function (res) {
+                this.commentService.deleteLikedBeer(this.beer).then(function (res) {
                     console.log('Beer was unliked');
                 });
             };

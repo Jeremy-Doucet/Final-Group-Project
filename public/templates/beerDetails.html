@@ -10,7 +10,7 @@
       </button>
 
       <button ng-click="vm.unlikeBeer()" type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Like
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Unlike
       </button>
 
 
@@ -27,7 +27,6 @@
       <h5> Location: <small> {{vm.beer.location }} </small></h5>
       <h5> Type: <small> {{vm.beer.type }} </small></h5>
     </div>
-
 
     <!--Beer Info-->
     <div class="col-sm-8">
@@ -51,7 +50,7 @@
           <div class="col-md-8">
             <small>brewery:</small><br>
             {{vm.beer.brewerydb.breweryName}}<br>
-            <a href="{{b.website}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
+            <a href="{{vm.beer.brewerydb.breweryUrl}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
           </div>
 
         </div>

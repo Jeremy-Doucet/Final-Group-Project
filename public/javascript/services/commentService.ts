@@ -36,7 +36,7 @@ namespace app.Services {
     }
 
     public deleteLikedBeer(likedBeer){
-      return this.likedBeerResource.delete({ id: likedBeer._id}).$promise
+      return this.likedBeerResource.delete({ id: likedBeer._id }).$promise
     }
 
     constructor(

@@ -10,11 +10,6 @@ namespace app.Controllers {
         public hide = false;
 
 
-
-
-
-
-
         public searchBeer() {
             this.homeService.searchBeer(this.beer).then((res) => {
                 this.result = res;
