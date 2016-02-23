@@ -1,18 +1,21 @@
 'use strict'
-namespace app.Directives{
-  export function myModal(){
+
+namespace app.Directives {
+
+  export function myModal() {
+
     return {
       template: '<div class="modal fade">' +
-          '<div class="modal-dialog">' +
-            '<div class="modal-content">' +
-              '<div class="modal-header">' +
-                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-                '<h4 class="modal-title">{{ title }}</h4>' +
-              '</div>' +
-              '<div class="modal-body" ng-transclude></div>' +
-            '</div>' +
-          '</div>' +
-        '</div>',
+      '<div class="modal-dialog">' +
+      '<div class="modal-content">' +
+      '<div class="modal-header">' +
+      '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+      '<h4 class="modal-title">{{ title }}</h4>' +
+      '</div>' +
+      '<div class="modal-body" ng-transclude></div>' +
+      '</div>' +
+      '</div>' +
+      '</div>',
       restrict: 'E',
       transclude: true,
       replace:true,
@@ -22,9 +25,9 @@ namespace app.Directives{
         console.log(scope.vm)
         scope.$watch(attrs.visible, function(value){
           if(value == true)
-            $(element).modal('show');
+          $(element).modal('show');
           else
-            $(element).modal('hide');
+          $(element).modal('hide');
         });
 
         $(element).on('shown.bs.modal', function(){
@@ -41,5 +44,6 @@ namespace app.Directives{
       }
     };
   };
+
   angular.module('app').directive('myModal', myModal)
-}
+};

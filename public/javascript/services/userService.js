@@ -53,6 +53,7 @@ var app;
                 this.status.facebook.name = null;
                 this.status.facebook.email = null;
             };
+            ;
             userService.prototype.getUser = function (userId) {
                 var q = this.$q.defer();
                 this.$http.get('/usershell/users/' + userId).then(function (res) {
@@ -62,6 +63,7 @@ var app;
                 });
                 return q.promise;
             };
+            ;
             ;
             return userService;
         }());
