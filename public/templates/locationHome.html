@@ -1,21 +1,20 @@
-<div class = "container-fluid lgImg">
-  <img class = "img-responsive lgImg" ng-src = "{{vm.locHomeImg}}">
+<div class = 'container-fluid lgImg'>
+  <img class = 'img-responsive lgImg' ng-src = '{{vm.locHomeImg}}'>
 </div>
 
-<h1>{{vm.$routeParams["location"]}}<small></small></h1>
+<h1>{{vm.$routeParams['location']}}<small></small></h1>
 
-<div class="container-fluid">
-  <div class="row" ng-repeat = "i in vm.beersLocal">
-    <div  class="col-sm-2">
-      <a ng-href = "/details/{{i._id}}"><img class="img-responsive"  src="{{i.imgurl || i.imgbeer}}" alt="" /></a>
+<div class = 'container-fluid'>
+  <div class = 'row' ng-repeat = 'i in vm.beersLocal'>
+    <div class = 'col-sm-2'>
+      <a ng-href = '/details/{{i._id}}'><img class = 'img-responsive' ng-src = '{{i.imgurl || i.imgbeer}}' alt = '' /></a>
     </div>
-    <div class="col-sm-10">
-      <h1><a ng-href="/details/{{i._id}}">{{i.name}}</a></h1><br>
-      location: <a ng-href = "/byLocation/{{i.location}}">{{i.location}}</a><br>
-      created by: <a href="/userprofile/{{i.createdBy._id}}">{{i.createdBy.username}}</a><br>
+    <div class = 'col-sm-10'>
+      <h1><a ng-href = '/details/{{i._id}}'>{{i.name}}</a></h1><br>
+      location: <a ng-href = '/byLocation/{{i.location}}'>{{i.location}}</a><br>
+      created by: <a href='/userprofile/{{i.createdBy._id}}'>{{i.createdBy.username}}</a><br>
     </div>
     <br>
     <hr>
   </div>
-
 </div>

@@ -1,16 +1,15 @@
-
-<div class="container">
-  <h1 class="text-center sRes">Search Results<small></small></h1>
-  <div class="outer">
-    <div class="company" ng-repeat="b in gc.result | filter: {labels:{medium: ''}}">
-        <div class="col-sm-4 text-center centerbeer" style="max-height: 380px; min-height: 380px">
-          <a href="/addBeer/{{b.id}}"><img id="beerlabel" class="img-responsive" src="{{b.labels.medium}}" alt=""></a>
-          <div class="caption beerSel">
-              <h3 style="word-wrap: break-word" class="text-center">{{b.name}}<br>
-              </h3>
-              <p style="word-wrap: break-word" class="text-center"><td >{{b.style.shortName}}</td></p>
-          </div>
+<div class = 'container'>
+  <h1 class = 'text-center sRes'>Search Results<small></small></h1>
+  <div class = 'outer'>
+    <div class = 'company' ng-repeat = 'b in gc.result | filter: {labels:{medium: ''}}'>
+      <div class = 'col-sm-4 text-center centerbeer' style = 'max-height: 380px; min-height: 380px'>
+        <a ng-href = '/addBeer/{{b.id}}'><img id = 'beerlabel' class = 'img-responsive' ng-src = '{{b.labels.medium}}' alt = ''></a>
+        <div class = 'caption beerSel'>
+          <h3 style = 'word-wrap: break-word' class = 'text-center'>{{b.name}}<br>
+          </h3>
+          <p style = 'word-wrap: break-word' class = 'text-center'><td >{{b.style.shortName}}</td></p>
         </div>
+      </div>
     </div>
   </div>
 </div>
