@@ -11,6 +11,7 @@ var app;
                 this.$window = $window;
                 this.homeService = homeService;
                 this.userBeers = homeService.getUserHomeBeers();
+                this.user = userService.status;
             }
             ;
             return userHomeController;

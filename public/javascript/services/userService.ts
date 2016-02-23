@@ -54,6 +54,16 @@ namespace app.Services {
       return q.promise;
     }
 
+    public updateUser(user)   {
+        var q = this.$q.defer();
+        this.$http.put("/usershell/", user).then(function(res){
+            q.resolve(res.data);
+        }, function(err){
+            q.reject(err);
+        });
+        return q.promise;
+    }
+
     constructor(
       private $resource: ng.resource.IResourceService,
       private $window: ng.IWindowService,

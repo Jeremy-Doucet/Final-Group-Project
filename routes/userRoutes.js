@@ -28,6 +28,26 @@ router.post("/register", function (req, res, next) {
         res.send(user);
     });
 });
+router.put("/", auth, function (req, res, next) {
+    User.findOne({ _id: req['payload']._id })
+        .exec(function (err, user) {
+        if (err)
+            return next(err);
+        if (!req.body.password)
+            req.body.password = "";
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.avatarUrl = req.body.avatarUrl;
+        if (user.validatePassword(req.body.password))
+            user.setPassword(req.body.newpassword);
+        user.token = user.generateJWT();
+        user.save(function (error, user, token) {
+            if (error)
+                return next(error);
+            res.json({ token: user.generateJWT() });
+        });
+    });
+});
 router.post("/login", function (req, res, next) {
     if (!req.body.username)
         return next("Invalid username");

@@ -108,6 +108,11 @@ namespace app {
         controller: app.Controllers.updateCommentController,
         controllerAs: 'vm'
       })
+      .when("/updateUser/:_id", {
+          templateUrl: "/templates/updateUser.html",
+          controller: app.Controllers.updateUserController,
+          controllerAs: "vm"
+      })
 
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);

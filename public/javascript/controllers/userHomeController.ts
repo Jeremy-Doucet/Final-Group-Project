@@ -15,6 +15,7 @@ namespace app.Controllers {
       private homeService: app.Services.homeService
     ) {
       this.userBeers = homeService.getUserHomeBeers();
+      this.user = userService.status;
     };
   };
 

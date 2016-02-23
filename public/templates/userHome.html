@@ -1,5 +1,4 @@
 <div class = "container">
-
   <div class = "row">
     <div class = "col-md-12">
       <h2 class = "pSubTitle">{{gc.status.username}}'s Page</h2>
@@ -8,20 +7,19 @@
         <a href="#">Change avatar</a>
       </div>
       <div class="col-md-3">
-        <h4>Username: </h4>{{gc.status.username}}<br><a href="#">Change Username</a>
+        <h4>Username: </h4>{{gc.status.username}}<br><a ng-href="/updateUser/{{vm.user._id}}">Change Username</a>
       </div>
       <div class="col-md-3">
-        <h4>Email: </h4>{{gc.status.email}}<br><a href="#">Change Email</a>
+        <h4>Email: </h4>{{gc.status.email}}<br><a ng-href="/updateUser/{{vm.user._id}}">Change Email</a>
       </div>
       <div class="col-md-3">
         <h4>Password: </h4>
-        <span>******</span><br><a href="#">Change Password</a>
+        <span>******</span><br><a ng-href="/updateUser/{{vm.user._id}}">Change Password</a>
       </div>
     </div>
   </div>
 
   <uib-tabset>
-
     <uib-tab heading="Posted Beers">
       <div class="col-md-12" ng-repeat="b in vm.userBeers">
         <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
@@ -29,7 +27,6 @@
         <hr>
       </div>
     </uib-tab>
-
     <uib-tab heading="Favorite Beers"></uib-tab>
   </uib-tabset>
 </div>
