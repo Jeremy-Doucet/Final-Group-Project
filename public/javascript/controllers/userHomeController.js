@@ -10,7 +10,6 @@ var app;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.homeService = homeService;
-                this.loggedInUser = this.$window.localStorage.getItem("username");
                 this.userBeers = homeService.getUserHomeBeers();
             }
             ;

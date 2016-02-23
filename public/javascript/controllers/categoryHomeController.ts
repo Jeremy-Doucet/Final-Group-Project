@@ -10,6 +10,12 @@ namespace app.Controllers {
 
     public beersPopular;
 
+    public sortByPopular(array, key) {
+      return this.beersPopular.sort((a, b) => {
+        return b["ranking"] - a["ranking"];
+      });
+    };
+
     public locHomeImg = "/css/img/" + this.$routeParams["location"] + ".png";
 
     public typeHomeImg = "/css/img/" + this.$routeParams["type"] + ".png";

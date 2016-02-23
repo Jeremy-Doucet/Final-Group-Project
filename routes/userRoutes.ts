@@ -63,18 +63,15 @@ router.post("/login", (req, res, next) => {
 ///GET: loginFB
 ////////////////////////
 
+/* istanbul ignore next */
 router.get('/auth/facebook',  passport.authenticate('facebook', {
   scope: ['email']
 }));
 /* istanbul ignore next */
 router.get('/auth/facebook/callback',  passport.authenticate('facebook', {
-  failureRedirect: '/Login'
+  failureRedirect: '/login'
 }), (req, res) => {
-  // if (req.isAuthenticated()) {
-    res.redirect('/?code=' + req.user.generateJWT());
-  // } else {
-    // res.status(403).send("You are not authenticated.");
-  // }
+  res.redirect('/?code=' + req.user.generateJWT());
 });
 
 ///////////////////////////////////
@@ -83,7 +80,7 @@ router.get('/auth/facebook/callback',  passport.authenticate('facebook', {
 
 router.get("/users/:id", (req, res, next) => {
   User.findOne({ _id: req.params.id }).select('-salt -passwordHash') // select('-salt -password') will send the user model information WITHOUT the salt or password hash properties
-    .populate('beers', 'name imgurl')
+    .populate('beers', 'name imgurl imgbeer')
     .exec((err, user) =>{
       res.send(user)
     });

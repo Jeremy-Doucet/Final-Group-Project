@@ -39,6 +39,7 @@ namespace app.Controllers {
     constructor(
       private userService: app.Services.userService,
       private $location: ng.ILocationService,
+      private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {};
   };

@@ -4,6 +4,7 @@ import express = require('express');
 let request = require("request");
 import jwt = require('express-jwt');
 let mongoose = require('mongoose');
+let Comment = mongoose.model('Comment');
 let router = express.Router();
 let Beer = mongoose.model('Beer');
 let BreweryDb = require("brewerydb-node");
@@ -14,49 +15,19 @@ let auth = jwt({
   secret: process.env.JWT_SECRET
 });
 
-
-router.get("/", (req,res,next) => {
-    Beer.find({})
-    .populate("createdBy","username")
-    .exec((err, beers) => {
-        if (err) return next(err);
-        res.send(beers)
-    });
-});
-
-
-//GET: /api/v1/beer/details/:id
+//GET: INDIVIDUAL BEER DETAILS -- /api/v1/beer/details/:id
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
     .populate('createdBy', 'username')
-    // .populate('comments')
+    .populate('comments')
     .exec((err, beer) =>{
-      res.send(beer)
+      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+        res.send(beer);
+      })
   });
 });
 
-//GET: BreweryDB get call
-router.get("/beer", (req,res,next) => {
-    brewdb.search.beers({q:req.query.name}, (err, data)=> {
-        res.send(data);
-    });
-});
-
-// router.get("/brew", (req,res,next) => {
-//     brewdb.search.breweries({q:req.query.name}, (err, data)=> {
-//         res.json(data);
-//     });
-// });
-
-//GET: BreweryDB get call
-router.get("/:id", (req,res,next) => {
-    console.log()
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
-        res.send(response.body)
-    })
-});
-
-//GET: /api/v1/beer
+//GET: QUERY ALL BEERS -- /api/v1/beer
 router.get('/', (req, res, next) => {
   Beer.find({})
     .populate('createdBy', 'username')
@@ -69,29 +40,29 @@ router.get('/', (req, res, next) => {
 //GET: USERHOME Get all Beers posted by createdBy /api/v1/beer/userposts
 router.get('/userHomeBeers', auth, (req, res, next) => {
   Beer.find({ createdBy: req['payload']._id })
-  .exec((err, beers) =>{
-  if (err) return next(err);
-  res.json(beers)
-  })
+    .exec((err, beers) =>{
+      if (err) return next(err);
+      res.json(beers)
+    })
 })
 
 //GET: userDETAILS Get all Beers posted by createdBy /api/v1/beer/userposts
 router.get('/userBeers/:id', auth, (req, res, next) => {
   Beer.find({ createdBy: req.params.id })
-  .exec((err, beers) =>{
-  if (err) return next(err);
-  res.json(beers)
-  })
+    .exec((err, beers) =>{
+      if (err) return next(err);
+      res.json(beers)
+    })
 })
 
 //POST: api/v1/beer
 router.post('/', auth, (req, res, next) => {
-    console.log(req.body)
   let newBeer = new Beer(req.body);
   newBeer.createdBy = req['payload']._id;
   newBeer.save((err, beer) =>{
     if(err) return next(err);
     User.update({ _id: req['payload']._id}, { $push: { 'beers': beer._id}}, (err, results) =>{
+      console.log('saved beer to user')
       if (err) return next(err);
       res.send(beer);
     });
@@ -114,6 +85,24 @@ router.delete('/',(req,res,next)=> {
   Beer.remove({_id:req.query._id},(err,result)=> {
     res.send({message: "Deleted."})
   })
+})
+
+//GET: USERHOME Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userHomeBeers', auth, (req, res, next) => {
+ Beer.find({ createdBy: req['payload']._id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
+})
+
+//GET: userDETAILS Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userBeers/:id', auth, (req, res, next) => {
+ Beer.find({ createdBy: req.params.id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
 })
 
 export = router;

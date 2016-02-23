@@ -32,7 +32,7 @@ require("./passport/passport");
 ////////////////////////
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect(process.env.MONGO_TEST);
+  mongoose.connect(process.env.MONGO_URL);
 } else {
   mongoose.connect(process.env.MONGO_URL);
 }

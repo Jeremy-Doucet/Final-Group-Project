@@ -2,8 +2,7 @@
 
 namespace app.Controllers {
     export class beerCreateController {
-
-        public beer:any = {name:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""},ranking:0};
+        public beer:any = {name:"",beerdesc:"",imgbeer:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}, ranking: 0};
         public mybeer;
         public brew:any;
         public hide = false;
@@ -17,12 +16,14 @@ namespace app.Controllers {
         public show()   {
             this.hide = true;
         }
+
         constructor(
             private homeService: app.Services.homeService,
             private $location: ng.ILocationService,
             private $routeParams: ng.route.IRouteParamsService
         ) {
             homeService.getBrew( $routeParams["id"]).then((res) => {
+                if (!res.data[0].images)res.data[0].images = {};
                 this.brew = res.data;
                 this.beer.brewerydb.breweryName = res.data[0].name;
                 this.beer.brewerydb.labelImg = res.data[0].images.squareMedium;

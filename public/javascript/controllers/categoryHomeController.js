@@ -18,6 +18,12 @@ var app;
                 if (this.$location.path() === "/popular")
                     this.beersPopular = categoryService.getBeersPopular();
             }
+            categoryHomeController.prototype.sortByPopular = function (array, key) {
+                return this.beersPopular.sort(function (a, b) {
+                    return b["ranking"] - a["ranking"];
+                });
+            };
+            ;
             ;
             return categoryHomeController;
         }());
