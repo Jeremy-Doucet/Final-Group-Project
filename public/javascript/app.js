@@ -48,11 +48,6 @@ var app;
             controller: app.Controllers.userController,
             controllerAs: "vm"
         })
-            .when("/?code=", {
-            templateUrl: "/templates/login.html",
-            controller: app.Controllers.userController,
-            controllerAs: "vm"
-        })
             .when("/myprofile", {
             templateUrl: "/templates/userHome.html",
             controller: app.Controllers.userHomeController,

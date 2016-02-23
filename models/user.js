@@ -38,8 +38,7 @@ UserSchema.method("generateJWT", function () {
         username: this.username,
         email: this.email,
         avatarUrl: this.avatarUrl,
-        facebook_email: this.facebook.email,
-        facebook_name: this.facebook.name
+        facebook: facebook
     }, process.env.JWT_SECRET);
 });
 exports.User = mongoose.model("User", UserSchema);

@@ -25,7 +25,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    callbackURL: "http://localhost:3000/usershell/auth/facebook/callback",
     passReqToCallback: true,
     profileFields: ['emails', 'name', 'gender', 'profileUrl']
 }, function (req, accessToken, refreshToken, profile, done) {

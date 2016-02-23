@@ -4,10 +4,9 @@ var app;
     var Controllers;
     (function (Controllers) {
         var userController = (function () {
-            function userController(userService, $location, $routeParams, $window) {
+            function userController(userService, $location, $window) {
                 this.userService = userService;
                 this.$location = $location;
-                this.$routeParams = $routeParams;
                 this.$window = $window;
             }
             userController.prototype.register = function () {

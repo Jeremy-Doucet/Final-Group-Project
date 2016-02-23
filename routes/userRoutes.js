@@ -11,6 +11,7 @@ var auth = expjwt({
 var https = require("https");
 var User = mongoose.model("User");
 var newUser = mongoose.model("User");
+var Beer = mongoose.model("Beer");
 var router = express.Router();
 router.post("/register", function (req, res, next) {
     var newUser = new User();
@@ -45,13 +46,13 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
     scope: ['email']
 }));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    failureRedirect: '/login'
+    failureRedirect: '/Login'
 }), function (req, res) {
     res.redirect('/?code=' + req.user.generateJWT());
 });
 router.get("/users/:id", function (req, res, next) {
     User.findOne({ _id: req.params.id }).select('-salt -passwordHash')
-        .populate('beers', 'name imgurl imgbeer')
+        .populate('beers', 'name imgurl')
         .exec(function (err, user) {
         res.send(user);
     });
