@@ -3,6 +3,7 @@
 namespace app.Controllers {
 
   export class homeController {
+
     public status;
     public beer;
     public result;
@@ -12,12 +13,13 @@ namespace app.Controllers {
       this.userService.removeUser();
       this.$location.path('/');
     };
+
     public searchBeer() {
-        this.homeService.searchBeer(this.beer).then((res) => {
-            this.result = res;
-            this.$location.path("/searchBeer");
-        })
-    }
+      this.homeService.searchBeer(this.beer).then((res) => {
+        this.result = res;
+        this.$location.path('/searchBeer');
+      });
+    };
 
     constructor(
       private homeService: app.Services.homeService,
@@ -26,13 +28,12 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-
       let params = $location.search();
       if (params.code) {
         userService.setToken(params.code);
         userService.setUser();
         $location.search('code', null);
-        $location.hash("");
+        $location.hash('');
       };
       this.status = userService.status;
     };

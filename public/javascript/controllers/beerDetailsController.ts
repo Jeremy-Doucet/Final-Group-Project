@@ -13,10 +13,10 @@ namespace app.Controllers {
       this.showModal = !this.showModal;
     };
 
-    public deleteBeer(id){
-      this.homeService.deleteBeer(this.beer._id).then((res) =>{
+    public deleteBeer(id) {
+      this.homeService.deleteBeer(this.beer._id).then((res) => {
         this.$location.path('/beerPage')
-      })
+      });
     };
 
     public addComment() {

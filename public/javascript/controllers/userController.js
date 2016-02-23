@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var app;
 (function (app) {
     var Controllers;
@@ -23,12 +23,12 @@ var app;
                     this.userService.registerUser(this.newUser).then(function (res) {
                         _this.userService.setToken(res.token);
                         _this.userService.setUser();
-                        _this.$window.localStorage.setItem("username", _this.newUser.username);
+                        _this.$window.localStorage.setItem('username', _this.newUser.username);
                         _this.$location.path('/myprofile');
                     });
                 }
                 else {
-                    alert("Passwords do not match");
+                    alert('Passwords do not match');
                 }
             };
             ;
@@ -37,8 +37,8 @@ var app;
                 this.userService.login(this.user).then(function (res) {
                     _this.userService.setToken(res.token);
                     _this.userService.setUser();
-                    _this.$window.localStorage.setItem("username", _this.user.username);
-                    _this.$location.path("/");
+                    _this.$window.localStorage.setItem('username', _this.user.username);
+                    _this.$location.path('/');
                 });
             };
             ;
@@ -47,7 +47,7 @@ var app;
         }());
         Controllers.userController = userController;
         ;
-        angular.module("app").controller("userController", userController);
+        angular.module('app').controller('userController', userController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

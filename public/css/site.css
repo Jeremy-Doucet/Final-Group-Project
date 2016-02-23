@@ -88,30 +88,35 @@ body {
   margin-left: 408px;
 }
 
-.label{
+.label {
   margin-top: 15px;
   padding:10px;
 }
-.top    {
+
+.top {
   margin-top: 10px;
 }
 
-.beerSel{
+.beerSel {
   margin-left: 84px;
 }
-.bPage{
+
+.bPage {
   float: left;
   width: 33%;
 }
-#beerlabel{
+
+#beerlabel {
   margin-top: 15px;
   margin-left: 26%;
 }
-#sInput{
+
+#sInput {
   width: 300px;
   height: 45px;
   margin-left: 8px;
 }
+
 html {
   scroll-behavior: smooth;
   top: 0;
@@ -136,10 +141,12 @@ html {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
 .bigTitle {
   font-size: 4em;
   color: black;
 }
+
 .customHSpacer1 {
   width: 12.5%;
 }
@@ -187,7 +194,6 @@ font-weight: bold;
 
 .pSubTBox {
   border: 3px solid #000;
-
 }
 
 .pSubTitle {
@@ -277,6 +283,7 @@ font-weight: bold;
   -webkit-transition-duration: 0;
   transition-duration: 0;
 }
+
 .company.ng-enter {
   -webkit-transition:0.3s linear all;
   transition:0.3s linear all;
@@ -284,16 +291,19 @@ font-weight: bold;
   -webkit-transform:scale(1.15)!important;
   transform:scale(1.15)!important;
 }
+
 .company.ng-enter.ng-enter-active {
   opacity: 1;
   -webkit-transform:scale(1)!important;
   transform:scale(1)!important;
 }
+
 .company.ng-leave {
   -webkit-transition:0.1s linear all;
   transition:0.1s linear all;
   opacity: 1;
 }
+
 .company.ng-leave.ng-leave-active {
   opacity: 0;
 }
@@ -321,13 +331,11 @@ h6 {
   font-weight: 700;
 }
 
-
 .outer {
   position: relative;
   width: 100%;
   height: auto;
   margin: 20px auto;
-
 }
 
 .inner {

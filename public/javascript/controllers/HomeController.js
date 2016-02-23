@@ -15,7 +15,7 @@ var app;
                     userService.setToken(params.code);
                     userService.setUser();
                     $location.search('code', null);
-                    $location.hash("");
+                    $location.hash('');
                 }
                 ;
                 this.status = userService.status;
@@ -30,9 +30,10 @@ var app;
                 var _this = this;
                 this.homeService.searchBeer(this.beer).then(function (res) {
                     _this.result = res;
-                    _this.$location.path("/searchBeer");
+                    _this.$location.path('/searchBeer');
                 });
             };
+            ;
             ;
             return homeController;
         }());
