@@ -10,6 +10,12 @@ namespace app.Controllers {
 
     public beersPopular;
 
+    public sortByPopular(array, key) {
+      return this.beersPopular.sort((a, b) => {
+        return b["ranking"] - a["ranking"];
+      });
+    };
+
     public locHomeImg = "/css/img/" + this.$routeParams["location"] + ".png";
 
     public typeHomeImg = "/css/img/" + this.$routeParams["type"] + ".png";
@@ -20,13 +26,9 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
-      this.beersType = categoryService.getBeersType($routeParams["type"]);
-      this.beersPopular = categoryService.getBeersPopular().sort((a, b) => {
-        let x = a["ranking"];
-        let y = b["ranking"];
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-      });
+      if (this.$routeParams["location"]) this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
+      if (this.$routeParams["type"]) this.beersType = categoryService.getBeersType($routeParams["type"]);
+      this.beersPopular = categoryService.getBeersPopular();
     };
   };
 

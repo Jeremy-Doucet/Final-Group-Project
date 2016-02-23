@@ -6,7 +6,7 @@
 
 <div class = "container" style = "text-align: center">
   <div class = "homeContentView">
-    <div class = "row postSnip" ng-repeat = "beer in vm.beersPop">
+    <div class = "row postSnip" ng-repeat = "beer in vm.sortByPopular()">
       <div class = "col-md-3">
         <a ng-href = "/details/{{beer._id}}"><img class = "imgHomePop" ng-src = "{{beer.imgurl}}"></a>
       </div>

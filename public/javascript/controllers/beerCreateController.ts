@@ -2,7 +2,7 @@
 
 namespace app.Controllers {
     export class beerCreateController {
-        public beer:any = {name:"",beerdesc:"",imgbeer:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}};
+        public beer:any = {name:"",beerdesc:"",imgbeer:"",brewerydb:{abv:"",breweryName:"",beerType:"",labelImg:"",breweryUrl:"",breweryDesc:"",organic:""}, ranking: 0};
         public mybeer;
         public brew:any;
         public hide = false;
@@ -16,7 +16,7 @@ namespace app.Controllers {
         public show()   {
             this.hide = true;
         }
-    
+
         constructor(
             private homeService: app.Services.homeService,
             private $location: ng.ILocationService,

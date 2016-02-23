@@ -51,9 +51,33 @@
         "routes/categoryRoutes.ts",
         "routes/commentRoutes.ts",
         "routes/userRoutes.ts",
-        "server.ts"
+        "server.ts",
+        "typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts",
+        "typings/angularjs/angular-animate.d.ts",
+        "typings/angularjs/angular-resource.d.ts",
+        "typings/angularjs/angular-route.d.ts",
+        "typings/angularjs/angular.d.ts",
+        "typings/body-parser/body-parser.d.ts",
+        "typings/cookie-parser/cookie-parser.d.ts",
+        "typings/ejs/ejs.d.ts",
+        "typings/express-jwt/express-jwt.d.ts",
+        "typings/express-unless/express-unless.d.ts",
+        "typings/express/express.d.ts",
+        "typings/jquery/jquery.d.ts",
+        "typings/jsonwebtoken/jsonwebtoken.d.ts",
+        "typings/mime/mime.d.ts",
+        "typings/mongoose/mongoose.d.ts",
+        "typings/morgan/morgan.d.ts",
+        "typings/node/node.d.ts",
+        "typings/npm/npm.d.ts",
+        "typings/passport-facebook/passport-facebook.d.ts",
+        "typings/passport-local/passport-local.d.ts",
+        "typings/passport/passport.d.ts",
+        "typings/serve-favicon/serve-favicon.d.ts",
+        "typings/serve-static/serve-static.d.ts",
+        "typings/tsd.d.ts"
     ],
     "atom": {
-        "rewriteTsconfig": false
+        "rewriteTsconfig": true
     }
 }
