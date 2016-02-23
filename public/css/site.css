@@ -1,102 +1,116 @@
-body{
+body {
   background-color: #E9E9E9;
 }
+
 #sBox{
-    margin-left:-15px;
-}
-#sBeer{
-    margin-top: 40px;
-    margin-left: 17%;
-    margin-bottom: 37px;
-    width: 316px;
-    border: 1px solid lightgrey;
-    box-shadow:19px 22px 10px #888888;
-    height: 155px;
-    background-color:white;
-    color: black;
-}
-.bName{
-    margin-left: -5px;
-}
-.cBeer{
-    border:1px solid black;
-    background-color: #4D2C17;
-}
-.sRes{
-        margin-right: -8%;
-}
-.bot{
-    margin-bottom:50px;
-}
-.brbtm{
-    margin-bottom: 15px;
-}
-.cBeer1 {
-    color: white;
-}
-.gld    {
-    color:#FBA711;
-}
-.brn{
-    background-color: #4A2A03;
-}
-body{
-    background-color: #E9E9E9;
+  margin-left:-15px;
 }
 
-.sTable{
-    width:55%;
+#sBeer {
+  margin-top: 40px;
+  margin-left: 17%;
+  margin-bottom: 37px;
+  width: 316px;
+  border: 1px solid lightgrey;
+  box-shadow:19px 22px 10px #888888;
+  height: 155px;
+  background-color:white;
+  color: black;
 }
+
+.bName {
+  margin-left: -5px;
+}
+
+.cBeer {
+  border:1px solid black;
+  background-color: #4D2C17;
+}
+
+.sRes {
+  margin-right: -8%;
+}
+
+.bot {
+  margin-bottom:50px;
+}
+
+.brbtm {
+  margin-bottom: 15px;
+}
+
+.cBeer1 {
+  color: white;
+}
+
+.gld {
+  color:#FBA711;
+}
+
+.brn {
+  background-color: #4A2A03;
+}
+
+.sTable {
+  width:55%;
+}
+
 .ctype th {
-    color:#907651;
+  color:#907651;
 }
-.sResult tr td a{
-    color:#907651;
+
+.sResult tr td a {
+  color:#907651;
 }
-#sTitle{
-    font-size: 30px;
-    margin-left: 20px;
-    color:black;
+
+#sTitle {
+  font-size: 30px;
+  margin-left: 20px;
+  color:black;
 }
-#aBeer{
-    margin-left: 6px;
+
+#aBeer {
+  margin-left: 6px;
 }
+
 .bSearch {
-    background-color: lightsteelblue;
-    color:black;
-    font-weight: bold;
-    width: 298px;
-    margin-left: 9px;
-    margin-top: -4px;
+  background-color: lightsteelblue;
+  color:black;
+  font-weight: bold;
+  width: 298px;
+  margin-left: 9px;
+  margin-top: -4px;
 }
-.bList{
-    margin-left: 100px;
-    margin-top: -152px;
-    margin-left: 408px;
+
+.bList {
+  margin-left: 100px;
+  margin-top: -152px;
+  margin-left: 408px;
 }
+
 .label{
-    margin-top: 15px;
-    padding:10px;
+  margin-top: 15px;
+  padding:10px;
 }
 .top    {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .beerSel{
-    margin-left: 84px;
+  margin-left: 84px;
 }
 .bPage{
-    float: left;
-    width: 33%;
+  float: left;
+  width: 33%;
 }
 #beerlabel{
-    margin-top: 15px;
-    margin-left: 26%;
+  margin-top: 15px;
+  margin-left: 26%;
 }
 #sInput{
-    width: 300px;
-    height: 45px;
-    margin-left: 8px;
+  width: 300px;
+  height: 45px;
+  margin-left: 8px;
 }
 html {
   scroll-behavior: smooth;
@@ -104,14 +118,14 @@ html {
 }
 
 .nav-tabs > li, .nav-pills > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-     zoom:1; /* hasLayout ie7 trigger */
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
 }
 
 .nav-tabs, .nav-pills {
-    text-align:center;
+  text-align:center;
 }
 
 .userIcon {
@@ -135,13 +149,13 @@ html {
 }
 
 /*.beerHomeNav li a {
-  height: 10vh;
-  border-right: 2px solid #000;
+height: 10vh;
+border-right: 2px solid #000;
 }
 .beerHomeNav li a{
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
+color: black;
+font-size: 15px;
+font-weight: bold;
 }*/
 
 .lgImg {
@@ -258,37 +272,37 @@ html {
 
 
 .company.ng-enter-stagger, .company.ng-leave-stagger, .repeat-animation.ng-move-stagger {
-    -webkit-transition-delay: 0.1s;
-    transition-delay: 0.1s;
-    -webkit-transition-duration: 0;
-    transition-duration: 0;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  -webkit-transition-duration: 0;
+  transition-duration: 0;
 }
 .company.ng-enter {
-    -webkit-transition:0.3s linear all;
-    transition:0.3s linear all;
-    opacity: 0;
-    -webkit-transform:scale(1.15)!important;
-    transform:scale(1.15)!important;
+  -webkit-transition:0.3s linear all;
+  transition:0.3s linear all;
+  opacity: 0;
+  -webkit-transform:scale(1.15)!important;
+  transform:scale(1.15)!important;
 }
 .company.ng-enter.ng-enter-active {
-    opacity: 1;
-    -webkit-transform:scale(1)!important;
-    transform:scale(1)!important;
+  opacity: 1;
+  -webkit-transform:scale(1)!important;
+  transform:scale(1)!important;
 }
 .company.ng-leave {
-    -webkit-transition:0.1s linear all;
-    transition:0.1s linear all;
-    opacity: 1;
+  -webkit-transition:0.1s linear all;
+  transition:0.1s linear all;
+  opacity: 1;
 }
 .company.ng-leave.ng-leave-active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .centerbeer {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
 
 /*  -------------------------------------------------------*/
 /*  -------------------------------------------------------*/
