@@ -48,7 +48,7 @@ router.post('/', function(req, res, next) {
       });
     },
     function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport('smtps://CCAppGroup%40gmail.com:CCAppGr0up@smtp.gmail.com');
+      var smtpTransport = nodemailer.createTransport(`smtps://${process.env.GMAIL_USER}%40gmail.com:${process.env.GMAIL_PASS}@smtp.gmail.com`);
       var mailOptions = {
         to: user.email,
         from: 'passwordreset@demo.com',
@@ -105,7 +105,7 @@ router.post('/reset/:token', function(req, res,next) {
       });
     },
     function(user, done) {
-      var smtpTransport = nodemailer.createTransport('smtps://CCAppGroup%40gmail.com:CCAppGr0up@smtp.gmail.com')
+      var smtpTransport =      nodemailer.createTransport(`smtps://${process.env.GMAIL_USER}%40gmail.com:${process.env.GMAIL_PASS}@smtp.gmail.com`);
       var mailOptions = {
         to: user.email,
         from: 'passwordreset@demo.com',
