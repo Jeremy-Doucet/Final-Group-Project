@@ -1,58 +1,79 @@
 <!DOCTYPE html>
 <html ng-app="app">
-
 <head>
-  <title>app</title>
-  <meta charset="utf-8">
-  <base href="/" />
-  <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
-  <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
-</head>
+    <title>app</title>
+    <meta charset="utf-8">
+    <base href="/" />
+    <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
+    <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
+    <link rel="stylesheet" href="/css/animate.css">
+    <link href="font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+</head>
 <body ng-controller = "homeController as gc">
 
-  <div class = "pSubTBox">
+  <!-- Navigation -->
+      <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand page-scroll" href="/"><img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/beer.png" width="30" /></a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                      <li><a href="/beerPage">Beers</a></li>
+                  </ul>
+              </ul>
+              <form class="navbar-form navbar-left" role="search" ng-submit = "gc.searchBeer()" >
+                <div id="sBox" class="form-group">
+                Search for a beer  <input  autofocus ng-model = "gc.beer.name" type = "text" placeholder = "Beer Search">
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text" ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username | uppercase }}</a></p></li>
+                    <li><a ng-show="gc.status.username == null" ng-href="/register">Register </a></li>
+                    <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
+                    <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
 
-    <nav class = "navbar beerHomeNav">
-      <div class = "container-fluid">
-        <div class = "col-md-3">
-          <a class = "navbar-brand bigTitle" ng-href = "/">A Big Title</a>
-        </div>
-        <div class = "col-md-5">
-          <ul class = "nav navbar-nav beerHomeNav">
-            <li><a ng-href="/beerPage">Check out beerPage |</a></li>
-            <li><a ng-href="/addBeer">Add a Beer |</a></li>
-            <li><a ng-href="/register">Register |</a></li>
-            <li><a ng-href="/login">Login |</a></li>
-            <li><button ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</button><br></li>
-            <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
+<ng-view></ng-view>
 
-  </div>
+    <!-- Bootstrap -->
 
-  <ng-view></ng-view>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <!-- Bootstrap -->
+    <!-- Angular -->
 
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
 
-  <!-- Angular -->
-
-  <script src="/scripts/angular/angular.min.js"></script>
-  <script src="/scripts/angular-route/angular-route.min.js"></script>
-  <script src="/scripts/angular-resource/angular-resource.min.js"></script>
-  <script src="/scripts/angular-animate/angular-animate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
 
 
   <!-- General -->
-
-  <script src="/javascript/app.js"></script>
+    <script src="/javascript/app.js"></script>
 
   <!-- Controllers -->
 
@@ -68,15 +89,20 @@
   <script src="/javascript/controllers/beerUpdateController.js"></script>
   <script src="/javascript/controllers/updateCommentController.js"></script>
   <script src="/javascript/controllers/forgotController.js"></script>
+  <script src="/javascript/controllers/categoryHomeController.js"></script>
 
-  <!-- Services -->
+  <!--services-->
 
   <script src="/javascript/services/commentService.js"></script>
   <script src="/javascript/services/homeService.js"></script>
   <script src="/javascript/services/HTTPFactory.js"></script>
   <script src="/javascript/services/userService.js"></script>
     <script src="/javascript/services/resetService.js"></script>
+  <script src="/javascript/services/categoryService.js"></script>
 
+  <!-- Directives -->
+  <script src="/javascript/directives/modal.js"></script>
+  <script src="/javascript/directives/autofocus.js"></script>
 
 </body>
 

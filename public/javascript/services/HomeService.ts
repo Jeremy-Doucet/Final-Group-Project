@@ -1,4 +1,4 @@
-"use strict";
+
 
 namespace app.Services {
   export class homeService {
@@ -6,7 +6,6 @@ namespace app.Services {
     public brewdbResource;
     public beerUserHomeResource;
     public beerUserDetailsResource;
-    public BeerResource;
 
     public searchBeer(beer) {
         return this.brewdbResource.query({id:"beer", name: beer.name }).$promise;
@@ -26,14 +25,12 @@ namespace app.Services {
     }
 
     public deleteBeer(beerId){
-      return this.BeerResource.delete({ _id: beerId }).$promise;
+      return this.beerResource.delete({ _id: beerId }).$promise;
     }
 
     public updateBeer(beer){
-      return this.BeerResource.update({ id: beer._id }, beer).$promise;
+      return this.beerResource.update({ id: beer._id }, beer).$promise;
     }
-
-
 
     public getAll() {
       return this.beerResource.query();
@@ -59,7 +56,7 @@ namespace app.Services {
 
     public getUserDetailsBeers(userId){
       return this.beerUserDetailsResource.query();
-    }
+    };
 
     constructor(
         private $resource: ng.resource.IResourceService,
@@ -73,8 +70,8 @@ namespace app.Services {
       this.brewdbResource = $resource("/api/v1/brewdb/:id", null,
       {
       });
-      this.beerUserHomeResource = $resource('/api/v1/beer/userHomeBeers')
-      this.beerUserDetailsResource = $resource('/api/v1/beer/userDetailsBeers/:id')
+      this.beerUserHomeResource = $resource('/api/v1/beer/userHomeBeers');
+      this.beerUserDetailsResource = $resource('/api/v1/beer/userDetailsBeers/:id');
     };
   };
   angular.module('app').service('homeService', homeService);

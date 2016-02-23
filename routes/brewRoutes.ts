@@ -21,18 +21,18 @@ router.get("/beer", (req,res,next) => {
     });
 });
 
-router.get("/:id", (req,res,next) => {
-    console.log()
-    request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
-        res.send(response.body)
-    })
-});
-
 router.get("/details/:id", (req,res,next) => {
     console.log()
     request("http://api.brewerydb.com/v2/beer/" + req.params.id + "?key="+process.env.brewdb_key,(err,response,body,data)=> {
         res.send(response.body)
     })
+});
+
+router.get("/:id", (req,res,next) => {
+  console.log()
+  request("http://api.brewerydb.com/v2/beer/" + req.params.id + "/breweries?key="+process.env.brewdb_key,(err,response,body,data)=> {
+  res.send(response.body)
+  })
 });
 
 

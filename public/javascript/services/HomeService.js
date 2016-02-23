@@ -1,4 +1,3 @@
-"use strict";
 var app;
 (function (app) {
     var Services;
@@ -31,10 +30,10 @@ var app;
                 return q.promise;
             };
             homeService.prototype.deleteBeer = function (beerId) {
-                return this.BeerResource.delete({ _id: beerId }).$promise;
+                return this.beerResource.delete({ _id: beerId }).$promise;
             };
             homeService.prototype.updateBeer = function (beer) {
-                return this.BeerResource.update({ id: beer._id }, beer).$promise;
+                return this.beerResource.update({ id: beer._id }, beer).$promise;
             };
             homeService.prototype.getAll = function () {
                 return this.beerResource.query();
@@ -59,6 +58,7 @@ var app;
             homeService.prototype.getUserDetailsBeers = function (userId) {
                 return this.beerUserDetailsResource.query();
             };
+            ;
             ;
             return homeService;
         }());

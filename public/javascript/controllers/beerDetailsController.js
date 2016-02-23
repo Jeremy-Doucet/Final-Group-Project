@@ -4,17 +4,21 @@ var app;
     var Controllers;
     (function (Controllers) {
         var beerDetailsController = (function () {
-            function beerDetailsController(CommentService, $location, homeService, $routeParams) {
+            function beerDetailsController(commentService, $location, homeService, $routeParams) {
                 var _this = this;
-                this.CommentService = CommentService;
+                this.commentService = commentService;
                 this.$location = $location;
                 this.homeService = homeService;
                 this.$routeParams = $routeParams;
                 this.comments = [];
+                this.showModal = false;
                 homeService.getBeer($routeParams['id']).then(function (res) {
                     _this.beer = res;
                 });
             }
+            beerDetailsController.prototype.toggleModal = function () {
+                this.showModal = !this.showModal;
+            };
             beerDetailsController.prototype.deleteBeer = function (id) {
                 var _this = this;
                 this.homeService.deleteBeer(this.beer._id).then(function (res) {
@@ -27,13 +31,13 @@ var app;
                     message: this.comment.message,
                     Beer: this.$routeParams['id']
                 };
-                this.CommentService.saveComment(comment).then(function (res) {
+                this.commentService.saveComment(comment).then(function (res) {
                     _this.beer.comments.push(res);
                 });
             };
             beerDetailsController.prototype.deleteComment = function (comment) {
                 var _this = this;
-                this.CommentService.deleteComment(comment).then(function (res) {
+                this.commentService.deleteComment(comment).then(function (res) {
                     _this.beer.comments.splice(_this.beer.comments.indexOf(comment), 1);
                 });
             };

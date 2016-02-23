@@ -4,11 +4,21 @@ var app;
     angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: '/templates/Home.html',
+            templateUrl: '/templates/home.html',
             controller: app.Controllers.homeController,
             controllerAs: 'vm'
         })
+            .when('/comments', {
+            templateUrl: '/templates/comments.html',
+            controller: app.Controllers.updateCommentController,
+            controllerAs: 'vm'
+        })
             .when('/addBeer', {
+            templateUrl: '/templates/createBeer.html',
+            controller: app.Controllers.beerCreateController,
+            controllerAs: 'vm'
+        })
+            .when('/addBeer/:id', {
             templateUrl: '/templates/createBeer.html',
             controller: app.Controllers.beerCreateController,
             controllerAs: 'vm'
@@ -23,7 +33,7 @@ var app;
             controller: app.Controllers.beerDetailsController,
             controllerAs: 'vm'
         })
-            .when('/update/:id', {
+            .when('/updateBeer/:id', {
             templateUrl: '/templates/beerUpdate.html',
             controller: app.Controllers.beerUpdateController,
             controllerAs: 'vm'
@@ -43,9 +53,19 @@ var app;
             controller: app.Controllers.userHomeController,
             controllerAs: "vm"
         })
-            .when("/addBeer/:id", {
-            templateUrl: "/templates/createBeer.html",
-            controller: app.Controllers.beerCreateController,
+            .when("/popular", {
+            templateUrl: "/templates/popularHome.html",
+            controller: app.Controllers.categoryHomeController,
+            controllerAs: "vm"
+        })
+            .when("/byLocation/:location", {
+            templateUrl: "/templates/locationHome.html",
+            controller: app.Controllers.categoryHomeController,
+            controllerAs: "vm"
+        })
+            .when("/byType/:type", {
+            templateUrl: "/templates/typeHome.html",
+            controller: app.Controllers.categoryHomeController,
             controllerAs: "vm"
         })
             .when("/searchBeer", {
@@ -63,7 +83,7 @@ var app;
             controller: app.Controllers.breweryDetailsController,
             controllerAs: "vm"
         })
-            .when('/update/:id', {
+            .when('/updateComment/:id', {
             templateUrl: '/templates/commentEdit.html',
             controller: app.Controllers.updateCommentController,
             controllerAs: 'vm'

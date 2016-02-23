@@ -4,10 +4,11 @@ var app;
     var Controllers;
     (function (Controllers) {
         var homeController = (function () {
-            function homeController(homeService, userService, $location, $window) {
+            function homeController(homeService, userService, $location, $routeParams, $window) {
                 this.homeService = homeService;
                 this.userService = userService;
                 this.$location = $location;
+                this.$routeParams = $routeParams;
                 this.$window = $window;
                 this.params = $location.search();
                 if (this.params.code) {
@@ -25,6 +26,13 @@ var app;
                 this.$location.path('/');
             };
             ;
+            homeController.prototype.searchBeer = function () {
+                var _this = this;
+                this.homeService.searchBeer(this.beer).then(function (res) {
+                    _this.result = res;
+                    _this.$location.path("/searchBeer");
+                });
+            };
             ;
             return homeController;
         }());

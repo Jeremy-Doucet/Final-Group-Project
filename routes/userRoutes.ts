@@ -82,25 +82,10 @@ router.get('/auth/facebook/callback',  passport.authenticate('facebook', {
 
 router.get("/users/:id", (req, res, next) => {
   User.findOne({ _id: req.params.id }).select('-salt -passwordHash') // select('-salt -password') will send the user model information WITHOUT the salt or password hash properties
-    .populate('beers', 'name imgurl')
+    .populate('beers', 'name imgurl imgbeer')
     .exec((err, user) =>{
       res.send(user)
     });
-});
-
-////////////////////////
-///GET: User for uHome
-////////////////////////
-
-router.get("/:username", (req, res, next) => {
-  User.findOne({username: req.params["username"]}, {passwordHash: 0, salt: 0})
-  .populate("uPosts.postsOwn")
-  .populate("uPosts.postsOthers")
-  .exec((error, user) => {
-    if (error) return next(error);
-    if (!user) return next({message: "No user"});
-    res.send(user);
-  });
 });
 
 ////////////////////////

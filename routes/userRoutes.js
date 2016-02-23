@@ -51,20 +51,8 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 });
 router.get("/users/:id", function (req, res, next) {
     User.findOne({ _id: req.params.id }).select('-salt -passwordHash')
-        .populate('beers', 'name imgurl')
+        .populate('beers', 'name imgurl imgbeer')
         .exec(function (err, user) {
-        res.send(user);
-    });
-});
-router.get("/:username", function (req, res, next) {
-    User.findOne({ username: req.params["username"] }, { passwordHash: 0, salt: 0 })
-        .populate("uPosts.postsOwn")
-        .populate("uPosts.postsOthers")
-        .exec(function (error, user) {
-        if (error)
-            return next(error);
-        if (!user)
-            return next({ message: "No user" });
         res.send(user);
     });
 });

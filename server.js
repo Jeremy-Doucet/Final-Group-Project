@@ -12,7 +12,7 @@ require('./models/comment');
 require('./models/user');
 require("./passport/passport");
 if (process.env.NODE_ENV === 'test') {
-    mongoose.connect(process.env.MONGO_TEST);
+    mongoose.connect(process.env.MONGO_URL);
 }
 else {
     mongoose.connect(process.env.MONGO_URL);
@@ -26,15 +26,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use(express.static('./public'));
+app.use('/scripts', express.static(__dirname + 'bower_components'));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
 var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require("./routes/brewRoutes");
 var commentRoutes = require('./routes/commentRoutes');
 var userRoutes = require("./routes/userRoutes");
 var resetPasswordRoutes = require('./routes/resetPasswordRoutes');
+var categoryRoutes = require("./routes/categoryRoutes");
 app.use('/api/v1/beer', beerRoutes);
 app.use("/api/v1/brewdb", brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
+app.use("/catshell", categoryRoutes);
 app.use('/forgot', resetPasswordRoutes);
 app.use(express.static('./public'));
 app.use('/scripts', express.static('bower_components'));

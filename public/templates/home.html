@@ -5,23 +5,13 @@
 <div class = "pSubTBox">
   <div class = "row" style = "text-align: center">
     <div class = "col-md-4">
-      <h3><a ng-href = "#homePop">Popular</a></h3>
+      <h3><a ng-href = "/popular">Popular</a></h3>
     </div>
     <div class = "col-md-4">
-      <h3><a ng-href = "#homeLoc">By Location</a></h3>
+      <h3><a class="page-scroll" ng-href = "#homeLoc">By Location</a></h3>
     </div>
     <div class = "col-md-4">
       <h3><a ng-href = "#homeType">By Beer Type</a></h3>
-    </div>
-  </div>
-</div>
-
-<div id = "homePop" class = "container" style = "text-align: center">
-  <h2>Popular</h2>
-  <p><a ng-href = "_top">Back to Top</a></p>
-  <div class = "homeContentView">
-    <div class = "postSnip">
-      //repeat posts by popularity
     </div>
   </div>
 </div>
@@ -30,18 +20,18 @@
   <h2>By Location</h2>
   <p><a ng-href = "_top">Back to Top</a></p>
   <div class = "row customVSpacer1">
-    <a ng-href = "#"><div id = "SFO" class = "col-md-3 imgHomeSmall">Bay Area</div></a>
+    <a ng-href = "/byLocation/SFO"><div id = "SFO" class = "col-md-3 imgHomeLocType">Bay Area</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "DEN" class = "col-md-3 imgHomeSmall">Denver</div></a>
+    <a ng-href = "/byLocation/DEN"><div id = "DEN" class = "col-md-3 imgHomeLocType">Denver</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "BOS" class = "col-md-3 imgHomeSmall">Boston</div></a>
+    <a ng-href = "/byLocation/BOS"><div id = "BOS" class = "col-md-3 imgHomeLocType">Boston</div></a>
   </div>
   <div class = "row customVSpacer1">
-    <a ng-href = "#"><div id = "SEA" class = "col-md-3 imgHomeSmall">Seattle</div></a>
+    <a ng-href = "/byLocation/SEA"><div id = "SEA" class = "col-md-3 imgHomeLocType">Seattle</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "DFW" class = "col-md-3 imgHomeSmall">Dallas</div></a>
+    <a ng-href = "/byLocation/DFW"><div id = "DFW" class = "col-md-3 imgHomeLocType">Dallas</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "CHI" class = "col-md-3 imgHomeSmall">Chicago</div></a>
+    <a ng-href = "/byLocation/CHI"><div id = "CHI" class = "col-md-3 imgHomeLocType">Chicago</div></a>
   </div>
 </div>
 
@@ -49,17 +39,17 @@
   <h2>By Beer Type</h2>
   <p><a ng-href = "_top">Back to Top</a></p>
   <div class = "row customVSpacer1">
-    <a ng-href = "#"><div id = "pale" class = "col-md-3 imgHomeSmall">Pale</div></a>
+    <a ng-href = "/byType/Pale"><div id = "pale" class = "col-md-3 imgHomeLocType">Pale</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "mild" class = "col-md-3 imgHomeSmall">Mild</div></a>
+    <a ng-href = "/byType/Mild"><div id = "mild" class = "col-md-3 imgHomeLocType">Mild</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "wheat" class = "col-md-3 imgHomeSmall">Wheat</div></a>
+    <a ng-href = "/byType/Wheat"><div id = "wheat" class = "col-md-3 imgHomeLocType">Wheat</div></a>
   </div>
   <div class = "row customVSpacer1">
-    <a ng-href = "#"><div id = "lambic" class = "col-md-3 imgHomeSmall">Lambic</div></a>
+    <a ng-href = "/byType/Lambic"><div id = "lambic" class = "col-md-3 imgHomeLocType">Lambic</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "lager" class = "col-md-3 imgHomeSmall">Lager</div></a>
+    <a ng-href = "/byType/Lager"><div id = "lager" class = "col-md-3 imgHomeLocType">Lager</div></a>
     <div class = "col-md-1 customHSpacer1"></div>
-    <a ng-href = "#"><div id = "stout" class = "col-md-3 imgHomeSmall">Stout</div></a>
+    <a ng-href = "/byType/Stout"><div id = "stout" class = "col-md-3 imgHomeLocType">Stout</div></a>
   </div>
 </div>

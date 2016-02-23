@@ -1,19 +1,26 @@
-<h3>Login:</h3>
+<div class="container">
+    <div class="row" style="margin-left:180px">
+        <h1>Login:</h1><br>
+        <form role="form" ng-submit="vm.login()">
+            <div class="col-lg-9">
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                    <label for="InputName">Username</label>
+                    <div class="input-group">
+                        <input type="text" ng-model="vm.user.username" class="form-control"  id="InputName" placeholder="Enter Username" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
 
-<form>
-
-  <label>Username: </label>
-  <input ng-model = "vm.user.username" type = "text" placeholder = "Enter username"><br><br>
-
-  <label>Password: </label>
-  <input ng-model = "vm.user.password" type = "password" placeholder = "Enter password"><br><br><br>
-
-  <input ng-click = "vm.login()" type = "submit" value = "Login">
-
-</form>
-<br>
-
-<a  ng-href="/forgot">Forgot your password?</a>
-
-<h3>...or via FaceBook:</h3>
-<a target = "_self" ng-href = "/usershell/auth/facebook"><img ng-src = "/css/img/fbLogin.png"></a>
+                <div class="form-group">
+                    <label for="Inputpassword">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" ng-model="vm.user.password" placeholder="Password" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <a  ng-href="/forgot">Forgot your password?</a>
+                <input type="submit" name="Login" id="submit" value="Login" class=" btn btn-info pull-right btn-block"><br><br><br>
+            </div>
+        </form><br>
+    </div>

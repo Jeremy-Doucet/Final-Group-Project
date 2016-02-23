@@ -28,12 +28,13 @@ router.post('/', function (req, res, next) {
         },
         function (token, done) {
             User.findOne({ email: req.body.email }, function (err, user) {
+                console.log('req.body.email');
                 if (!user) {
                     console.log('error', 'No account with that email address exists.');
                     return res.redirect('/forgot');
                 }
-                User.resetPasswordToken = token;
-                User.resetPasswordExpires = Date.now() + 3600000;
+                user.resetPasswordToken = token;
+                user.resetPasswordExpires = Date.now() + 3600000;
                 user.save(function (err) {
                     done(err, token, user);
                 });
@@ -61,15 +62,15 @@ router.post('/', function (req, res, next) {
         res.redirect('/');
     });
 });
-router.post('/reset/:token', function (req, res) {
+router.post('/reset/:token', function (req, res, next) {
     async.waterfall([
         function (done) {
             User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                 if (!user) {
                     console.log('error', 'Password reset token is invalid or has expired.');
-                    return res.redirect('back');
+                    return next('no user found');
                 }
-                user.setPassword(req.body.password);
+                user.setPassword(req.body.setPassword);
                 user.resetPasswordToken = undefined;
                 user.resetPasswordExpires = undefined;
                 user.save(function (err) {
@@ -94,7 +95,7 @@ router.post('/reset/:token', function (req, res) {
             });
         }
     ], function (err) {
-        res.redirect('/');
+        res.end();
     });
 });
 module.exports = router;

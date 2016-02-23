@@ -24,7 +24,7 @@
 
     <uib-tab heading="Posted Beers">
       <div class="col-md-12" ng-repeat="b in vm.userBeers">
-        <img style ="max-width: 100px" src="{{b.imgurl}}" alt="" />
+        <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
         <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
         <hr>
       </div>

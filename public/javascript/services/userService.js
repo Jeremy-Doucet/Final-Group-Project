@@ -12,7 +12,6 @@ var app;
                 this.status = { _id: null, email: null, username: null, avatarUrl: null };
                 this.uRegResource = $resource("/usershell/register");
                 this.uLoginResource = $resource("/usershell/login");
-                this.uHomeResource = $resource("/usershell/:username");
                 if (this.getToken())
                     this.setUser();
             }
@@ -50,10 +49,6 @@ var app;
                 this.status.username = null;
                 this.status.avatarUrl = null;
             };
-            userService.prototype.loadUHome = function (username) {
-                return this.uHomeResource.get({ username: username });
-            };
-            ;
             userService.prototype.getUser = function (userId) {
                 var q = this.$q.defer();
                 this.$http.get('/usershell/users/' + userId).then(function (res) {
