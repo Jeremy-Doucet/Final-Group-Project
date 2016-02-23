@@ -43,7 +43,7 @@
               </form>
               <ul class="nav navbar-nav navbar-right">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><p class="navbar-text" ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username | uppercase }}</a></p></li>
+                    <li><p class="navbar-text" ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username || gc.status.facebook.name | uppercase }}</a></p></li>
                     <li><a ng-show="gc.status.username == null" ng-href="/register">Register </a></li>
                     <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
                     <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>

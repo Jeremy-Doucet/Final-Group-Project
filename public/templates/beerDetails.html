@@ -13,6 +13,7 @@
     <div class="col-sm-4">
       <img class="img-responsive" src="{{vm.beer.imgurl || vm.beer.imgbeer}}"  />
       <hr>
+      <button ng-click = "vm.rateBeer(1)">Like!</button><button ng-click = "vm.rateBeer(-1)">Do Not Like!</button>
       <h5> Location: <small> {{vm.beer.location }} </small></h5>
       <h5> Type: <small> {{vm.beer.type }} </small></h5>
     </div>

@@ -4,7 +4,6 @@ namespace app.Controllers {
 
   export class homeController {
     public status;
-    public params;
     public beer;
     public result;
 
@@ -28,11 +27,11 @@ namespace app.Controllers {
       private $window: ng.IWindowService
     ) {
 
-      this.params = $location.search();
-      if (this.params.code) {
-        userService.setToken(this.params.code);
+      let params = $location.search();
+      if (params.code) {
+        userService.setToken(params.code);
         userService.setUser();
-        $location.search("code", null);
+        $location.search('code', null);
         $location.hash("");
       };
       this.status = userService.status;

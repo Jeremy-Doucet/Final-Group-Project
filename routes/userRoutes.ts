@@ -62,18 +62,15 @@ router.post("/login", (req, res, next) => {
 ///GET: loginFB
 ////////////////////////
 
+/* istanbul ignore next */
 router.get('/auth/facebook',  passport.authenticate('facebook', {
   scope: ['email']
 }));
 /* istanbul ignore next */
 router.get('/auth/facebook/callback',  passport.authenticate('facebook', {
-  failureRedirect: '/Login'
+  failureRedirect: '/login'
 }), (req, res) => {
-  // if (req.isAuthenticated()) {
-    res.redirect('/?code=' + req.user.generateJWT());
-  // } else {
-    // res.status(403).send("You are not authenticated.");
-  // }
+  res.redirect('/?code=' + req.user.generateJWT());
 });
 
 ///////////////////////////////////

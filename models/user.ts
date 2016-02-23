@@ -51,7 +51,8 @@ UserSchema.method("generateJWT", function() {
     username: this.username,
     email: this.email,
     avatarUrl: this.avatarUrl,
-    facebook: facebook
+    facebook_email: this.facebook.email,
+    facebook_name: this.facebook.name
   }, process.env.JWT_SECRET);
 });
 

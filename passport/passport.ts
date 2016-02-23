@@ -37,10 +37,11 @@ passport.use(new LocalStrategy((username, password, done) => {
   });
 }));
 
+/* istanbul ignore next */
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/usershell/auth/facebook/callback",
+  callbackURL: process.env.FACEBOOK_CALLBACK_URL,
   passReqToCallback: true,
   profileFields: ['emails', 'name', 'gender', 'profileUrl']
 }, (req, accessToken, refreshToken, profile, done) => {
