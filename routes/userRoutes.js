@@ -1,19 +1,19 @@
-"use strict";
-var express = require("express");
-var expjwt = require("express-jwt");
-var mongoose = require("mongoose");
-var passport = require("passport");
-var FacebookStrategy = require("passport-facebook").Strategy;
+'use strict';
+var express = require('express');
+var expjwt = require('express-jwt');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
 var auth = expjwt({
-    userProperty: "payload",
+    userProperty: 'payload',
     secret: process.env.JWT_SECRET
 });
-var https = require("https");
-var User = mongoose.model("User");
-var newUser = mongoose.model("User");
-var Beer = mongoose.model("Beer");
+var https = require('https');
+var User = mongoose.model('User');
+var newUser = mongoose.model('User');
+var Beer = mongoose.model('Beer');
 var router = express.Router();
-router.post("/register", function (req, res, next) {
+router.post('/register', function (req, res, next) {
     var newUser = new User();
     newUser.username = req.body.username;
     newUser.email = req.body.email;
@@ -24,17 +24,17 @@ router.post("/register", function (req, res, next) {
     newUser.save(function (error, user, token) {
         if (error)
             return next(error);
-        user.passwordHash = "";
-        user.salt = "";
+        user.passwordHash = '';
+        user.salt = '';
         res.send(user);
     });
 });
-router.post("/login", function (req, res, next) {
+router.post('/login', function (req, res, next) {
     if (!req.body.username)
-        return next("Invalid username");
+        return next('Invalid username');
     if (!req.body.password)
-        return next("Invalid password");
-    passport.authenticate("local", function (error, user, info) {
+        return next('Invalid password');
+    passport.authenticate('local', function (error, user, info) {
         if (error)
             return next(error);
         if (user)
@@ -42,17 +42,13 @@ router.post("/login", function (req, res, next) {
         return res.send(info);
     })(req, res, next);
 });
-router.get('/auth/facebook', passport.authenticate('facebook', {
-    scope: ['email']
-}));
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    failureRedirect: '/Login'
-}), function (req, res) {
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function (req, res) {
     res.redirect('/?code=' + req.user.generateJWT());
 });
-router.get("/users/:id", function (req, res, next) {
+router.get('/users/:id', function (req, res, next) {
     User.findOne({ _id: req.params.id }).select('-salt -passwordHash')
-        .populate('beers', 'name imgurl')
+        .populate('beers', 'name imgurl imgbeer')
         .exec(function (err, user) {
         res.send(user);
     });
