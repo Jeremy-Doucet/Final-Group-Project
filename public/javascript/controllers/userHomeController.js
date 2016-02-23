@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var app;
 (function (app) {
     var Controllers;
@@ -19,7 +19,7 @@ var app;
         }());
         Controllers.userHomeController = userHomeController;
         ;
-        angular.module("app").controller("userHomeController", userHomeController);
+        angular.module('app').controller('userHomeController', userHomeController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

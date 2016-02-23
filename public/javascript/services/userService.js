@@ -9,7 +9,7 @@ var app;
                 this.$window = $window;
                 this.$http = $http;
                 this.$q = $q;
-                this.status = { _id: null, email: null, username: null, avatarUrl: null };
+                this.status = { _id: null, email: null, username: null, avatarUrl: null, facebook: { email: null, name: null } };
                 this.uRegResource = $resource("/usershell/register");
                 this.uLoginResource = $resource("/usershell/login");
                 if (this.getToken())
@@ -41,6 +41,8 @@ var app;
                 this.status.email = user.email;
                 this.status.username = user.username;
                 this.status.avatarUrl = user.avatarUrl;
+                this.status.facebook.name = user.facebook_name;
+                this.status.facebook.email = user.facebook_email;
             };
             ;
             userService.prototype.removeUser = function () {
@@ -48,7 +50,10 @@ var app;
                 this.status.email = null;
                 this.status.username = null;
                 this.status.avatarUrl = null;
+                this.status.facebook.name = null;
+                this.status.facebook.email = null;
             };
+            ;
             userService.prototype.getUser = function (userId) {
                 var q = this.$q.defer();
                 this.$http.get('/usershell/users/' + userId).then(function (res) {
@@ -58,6 +63,7 @@ var app;
                 });
                 return q.promise;
             };
+            ;
             ;
             return userService;
         }());

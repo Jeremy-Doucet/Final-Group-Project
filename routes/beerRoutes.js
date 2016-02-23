@@ -1,12 +1,12 @@
 'use strict';
 var express = require('express');
-var request = require("request");
+var request = require('request');
 var jwt = require('express-jwt');
 var mongoose = require('mongoose');
 var Comment = mongoose.model('Comment');
 var router = express.Router();
 var Beer = mongoose.model('Beer');
-var BreweryDb = require("brewerydb-node");
+var BreweryDb = require('brewerydb-node');
 var brewdb = new BreweryDb(process.env.brewdb_key);
 var User = mongoose.model('User');
 var auth = jwt({
@@ -73,25 +73,9 @@ router.put('/:_id', function (req, res, next) {
 });
 router.delete('/', function (req, res, next) {
     if (!req.query._id)
-        return next({ status: 404, });
+        return next({ status: 404 });
     Beer.remove({ _id: req.query._id }, function (err, result) {
-        res.send({ message: "Deleted." });
-    });
-});
-router.get('/userHomeBeers', auth, function (req, res, next) {
-    Beer.find({ createdBy: req['payload']._id })
-        .exec(function (err, beers) {
-        if (err)
-            return next(err);
-        res.json(beers);
-    });
-});
-router.get('/userBeers/:id', auth, function (req, res, next) {
-    Beer.find({ createdBy: req.params.id })
-        .exec(function (err, beers) {
-        if (err)
-            return next(err);
-        res.json(beers);
+        res.send({ message: 'Deleted.' });
     });
 });
 module.exports = router;

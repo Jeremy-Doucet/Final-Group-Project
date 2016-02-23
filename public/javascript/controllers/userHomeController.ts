@@ -1,8 +1,9 @@
-"use strict";
+'use strict';
 
 namespace app.Controllers {
 
   export class userHomeController {
+
     public user;
     public userBeers;
     public loggedInUser;
@@ -21,5 +22,5 @@ namespace app.Controllers {
     };
   };
 
-  angular.module("app").controller("userHomeController", userHomeController);
+  angular.module('app').controller('userHomeController', userHomeController);
 };

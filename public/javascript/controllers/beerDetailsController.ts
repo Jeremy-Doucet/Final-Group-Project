@@ -1,4 +1,5 @@
 'use strict';
+
 namespace app.Controllers {
   export class beerDetailsController {
     public beer;
@@ -12,15 +13,15 @@ namespace app.Controllers {
       this.heart = !this.heart;
     }
 
-    public toggleModal(){
+    public toggleModal() {
       this.showModal = !this.showModal;
-    }
+    };
 
-    public deleteBeer(id){
-      this.homeService.deleteBeer(this.beer._id).then((res) =>{
+    public deleteBeer(id) {
+      this.homeService.deleteBeer(this.beer._id).then((res) => {
         this.$location.path('/beerPage')
-      })
-    }
+      });
+    };
 
     public addComment() {
       let comment = {
@@ -30,7 +31,7 @@ namespace app.Controllers {
       this.commentService.saveComment(comment).then((res) => {
         this.beer.comments.push(res);
       });
-    }
+    };
 
     public deleteComment(comment) {
       this.commentService.deleteComment(comment).then((res) => {
@@ -53,17 +54,25 @@ namespace app.Controllers {
       })
     }
 
-    constructor(
+    public rateBeer(rating) {
+      this.beer.ranking = this.beer.ranking + rating;
+      this.homeService.getBeer(this.beer._id).then((res) => {
+        this.homeService.updateBeer(this.beer);
+      });
+    };
+
+    constructor (
       private commentService: app.Services.commentService,
       private $location: ng.ILocationService,
       private homeService: app.Services.homeService,
       private $routeParams: ng.route.IRouteParamsService
-    ){
+    ) {
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
       });
+
       this.beerExists = commentService.getAllLikes();
-    }
-  }
+    };
+  };
   angular.module('app').controller('BeerDetailsController', beerDetailsController);
-}
+};

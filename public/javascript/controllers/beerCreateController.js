@@ -9,9 +9,23 @@ var app;
                 this.homeService = homeService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
-                this.beer = { name: "", beerdesc: "", imgbeer: "", brewerydb: { abv: "", breweryName: "", beerType: "", labelImg: "", breweryUrl: "", breweryDesc: "", organic: "" } };
+                this.beer = {
+                    name: '',
+                    beerdesc: '',
+                    imgbeer: '',
+                    brewerydb: {
+                        abv: '',
+                        breweryName: '',
+                        beerType: '',
+                        labelImg: '',
+                        breweryUrl: '',
+                        breweryDesc: '',
+                        organic: ''
+                    },
+                    ranking: 0
+                };
                 this.hide = false;
-                homeService.getBrew($routeParams["id"]).then(function (res) {
+                homeService.getBrew($routeParams['id']).then(function (res) {
                     if (!res.data[0].images)
                         res.data[0].images = {};
                     _this.brew = res.data;
@@ -20,7 +34,7 @@ var app;
                     _this.beer.brewerydb.breweryDesc = res.data[0].description;
                     _this.beer.brewerydb.breweryUrl = res.data[0].website;
                 });
-                homeService.getMyBeer($routeParams["id"]).then(function (res) {
+                homeService.getMyBeer($routeParams['id']).then(function (res) {
                     _this.mybeer = res.data;
                     _this.beer.name = res.data.name;
                     _this.beer.brewerydb.abv = res.data.abv;
@@ -40,6 +54,7 @@ var app;
             beerCreateController.prototype.show = function () {
                 this.hide = true;
             };
+            ;
             ;
             return beerCreateController;
         }());

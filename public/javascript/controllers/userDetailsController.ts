@@ -1,8 +1,11 @@
 'use strict';
 
-namespace app.Controllers{
-  export class userDetailsController{
+namespace app.Controllers {
+
+  export class userDetailsController {
+
     public user;
+    public getUser;
     public likedBeers;
 
     constructor(
@@ -17,4 +20,4 @@ namespace app.Controllers{
     }
   }
   angular.module('app').controller('userDetailsController', userDetailsController);
-}
+};

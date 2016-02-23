@@ -20,3 +20,4 @@ var app;
         angular.module('app').controller('userDetailsController', userDetailsController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
+;

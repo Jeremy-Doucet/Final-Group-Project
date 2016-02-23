@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 namespace app.Services {
 
@@ -51,4 +51,4 @@ namespace app.Services {
   };
 
   angular.module('app').service('commentService', commentService);
-}
+};

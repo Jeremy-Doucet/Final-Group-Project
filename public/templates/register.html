@@ -1,50 +1,53 @@
+<div class = 'container'>
+  <div class = 'row' style = 'margin-left:200px'>
+    <h1>Register</h1><br>
+    <form role = 'form'>
+      <div class = 'col-lg-9 '>
+        <!-- <div class = 'well well-sm'><strong><span class = 'glyphicon glyphicon-asterisk'></span>Required Field</strong></div> -->
+        <div class = 'form-group'>
+          <label for = 'InputName'>Username</label>
+          <div class = 'input-group'>
+            <input type = 'text' ng-model = 'vm.newUser.username' class = 'form-control' id = 'InputName' placeholder = 'Enter Username' required>
+            <span class = 'input-group-addon'><span class = 'glyphicon glyphicon-asterisk'></span></span>
+          </div>
+        </div>
+        <div class = 'form-group'>
+          <label for = 'InputEmail'>Enter Email</label>
+          <div class = 'input-group'>
+            <input type = 'email' ng-model = 'vm.newUser.email' class = 'form-control' id = 'InputEmailFirst' name = 'InputEmail' placeholder = 'Enter Email' required>
+            <span class = 'input-group-addon'><span class = 'glyphicon glyphicon-asterisk'></span></span>
+          </div>
+        </div>
+        <div class = 'form-group'>
+          <label for = 'InputEmail'>Avatar URL</label>
+          <div class = 'input-group'>
+            <input type = 'avatar' ng-model = 'vm.newUser.avatarUrl' class = 'form-control' placeholder = 'Optional Avatar'>
+            <span class = 'input-group-addon'><span class = 'glyphicon glyphicon-asterisk'></span></span>
+          </div>
+        </div>
+        <div class = 'form-group'>
+          <label for = 'Inputpassword'>Password</label>
+          <div class = 'input-group'>
+            <input type = 'password' class = 'form-control' ng-model = 'vm.newUser.password' placeholder = 'Password' required>
+            <span class = 'input-group-addon'><span class = 'glyphicon glyphicon-asterisk'></span></span>
+          </div>
+        </div>
+        <div class = 'form-group' ng-class{'has error': }>
+          <label for = 'Inputpassword'>Confirm Password</label>
+          <div class = 'input-group'>
+            <input  type = 'password' class = 'form-control' placeholder = 'Confirm Password' required ng-model = 'vm.newUser.pwdConfirm' type = 'password' placeholder = 'Confirm password'>
+            <span class = 'input-group-addon'><span class = 'glyphicon glyphicon-asterisk'></span></span>
+          </div>
+          <p ng-show = 'vm.newUser.password !== vm.newUser.pwdConfirm' style = 'color:red'>Passwords do not match!</p>
+        </div>
 
-<div class="container">
-    <div class="row" style="margin-left:200px">
-        <h1>Register</h1><br>
-        <form role="form">
-            <div class="col-lg-9 ">
-                <!-- <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div> -->
-                <div class="form-group">
-                    <label for="InputName">Username</label>
-                    <div class="input-group">
-                        <input type="text" ng-model="vm.newUser.username" class="form-control"  id="InputName" placeholder="Enter Username" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="InputEmail">Enter Email</label>
-                    <div class="input-group">
-                        <input type="email" ng-model="vm.newUser.email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="InputEmail">Avatar URL</label>
-                    <div class="input-group">
-                        <input type="avatar" ng-model = "vm.newUser.avatarUrl" class="form-control"   placeholder="Optional Avatar">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="Inputpassword">Password</label>
-                    <div class="input-group">
-                        <input type = "password" class="form-control" ng-model = "vm.newUser.password" placeholder="Password" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group" ng-class{"has error": }>
-                    <label for="Inputpassword">Confirm Password</label>
-                    <div class="input-group">
-                        <input  type="password" class="form-control" placeholder="Confirm Password" required ng-model = "vm.newUser.pwdConfirm" type = "password" placeholder = "Confirm password">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                    <p ng-show="vm.newUser.password !== vm.newUser.pwdConfirm" style="color:red">Passwords do not match!</p>
-                </div>
+        <input ng-disabled = 'vm.newUser.password !== vm.newUser.pwdConfirm' class = 'btn btn-info pull-right btn-block' ng-click  =  'vm.register()' type = 'submit' value = 'Register'>
+      </div>
+    </form>
+  </div>
 
-                <input ng-disabled="vm.newUser.password !== vm.newUser.pwdConfirm" class="btn btn-info pull-right btn-block" ng-click = "vm.register()" type = "submit" value = "Register">
-            </div>
-        </form>
-
-    </div>
+  <div class = 'row' style = 'margin-left:200px'>
+    <h1>...or via Facebook</h1><br>
+    <a target  =  '_self' ng-href  =  '/usershell/auth/facebook'><img ng-src  =  '/css/img/fbLogin.png'></a>
+  </div>
 </div><br><br><br>

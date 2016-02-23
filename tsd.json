@@ -21,16 +21,16 @@
       "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
     },
     "angularjs/angular.d.ts": {
-      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     },
     "jquery/jquery.d.ts": {
-      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     },
     "angularjs/angular-resource.d.ts": {
-      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     },
     "angularjs/angular-route.d.ts": {
-      "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     },
     "body-parser/body-parser.d.ts": {
       "commit": "3030a4be536b6530c06b80081f1333dc0de4d703"
@@ -70,6 +70,9 @@
     },
     "passport-facebook/passport-facebook.d.ts": {
       "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "angularjs/angular-animate.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     }
   }
 }

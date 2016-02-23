@@ -1,19 +1,18 @@
 
-<div class="container">
-  <h1 class="text-center">Beer Reviews<small></small></h1>
-  <div class="outer">
-    <div class="company" ng-repeat="b in vm.beers" >
-        <div class="col-sm-4 text-center centerbeer" style="max-height: 380px; min-height: 380px">
-          <a href="/details/{{b._id}}">
-            <img class="img-responsive centerbeer" ng-src="{{b.imgurl || b.imgbeer}}">
-          </a>
-          <h4>
-            <a ng-href="/details/{{b._id}}">{{b.name}}</a>
-          </h4>
-          <p>location: <a ng-href = "/byLocation/{{b.location}}">{{b.location}}</a></p>
-          <p>created by: <a href="/userprofile/{{b.createdBy._id}}">{{b.createdBy.username}}</a></p>
-        </div>
+<div class = 'container'>
+  <h1 class = 'text-center'>Beer Reviews<small></small></h1>
+  <div class = 'outer'>
+    <div class = 'company' ng-repeat = 'b in vm.beers'>
+      <div class = 'col-sm-4 text-center centerbeer' style = 'max-height: 380px; min-height: 380px'>
+        <a ng-href='#'>
+          <a ng-href = '/details/{{b._id}}'><img class = 'img-responsive centerbeer' ng-src = '{{b.imgurl || b.imgbeer}}'></a>
+        </a>
+        <h4>
+          <a ng-href = '/details/{{b._id}}'>{{b.name}}</a>
+        </h4>
+        <p>location: <a ng-href = '/byLocation/{{b.location}}'>{{b.location}}</a></p>
+        <p>created by: <a ng-href = '/userprofile/{{b.createdBy._id}}'>{{b.createdBy.username}}</a></p>
+      </div>
     </div>
   </div>
-
 </div>

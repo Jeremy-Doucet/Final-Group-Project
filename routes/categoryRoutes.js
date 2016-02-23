@@ -1,10 +1,11 @@
-"use strict";
-var express = require("express");
-var mongoose = require("mongoose");
-var Beer = mongoose.model("Beer");
+'use strict';
+var express = require('express');
+var mongoose = require('mongoose');
+var Beer = mongoose.model('Beer');
 var router = express.Router();
-router.get("/byLocation/:location", function (req, res, next) {
-    Beer.find({ location: req.params["location"] })
+router.get('/byLocation/:location', function (req, res, next) {
+    Beer.find({ location: req.params['location'] })
+        .populate('createdBy')
         .exec(function (error, beersLocal) {
         if (error)
             return next(error);
@@ -13,8 +14,9 @@ router.get("/byLocation/:location", function (req, res, next) {
         res.send(beersLocal);
     });
 });
-router.get("/byType/:type", function (req, res, next) {
-    Beer.find({ type: req.params["type"] })
+router.get('/byType/:type', function (req, res, next) {
+    Beer.find({ type: req.params['type'] })
+        .populate('createdBy')
         .exec(function (error, beersType) {
         if (error)
             return next(error);
@@ -23,8 +25,9 @@ router.get("/byType/:type", function (req, res, next) {
         res.send(beersType);
     });
 });
-router.get("/popular", function (req, res, next) {
+router.get('/popular', function (req, res, next) {
     Beer.find({})
+        .populate('createdBy')
         .exec(function (error, beersPopular) {
         if (error)
             return next(error);

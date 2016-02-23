@@ -47,3 +47,4 @@ var app;
         angular.module('app').directive('myModal', myModal);
     })(Directives = app.Directives || (app.Directives = {}));
 })(app || (app = {}));
+;

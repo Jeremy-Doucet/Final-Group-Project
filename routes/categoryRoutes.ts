@@ -1,26 +1,14 @@
-"use strict";
+'use strict';
 
-////////////////////////
-///Require modules
-////////////////////////
-
-import express = require("express");
-let mongoose = require("mongoose");
-
-let Beer = mongoose.model("Beer");
-
-////////////////////////
-///Router
-////////////////////////
-
+import express = require('express');
+let mongoose = require('mongoose');
+let Beer = mongoose.model('Beer');
 let router = express.Router();
 
-////////////////////////
 ///GET: by location
-////////////////////////
-
-router.get("/byLocation/:location", (req, res, next) => {
-  Beer.find({location: req.params["location"]})
+router.get('/byLocation/:location', (req, res, next) => {
+  Beer.find({location: req.params['location']})
+  .populate('createdBy')
   .exec((error, beersLocal) => {
     if (error) return next(error);
     if (!beersLocal) res.send([]);
@@ -28,12 +16,10 @@ router.get("/byLocation/:location", (req, res, next) => {
   });
 });
 
-///////////////////////////////////
 ///GET: by type
-///////////////////////////////////
-
-router.get("/byType/:type", (req, res, next) => {
-  Beer.find({type: req.params["type"]})
+router.get('/byType/:type', (req, res, next) => {
+  Beer.find({type: req.params['type']})
+  .populate('createdBy')
   .exec((error, beersType) => {
     if (error) return next(error);
     if (!beersType) return next([]);
@@ -41,21 +27,15 @@ router.get("/byType/:type", (req, res, next) => {
   });
 });
 
-///////////////////////////////////
 ///GET: by popular
-///////////////////////////////////
-
-router.get("/popular", (req, res, next) => {
+router.get('/popular', (req, res, next) => {
   Beer.find({})
+  .populate('createdBy')
   .exec((error, beersPopular) => {
     if (error) return next(error);
     if (!beersPopular) return next([]);
     res.send(beersPopular);
   });
 });
-
-////////////////////////
-///Export
-////////////////////////
 
 export = router;

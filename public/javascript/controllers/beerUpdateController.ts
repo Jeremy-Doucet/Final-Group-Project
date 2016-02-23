@@ -6,7 +6,7 @@ namespace app.Controllers {
 
     public beer;
 
-    public update(id){
+    public update(id) {
       this.homeService.updateBeer(this.beer).then((res) => {
         this.$location.path('/beerPage');
       });
@@ -17,7 +17,7 @@ namespace app.Controllers {
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService
     ) {
-      homeService.getBeer( $routeParams['id'] ).then((res)=>{
+      homeService.getBeer( $routeParams['id'] ).then((res) => {
         this.beer = res
       });
     };

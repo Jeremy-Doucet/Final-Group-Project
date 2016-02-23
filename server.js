@@ -1,18 +1,18 @@
-"use strict";
-require("dotenv").config({ silent: true });
+'use strict';
+require('dotenv').config({ silent: true });
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var passport = require("passport");
+var passport = require('passport');
 var app = express();
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
-require("./passport/passport");
+require('./passport/passport');
 if (process.env.NODE_ENV === 'test') {
-    mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect(process.env.MONGO_TEST);
 }
 else {
     mongoose.connect(process.env.MONGO_URL);
@@ -28,22 +28,19 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(express.static('./public'));
 app.use('/scripts', express.static(__dirname + 'bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 var beerRoutes = require('./routes/beerRoutes');
-var brewRoutes = require("./routes/brewRoutes");
+var brewRoutes = require('./routes/brewRoutes');
 var commentRoutes = require('./routes/commentRoutes');
 var userRoutes = require("./routes/userRoutes");
 var categoryRoutes = require("./routes/categoryRoutes");
 var likedRoutes = require('./routes/likedRoutes');
 app.use('/api/v1/beer', beerRoutes);
-app.use("/api/v1/brewdb", brewRoutes);
+app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 app.use("/catshell", categoryRoutes);
 app.use('/api/v1/likedBeers', likedRoutes);
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|javascript/.test(req.path))
         return next({ status: 404, message: 'Not Found' });

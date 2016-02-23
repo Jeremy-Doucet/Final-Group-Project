@@ -32,20 +32,25 @@
         "public/javascript/controllers/beerPageController.ts",
         "public/javascript/controllers/beerUpdateController.ts",
         "public/javascript/controllers/breweryDetailsController.ts",
+        "public/javascript/controllers/categoryHomeController.ts",
         "public/javascript/controllers/HomeController.ts",
-        "public/javascript/controllers/locationHomeController.ts",
         "public/javascript/controllers/searchBeerController.ts",
         "public/javascript/controllers/updateCommentController.ts",
         "public/javascript/controllers/userController.ts",
         "public/javascript/controllers/userDetailsController.ts",
         "public/javascript/controllers/userHomeController.ts",
+        "public/javascript/directives/autofocus.ts",
+        "public/javascript/directives/modal.ts",
+        "public/javascript/services/categoryService.ts",
         "public/javascript/services/commentService.ts",
         "public/javascript/services/HomeService.ts",
         "public/javascript/services/HTTPFactory.ts",
         "public/javascript/services/userService.ts",
         "routes/beerRoutes.ts",
         "routes/brewRoutes.ts",
+        "routes/categoryRoutes.ts",
         "routes/commentRoutes.ts",
+        "routes/likedRoutes.ts",
         "routes/userRoutes.ts",
         "server.ts",
         "typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts",
@@ -73,6 +78,6 @@
         "typings/tsd.d.ts"
     ],
     "atom": {
-        "rewriteTsconfig": false
+        "rewriteTsconfig": true
     }
 }

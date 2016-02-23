@@ -1,118 +1,99 @@
-
 <!-- Heading Row -->
-<div class="container cBeer">
+<div class = 'container cBeer'>
+  <div class = 'row'>
+    <div class = 'col-md-7 brbtm' style = 'margin-top:30px'>
+      <img class = 'img-rounded' ng-src = '{{vm.beer.imgbeer}}' alt = ''><span><img ng-src = 'http://il6.picdn.net/shutterstock/videos/7141753/thumb/1.jpg?i10c = img.resize(height:160)' alt = '' height = '200px' /></span></img>
+      <h1 class = 'gld bName'>{{vm.mybeer.name}}<br>
+        <a class = 'brn btn btn-warning btn-lg' ng-href = '/login' ng-show = 'gc.status.username === null' >Login to post review</a>
+        <a class = 'brn btn btn-primary btn-lg' ng-hide = 'dirForm.toggle || gc.status.username === null' ng-click = 'dirForm.toggle = true'>Add Beer Review</a>
+        <a class = 'brn btn btn-primary btn-lg' ng-hide = '!dirForm.toggle' ng-click = 'dirForm.toggle = false'>Hide Form</a></h1>
+        <p class = 'cBeer1'>{{vm.beer.beerdesc}}</p><br>
+        <h5 class = 'cBeer1'>Type of Beer: {{vm.beer.brewerydb.beerType}}</h5><br>
+        <h5 class = 'cBeer1'>ABV: {{vm.beer.brewerydb.abv}}</h5><br>
+        <a ng-hide = 'BrewInfo.toggle' ng-click = 'BrewInfo.toggle = true' class = 'brn btn btn-primary btn-lg' ng-href = '#'>More on Brewery</a>
+        <a ng-hide = '!BrewInfo.toggle' ng-click = 'BrewInfo.toggle = false' class = 'brn btn btn-primary btn-lg' ng-href = '#'>Less on Brewery</a>
+      </div>
+      <div class = 'col-md-1'></div>
 
-
-<div class="row">
-    <div class="col-md-7 brbtm" style="margin-top:30px">
-        <img class="img-rounded" ng-src="{{vm.beer.imgbeer}}" alt=""><span><img src="http://il6.picdn.net/shutterstock/videos/7141753/thumb/1.jpg?i10c=img.resize(height:160)" alt="" height="200px" /></span></img>
-        <h1 class="gld bName">{{vm.mybeer.name}}<br>
-            <a class="brn btn btn-warning btn-lg" ng-href="/login" ng-show="gc.status.username === null" >Login to post review</a>
-            <a class="brn btn btn-primary btn-lg" ng-hide="dirForm.toggle || gc.status.username === null" ng-click="dirForm.toggle = true" >Add Beer Review</a>
-            <a class="brn btn btn-primary btn-lg" ng-hide="!dirForm.toggle" ng-click="dirForm.toggle = false" >Hide Form</a></h1>
-        <p class="cBeer1">{{vm.beer.beerdesc}}</p><br>
-        <h5 class="cBeer1">Type of Beer: {{vm.beer.brewerydb.beerType}}</h5><br>
-        <h5 class="cBeer1">ABV: {{vm.beer.brewerydb.abv}}</h5><br>
-        <a ng-hide="BrewInfo.toggle" ng-click="BrewInfo.toggle = true" class="brn btn btn-primary btn-lg" href="#">More on Brewery</a>
-        <a ng-hide="!BrewInfo.toggle" ng-click="BrewInfo.toggle = false" class="brn btn btn-primary btn-lg" href="#">Less on Brewery</a>
-
-
-    </div>
-    <div class="col-md-1"></div>
-
-    <!-- /.col-md-8 -->
-    <div ng-class="{'hidden': !dirForm.toggle}" class="col-md-4">
-        <div style="margin-top:30px">
-
-            <h1 class="cBeer1">Post your review of: <span style="font-size:50px;color:#FBA711">{{vm.mybeer.name}}</span></h1>
+      <!-- /.col-md-8 -->
+      <div ng-class = '{'hidden': !dirForm.toggle}' class = 'col-md-4'>
+        <div style = 'margin-top:30px'>
+          <h1 class = 'cBeer1'>Post your review of: <span style = 'font-size:50px;color:#FBA711'>{{vm.mybeer.name}}</span></h1>
+          <hr>
+          <form class = 'form-group'ng-submit = 'vm.createBeer()'>
+            <label class = 'cBeer1'>Type of Beer: </label>
+            <select class = 'form-control' ng-model = 'vm.beer.type' name = 'beertype'>
+              <option value = 'Pale'>Pale</option>
+              <option value = 'Mild'>Mild</option>
+              <option value = 'Wheat'>Wheat</option>
+              <option value = 'Lambic'>Lambic</option>
+              <option value = 'Lager'>Lager</option>
+              <option value = 'Stout'>Stout</option>
+            </select><br>
+            <label class = 'cBeer1'>Location: </label>
+            <input class = 'form-control' ng-model = 'vm.beer.location'><br>
+            <label class = 'cBeer1'>Image URL: </label>
+            <input class = 'form-control' ng-model = 'vm.beer.imgurl'><br><br>
+            <label class = 'cBeer1'>Review of Beer: </label><br>
+            <textarea  class = 'form-control' ng-model = 'vm.beer.review' rows = '8' cols = '40'></textarea>
+            <input ng-hide = 'true' ng-model = 'vm.beer.beerdesc'>
+            <img ng-hide = 'true' ng-model = 'vm.beer.imgbeer'></img>
             <hr>
-            <form class="form-group"ng-submit="vm.createBeer()">
 
-                <label class="cBeer1">Type of Beer: </label>
-                <select class="form-control" ng-model="vm.beer.type" name="beertype">
-                    <option value="Pale">Pale</option>
-                    <option value="Mild">Mild</option>
-                    <option value="Wheat">Wheat</option>
-                    <option value="Lambic">Lambic</option>
-                    <option value="Lager">Lager</option>
-                    <option value="Stout">Stout</option>
-                </select><br>
-                <label class="cBeer1">Location: </label>
-                <input class="form-control" ng-model="vm.beer.location"><br>
-                <label class="cBeer1">Image URL: </label>
-                <input class="form-control" ng-model="vm.beer.imgurl"><br><br>
-                <label class="cBeer1">Review of Beer: </label><br>
-                <textarea  class="form-control" ng-model="vm.beer.review" rows="8" cols="40"></textarea>
-                <input ng-hide="true" ng-model="vm.beer.beerdesc">
-                <img ng-hide="true" ng-model="vm.beer.imgbeer"></img>
-
-
-                <hr>
-
-
-                <!-- Start Beer Rating -->
-                <div>
-                    <h3 class="gld">Beer Ratings: </h3>
-                    <label class="cBeer1">Hoppiness: </label>
-                    <select ng-model="vm.beer.beerscores.hoppiness" name="hoppy">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <label class="cBeer1">Maltiness: </label>
-                    <select ng-model="vm.beer.beerscores.maltiness" name="malty">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <label class="cBeer1">Body: </label>
-                    <select ng-model="vm.beer.beerscores.body" name="body">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select><br>
-                </div>
-                <!-- End Beer Ratings -->
-                <hr>
-                <button type="submit" class="brn btn btn-primary btn-lg">Submit</button>
-            </form>
+            <!-- Start Beer Rating -->
+            <div>
+              <h3 class = 'gld'>Beer Ratings: </h3>
+              <label class = 'cBeer1'>Hoppiness: </label>
+              <select ng-model = 'vm.beer.beerscores.hoppiness' name = 'hoppy'>
+                <option value = '1'>1</option>
+                <option value = '2'>2</option>
+                <option value = '3'>3</option>
+                <option value = '4'>4</option>
+                <option value = '5'>5</option>
+              </select>
+              <label class = 'cBeer1'>Maltiness: </label>
+              <select ng-model = 'vm.beer.beerscores.maltiness' name = 'malty'>
+                <option value = '1'>1</option>
+                <option value = '2'>2</option>
+                <option value = '3'>3</option>
+                <option value = '4'>4</option>
+                <option value = '5'>5</option>
+              </select>
+              <label class = 'cBeer1'>Body: </label>
+              <select ng-model = 'vm.beer.beerscores.body' name = 'body'>
+                <option value = '1'>1</option>
+                <option value = '2'>2</option>
+                <option value = '3'>3</option>
+                <option value = '4'>4</option>
+                <option value = '5'>5</option>
+              </select><br>
+            </div>
+            <!-- End Beer Ratings -->
+            <hr>
+            <button type = 'submit' class = 'brn btn btn-primary btn-lg'>Submit</button>
+          </form>
         </div>
-
+      </div>
+      <!-- /.col-md-4 -->
     </div>
-
-    <!-- /.col-md-4 -->
-</div>
-<!-- /.row -->
-
-<hr ng-class="{'hidden': !BrewInfo.toggle}">
-
-<!-- Content Row -->
-<div class="row bot" ng-class="{'hidden': !BrewInfo.toggle}">
-    <div class="col-md-4" ng-repeat="b in vm.brew">
-        <h1 class="gld">Brewery</h1>
-        <p class="cBeer1" style="word-wrap: break-word;width:200px">{{b.name}}</p>
-        <img src="{{b.images.squareMedium || 'http://www.beer100.com/images/beermug.jpg' }}" alt="" />
-
+    <!-- /.row -->
+    <hr ng-class = '{'hidden': !BrewInfo.toggle}'>
+    <!-- Content Row -->
+    <div class = 'row bot' ng-class = '{'hidden': !BrewInfo.toggle}'>
+      <div class = 'col-md-4' ng-repeat = 'b in vm.brew'>
+        <h1 class = 'gld'>Brewery</h1>
+        <p class = 'cBeer1' style = 'word-wrap: break-word;width:200px'>{{b.name}}</p>
+        <img ng-src = '{{b.images.squareMedium || 'http://www.beer100.com/images/beermug.jpg' }}' alt = '' />
+      </div>
+      <!-- /.col-md-4 -->
+      <div class = 'col-md-8' ng-repeat = 'b in vm.brew' ng-init = 'limit = 250; moreShown = false'>
+        <h1 class = 'gld'>Brewery Information</h1>
+        <p class = 'cBeer1'>{{b.description | limitTo: limit}}</p>
+        <p ng-show = 'b.description.length > limit' href ng-click = 'limit = b.description.length; moreShown = true'><a ng-if = '!moreShown' class = 'btn btn-default brn cBeer1'>More Info</a></p>
+        <p ng-hide = '!moreShown' href ng-click = 'limit = 250;moreShown = false'><a ng-if = 'moreShown' class = 'btn btn-default brn cBeer1'>Less Info</a></p>
+        <!-- <p class = 'cBeer1'>{{b.description}}</p> -->
+        <h3><a ng-href = '{{b.website}}'>{{b.website}}</a></h3><br>
+      </div>
     </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-8" ng-repeat="b in vm.brew" ng-init="limit = 250; moreShown = false">
-        <h1 class="gld">Brewery Information</h1>
-        <p class="cBeer1">{{b.description | limitTo: limit}}</p>
-        <p ng-show="b.description.length > limit" href ng-click="limit=b.description.length; moreShown = true"><a ng-if="!moreShown" class="btn btn-default brn cBeer1" >More Info</a></p>
-
-        <p ng-hide="!moreShown" href ng-click="limit=250;moreShown = false"><a ng-if="moreShown" class="btn btn-default brn cBeer1">Less Info</a></p>
-        <!-- <p class="cBeer1">{{b.description}}</p> -->
-        <h3><a href="{{b.website}}">{{b.website}}</a></h3><br>
-
-
-
-    </div>
-</div>
-<!-- /.row -->
-</div><br><br><br>
+    <!-- /.row -->
+  </div><br><br><br>

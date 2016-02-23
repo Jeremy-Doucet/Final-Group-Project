@@ -29,7 +29,7 @@ let BeerSchema = new mongoose.Schema({
   likedByUsers: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   created: { type: Number, default: Date.now },
   repostedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  ranking: { type: Number }
+  ranking: {type: Number}
 });
 
 export let Beer = mongoose.model('Beer', BeerSchema);
