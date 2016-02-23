@@ -1,10 +1,10 @@
-"use strict";
-var mongoose = require("mongoose");
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
-var FacebookStrategy = require("passport-facebook").Strategy;
-var User = mongoose.model("User");
-var newUser = mongoose.model("newUser");
+'use strict';
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var User = mongoose.model('User');
+var newUser = mongoose.model('newUser');
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -16,9 +16,9 @@ passport.use(new LocalStrategy(function (username, password, done) {
         if (error)
             return done(error);
         if (!user)
-            return done(null, false, { message: "Invalid username" });
+            return done(null, false, { message: 'Invalid username' });
         if (!user.validatePassword(password))
-            return done(null, false, { message: "Invalid password" });
+            return done(null, false, { message: 'Invalid password' });
         return done(null, user);
     });
 }));

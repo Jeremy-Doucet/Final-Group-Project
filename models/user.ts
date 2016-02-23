@@ -1,16 +1,8 @@
-"use strict";
+'use strict';
 
-////////////////////////
-///Require modules
-////////////////////////
-
-import crypto = require("crypto");
-import jwt = require("jsonwebtoken");
-let mongoose = require("mongoose");
-
-////////////////////////
-///Build schema
-////////////////////////
+import crypto = require('crypto');
+import jwt = require('jsonwebtoken');
+let mongoose = require('mongoose');
 
 let UserSchema = new mongoose.Schema({
   username: {type: String, unique: true, lowercase: true},
@@ -29,22 +21,22 @@ let UserSchema = new mongoose.Schema({
   salt: String,
   token: Object,
   uBeersAll: {
-    uBeersOwn: [{type: mongoose.Schema.Types.ObjectId, ref: "Beer"}],
-    uBeersFav: [{type: mongoose.Schema.Types.ObjectId, ref: "Beer"}]
+    uBeersOwn: [{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'}],
+    uBeersFav: [{type: mongoose.Schema.Types.ObjectId, ref: 'Beer'}]
   }
 });
 
-UserSchema.method("setPassword", function(password) {
-  this.salt = crypto.randomBytes(16).toString("hex");
-  this.passwordHash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString("hex");
+UserSchema.method('setPassword', function(password) {
+  this.salt = crypto.randomBytes(16).toString('hex');
+  this.passwordHash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 });
 
-UserSchema.method("validatePassword", function(password) {
-  let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString("hex");
+UserSchema.method('validatePassword', function(password) {
+  let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return (hash === this.passwordHash);
 });
 
-UserSchema.method("generateJWT", function() {
+UserSchema.method('generateJWT', function() {
   let facebook = (this.facebook.token) ? true : false;
   return jwt.sign({
     _id: this._id,
@@ -56,9 +48,5 @@ UserSchema.method("generateJWT", function() {
   }, process.env.JWT_SECRET);
 });
 
-////////////////////////
-///Export
-////////////////////////
-
-export let User = mongoose.model("User", UserSchema);
-export let newUser = mongoose.model("newUser", UserSchema);
+export let User = mongoose.model('User', UserSchema);
+export let newUser = mongoose.model('newUser', UserSchema);
