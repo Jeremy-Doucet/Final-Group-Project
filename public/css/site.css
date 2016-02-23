@@ -122,6 +122,16 @@ html {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.userIconReview {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .bigTitle {
   font-size: 4em;
   color: black;

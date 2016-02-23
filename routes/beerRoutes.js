@@ -15,7 +15,7 @@ var auth = jwt({
 });
 router.get('/details/:id', function (req, res, next) {
     Beer.findOne({ _id: req.params.id })
-        .populate('createdBy', 'username')
+        .populate('createdBy', 'username avatarUrl')
         .populate('comments')
         .exec(function (err, beer) {
         Comment.populate(beer.comments, { path: "createdBy", select: "username" }, function (err, result) {

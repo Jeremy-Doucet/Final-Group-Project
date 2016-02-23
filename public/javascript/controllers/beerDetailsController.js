@@ -16,6 +16,7 @@ var app;
                 homeService.getBeer($routeParams['id']).then(function (res) {
                     _this.beer = res;
                 });
+                this.beerExists = commentService.getAllLikes();
             }
             beerDetailsController.prototype.toggleLike = function () {
                 this.heart = !this.heart;
@@ -46,12 +47,10 @@ var app;
                 });
             };
             beerDetailsController.prototype.likeBeer = function () {
-                var _this = this;
                 var likedBeer = {
                     beer: this.beer._id,
                 };
                 this.commentService.saveLikedBeer(likedBeer).then(function (res) {
-                    _this.$location.path('/beerPage');
                 });
             };
             beerDetailsController.prototype.unlikeBeer = function (beer) {

@@ -1,9 +1,9 @@
 'use strict';
 namespace app.Controllers {
   export class beerDetailsController {
-
     public beer;
     public comment;
+    public beerExists;
     public comments = [];
     public showModal = false;
     public heart = false;
@@ -43,7 +43,7 @@ namespace app.Controllers {
         beer: this.beer._id,
       };
       this.commentService.saveLikedBeer(likedBeer).then((res) =>{
-        this.$location.path('/beerPage')
+        //add ngtoast
       })
     }
 
@@ -62,6 +62,7 @@ namespace app.Controllers {
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
       });
+      this.beerExists = commentService.getAllLikes();
     }
   }
   angular.module('app').controller('BeerDetailsController', beerDetailsController);
