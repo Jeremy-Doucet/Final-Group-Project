@@ -1,13 +1,17 @@
 'use strict';
 
 namespace app.Controllers {
-
   export class beerDetailsController {
-
     public beer;
     public comment;
+    public beerExists;
     public comments = [];
     public showModal = false;
+    public heart = false;
+
+    public toggleLike(){
+      this.heart = !this.heart;
+    }
 
     public toggleModal() {
       this.showModal = !this.showModal;
@@ -33,7 +37,22 @@ namespace app.Controllers {
       this.commentService.deleteComment(comment).then((res) => {
         this.beer.comments.splice(this.beer.comments.indexOf(comment), 1);
       });
-    };
+    }
+
+    public likeBeer(){
+      let likedBeer = {
+        beer: this.beer._id,
+      };
+      this.commentService.saveLikedBeer(likedBeer).then((res) =>{
+        //add ngtoast
+      })
+    }
+
+    public unlikeBeer(beer){
+      this.commentService.deleteLikedBeer(this.beer).then((res) =>{
+        console.log('Beer was unliked')
+      })
+    }
 
     public rateBeer(rating) {
       this.beer.ranking = this.beer.ranking + rating;
@@ -51,8 +70,9 @@ namespace app.Controllers {
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
       });
+
+      this.beerExists = commentService.getAllLikes();
     };
   };
-
   angular.module('app').controller('BeerDetailsController', beerDetailsController);
 };

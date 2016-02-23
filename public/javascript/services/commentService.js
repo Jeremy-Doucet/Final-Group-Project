@@ -10,6 +10,7 @@ var app;
                 this.UserCommentResource = $resource('/comments/:id', null, {
                     'update': { method: 'PUT' }
                 });
+                this.likedBeerResource = $resource('/api/v1/likedBeers/:id');
             }
             commentService.prototype.getAllComments = function () {
                 return this.UserCommentResource.query();
@@ -31,6 +32,15 @@ var app;
                 return this.UserCommentResource.update({ id: userComment._id }, userComment).$promise;
             };
             ;
+            commentService.prototype.getAllLikes = function () {
+                return this.likedBeerResource.query();
+            };
+            commentService.prototype.saveLikedBeer = function (likedBeer) {
+                return this.likedBeerResource.save(likedBeer).$promise;
+            };
+            commentService.prototype.deleteLikedBeer = function (likedBeer) {
+                return this.likedBeerResource.delete({ id: likedBeer._id }).$promise;
+            };
             ;
             return commentService;
         }());

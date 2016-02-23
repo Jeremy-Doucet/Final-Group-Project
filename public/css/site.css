@@ -142,6 +142,15 @@ html {
   background-position: center center;
 }
 
+.userIconReview {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .bigTitle {
   font-size: 4em;
   color: black;
@@ -169,7 +178,8 @@ font-weight: bold;
   width: 100%;
   max-height: 70vh;
   overflow: hidden;
-  background-size: contain;
+  background-size: contain;;
+  position: relative;
 }
 
 .imgHomePop {
@@ -329,6 +339,35 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+.intro-text{
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  color: white;
+}
+
+.intro-text .intro-lead-in {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 25px;
+}
+.intro-text .intro-heading {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+
+.backtext{
+  background-color: #000000;
+  opacity: 0.6;
 }
 
 .outer {

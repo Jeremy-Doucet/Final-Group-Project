@@ -12,10 +12,15 @@ var app;
                 this.$routeParams = $routeParams;
                 this.comments = [];
                 this.showModal = false;
+                this.heart = false;
                 homeService.getBeer($routeParams['id']).then(function (res) {
                     _this.beer = res;
                 });
+                this.beerExists = commentService.getAllLikes();
             }
+            beerDetailsController.prototype.toggleLike = function () {
+                this.heart = !this.heart;
+            };
             beerDetailsController.prototype.toggleModal = function () {
                 this.showModal = !this.showModal;
             };
@@ -44,7 +49,18 @@ var app;
                     _this.beer.comments.splice(_this.beer.comments.indexOf(comment), 1);
                 });
             };
-            ;
+            beerDetailsController.prototype.likeBeer = function () {
+                var likedBeer = {
+                    beer: this.beer._id,
+                };
+                this.commentService.saveLikedBeer(likedBeer).then(function (res) {
+                });
+            };
+            beerDetailsController.prototype.unlikeBeer = function (beer) {
+                this.commentService.deleteLikedBeer(this.beer).then(function (res) {
+                    console.log('Beer was unliked');
+                });
+            };
             beerDetailsController.prototype.rateBeer = function (rating) {
                 var _this = this;
                 this.beer.ranking = this.beer.ranking + rating;

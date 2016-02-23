@@ -50,6 +50,7 @@
         "routes/brewRoutes.ts",
         "routes/categoryRoutes.ts",
         "routes/commentRoutes.ts",
+        "routes/likedRoutes.ts",
         "routes/userRoutes.ts",
         "server.ts",
         "typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts",

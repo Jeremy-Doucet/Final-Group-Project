@@ -20,13 +20,21 @@
   </div>
   <p>{{vm.user.userBeers}}</p>
   <uib-tabset>
-    <uib-tab heading = 'Posted Beers'>
-      <div class = 'col-md-12' ng-repeat = 'b in vm.userBeers'>
-        <img style = 'max-width: 200px' ng-src = '{{b.imgurl || b.imgbeer}}' alt = '' />
-        <span><a ng-href = '/details/{{b._id}}'>{{b.name}}</a></h4>
+    <!--Beers User has posted-->
+    <uib-tab heading="Posted Beers">
+      <div class="col-md-12" ng-repeat="b in vm.userBeers">
+        <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
+        <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
         <hr>
       </div>
     </uib-tab>
-    <uib-tab heading = 'Favorite Beers'></uib-tab>
+    <!--Beers User Liked-->
+    <uib-tab heading="Liked Beers">
+      <div class="col-md-12" ng-repeat="b in vm.likedBeers">
+        <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
+        <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
+        <hr>
+      </div>
+    </uib-tab>
   </uib-tabset>
 </div>

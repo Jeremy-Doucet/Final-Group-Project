@@ -60,7 +60,7 @@ var app;
             };
             ;
             homeService.prototype.getUserHomeBeers = function () {
-                return this.beerUserHomeResource.get();
+                return this.beerUserHomeResource.query();
             };
             ;
             homeService.prototype.getUserDetailsBeers = function (userId) {

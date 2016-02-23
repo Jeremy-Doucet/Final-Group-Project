@@ -20,7 +20,7 @@ require('./passport/passport');
 
 ///MongoDB
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect(process.env.MONGO_URL);
+  mongoose.connect(process.env.MONGO_TEST);
 } else {
   mongoose.connect(process.env.MONGO_URL);
 }
@@ -48,14 +48,22 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require('./routes/brewRoutes');
 let commentRoutes = require('./routes/commentRoutes');
-let userRoutes = require('./routes/userRoutes');
-let categoryRoutes = require('./routes/categoryRoutes');
+let userRoutes = require("./routes/userRoutes");
+let categoryRoutes = require("./routes/categoryRoutes");
+let likedRoutes = require('./routes/likedRoutes');
+
 
 app.use('/api/v1/beer', beerRoutes);
 app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
-app.use('/usershell', userRoutes);
-app.use('/catshell', categoryRoutes);
+
+app.use("/usershell", userRoutes);
+app.use("/catshell", categoryRoutes);
+app.use('/api/v1/likedBeers', likedRoutes);
+
+////////////////////////
+///Express static
+////////////////////////
 
 ///Misc
 app.get('/*', function(req, res, next) {

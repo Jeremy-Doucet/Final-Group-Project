@@ -14,18 +14,24 @@
       </div>
       <div class = 'col-md-3'>
         <h4>Password: </h4>
-        <span>******</span><br><a ng-href = '#'>Change Password</a>
+        <span>******</span>
       </div>
     </div>
   </div>
   <uib-tabset>
-    <uib-tab heading = 'Posted Beers'>
-      <div class = 'col-md-12' ng-repeat = 'b in vm.user.beers'>
-        <img style = 'max-width: 100px' ng-src = '{{b.imgurl || b.imgbeer}}' alt = '' />
-        <span><a ng-href = '/details/{{b._id}}'>{{b.name}}</a></h4>
+    <uib-tab heading="Posted Beers">
+      <div class="col-md-12" ng-repeat="b in vm.user.beers">
+        <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
+        <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
         <hr>
       </div>
     </uib-tab>
-    <uib-tab heading = 'Favorite Beers'></uib-tab>
+    <uib-tab heading="Favorite Beers">
+      <div class="col-md-12" ng-repeat="b in vm.likedBeers">
+        <img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" />
+        <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
+        <hr>
+      </div>
+    </uib-tab>
   </uib-tabset>
 </div>

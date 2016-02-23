@@ -54,7 +54,7 @@ namespace app.Services {
     };
 
     public getUserHomeBeers() {
-      return this.beerUserHomeResource.get();
+      return this.beerUserHomeResource.query();
     };
 
     public getUserDetailsBeers(userId) {

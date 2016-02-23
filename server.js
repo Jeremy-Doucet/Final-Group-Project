@@ -12,7 +12,7 @@ require('./models/comment');
 require('./models/user');
 require('./passport/passport');
 if (process.env.NODE_ENV === 'test') {
-    mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect(process.env.MONGO_TEST);
 }
 else {
     mongoose.connect(process.env.MONGO_URL);
@@ -32,13 +32,15 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require('./routes/brewRoutes');
 var commentRoutes = require('./routes/commentRoutes');
-var userRoutes = require('./routes/userRoutes');
-var categoryRoutes = require('./routes/categoryRoutes');
+var userRoutes = require("./routes/userRoutes");
+var categoryRoutes = require("./routes/categoryRoutes");
+var likedRoutes = require('./routes/likedRoutes');
 app.use('/api/v1/beer', beerRoutes);
 app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
-app.use('/usershell', userRoutes);
-app.use('/catshell', categoryRoutes);
+app.use("/usershell", userRoutes);
+app.use("/catshell", categoryRoutes);
+app.use('/api/v1/likedBeers', likedRoutes);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|javascript/.test(req.path))
         return next({ status: 404, message: 'Not Found' });
