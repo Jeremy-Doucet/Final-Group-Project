@@ -61,13 +61,9 @@ let likedRoutes = require('./routes/likedRoutes');
 app.use('/api/v1/beer', beerRoutes);
 app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
-
 app.use("/usershell", userRoutes);
-
 app.use("/catshell", categoryRoutes);
-
 app.use('/api/v1/likedBeers', likedRoutes);
-
 app.use('/forgot', resetPasswordRoutes);
 
 

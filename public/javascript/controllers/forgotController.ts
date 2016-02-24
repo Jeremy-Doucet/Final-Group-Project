@@ -6,22 +6,23 @@ namespace app.Controllers{
     public token;
 
     public passwordReset() {
-    this.resetService.saveReset(this.user)
+      this.resetService.saveReset(this.user).then((res)=>{
+        this.$location.path('/');
+      })
+    }
+
+    public submitReset() {
+      this.resetService.saveSubmit(this.user, this.token).then((res) => {
+        this.$location.path('/');
+      })
+    }
+
+
+    constructor(private resetService: app.Services.resetService,
+      private $routeParams: ng.route.IRouteParamsService,
+      private $location: ng.ILocationService){
+        this.token = $routeParams["id"];
+      }
+    }
+    angular.module('app').controller('forgotController', forgotController);
   }
-
-  public submitReset() {
-  this.resetService.saveSubmit(this.user, this.token).then((res) => {
-    this.$location.path('/');
-  })
-}
-
-
-constructor(private resetService: app.Services.resetService,
-private $routeParams: ng.route.IRouteParamsService,
-private $location: ng.ILocationService){
-
-      this.token = $routeParams["id"];
-}
-  }
-  angular.module('app').controller('forgotController', forgotController);
-}
