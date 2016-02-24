@@ -40,6 +40,7 @@ var app;
                 };
                 this.commentService.saveComment(comment).then(function (res) {
                     _this.beer.comments.push(res);
+                    _this.comment.message = "";
                 });
             };
             ;
