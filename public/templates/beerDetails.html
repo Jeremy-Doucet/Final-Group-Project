@@ -31,7 +31,7 @@
 
         <!--Brewery Modal-->
         <div name="breweryModal">
-          <h5>Brewery: <small><a ng-click="vm.toggleModal()">{{vm.beer.brewerydb.breweryName}}</a></small></h5>
+          <h5>Brewery: <small><a role = "button" ng-click="vm.toggleModal()">{{vm.beer.brewerydb.breweryName}}</a></small></h5>
           <my-modal title="Brewery Info" visible="vm.showModal">
             <div class="row" name="breweryname">
               <div class="col-md-4">
@@ -40,7 +40,7 @@
               <div class="col-md-8">
                 <small>brewery:</small><br>
                 {{vm.beer.brewerydb.breweryName}}<br>
-                <a href="{{vm.beer.brewerydb.breweryUrl}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
+                <a role = "button" href="{{vm.beer.brewerydb.breweryUrl}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
               </div>
               <hr>
             </div>
