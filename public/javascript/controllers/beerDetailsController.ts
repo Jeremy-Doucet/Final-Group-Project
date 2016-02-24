@@ -7,11 +7,6 @@ namespace app.Controllers {
     public status;
     public comments = [];
     public showModal = false;
-    public heart = false;
-
-    public toggleLike(){
-      this.heart = !this.heart;
-    }
 
     public toggleModal() {
       this.showModal = !this.showModal;
@@ -47,12 +42,22 @@ namespace app.Controllers {
       };
       this.commentService.saveLikedBeer(likedBeer).then((res) =>{
         this.beer.likedByUsers.push(this.status._id)
+        this.ngToast.success({
+            content: "You have added this beer to your favorites!",
+            verticalPosition: "right",
+            timeout: 1800
+        })
       })
     }
 
     public unlikeBeer(beer){
       this.commentService.deleteLikedBeer(this.beer).then((res) =>{
-        this.beer.likedByUsers.splice(this.beer.likedByUsers.indexOf(this.status._id), 1)
+        this.beer.likedByUsers.splice(this.beer.likedByUsers.indexOf(this.status._id), 1);
+        this.ngToast.warning({
+            content: "You have removed this beer from your favorites.",
+            horizontalPosition: "right",
+            timeout: 1800
+        });
       })
     }
 
@@ -68,7 +73,8 @@ namespace app.Controllers {
       private $location: ng.ILocationService,
       private homeService: app.Services.homeService,
       private $routeParams: ng.route.IRouteParamsService,
-      private userService: app.Services.userService
+      private userService: app.Services.userService,
+      private ngToast
     ) {
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
