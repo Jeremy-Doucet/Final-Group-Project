@@ -59,7 +59,7 @@ router.post("/login", function (req, res, next) {
             return next(error);
         if (user)
             return res.json({ token: user.generateJWT() });
-        return res.send(info);
+        return res.status(400).send(info);
     })(req, res, next);
 });
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));

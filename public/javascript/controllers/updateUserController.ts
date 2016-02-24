@@ -20,6 +20,10 @@ namespace app.Controllers{
                     this.userService.setUser();
                     this.$window.localStorage.setItem("username", this.updateUser.username);
                     this.$location.path('/updateUser');
+                    this.ngToast.success({
+                        content: "Congrats your profile changes have been saved!",
+                        horizontalPosition: "right"
+                    })
                 });
             }
         }
@@ -28,7 +32,8 @@ namespace app.Controllers{
             private userService: app.Services.userService,
             private $location: ng.ILocationService,
             private $routeParams: ng.route.IRouteParamsService,
-            private $window: ng.IWindowService
+            private $window: ng.IWindowService,
+            private ngToast
         ){
             this.updateUser = angular.copy(userService.status);
         }
