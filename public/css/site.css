@@ -187,8 +187,9 @@ font-weight: bold;
   width: 100%;
   max-height: 70vh;
   overflow: hidden;
-  background-size: 100%;
+  background-size: contain;
   position: relative;
+  text-align: center;
 }
 
 .imgHomePop {
@@ -208,6 +209,8 @@ font-weight: bold;
   text-align: center;
   border: 3px solid #000;
   height: 35vh;
+  line-height: 35vh;
+  white-space: nowrap;
   font-size: 3em;
   vertical-align: center;
 }
@@ -225,33 +228,33 @@ font-weight: bold;
   padding: 5px;
 }
 
-#SFO {
-  background-image: url("/css/img/SFO.png");
+#Bay_Area {
+  background-image: url("/css/img/Bay_Area.png");
   background-size: cover;
 }
 
-#DEN {
-  background-image: url("/css/img/DEN.png");
+#Denver {
+  background-image: url("/css/img/Denver.png");
   background-size: cover;
 }
 
-#BOS {
-  background-image: url("/css/img/BOS.png");
+#Boston {
+  background-image: url("/css/img/Boston.png");
   background-size: cover;
 }
 
-#SEA {
-  background-image: url("/css/img/SEA.png");
+#Seattle {
+  background-image: url("/css/img/Seattle.png");
   background-size: cover;
 }
 
-#DFW {
-  background-image: url("/css/img/DFW.png");
+#Dallas {
+  background-image: url("/css/img/Dallas.png");
   background-size: cover;
 }
 
-#CHI {
-  background-image: url("/css/img/CHI.png");
+#Chicago {
+  background-image: url("/css/img/Chicago.png");
   background-size: cover;
 }
 
@@ -345,7 +348,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+a {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
