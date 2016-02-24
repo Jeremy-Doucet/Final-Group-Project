@@ -31,7 +31,6 @@ var app;
                 this.homeService.searchBeer(this.beer).then(function (res) {
                     _this.result = res;
                     _this.$location.path('/searchBeer');
-                    _this.beer.name = "";
                 });
             };
             ;
