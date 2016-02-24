@@ -9,7 +9,6 @@
 
 <div class="container-fluid">
   <div class="container">
-    <hr>
     <div class="row" ng-repeat = "i in vm.beersLocal">
       <div  class="col-sm-2">
         <a ng-href = '/details/{{i._id}}'><img class="img-responsive beerimagesize" src="{{i.imgurl || i.imgbeer}}" alt="" /></a>
