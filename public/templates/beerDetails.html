@@ -8,10 +8,10 @@
   <div ng-show="gc.status._id !== null" class="text-right" style="display: inline-block">
 
       <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) === -1"  ng-click="vm.likeBeer()" type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorite
       </button>
       <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) !== -1"  ng-click="vm.unlikeBeer()" type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Unlike
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> UnFavorite
       </button>
 
   </div>
@@ -24,7 +24,7 @@
       <hr>
       <!--Beer info-->
       <div name="beerinfo">
-        <h5>Type: <small> {{vm.beer.type }} </small></h5>
+        <h5>Type: <small><a ng-href = '/byType/{{vm.beer.type}}'>{{vm.beer.type }}</a></small></h5>
         <h5>Style Type: <small>{{vm.beer.brewerydb.beerType}}</small> </h5>
         <h5>ABV: <small>{{vm.beer.brewerydb.abv}}</small></h5>
         <h5>Organic? <small>{{vm.beer.brewerydb.organic}}</small></h5>
@@ -65,7 +65,7 @@
         <a class="text-center" href="/userprofile/{{vm.beer.createdBy._id}}">{{vm.beer.createdBy.username}}</a>
       </div>
 
-      <h5>Location: <small> {{vm.beer.location }} </small></h5>
+      <h5>Location: <small> <a ng-href = '/byLocation/{{vm.beer.location}}'>{{vm.beer.location }}</a> </small></h5>
       <h5> Beer Ratings:</h5>
       <small>Hoppiness: {{vm.beer.beerscores.hoppiness}} </small><b>|</b>
       <small>Maltiness: {{vm.beer.beerscores.maltiness}} </small><b>|</b>

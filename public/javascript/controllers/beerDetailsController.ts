@@ -30,6 +30,8 @@ namespace app.Controllers {
       };
       this.commentService.saveComment(comment).then((res) => {
         this.beer.comments.push(res);
+        //this code clear the message once it hit submit
+        this.comment.message = "";
       });
     };
 
