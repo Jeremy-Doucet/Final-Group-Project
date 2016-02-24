@@ -19,6 +19,7 @@ namespace app.Controllers {
       },
       ranking: 0
     };
+
     public mybeer;
     public brew:any;
     public hide = false;
@@ -57,6 +58,6 @@ namespace app.Controllers {
       });
     };
   };
-  
+
   angular.module('app').controller('beerCreateController', beerCreateController);
 };
