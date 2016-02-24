@@ -98,6 +98,16 @@ var app;
             controller: app.Controllers.updateUserController,
             controllerAs: "vm"
         })
+            .when('/forgot', {
+            templateUrl: '/templates/forgot.html',
+            controller: app.Controllers.forgotController,
+            controllerAs: 'vm'
+        })
+            .when('/reset/:id', {
+            templateUrl: '/templates/reset.html',
+            controller: app.Controllers.forgotController,
+            controllerAs: 'vm'
+        })
             .otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('HTTPFactory');

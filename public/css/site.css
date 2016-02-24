@@ -386,3 +386,90 @@ h6 {
   margin-left: -50px;
   background-color: #00c;
 }
+
+/*forgot*/
+/*HTML*/
+/*PAGE*/
+/*CSS*/
+
+.forgotsubmit {
+  display: block;
+  background-color: #5bc0de;
+
+
+  text-decoration: none;
+
+
+}
+
+.forgotinput {
+
+  width: 100px;
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+
+}
+
+/**/ /**/  /**/  /**/  /**/  /**/
+/*Beer Details Comment*/
+/**/  /**/  /**/  /**/  /**/  /**/
+
+.tweet-container {
+  border: 1px solid #eee;
+  padding: 1px 1px;
+  border-radius: 5px;
+  width: 500px;
+  margin: left;
+  font-family: sans-serif;
+
+}
+
+.name-lockup {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.avatar {
+  width:50px;
+  height: 50px;
+  border-radius: 5px;
+  float: left;
+  margin-right: 10px;
+  +size(50);
+}
+
+.nameBD {
+  font-weight: bold;
+  padding-top: 7px;
+}
+
+.blockquote {
+  margin: 30px 0;
+  font-family:  georgia;
+  font-size: 2em;
+}
+
+.actions {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  text-decoration: none;
+  margin-left: auto;
+}
+.timeDB {
+  font-weight: normal;
+  color: #999;
+  font-size: 0.7em;
+  margin-bottom: auto;
+}
+
+.editlink {
+  margin-right: 20px;
+
+}
+
+.butt {
+  margin-left: 20px;
+}
