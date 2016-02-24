@@ -1,9 +1,7 @@
 body {
   background-color: #E9E9E9;
 }
-body img {
 
-}
 #sBox{
   margin-left:-15px;
 }
@@ -218,6 +216,7 @@ padding-top: 10px;
   white-space: nowrap;
   font-size: 3em;
   vertical-align: center;
+  color: #FFFFFF;
 }
 
 .pSubTBox {

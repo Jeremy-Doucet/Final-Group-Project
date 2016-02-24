@@ -2,7 +2,7 @@
   <div class = 'row' style = 'margin-left:200px'>
     <h1>Register</h1><br>
     <form role = 'form'>
-      <div class = 'col-lg-9 '>
+      <div class = 'col-lg-9'>
         <!-- <div class = 'well well-sm'><strong><span class = 'glyphicon glyphicon-asterisk'></span>Required Field</strong></div> -->
         <div class = 'form-group'>
           <label for = 'InputName'>Username</label>
@@ -43,11 +43,15 @@
 
         <input ng-disabled = 'vm.newUser.password !== vm.newUser.pwdConfirm' class = 'btn btn-info pull-right btn-block' ng-click  =  'vm.register()' type = 'submit' value = 'Register'>
       </div>
-    </form>
+    </form><br><br><br>
   </div>
 
   <div class = 'row' style = 'margin-left:200px'>
-    <h1>...or via Facebook</h1><br>
-    <a target  =  '_self' ng-href  =  '/usershell/auth/facebook'><img ng-src  =  '/css/img/fbLogin.png'></a>
+    <div class = 'col-md-9'>
+      <h1>-or-</h1><br>
+      <div class = 'btn btn-info pull-right btn-block'>
+        <a target  =  '_self' ng-href  =  '/usershell/auth/facebook'><img ng-src  =  '/css/img/fbLogin.png'></a>
+      </div>
+    </div>
   </div>
 </div><br><br><br>
