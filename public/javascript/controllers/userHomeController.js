@@ -13,6 +13,7 @@ var app;
                 this.commentService = commentService;
                 this.userBeers = homeService.getUserHomeBeers();
                 this.likedBeers = commentService.getAllLikes();
+                this.user = userService.status;
             }
             ;
             return userHomeController;

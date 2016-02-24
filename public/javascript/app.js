@@ -1,7 +1,7 @@
 'use strict';
 var app;
 (function (app) {
-    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'ngToast', 'ngSanitize'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
@@ -91,6 +91,21 @@ var app;
             .when('/updateComment/:id', {
             templateUrl: '/templates/commentEdit.html',
             controller: app.Controllers.updateCommentController,
+            controllerAs: 'vm'
+        })
+            .when("/updateUser/:_id", {
+            templateUrl: "/templates/updateUser.html",
+            controller: app.Controllers.updateUserController,
+            controllerAs: "vm"
+        })
+            .when('/forgot', {
+            templateUrl: '/templates/forgot.html',
+            controller: app.Controllers.forgotController,
+            controllerAs: 'vm'
+        })
+            .when('/reset/:id', {
+            templateUrl: '/templates/reset.html',
+            controller: app.Controllers.forgotController,
             controllerAs: 'vm'
         })
             .otherwise({ redirectTo: '/' });

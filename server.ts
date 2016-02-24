@@ -15,8 +15,8 @@ const app = express();
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
+require("./passport/passport");
 
-require('./passport/passport');
 
 ///MongoDB
 if (process.env.NODE_ENV === 'test') {
@@ -40,15 +40,20 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 ///Express static
+////////////////////////git
+
 app.use(express.static('./public'));
 app.use('/scripts', express.static(__dirname + 'bower_components'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 ///Require routes
+////////////////////////
+
 let beerRoutes = require('./routes/beerRoutes');
 let brewRoutes = require('./routes/brewRoutes');
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
+let resetPasswordRoutes = require('./routes/resetPasswordRoutes');
 let categoryRoutes = require("./routes/categoryRoutes");
 let likedRoutes = require('./routes/likedRoutes');
 
@@ -56,16 +61,21 @@ let likedRoutes = require('./routes/likedRoutes');
 app.use('/api/v1/beer', beerRoutes);
 app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
-
 app.use("/usershell", userRoutes);
 app.use("/catshell", categoryRoutes);
 app.use('/api/v1/likedBeers', likedRoutes);
+app.use('/forgot', resetPasswordRoutes);
+
 
 ////////////////////////
 ///Express static
 ////////////////////////
 
 ///Misc
+////////////////////////
+
+
+
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });
   if (/application\/json/.test(req.get('accept'))) {
@@ -88,6 +98,7 @@ app.use(function(req, res, next) {
 // error handlers
 app.use(function(err: any, req, res, next) {
   res.status(err.status || 500);
+  console.log(err);
   if (err.name === 'CastError') err.message = 'Invalid ID';
   // Don't leak stack trace if not in development
   let error = (app.get('env') === 'development') ? err : {};

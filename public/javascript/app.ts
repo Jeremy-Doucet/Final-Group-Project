@@ -2,7 +2,7 @@
 
 namespace app {
 
-  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate','ngToast','ngSanitize'])
 
   .config((
     $routeProvider: ng.route.IRouteProvider,
@@ -116,9 +116,24 @@ namespace app {
         controller: app.Controllers.updateCommentController,
         controllerAs: 'vm'
       })
+      .when("/updateUser/:_id", {
+          templateUrl: "/templates/updateUser.html",
+          controller: app.Controllers.updateUserController,
+          controllerAs: "vm"
+      })
+      .when('/forgot', {
+        templateUrl:'/templates/forgot.html',
+        controller: app.Controllers.forgotController,
+        controllerAs: 'vm'
+      })
+      .when('/reset/:id',{
+        templateUrl:'/templates/reset.html',
+        controller: app.Controllers.forgotController,
+        controllerAs: 'vm'
+      })
 
-      .otherwise({ redirectTo: '/' });
-      $locationProvider.html5Mode(true);
-      $httpProvider.interceptors.push('HTTPFactory');
-    });
-  }
+    .otherwise({ redirectTo: '/' });
+    $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('HTTPFactory');
+  });
+}

@@ -18,7 +18,7 @@ router.get('/details/:id', function (req, res, next) {
         .populate('createdBy', 'username avatarUrl')
         .populate('comments')
         .exec(function (err, beer) {
-        Comment.populate(beer.comments, { path: "createdBy", select: "username" }, function (err, result) {
+        Comment.populate(beer.comments, { path: "createdBy", select: "username avatarUrl" }, function (err, result) {
             res.send(beer);
         });
     });
@@ -76,6 +76,22 @@ router.delete('/', function (req, res, next) {
         return next({ status: 404 });
     Beer.remove({ _id: req.query._id }, function (err, result) {
         res.send({ message: 'Deleted.' });
+    });
+});
+router.get('/userHomeBeers', auth, function (req, res, next) {
+    Beer.find({ createdBy: req['payload']._id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
+    });
+});
+router.get('/userBeers/:id', auth, function (req, res, next) {
+    Beer.find({ createdBy: req.params.id })
+        .exec(function (err, beers) {
+        if (err)
+            return next(err);
+        res.json(beers);
     });
 });
 module.exports = router;
