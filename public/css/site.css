@@ -2,6 +2,11 @@ body {
   background-color: #E9E9E9;
 }
 
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
 #sBox{
   margin-left:-15px;
 }
