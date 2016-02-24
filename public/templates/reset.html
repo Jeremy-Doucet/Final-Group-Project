@@ -8,9 +8,10 @@
     <div class="form-group">
 
       <label for="confirm">Confirm password</label>
-      <input type="password" class="form-control" id="" name="confirm" placeholder="Confirm password">
+      <input type="password" class="form-control" id="" name="confirm"ng-model="vm.confirm" placeholder="Confirm password">
+                                                            <!-- vm.confirm and ng-disabled makes the user not submit the info if the info doesnt match -->
       <br>
-      <input type = "submit" class="btn.btn-primary forgotsubmit form-control" style="color:white;" value = "Submit">
+      <input type = "submit" class="btn.btn-primary forgotsubmit form-control" style="color:white;" value = "Submit" ng-disabled="vm.user.setPassword !== vm.confirm">
     </div>
   </form>
 </div>

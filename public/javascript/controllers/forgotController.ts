@@ -1,4 +1,4 @@
-git 'use strict';
+'use strict';
 namespace app.Controllers{
   export class forgotController{
 
