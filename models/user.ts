@@ -43,14 +43,14 @@ UserSchema.method('validatePassword', function(password) {
 
 UserSchema.method('generateJWT', function() {
   let facebook = (this.facebook.token) ? true : false;
-  return jwt.sign({
-    _id: this._id,
-    username: this.username,
-    email: this.email,
-    avatarUrl: this.avatarUrl,
-    facebook_email: this.facebook.email,
-    facebook_name: this.facebook.name
-  }, process.env.JWT_SECRET);
+    return jwt.sign({
+      _id: this._id,
+      username: this.username,
+      email: this.email,
+      avatarUrl: this.avatarUrl,
+      facebook_email: this.facebook.email,
+      facebook_name: this.facebook.name
+    }, process.env.JWT_SECRET);
 });
 
 export let User = mongoose.model('User', UserSchema);

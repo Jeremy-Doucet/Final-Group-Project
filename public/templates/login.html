@@ -1,6 +1,6 @@
 
 <div class = 'container'>
-  <div class = 'row' style = 'margin-left:180px'>
+  <div class = 'row' style = 'margin-left:200px'>
     <h1>Login:</h1><br>
     <form role = 'form' ng-submit = 'vm.login()'>
       <div class = 'col-lg-9'>
@@ -25,12 +25,12 @@
       </div>
     </form><br>
   </div>
-  <div class = 'row' style = 'margin-left:180px'>
-    <h3>...or via FaceBook:</h3>
-    <form role = 'form' ng-submit = 'vm.loginFB()'>
-      <div class = 'col-lg-9'>
-        <a target  =  '_self' ng-click  =  'vm.loginFB()' ng-href  =  '/usershell/auth/facebook'><img ng-src  =  '/css/img/fbLogin.png'></a><br><br><br>
+  <div class = 'row' style = 'margin-left:200px'>
+    <div class = 'col-md-9'>
+      <h1>-or-</h1><br>
+      <div class = 'btn btn-info pull-right btn-block'>
+        <a target  =  '_self' ng-href  =  '/usershell/auth/facebook'><img ng-src  =  '/css/img/fbLogin.png'></a>
       </div>
-    </form><br>
+    </div>
   </div>
 </div>
