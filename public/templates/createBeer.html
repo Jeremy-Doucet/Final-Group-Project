@@ -16,7 +16,7 @@
       <div class = 'col-md-1'></div>
 
       <!-- /.col-md-8 -->
-      <div ng-class = '{'hidden': !dirForm.toggle}' class = 'col-md-4'>
+      <div ng-class = '{"hidden": !dirForm.toggle}' class = 'col-md-4'>
         <div style = 'margin-top:30px'>
           <h1 class = 'cBeer1'>Post your review of: <span style = 'font-size:50px;color:#FBA711'>{{vm.mybeer.name}}</span></h1>
           <hr>
@@ -77,13 +77,13 @@
       <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
-    <hr ng-class = '{'hidden': !BrewInfo.toggle}'>
+    <hr ng-class = '{"hidden": !BrewInfo.toggle}'>
     <!-- Content Row -->
-    <div class = 'row bot' ng-class = '{'hidden': !BrewInfo.toggle}'>
+    <div class = 'row bot' ng-class = '{"hidden": !BrewInfo.toggle}'>
       <div class = 'col-md-4' ng-repeat = 'b in vm.brew'>
         <h1 class = 'gld'>Brewery</h1>
         <p class = 'cBeer1' style = 'word-wrap: break-word;width:200px'>{{b.name}}</p>
-        <img ng-src = '{{b.images.squareMedium || 'http://www.beer100.com/images/beermug.jpg' }}' alt = '' />
+        <img ng-src = '{{b.images.squareMedium || "http://www.beer100.com/images/beermug.jpg" }}' alt = '' />
       </div>
       <!-- /.col-md-4 -->
       <div class = 'col-md-8' ng-repeat = 'b in vm.brew' ng-init = 'limit = 250; moreShown = false'>

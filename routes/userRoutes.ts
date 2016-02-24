@@ -33,11 +33,28 @@ router.post('/register', (req, res, next) => {
   });
 });
 
-///POST: login user
-router.post('/login', (req, res, next) => {
-  if (!req.body.username) return next('Invalid username');
-  if (!req.body.password) return next('Invalid password');
-  passport.authenticate('local', (error, user, info): any => {
+//PUT: User update on profile page
+router.put("/", auth, (req,res,next) => {
+    User.findOne({_id: req['payload']._id })
+    .exec((err,user) => {
+        if(err) return next (err);
+        if(!req.body.password)req.body.password = "";
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.avatarUrl = req.body.avatarUrl;
+        if(user.validatePassword(req.body.password))user.setPassword(req.body.newpassword);
+        user.token = user.generateJWT();
+        user.save((error,user, token): any =>{
+            if (error) return next (error);
+            res.json({token: user.generateJWT()});
+        });
+    });
+    });
+
+router.post("/login", (req, res, next) => {
+  if (!req.body.username) return next("Invalid username");
+  if (!req.body.password) return next("Invalid password");
+  passport.authenticate("local", (error, user, info): any => {
     if (error) return next(error);
     if (user) return res.json({token: user.generateJWT()});
     return res.send(info);

@@ -15,8 +15,8 @@ const app = express();
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
+require("./passport/passport");
 
-require('./passport/passport');
 
 ///MongoDB
 if (process.env.NODE_ENV === 'test') {
