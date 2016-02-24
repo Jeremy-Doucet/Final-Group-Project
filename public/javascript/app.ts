@@ -2,7 +2,7 @@
 
 namespace app {
 
-  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+  angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate','ngToast','ngSanitize'])
 
   .config((
     $routeProvider: ng.route.IRouteProvider,
