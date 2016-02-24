@@ -10,7 +10,7 @@ var app = express();
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
-require('./passport/passport');
+require("./passport/passport");
 if (process.env.NODE_ENV === 'test') {
     mongoose.connect(process.env.MONGO_TEST);
 }
@@ -33,6 +33,7 @@ var beerRoutes = require('./routes/beerRoutes');
 var brewRoutes = require('./routes/brewRoutes');
 var commentRoutes = require('./routes/commentRoutes');
 var userRoutes = require("./routes/userRoutes");
+var resetPasswordRoutes = require('./routes/resetPasswordRoutes');
 var categoryRoutes = require("./routes/categoryRoutes");
 var likedRoutes = require('./routes/likedRoutes');
 app.use('/api/v1/beer', beerRoutes);
@@ -41,6 +42,7 @@ app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 app.use("/catshell", categoryRoutes);
 app.use('/api/v1/likedBeers', likedRoutes);
+app.use('/forgot', resetPasswordRoutes);
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|javascript/.test(req.path))
         return next({ status: 404, message: 'Not Found' });
@@ -59,6 +61,7 @@ app.use(function (req, res, next) {
 });
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
+    console.log(err);
     if (err.name === 'CastError')
         err.message = 'Invalid ID';
     var error = (app.get('env') === 'development') ? err : {};

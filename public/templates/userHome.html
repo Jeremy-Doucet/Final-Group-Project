@@ -1,25 +1,27 @@
+
 <div class = 'container'>
   <div class = 'row'>
     <div class = 'col-md-12'>
       <h2 class = 'pSubTitle'>{{gc.status.username || gc.status.facebook.name}}'s Page</h2>
-      <div class = 'col-md-3 text-center'>
-        <img class = 'userIcon' ng-src = '{{gc.status.avatarUrl}}' alt =' ' /><br>
-        <a ng-href = '#'>Change avatar</a>
+      <div class="col-md-3 text-center">
+        <img class="userIcon" src="{{gc.status.avatarUrl}}"  alt="" /><br>
+        <a href="#">Change avatar</a>
       </div>
-      <div class = 'col-md-3'>
-        <h4>Username: </h4>{{gc.status.username}}<br><a ng-href = '#'>Change Username</a>
+      <div class="col-md-3">
+        <h4>Username: </h4>{{gc.status.username}}<br><a ng-href="/updateUser/{{vm.user._id}}">Change Username</a>
       </div>
-      <div class = 'col-md-3'>
-        <h4>Email: </h4>{{gc.status.email}}<br><a ng-href = '#'>Change Email</a>
+      <div class="col-md-3">
+        <h4>Email: </h4>{{gc.status.email}}<br><a ng-href="/updateUser/{{vm.user._id}}">Change Email</a>
       </div>
       <div class = 'col-md-3'>
         <h4>Password: </h4>
-        <span>******</span><br><a ng-href = '#'>Change Password</a>
+        <span>******</span><br><a ng-href="/updateUser/{{vm.user._id}}">Change Password</a>
       </div>
     </div>
   </div>
   <p>{{vm.user.userBeers}}</p>
   <uib-tabset>
+
     <!--Beers User has posted-->
     <uib-tab heading="Posted Beers">
       <div class="col-md-12" ng-repeat="b in vm.userBeers">
@@ -28,6 +30,7 @@
         <hr>
       </div>
     </uib-tab>
+
     <!--Beers User Liked-->
     <uib-tab heading="Liked Beers">
       <div class="col-md-12" ng-repeat="b in vm.likedBeers">

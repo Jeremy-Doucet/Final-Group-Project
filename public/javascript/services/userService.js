@@ -64,11 +64,19 @@ var app;
                 return q.promise;
             };
             ;
+            userService.prototype.updateUser = function (user) {
+                var q = this.$q.defer();
+                this.$http.put("/usershell/", user).then(function (res) {
+                    q.resolve(res.data);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
+            };
             ;
             return userService;
         }());
         Services.userService = userService;
-        ;
         angular.module("app").service("userService", userService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));

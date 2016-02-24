@@ -19,6 +19,7 @@ namespace app.Controllers {
     ) {
       this.userBeers = homeService.getUserHomeBeers();
       this.likedBeers = commentService.getAllLikes();
+      this.user = userService.status;
     };
   };
 
