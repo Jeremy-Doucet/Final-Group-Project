@@ -58,6 +58,7 @@
         "routes/userRoutes.ts",
         "server.ts",
         "typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts",
+        "typings/angularjs/angular-animate.d.ts",
         "typings/angularjs/angular-resource.d.ts",
         "typings/angularjs/angular-route.d.ts",
         "typings/angularjs/angular.d.ts",

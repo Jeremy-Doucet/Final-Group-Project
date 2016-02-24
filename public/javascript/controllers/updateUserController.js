@@ -4,11 +4,12 @@ var app;
     var Controllers;
     (function (Controllers) {
         var updateUserController = (function () {
-            function updateUserController(userService, $location, $routeParams, $window) {
+            function updateUserController(userService, $location, $routeParams, $window, ngToast) {
                 this.userService = userService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
+                this.ngToast = ngToast;
                 this.updateUser = angular.copy(userService.status);
             }
             updateUserController.prototype.update = function () {
@@ -27,6 +28,10 @@ var app;
                         _this.userService.setUser();
                         _this.$window.localStorage.setItem("username", _this.updateUser.username);
                         _this.$location.path('/updateUser');
+                        _this.ngToast.success({
+                            content: "Congrats your profile changes have been saved!",
+                            horizontalPosition: "right"
+                        });
                     });
                 }
             };

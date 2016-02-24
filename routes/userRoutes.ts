@@ -57,7 +57,7 @@ router.post("/login", (req, res, next) => {
   passport.authenticate("local", (error, user, info): any => {
     if (error) return next(error);
     if (user) return res.json({token: user.generateJWT()});
-    return res.send(info);
+    return res.status(400).send(info);
   }) (req, res, next);
 });
 

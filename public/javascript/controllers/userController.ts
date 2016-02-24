@@ -3,7 +3,7 @@
 namespace app.Controllers {
 
   export class userController {
-    
+
     public newUser;
     public user;
 
@@ -33,14 +33,24 @@ namespace app.Controllers {
         this.userService.setUser();
         this.$window.localStorage.setItem('username', this.user.username);
         this.$location.path('/');
-      });
+        this.ngToast.success({
+            content: "Congrats you are now logged in successfully!",
+            verticalPosition: "right"
+        })
+    },  (err) => {
+        this.ngToast.warning({
+            content: err.data.message,
+            horizontalPosition: "right"
+        })
+    });
     };
 
     constructor(
       private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService,
-      private $window: ng.IWindowService
+      private $window: ng.IWindowService,
+      private ngToast
     ) {};
   };
 
