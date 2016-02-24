@@ -2,7 +2,10 @@
 
   <h1 style="display: inline-block">Review: <small>{{vm.beer.name}}</small></h1>
   <!--Like/Unlike-->
-  <div class="text-right" style="display: inline-block">
+  <div ng-hide="gc.status._id !== null">
+    <h4><small>Login in to like or dislike</small></h4>
+  </div>
+  <div ng-show="gc.status._id !== null" class="text-right" style="display: inline-block">
 
       <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) === -1"  ng-click="vm.likeBeer()" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
