@@ -107,7 +107,7 @@
               <blockquote>
                 {{m.message}}
               </blockquote>
-              <div class="actions" ng-show="gc.status.username !== null">
+              <div class="actions" ng-hide="gc.status.username !== m.createdBy.username">
                 <button type="button" ng-click="vm.deleteComment(m)"><i class="material-icons">delete</i></button>
                 <a ng-href="/updateComment/{{m._id}}"><i class="material-icons butt">mode_edit</i></a>
               </div>
