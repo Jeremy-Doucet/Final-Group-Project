@@ -22,6 +22,7 @@
       <!--Beer Image-->
       <img class="img-responsive" src="{{vm.beer.imgurl || vm.beer.imgbeer}}"  />
       <hr>
+      <button ng-click = 'vm.rateBeer(1)'>Like!</button><button ng-click = 'vm.rateBeer(-1)'>Do Not Like!</button>
       <!--Beer info-->
       <div name="beerinfo">
         <h5>Type: <small> {{vm.beer.type }} </small></h5>
