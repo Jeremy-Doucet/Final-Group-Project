@@ -11,7 +11,10 @@ var app;
                 this.token = $routeParams["id"];
             }
             forgotController.prototype.passwordReset = function () {
-                this.resetService.saveReset(this.user);
+                var _this = this;
+                this.resetService.saveReset(this.user).then(function (res) {
+                    _this.$location.path('/');
+                });
             };
             forgotController.prototype.submitReset = function () {
                 var _this = this;

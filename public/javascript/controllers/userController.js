@@ -4,11 +4,12 @@ var app;
     var Controllers;
     (function (Controllers) {
         var userController = (function () {
-            function userController(userService, $location, $routeParams, $window) {
+            function userController(userService, $location, $routeParams, $window, ngToast) {
                 this.userService = userService;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
+                this.ngToast = ngToast;
             }
             userController.prototype.register = function () {
                 var _this = this;
@@ -39,6 +40,15 @@ var app;
                     _this.userService.setUser();
                     _this.$window.localStorage.setItem('username', _this.user.username);
                     _this.$location.path('/');
+                    _this.ngToast.success({
+                        content: "Congrats you are now logged in successfully!",
+                        verticalPosition: "right"
+                    });
+                }, function (err) {
+                    _this.ngToast.warning({
+                        content: err.data.message,
+                        horizontalPosition: "right"
+                    });
                 });
             };
             ;

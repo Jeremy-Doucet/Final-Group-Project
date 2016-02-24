@@ -5,7 +5,7 @@
       <h2 class = 'pSubTitle'>{{gc.status.username || gc.status.facebook.name}}'s Page</h2>
       <div class="col-md-3 text-center">
         <img class="userIcon" src="{{gc.status.avatarUrl}}"  alt="" /><br>
-        <a href="#">Change avatar</a>
+        <a ng-href="/updateUser/{{vm.user._id}}">Change avatar</a>
       </div>
       <div class="col-md-3">
         <h4>Username: </h4>{{gc.status.username}}<br><a ng-href="/updateUser/{{vm.user._id}}">Change Username</a>

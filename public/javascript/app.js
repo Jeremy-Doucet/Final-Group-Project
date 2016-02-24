@@ -1,7 +1,7 @@
 'use strict';
 var app;
 (function (app) {
-    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate'])
+    angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'ngToast', 'ngSanitize'])
         .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider.when('/', {
             templateUrl: '/templates/home.html',
