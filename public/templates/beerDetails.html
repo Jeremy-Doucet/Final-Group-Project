@@ -84,16 +84,35 @@
   </div>
 
 
-  <div class="container">
-    <div class="col-sm-4 col-sm-offset-4">
-      <div ng-repeat="m in vm.beer.comments">
-        <h4> {{m.createdBy.username}}</h4>
-        <p> {{m.message}}</p>
-        <button type="button" ng-click="vm.deleteComment(m)">delete</button>
-        <a ng-href="/updateComment/{{m._id}}">edit</a>
+
+
+
+
+
+
+  <div class="tweet-container">
+    <div class="name-lockup">
+      <div ng-repeat="m in vm.beer.comments | orderBy:createdBy: true">
+        <img class="avatar" src="{{m.createdBy.avatarUrl}}" alt="" />
+        <div class="nameBD">
+          <h4> {{m.createdBy.username}}</h4>
+        </div>
+        <blockquote>
+          {{m.message}}
+        </blockquote>
+
+        <div class="actions">
+
+          <button type="button" ng-click="vm.deleteComment(m)"><i class="material-icons">delete</i></button>
+
+          <a ng-href="/updateComment/{{m._id}}"><i class="material-icons butt">mode_edit</i></a>
+            <br> <br>
+                <time class="timeDB">{{m.created | date: "h:mma '-' d MMMM y"}}</time>
+        </div>
+
+
+
+
       </div>
     </div>
-
   </div>
-
-</div>

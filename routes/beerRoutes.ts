@@ -18,10 +18,10 @@ let auth = jwt({
 //GET: INDIVIDUAL BEER DETAILS -- /api/v1/beer/details/:id
 router.get('/details/:id', (req, res, next) =>{
   Beer.findOne({ _id: req.params.id })
-    .populate('createdBy', 'username')
+    .populate('createdBy', 'username avatarUrl')
     .populate('comments')
     .exec((err, beer) =>{
-      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+      Comment.populate(beer.comments,{path: "createdBy", select: "username avatarUrl" }, (err, result)=> {
         res.send(beer);
       })
   });
