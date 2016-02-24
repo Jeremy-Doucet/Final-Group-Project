@@ -22,7 +22,8 @@ namespace app.Controllers{
                     this.$location.path('/updateUser');
                     this.ngToast.success({
                         content: "Congrats your profile changes have been saved!",
-                        horizontalPosition: "right"
+                        horizontalPosition: "right",
+                        timeout: 1200
                     })
                 });
             }

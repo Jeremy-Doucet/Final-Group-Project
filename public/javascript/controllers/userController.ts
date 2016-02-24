@@ -34,13 +34,15 @@ namespace app.Controllers {
         this.$window.localStorage.setItem('username', this.user.username);
         this.$location.path('/');
         this.ngToast.success({
-            content: "Congrats you are now logged in successfully!",
-            verticalPosition: "right"
+            content: "You are now logged in!",
+            verticalPosition: "right",
+            timeout: 1200
         })
     },  (err) => {
         this.ngToast.warning({
             content: err.data.message,
-            horizontalPosition: "right"
+            horizontalPosition: "right",
+            timeout: 1200
         })
     });
     };

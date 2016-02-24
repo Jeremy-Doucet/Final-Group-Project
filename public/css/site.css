@@ -1,9 +1,18 @@
 body {
   background-color: #E9E9E9;
 }
+body img {
 
+}
 #sBox{
   margin-left:-15px;
+}
+.pos    {
+    margin-top: -466px;
+    margin-left: 492px;
+}
+.posBr  {
+    margin-left: -2px;
 }
 
 #sBeer {
@@ -23,8 +32,8 @@ body {
 }
 
 .cBeer {
-  border:1px solid black;
-  background-color: #4D2C17;
+  /*border:1px solid black;*/
+  /*background-color: #4D2C17;*/
 }
 
 .sRes {
@@ -40,7 +49,7 @@ body {
 }
 
 .cBeer1 {
-  color: white;
+  /*color: white;*/
 }
 
 .gld {
