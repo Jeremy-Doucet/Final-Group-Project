@@ -4,7 +4,7 @@ namespace app.Controllers {
   export class beerDetailsController {
     public beer;
     public comment;
-    public beerExists;
+    public status;
     public comments = [];
     public showModal = false;
     public heart = false;
@@ -44,13 +44,13 @@ namespace app.Controllers {
         beer: this.beer._id,
       };
       this.commentService.saveLikedBeer(likedBeer).then((res) =>{
-        //add ngtoast
+        this.beer.likedByUsers.push(this.status._id)
       })
     }
 
     public unlikeBeer(beer){
       this.commentService.deleteLikedBeer(this.beer).then((res) =>{
-        console.log('Beer was unliked')
+        this.beer.likedByUsers.splice(this.beer.likedByUsers.indexOf(this.status._id), 1)
       })
     }
 
@@ -65,13 +65,14 @@ namespace app.Controllers {
       private commentService: app.Services.commentService,
       private $location: ng.ILocationService,
       private homeService: app.Services.homeService,
-      private $routeParams: ng.route.IRouteParamsService
+      private $routeParams: ng.route.IRouteParamsService,
+      private userService: app.Services.userService
     ) {
       homeService.getBeer( $routeParams['id'] ).then((res)=>{
         this.beer = res;
       });
 
-      this.beerExists = commentService.getAllLikes();
+      this.status = userService.status;
     };
   };
   angular.module('app').controller('BeerDetailsController', beerDetailsController);

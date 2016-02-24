@@ -1,18 +1,16 @@
 <div class="container">
+  <form ng-submit="vm.submitReset()">
+    <h1>Reset Password</h1>
+    <div class="form-group">
+      <label for="password">New password</label>
+      <input type="password" class="form-control" id="" ng-model="vm.user.setPassword" name="password" placeholder="New password" autofocus="true">
+    </div>
+    <div class="form-group">
 
-
-<form ng-submit="vm.submitReset()">
-<h1>Reset Password</h1>
-<div class="form-group">
-  <label for="password">New password</label>
-  <input type="text" class="form-control" id="" ng-model="vm.user.setPassword" name="password" placeholder="New password" autofocus="true">
-</div>
-  <div class="form-group">
-
-    <label for="confirm">Confirm password</label>
-    <input type="text" class="form-control" id="" name="confirm" placeholder="Confirm password">
-    <br>
+      <label for="confirm">Confirm password</label>
+      <input type="password" class="form-control" id="" name="confirm" placeholder="Confirm password">
+      <br>
       <input type = "submit" class="btn.btn-primary forgotsubmit form-control" style="color:white;" value = "Submit">
-</div>
-</form>
+    </div>
+  </form>
 </div>

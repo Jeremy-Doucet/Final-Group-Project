@@ -2,15 +2,18 @@
 
   <h1 style="display: inline-block">Review: <small>{{vm.beer.name}}</small></h1>
   <!--Like/Unlike-->
-  <div class="text-right" style="display: inline-block">
-    <div ng-repeat=" b in vm.beerExists">
-      <button ng-show="b._id !== vm.beer._id" ng-click="vm.likeBeer()" type="button" class="btn btn-default btn-sm">
+  <div ng-hide="gc.status._id !== null">
+    <h4><small>Login in to like or dislike</small></h4>
+  </div>
+  <div ng-show="gc.status._id !== null" class="text-right" style="display: inline-block">
+
+      <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) === -1"  ng-click="vm.likeBeer()" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
       </button>
-      <button ng-hide="b._id !== vm.beer._id"  ng-click="vm.unlikeBeer()" type="button" class="btn btn-default btn-sm">
+      <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) !== -1"  ng-click="vm.unlikeBeer()" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Unlike
       </button>
-    </div>
+
   </div>
   <hr>
   <div class="row">
@@ -97,32 +100,22 @@
         <div class="tweet-container">
           <div class="name-lockup">
             <div ng-repeat="m in vm.beer.comments | orderBy:createdBy: true">
-              <img class="avatar" src="{{m.createdBy.avatarUrl}}" alt="" />
+              <img class="userIconReview" src="{{m.createdBy.avatarUrl}}" alt="" />
               <div class="nameBD">
                 <h4> {{m.createdBy.username}}</h4>
               </div>
               <blockquote>
                 {{m.message}}
               </blockquote>
-
               <div class="actions" ng-show="gc.status.username !== null">
-
                 <button type="button" ng-click="vm.deleteComment(m)"><i class="material-icons">delete</i></button>
-
                 <a ng-href="/updateComment/{{m._id}}"><i class="material-icons butt">mode_edit</i></a>
-
-
               </div>
                 <time class="timeDB">{{m.created | date: "h:mma '-' d MMMM y"}}</time>
-
-
-
-
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
