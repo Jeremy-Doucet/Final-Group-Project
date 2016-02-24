@@ -83,6 +83,6 @@
         "typings/tsd.d.ts"
     ],
     "atom": {
-        "rewriteTsconfig": true
+        "rewriteTsconfig": false
     }
 }
