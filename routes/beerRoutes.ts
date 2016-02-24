@@ -21,7 +21,7 @@ router.get('/details/:id', (req, res, next) => {
     .populate('createdBy', 'username avatarUrl')
     .populate('comments')
     .exec((err, beer) =>{
-      Comment.populate(beer.comments,{path: "createdBy", select: "username" }, (err, result)=> {
+      Comment.populate(beer.comments,{path: "createdBy", select: "username avatarUrl" }, (err, result)=> {
         res.send(beer);
       })
   });
@@ -86,5 +86,27 @@ router.delete('/',(req,res,next) => {
     res.send({message: 'Deleted.'});
   });
 });
+
+
+
+//GET: USERHOME Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userHomeBeers', auth, (req, res, next) => {
+ Beer.find({ createdBy: req['payload']._id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
+})
+
+//GET: userDETAILS Get all Beers posted by createdBy /api/v1/beer/userposts
+router.get('/userBeers/:id', auth, (req, res, next) => {
+ Beer.find({ createdBy: req.params.id })
+   .exec((err, beers) =>{
+     if (err) return next(err);
+     res.json(beers)
+   })
+})
+
+
 
 export = router;
