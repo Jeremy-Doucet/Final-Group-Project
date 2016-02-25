@@ -45,7 +45,7 @@ namespace app.Controllers {
         this.ngToast.success({
             content: "You have added this beer to your favorites!",
             verticalPosition: "right",
-            timeout: 1800
+            timeout: 2000
         })
       })
     }
