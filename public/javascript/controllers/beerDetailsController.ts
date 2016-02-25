@@ -27,6 +27,7 @@ namespace app.Controllers {
         this.beer.comments.push(res);
         //this code clear the message once it hit submit
         this.comment.message = "";
+        
       });
     };
 
@@ -45,7 +46,7 @@ namespace app.Controllers {
         this.ngToast.success({
             content: "You have added this beer to your favorites!",
             verticalPosition: "right",
-            timeout: 1800
+            timeout: 2000
         })
       })
     }
