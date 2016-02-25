@@ -32,6 +32,7 @@ var app;
                     _this.result = res;
                     _this.beer.name = "";
                     _this.$location.path('/searchBeer');
+                    _this.beer.name = "";
                 });
             };
             ;
