@@ -5,13 +5,22 @@ namespace app.Controllers {
   export class homeController {
 
     public status;
-
-    public params;
+    public beer;
+    public result;
 
     public logout() {
       this.userService.removeToken();
       this.userService.removeUser();
       this.$location.path('/');
+    };
+
+    public searchBeer() {
+      this.homeService.searchBeer(this.beer).then((res) => {
+        this.result = res;
+        this.beer.name = "";
+        this.$location.path('/searchBeer');
+        this.beer.name = "";
+      });
     };
 
     constructor(
@@ -21,13 +30,12 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-
-      this.params = $location.search();
-      if (this.params.code) {
-        userService.setToken(this.params.code);
+      let params = $location.search();
+      if (params.code) {
+        userService.setToken(params.code);
         userService.setUser();
-        $location.search("code", null);
-        $location.hash("");
+        $location.search('code', null);
+        $location.hash('');
       };
       this.status = userService.status;
     };

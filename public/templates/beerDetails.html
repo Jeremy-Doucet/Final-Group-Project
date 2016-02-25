@@ -1,105 +1,126 @@
-<div class="container">
+<div class = 'container'>
 
-  <div class="row text-center">
-      <h2>{{vm.beer.name}}</h2>
-      <a ng-hide="gc.status.username !== vm.beer.createdBy.username" href="/updateBeer/{{vm.beer._id}}">update</a>
-      <button ng-hide="gc.status.username !== vm.beer.createdBy.username" type="button" ng-click="vm.deleteBeer()">Delete</button>
-      <hr>
+  <h1 style="display: inline-block">Review: <small>{{vm.beer.name}}</small></h1>
+  <!--Like/Unlike-->
+  <div ng-hide="gc.status._id !== null">
+    <h4><small>Login in to like or dislike</small></h4>
   </div>
+  <div ng-show="gc.status._id !== null" class="text-right" style="display: inline-block">
 
-  <!--Beer info & brew info-->
-  <div class="row">
-    <!--Beer Image-->
-    <div class="col-sm-4">
-      <img class="img-responsive" src="{{vm.beer.imgurl}}" alt="{{vm.beer.name}} image" />
-      <h5> Location: <small> {{vm.beer.location }} </small></h5>
-      <h5> Type: <small> {{vm.beer.type }} </small></h5>
-    </div>
+      <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) === -1"  ng-click="vm.likeBeer()" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Favorite
+      </button>
+      <button ng-show="vm.beer.likedByUsers.indexOf(gc.status._id) !== -1"  ng-click="vm.unlikeBeer()" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> UnFavorite
+      </button>
 
-
-
-    <div class="row">
-        <div class="col-sm-2">
-            <img class="img-responsive" src="{{vm.beer.imgurl || vm.beer.imgbeer }}" alt="{{vm.beer.name}} image" />
-
-    <!--Beer Info-->
-    <div class="col-sm-8">
-      <h4> Review<small> {{vm.beer.review }} </small></h4><br>
-
-      <div class="text-right">
-        Posted by: <a href="/userprofile/{{vm.beer.createdBy._id}}">{{vm.beer.createdBy.username}}</a> <b>|</b>
-        Posted on: {{vm.beer.created | date: fullDate }} <b>|</b>
-        <a href="#">Save beer</a>
-      </div>
-
-      <!--Brewery Modal-->
-      <a ng-click="vm.toggleModal()">Brewery information</a>
-
-      <my-modal title="Brewery Info" visible="vm.showModal">
-        <div class="row">
-          <div class="col-md-4">
-            <img class="img-responsive" src="{{vm.beer.brewerydb.labelImg}}" alt="" />
-          </div>
-          <div class="col-md-8">
-            <small>brewery:</small><br>
-            {{vm.beer.brewerydb.breweryName}}<br>
-            <a href="{{b.website}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
-          </div>
-
-        </div>
-
-        <hr>
-
-        <div class="row">
-          <div class="col-md-12">
-            <small>description:</small><br>
-            {{vm.beer.brewerydb.breweryDesc}}<hr>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4 vertical-line"  style="border-right-style: solid;">
-            <small>ABV</small> <br>
-            {{vm.beer.brewerydb.abv}}<div class="vertical-line" />
-          </div>
-          <div class="col-md-4">
-            <small>Style Type: </small><br>
-            {{vm.beer.brewerydb.beerType}}
-          </div>
-          <div class="col-md-4"  style="border-left-style: solid;">
-            <small>Organic?</small><br>
-            {{vm.beer.brewerydb.organic}}
-          </div>
-        </div>
-      </div>
-      </my-modal>
-    </div>
   </div>
-
   <hr>
-
-  <div class="row text-center">
-    <div class="col-sm-4 col-sm-offset-4">
-      <h4>Comments: </h4>
-      <form ng-submit="vm.addComment()">
-        <textarea rows ="4" cols ="30" ng-model="vm.comment.message" ></textarea><br>
-        <button type="submit">Submit</button>
-      </form>
+  <div class="row">
+    <!--Beer Image / Beer Info-->
+    <div class="col-sm-4">
+      <!--Beer Image-->
+      <img class="img-responsive" src="{{vm.beer.imgurl || vm.beer.imgbeer}}"  />
       <hr>
-    </div><br>
-  </div>
+      <button ng-click = 'vm.rateBeer(1)'>Like!</button><button ng-click = 'vm.rateBeer(-1)'>Do Not Like!</button>
+      <!--Beer info-->
+      <div name="beerinfo">
+        <h5>Type: <small><a ng-href = '/byType/{{vm.beer.type}}'>{{vm.beer.type }}</a></small></h5>
+        <h5>Style Type: <small>{{vm.beer.brewerydb.beerType}}</small> </h5>
+        <h5>ABV: <small>{{vm.beer.brewerydb.abv}}</small></h5>
+        <h5>Organic? <small>{{vm.beer.brewerydb.organic}}</small></h5>
 
-
-  <div class="container">
-    <div class="col-sm-4 col-sm-offset-4">
-      <div ng-repeat="m in vm.beer.comments">
-        <h4> {{m.createdBy.username}}</h4>
-        <p> {{m.message}}</p>
-        <button type="button" ng-click="vm.deleteComment(m)">delete</button>
-        <a ng-href="/updateComment/{{m._id}}">edit</a>
+        <!--Brewery Modal-->
+        <div name="breweryModal">
+          <h5>Brewery: <small><a role = "button" ng-click="vm.toggleModal()">{{vm.beer.brewerydb.breweryName}}</a></small></h5>
+          <my-modal title="Brewery Info" visible="vm.showModal">
+            <div class="row" name="breweryname">
+              <div class="col-md-4">
+                <img class="img-responsive" src="{{vm.beer.brewerydb.labelImg}}" alt="" />
+              </div>
+              <div class="col-md-8">
+                <small>brewery:</small><br>
+                {{vm.beer.brewerydb.breweryName}}<br>
+                <a role = "button" href="{{vm.beer.brewerydb.breweryUrl}}">{{vm.beer.brewerydb.breweryUrl}}</a><br><hr>
+              </div>
+              <hr>
+            </div>
+            <div class="row" name="breweryDesc">
+              <div class="col-md-12">
+                <small>description:</small><br>
+                {{vm.beer.brewerydb.breweryDesc}}<hr>
+              </div>
+            </div>
+          </my-modal>
+        </div>
       </div>
     </div>
 
-  </div>
+    <!--User review-->
+    <div class="col-sm-6">
+      <div class="text-right">
+        Posted on: {{vm.beer.created | date: fullDate }}
+      </div>
+      <div class="">
+        <a href="/userprofile/{{vm.beer.createdBy._id}}"><img class="userIconReview img-responsive" style="mat" src="{{vm.beer.createdBy.avatarUrl}}"  alt="" /></a>
+        <a class="text-center" href="/userprofile/{{vm.beer.createdBy._id}}">{{vm.beer.createdBy.username}}</a>
+      </div>
 
+      <h5>Location: <small> <a ng-href = '/byLocation/{{vm.beer.location}}'>{{vm.beer.location }}</a> </small></h5>
+      <h5> Beer Ratings:</h5>
+      <small>Hoppiness: {{vm.beer.beerscores.hoppiness}} </small><b>|</b>
+      <small>Maltiness: {{vm.beer.beerscores.maltiness}} </small><b>|</b>
+      <small>Body: {{vm.beer.beerscores.body}} </small>
+      <hr>
+      <h5>Review: <small></small></h5>
+      <p>{{vm.beer.review }}</p>
+
+      <!--Update/Delete-->
+      <a ng-hide="gc.status.username !== vm.beer.createdBy.username" href="/updateBeer/{{vm.beer._id}}">update</a>
+      <button ng-hide="gc.status.username !== vm.beer.createdBy.username" type="button" ng-click="vm.deleteBeer()">Delete</button><br>
+
+      <hr>
+
+      <!--COMMENT SECTION-->
+      <div  class="row">
+        <div class="container">
+          <div>
+            <h4>Comments: </h4>
+
+            <form class="form-inline" role="form" ng-submit="vm.addComment()" ng-show="gc.status.username !== null">
+              <div class="form-group">
+                <textarea  class = 'form-control' ng-model = 'vm.comment.message' rows = '4' cols = '70' placeholder="Enter Your Comments"></textarea>
+              </div>
+                <div class="form-group" style="padding-top:60px;">
+                  <button type="submit" class="btn btn-default">Post</button>
+                </div>
+            </form>
+
+            <hr />
+          </div>
+          <br>
+        </div>
+        <div class="tweet-container">
+          <div class="name-lockup">
+            <div ng-repeat="m in vm.beer.comments | orderBy:createdBy: true">
+              <img class="avatar" src="{{m.createdBy.avatarUrl }}" alt="" />
+              <div class="nameBD">
+                <h4 class="hotdog"> {{m.createdBy.username}}</h4>
+              </div>
+
+                <time class="timeDB">{{m.created | date: "h:mma '-' d MMMM y"}}</time>
+
+              <p class="pbd">
+                {{m.message}}
+              </p>
+              <div class="actions" ng-hide="gc.status.username !== m.createdBy.username">
+                <a ng-click="vm.deleteComment(m)"><i class="material-icons">delete</i></a>
+                <a ng-href="/updateComment/{{m._id}}"><i class="material-icons butt">mode_edit</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 namespace app.Services {
 
@@ -24,11 +24,11 @@ namespace app.Services {
       private $resource: ng.resource.IResourceService,
       private $window: ng.IWindowService
     ) {
-      this.beersLocalResource = $resource("/catshell/byLocation/:location");
-      this.beersTypeResource = $resource("/catshell/byType/:type");
-      this.beersPopularResource = $resource("/catshell/popular");
+      this.beersLocalResource = $resource('/catshell/byLocation/:location');
+      this.beersTypeResource = $resource('/catshell/byType/:type');
+      this.beersPopularResource = $resource('/catshell/popular');
     };
   };
 
-  angular.module("app").service("categoryService", categoryService);
+  angular.module('app').service('categoryService', categoryService);
 };

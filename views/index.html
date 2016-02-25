@@ -1,69 +1,131 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" lang="en_US">
 <head>
-    <title>app</title>
-    <meta charset="utf-8">
-    <base href="/" />
-    <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
-    <link rel="stylesheet" href="/css/site.css" charset="utf-8" />
-    <link rel="stylesheet" href="/css/animate.css">
+  <title>app</title>
+  <meta charset = 'utf-8'>
+  <base href = '/' />
+  <link href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel = 'stylesheet'>
+  <link rel = 'stylesheet' href = '/css/site.css' charset = 'utf-8' />
+  <link rel = 'stylesheet' href = '/css/animate.css'>
+  <link href = 'https://fonts.googleapis.com/css?family=Montserrat:400,700' rel = 'stylesheet' type = 'text/css'>
+  <link href = 'https://fonts.googleapis.com/css?family=Kaushan+Script' rel = 'stylesheet' type = 'text/css'>
+  <link href = 'https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel = 'stylesheet' type = 'text/css'>
+  <link href = 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel = 'stylesheet' type = 'text/css'>
+  <link rel="stylesheet" href="/css/ngToast.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+      <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+
+
+
 </head>
-<body ng-controller = "homeController as gc">
+<body ng-controller = 'homeController as gc'>
 
-  <div class = "pSubTBox">
+  <!-- Navigation -->
+  <nav class = 'navbar navbar-default' role = 'navigation'>
+    <div class = 'container'>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class = 'navbar-header'>
+        <button type = 'button' class = 'navbar-toggle' data-toggle = 'collapse' data-target = '#bs-example-navbar-collapse-1'>
+          <span class = 'sr-only'>Toggle navigation</span>
+          <span class = 'icon-bar'></span>
+          <span class = 'icon-bar'></span>
+          <span class = 'icon-bar'></span>
+        </button>
+        <a class = 'navbar-brand page-scroll' ng-href = '/'><span style="color:rgba(136, 136, 136, 0.9);">beer</span><span style="color:#f0ad4e;">Me</span></a>
 
-    <nav class = "navbar beerHomeNav">
-      <div class = "container-fluid">
-        <div class = "col-md-2">
-          <a class = "navbar-brand intro-text" ng-href = "/">A Big Title</a>
+        <a class = 'navbar-brand page-scroll' ng-href = '/'><img style="padding-right:10px;" ng-src = 'https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/beer.png' width = '30' />
+      </div></a>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class = 'collapse navbar-collapse' id = 'bs-example-navbar-collapse-1'>
+        <ul class = 'nav navbar-nav'>
+          <li><a ng-href = '/beerPage'>Reviews</a></li>
+          <li><a ng-href = '/popular'>Popular</a></li>
+        </ul>
+      </ul>
+      <form class = 'navbar-form navbar-left' role = 'search' ng-submit = 'gc.searchBeer()'>
+        <div id = 'sBox' class = 'form-group'>
+          Search for a beer  <input autofocus ng-model = 'gc.beer.name' type = 'text' placeholder = 'Beer Search'>
         </div>
-        <div class = "col-md-8">
-          <ul class = "nav navbar-nav beerHomeNav">
-            <li><a ng-href="/beerPage">Check out beerPage </a></li>
-            <li><a ng-href="/searchBeer">Search </a></li>
-            <li><a ng-href="/register">Register </a></li>
-            <li><a ng-show="gc.status.username == null" ng-href="/login">Login </a></li>
-            <li><a ng-show="gc.status.username !== null" ng-click = "gc.logout()">Logout</a><br></li>
-          </ul>
-        </div>
-        <div class="col-md-2">
-          <ul class="nav navbar-nav beerHomeNav">
-            <li><span ng-show="gc.status.username !== null">logged in as: <a href="/myprofile">{{gc.status.username}}</a></span></li>
-          </ul>
-        </div>
+        <button type = 'submit' class = 'btn'>Submit</button>
+      </form>
+      <ul class = 'nav navbar-nav navbar-right'>
+        <ul class = 'nav navbar-nav navbar-right'>
+          <li><p class = 'navbar-text' ng-show = 'gc.status.username !== null || gc.status.facebook.name !== null'>logged in as: <a ng-href = '/myprofile'>{{gc.status.username || gc.status.facebook.name | uppercase }}</a></p></li>
+          <li><a ng-show = 'gc.status.username == null && gc.status.facebook.name == null' ng-href = '/register'>Register </a></li>
+          <li><a ng-show = 'gc.status.username == null && gc.status.facebook.name == null' ng-href = '/login'>Login </a></li>
+          <li><a ng-show = 'gc.status.username !== null' ng-click = 'gc.logout()' role  = 'button'>Logout</a><br></li>
+        </ul>
       </div>
-    </nav>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
 
-<ng-view></ng-view>
+  <toast></toast>
+  <ng-view></ng-view>
 
-    <!-- Bootstrap -->
+  <footer class="footer-distributed">
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <div class="footer-left">
 
-    <!-- Angular -->
+      <h3>Beer<span style="color:#f0ad4e;">Me</span><span><img ng-src = 'https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/beer.png' width = '30' /></span></h3>
+    </div>
 
-    <script src="/scripts/angular/angular.min.js"></script>
-    <script src="/scripts/angular-route/angular-route.min.js"></script>
-    <script src="/scripts/angular-resource/angular-resource.min.js"></script>
-    <script src="/scripts/angular-animate/angular-animate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
+    <div class="footer-center">
 
-    <script src = "/node_modules/angular-animate/angular-animate.js"></script>
-    <script src = "/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p style="color:black;"><span>450 Grand Ave</span> Oakland, CA</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:CCAppGroup@gmail.com"> CCAppGroup@gmail.com</a></p>
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+      <p class="footer-company-about">
+        <span>About the group</span>
+        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+      </p>
 
 
-<<<<<<< HEAD
+
+    </div>
+
+  </footer>
+
+  <!-- Bootstrap -->
+
+  <script src = 'https://code.jquery.com/jquery-2.1.4.min.js' charset = 'utf-8'></script>
+  <script src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' integrity = 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS' crossorigin = 'anonymous'></script>
+
+  <!-- Angular -->
+
+  <script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js'></script>
+  <script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js'></script>
+  <script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js'></script>
+  <script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.min.js'></script>
+  <script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.0/angular-sanitize.js"></script>
+
+  <!-- ngToast -->
+
+  <script src="/javascript/ngToast.min.js"></script>
+
   <!-- General -->
-=======
-    <!-- General -->
 
-    <script src="/javascript/app.js"></script>
->>>>>>> api
+  <script src = '/javascript/app.js'></script>
 
-
-<<<<<<< HEAD
-  <!-- Controllers -->
+ <!-- Controllers -->
 
   <script src="/javascript/controllers/beerCreateController.js"></script>
   <script src="/javascript/controllers/searchBeerController.js"></script>
@@ -76,46 +138,27 @@
   <script src="/javascript/controllers/userHomeController.js"></script>
   <script src="/javascript/controllers/beerUpdateController.js"></script>
   <script src="/javascript/controllers/updateCommentController.js"></script>
+  <script src="/javascript/controllers/updateUserController.js"></script>
   <script src="/javascript/controllers/categoryHomeController.js"></script>
-=======
+  <script src="/javascript/controllers/forgotController.js"></script>
+  <script src="/javascript/controllers/categoryHomeController.js"></script>
+  <!--Services-->
 
-
-    <!-- Controllers -->
-
-    <script src="/javascript/controllers/beerCreateController.js"></script>
-    <script src = "/javascript/controllers/beerDeleteController.js"></script>
-    <script src="/javascript/controllers/searchBeerController.js"></script>
-    <script src="/javascript/controllers/beerDetailsController.js"></script>
-    <script src="/javascript/controllers/beerPageController.js"></script>
-    <script src="/javascript/controllers/breweryDetailsController.js"></script>
-    <script src = "javascript/controllers/commentController.js"></script>
-    <script src="/javascript/controllers/homeController.js"></script>
-    <script src="/javascript/controllers/userController.js"></script>
-    <script src="/javascript/controllers/userHomeController.js"></script>
-
-    <!-- Services -->
->>>>>>> api
-
-    <script src="/javascript/services/beerDeleteService.js"></script>
-    <script src="/javascript/services/commentService.js"></script>
-    <script src="/javascript/services/homeService.js"></script>
-    <script src="/javascript/services/HTTPFactory.js"></script>
-    <script src="/javascript/services/userService.js"></script>
-
-<<<<<<< HEAD
   <script src="/javascript/services/commentService.js"></script>
   <script src="/javascript/services/homeService.js"></script>
   <script src="/javascript/services/HTTPFactory.js"></script>
   <script src="/javascript/services/userService.js"></script>
+    <script src="/javascript/services/resetService.js"></script>
   <script src="/javascript/services/categoryService.js"></script>
-=======
-    <!-- Directives -->
-    <script src="/javascript/directives/autofocus.js"></script>
 
->>>>>>> api
 
   <!-- Directives -->
-  <script src="/javascript/directives/modal.js"></script>
+
+  <script src = '/javascript/directives/autofocus.js'></script>
+  <script src = '/javascript/directives/modal.js'></script>
+
+
+  <!-- ETC -->
 
 </body>
 

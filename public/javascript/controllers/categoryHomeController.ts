@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 namespace app.Controllers {
 
@@ -10,9 +10,15 @@ namespace app.Controllers {
 
     public beersPopular;
 
-    public locHomeImg = "/css/img/" + this.$routeParams["location"] + ".png";
+    public sortByPopular(array, key) {
+      return this.beersPopular.sort((a, b) => {
+        return b['ranking'] - a['ranking'];
+      });
+    };
 
-    public typeHomeImg = "/css/img/" + this.$routeParams["type"] + ".png";
+    public locHomeImg = '/css/img/' + this.$routeParams['location'] + '.png';
+
+    public typeHomeImg = '/css/img/' + this.$routeParams['type'] + '.png';
 
     constructor(
       private categoryService: app.Services.categoryService,
@@ -20,15 +26,11 @@ namespace app.Controllers {
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService
     ) {
-      this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
-      this.beersType = categoryService.getBeersType($routeParams["type"]);
-      this.beersPopular = categoryService.getBeersPopular().sort((a, b) => {
-        let x = a["ranking"];
-        let y = b["ranking"];
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-      });
+      if (this.$routeParams['location']) this.beersLocal = categoryService.getBeersLocal($routeParams['location']);
+      if (this.$routeParams['type']) this.beersType = categoryService.getBeersType($routeParams['type']);
+      if (this.$location.path() === '/popular') this.beersPopular = categoryService.getBeersPopular();
     };
   };
 
-  angular.module("app").controller("categoryHomeController", categoryHomeController);
+  angular.module('app').controller('categoryHomeController', categoryHomeController);
 };

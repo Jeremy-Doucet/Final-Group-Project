@@ -1,5 +1,7 @@
-"use strict";
+'use strict';
+
 namespace app.Services {
+
   angular.module('app').factory('HTTPFactory', ($window: ng.IWindowService) => {
     return {
       request: function(config) {
@@ -9,9 +11,9 @@ namespace app.Services {
         if ($window.localStorage.getItem('token')) {
           // Bearer token
           config.headers['Authorization'] = `Bearer ${$window.localStorage.getItem('token')}`;
-        }
+        };
         return config;
       }
-    }
+    };
   });
-}
+};

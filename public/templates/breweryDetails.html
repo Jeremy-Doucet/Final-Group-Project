@@ -1,32 +1,31 @@
-
-<div class="container-fluid">
-    <table class="table table-striped table-bordered" width="120%">
-        <thead>
-            <tr>
-                <th>Brewery Name</th>
-                <th>Brewery Information</th>
-                <th>Beer Information</th>
-                <th>ABV</th>
-                <th>Beer Type</th>
-                <th>Organic</th>
-                <th>Label</th>
-                <th>Brewery URL</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="b in vm.brew.data" >
-                <h1>Brewery for: <span style="font-size:50px;color:red">{{vm.mybeer.name}}</span></h1>
-                <td style="word-wrap: break-word;width:200px"><a>{{b.name}}</a></td>
-                <td style="word-wrap: break-word;max-width: 250px">{{b.description}}</td>
-                <td style="word-wrap: break-word;max-width: 250px">{{vm.mybeer.style.description}}<a></a></td>
-                <td style="word-wrap: break-word;max-width: 250px">{{vm.mybeer.abv}}</td>
-                <td style="word-wrap: break-word;max-width: 250px">{{vm.mybeer.style.shortName}}</td>
-                <td style="width:5px">{{b.isOrganic}}</td>
-                <td style="width:125px"><img  src="{{b.images.squareMedium}}" alt="" /></td>
-                <td><a href="{{b.website}}">{{b.website}}</a></td>
-                <input type="text" name="name"  value="">
-            </tr>
-        </tbody>
-    </table>
+<div class = 'container-fluid'>
+  <table class = 'table table-striped table-bordered' width = '120%'>
+    <thead>
+      <tr>
+        <th>Brewery Name</th>
+        <th>Brewery Information</th>
+        <th>Beer Information</th>
+        <th>ABV</th>
+        <th>Beer Type</th>
+        <th>Organic</th>
+        <th>Label</th>
+        <th>Brewery URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = 'b in vm.brew.data'>
+        <h1>Brewery for: <span style = 'font-size:50px;color:red'>{{vm.mybeer.name}}</span></h1>
+        <td style = 'word-wrap: break-word;width:200px'><a>{{b.name}}</a></td>
+        <td style = 'word-wrap: break-word;max-width: 250px'>{{b.description}}</td>
+        <td style = 'word-wrap: break-word;max-width: 250px'>{{vm.mybeer.style.description}}<a></a></td>
+        <td style = 'word-wrap: break-word;max-width: 250px'>{{vm.mybeer.abv}}</td>
+        <td style = 'word-wrap: break-word;max-width: 250px'>{{vm.mybeer.style.shortName}}</td>
+        <td style = 'width:5px'>{{b.isOrganic}}</td>
+        <td style = 'width:125px'><img  src = '{{b.images.squareMedium}}' alt = '' /></td>
+        <td><a ng-href = '{{b.website}}'>{{b.website}}</a></td>
+        <input type = 'text' name = 'name'  value = ''>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </div>

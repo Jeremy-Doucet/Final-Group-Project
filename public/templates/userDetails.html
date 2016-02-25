@@ -1,35 +1,38 @@
-<div class = "container">
-
-  <div class = "row">
-    <div class = "col-md-12">
-      <h2 class = "pSubTitle">{{vm.user.username}}</h2>
-      <div class="col-md-3 text-center">
-        <img class="userIcon" src="{{vm.user.avatarUrl}}"  alt="" /><br>
-        <a href="#">Change avatar</a>
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-12'>
+      <h2 class = 'pSubTitle'>{{vm.user.username}}</h2>
+      <div class = 'col-md-3 text-center'>
+        <img class = 'userIcon' ng-src = '{{vm.user.avatarUrl}}' alt = '' /><br>
       </div>
       <div class="col-md-3">
-        <h4>Username: </h4>{{vm.user.username}}<br><a href="#">Change Username</a>
+        <h4>Username: </h4>{{vm.user.username}}<br>
       </div>
-      <div class="col-md-3">
-        <h4>Email: </h4>{{vm.user.email}}<br><a href="#">Change Email</a>
+      <div class = 'col-md-3'>
+        <h4>Email: </h4>{{vm.user.email}}<br>
       </div>
-      <div class="col-md-3">
+      <div class = 'col-md-3'>
         <h4>Password: </h4>
-        <span>******</span><br><a href="#">Change Password</a>
+        <span>******</span>
       </div>
     </div>
   </div>
-
   <uib-tabset>
-
     <uib-tab heading="Posted Beers">
+      <br>
       <div class="col-md-12" ng-repeat="b in vm.user.beers">
-        <img style ="max-width: 100px" src="{{b.imgurl}}" alt="" />
+        <a href="/details/{{b._id}}"><img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" /></a>
         <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
         <hr>
       </div>
     </uib-tab>
-
-    <uib-tab heading="Favorite Beers"></uib-tab>
+    <uib-tab heading="Favorite Beers">
+      <br>
+      <div class="col-md-12" ng-repeat="b in vm.likedBeers">
+        <a href="/details/{{b._id}}"><img style ="max-width: 200px" src="{{b.imgurl || b.imgbeer}}" alt="" /></a>
+        <span><a href="/details/{{b._id}}">{{b.name}}</a></h4>
+        <hr>
+      </div>
+    </uib-tab>
   </uib-tabset>
 </div>

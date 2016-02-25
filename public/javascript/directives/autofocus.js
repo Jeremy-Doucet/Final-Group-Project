@@ -1,3 +1,4 @@
+'use strict';
 var app;
 (function (app) {
     var Directives;
@@ -13,6 +14,8 @@ var app;
             };
         }
         Directives.autofocusDirective = autofocusDirective;
+        ;
         angular.module("app").directive("autofocus", ["$timeout", autofocusDirective]);
     })(Directives = app.Directives || (app.Directives = {}));
 })(app || (app = {}));
+;

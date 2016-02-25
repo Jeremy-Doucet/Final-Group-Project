@@ -1,25 +1,27 @@
-"use strict";
+'use strict';
 
 namespace app.Controllers {
 
   export class userHomeController {
+
     public user;
     public userBeers;
     public loggedInUser;
+    public likedBeers;
 
     constructor(
       private userService: app.Services.userService,
       private $location: ng.ILocationService,
       private $routeParams: ng.route.IRouteParamsService,
       private $window: ng.IWindowService,
-      private homeService: app.Services.homeService
+      private homeService: app.Services.homeService,
+      private commentService: app.Services.commentService
     ) {
-      this.user = userService.loadUHome($routeParams["username"]);
-      this.loggedInUser = this.$window.localStorage.getItem("username");
-      // if ({message: "No user"}) this.$location.path("/");
       this.userBeers = homeService.getUserHomeBeers();
+      this.likedBeers = commentService.getAllLikes();
+      this.user = userService.status;
     };
   };
 
-  angular.module("app").controller("userHomeController", userHomeController);
+  angular.module('app').controller('userHomeController', userHomeController);
 };
