@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var app;
 (function (app) {
     var Controllers;
@@ -9,22 +9,27 @@ var app;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.locHomeImg = "/css/img/" + this.$routeParams["location"] + ".png";
-                this.typeHomeImg = "/css/img/" + this.$routeParams["type"] + ".png";
-                this.beersLocal = categoryService.getBeersLocal($routeParams["location"]);
-                this.beersType = categoryService.getBeersType($routeParams["type"]);
-                this.beersPopular = categoryService.getBeersPopular().sort(function (a, b) {
-                    var x = a["ranking"];
-                    var y = b["ranking"];
-                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-                });
+                this.locHomeImg = '/css/img/' + this.$routeParams['location'] + '.png';
+                this.typeHomeImg = '/css/img/' + this.$routeParams['type'] + '.png';
+                if (this.$routeParams['location'])
+                    this.beersLocal = categoryService.getBeersLocal($routeParams['location']);
+                if (this.$routeParams['type'])
+                    this.beersType = categoryService.getBeersType($routeParams['type']);
+                if (this.$location.path() === '/popular')
+                    this.beersPopular = categoryService.getBeersPopular();
             }
+            categoryHomeController.prototype.sortByPopular = function (array, key) {
+                return this.beersPopular.sort(function (a, b) {
+                    return b['ranking'] - a['ranking'];
+                });
+            };
+            ;
             ;
             return categoryHomeController;
         }());
         Controllers.categoryHomeController = categoryHomeController;
         ;
-        angular.module("app").controller("categoryHomeController", categoryHomeController);
+        angular.module('app').controller('categoryHomeController', categoryHomeController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

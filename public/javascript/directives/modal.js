@@ -22,7 +22,6 @@ var app;
                 scope: true,
                 link: function postLink(scope, element, attrs) {
                     scope.title = attrs.title;
-                    console.log(scope.vm);
                     scope.$watch(attrs.visible, function (value) {
                         if (value == true)
                             $(element).modal('show');
@@ -47,3 +46,4 @@ var app;
         angular.module('app').directive('myModal', myModal);
     })(Directives = app.Directives || (app.Directives = {}));
 })(app || (app = {}));
+;

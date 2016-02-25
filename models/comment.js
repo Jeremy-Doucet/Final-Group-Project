@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var mongoose = require('mongoose');
 var CommentSchema = new mongoose.Schema({
     message: { type: String, required: true },
