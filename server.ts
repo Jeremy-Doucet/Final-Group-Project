@@ -1,104 +1,80 @@
-"use strict";
+'use strict';
 
-require("dotenv").config({ silent: true });
-
+require('dotenv').config({ silent: true });
 import bodyParser = require('body-parser');
 import cookieParser = require('cookie-parser');
 import express = require('express');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
 import mongoose = require('mongoose');
-import passport = require("passport");
-
-
-////////////////////////
-///Constants
-////////////////////////
+import passport = require('passport');
 
 const app = express();
 
-////////////////////////
 ///Models
-////////////////////////
-
 require('./models/beer');
 require('./models/comment');
 require('./models/user');
-
 require("./passport/passport");
 
-////////////////////////
-///MongoDB
-////////////////////////
 
+///MongoDB
 if (process.env.NODE_ENV === 'test') {
   mongoose.connect(process.env.MONGO_TEST);
 } else {
-  mongoose.connect(process.env.MONGO_TEST);
+  mongoose.connect(process.env.MONGO_URL);
 }
 
-////////////////////////
 ///Views: EJS
-////////////////////////
-
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-////////////////////////
 ///Parse
-////////////////////////
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-if (process.env.NODE_ENV != 'test')
-  app.use(logger('dev'));
+if (process.env.NODE_ENV != 'test') app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(passport.initialize());
 
-////////////////////////
 ///Express static
 ////////////////////////git
 
-
 app.use(express.static('./public'));
 app.use('/scripts', express.static(__dirname + 'bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-////////////////////////
 ///Require routes
 ////////////////////////
 
-
 let beerRoutes = require('./routes/beerRoutes');
-let brewRoutes = require("./routes/brewRoutes");
+let brewRoutes = require('./routes/brewRoutes');
 let commentRoutes = require('./routes/commentRoutes');
 let userRoutes = require("./routes/userRoutes");
+let resetPasswordRoutes = require('./routes/resetPasswordRoutes');
 let categoryRoutes = require("./routes/categoryRoutes");
+let likedRoutes = require('./routes/likedRoutes');
 
-// let DeleteCrudRoutes = require('./routes/DeleteCrudRoutes');
-// app.use('/')
 
 app.use('/api/v1/beer', beerRoutes);
-app.use("/api/v1/brewdb", brewRoutes);
+app.use('/api/v1/brewdb', brewRoutes);
 app.use('/comments', commentRoutes);
 app.use("/usershell", userRoutes);
 app.use("/catshell", categoryRoutes);
+app.use('/api/v1/likedBeers', likedRoutes);
+app.use('/forgot', resetPasswordRoutes);
+
 
 ////////////////////////
 ///Express static
 ////////////////////////
 
-
-app.use(express.static('./public'));
-app.use('/scripts', express.static('bower_components'));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
-
-////////////////////////
 ///Misc
 ////////////////////////
+
+
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|javascript/.test(req.path)) return next({ status: 404, message: 'Not Found' });
@@ -120,9 +96,9 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 app.use(function(err: any, req, res, next) {
   res.status(err.status || 500);
+  console.log(err);
   if (err.name === 'CastError') err.message = 'Invalid ID';
   // Don't leak stack trace if not in development
   let error = (app.get('env') === 'development') ? err : {};

@@ -1,83 +1,161 @@
-#sBeer{
-    margin-top: 75px;
-    margin-left: 1155px;
-    width: 316px;
-    border: 1px solid lightgrey;
-    box-shadow:19px 22px 10px #888888;
-    height: 155px;
-    background-color:#2B2726
+a {
+  color: #eb9114;
+  z-index: 999999;
 }
-.sTable{
-    width:55%;
+
+a:hover {
+  color: #F0AD4E;
 }
+
+footer p {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #E9E9E9;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+#sBox{
+  margin-left: 10px;
+}
+.pos    {
+    margin-top: -466px;
+    margin-left: 492px;
+}
+.posBr  {
+    margin-left: -2px;
+}
+
+#sBeer {
+  margin-top: 40px;
+  margin-left: 17%;
+  margin-bottom: 37px;
+  width: 316px;
+  border: 1px solid lightgrey;
+  box-shadow:19px 22px 10px #888888;
+  height: 155px;
+  background-color:white;
+  color: black;
+}
+
+.bName {
+  margin-left: -5px;
+}
+
+.cBeer {
+  /*border:1px solid black;*/
+  /*background-color: #4D2C17;*/
+}
+
+.sRes {
+  margin-right: -8%;
+}
+
+.bot {
+  margin-bottom:50px;
+}
+
+.brbtm {
+  margin-bottom: 15px;
+}
+
+.cBeer1 {
+  /*color: white;*/
+}
+
+.gld {
+  color:#FBA711;
+}
+
+.brn {
+  background-color: #4A2A03;
+}
+
+.sTable {
+  width:55%;
+}
+
 .ctype th {
-    color:#907651;
+  color:#907651;
 }
-.sResult tr td a{
-    color:#907651;
+
+.sResult tr td a {
+  color:#907651;
 }
-#sTitle{
-    font-size: 30px;
-    margin-left: 20px;
-    color:white;
+
+#sTitle {
+  font-size: 30px;
+  margin-left: 20px;
+  color:black;
 }
-#aBeer{
-    margin-left: 6px;
+
+#aBeer {
+  margin-left: 6px;
 }
+
 .bSearch {
-    background-color: lightsteelblue;
-    color:black;
-    font-weight: bold;
-    width: 298px;
-    margin-left: 9px;
-    margin-top: -4px;
+  background-color: lightsteelblue;
+  color:black;
+  font-weight: bold;
+  width: 298px;
+  margin-left: 9px;
+  margin-top: -4px;
 }
-.bList{
-    margin-left: 100px;
-    margin-top: -152px;
-    margin-left: 408px;
+
+.bList {
+  margin-left: 100px;
+  margin-top: -152px;
+  margin-left: 408px;
 }
-.label{
-    margin-top: 15px;
-    padding:10px;
+
+.label {
+  margin-top: 15px;
+  padding:10px;
 }
-.top    {
-    margin-top: 10px;
+
+.top {
+  margin-top: 10px;
 }
-.searchPage{
-    background-image: url("http://i.imgur.com/s4ywviP.jpg");
-    height: 4000px;
-    width: 1900px;
+
+.beerSel {
+  margin-left: 84px;
 }
-.beerSel{
-    float: left;
-    width: 33%;
-    margin-left: 21px;
-    height: 350px;
-    margin-bottom: 5px
+
+.bPage {
+  float: left;
+  width: 33%;
 }
-.beerlabel{
-    margin-top: 10px;
+
+#beerlabel {
+  margin-top: 15px;
+  margin-left: 26%;
 }
-#sInput{
-    width: 300px;
-    height: 45px;
-    margin-left: 8px;
+
+#sInput {
+  width: 300px;
+  height: 45px;
+  margin-left: 8px;
 }
+
 html {
   scroll-behavior: smooth;
   top: 0;
 }
 
 .nav-tabs > li, .nav-pills > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-     zoom:1; /* hasLayout ie7 trigger */
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
 }
 
 .nav-tabs, .nav-pills {
-    text-align:center;
+  text-align:center;
 }
 
 .userIcon {
@@ -88,10 +166,21 @@ html {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.userIconReview {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .bigTitle {
   font-size: 4em;
   color: black;
 }
+
 .customHSpacer1 {
   width: 12.5%;
 }
@@ -100,25 +189,32 @@ html {
   margin: 5.25% 0;
 }
 
-.beerHomeNav li a {
-  height: 10vh;
-  border-right: 2px solid #000;
+/*.beerHomeNav li a {
+height: 10vh;
+border-right: 2px solid #000;
 }
 .beerHomeNav li a{
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-}
+color: black;
+font-size: 15px;
+font-weight: bold;
+}*/
 
 .lgImg {
   width: 100%;
   max-height: 70vh;
   overflow: hidden;
   background-size: contain;
+  position: relative;
+  text-align: center;
 }
 
 .imgHomePop {
-  max-height: 30vh;
+  max-height: 200px;
+  padding-left: 50px;
+  background: none;
+  	border: none;
+padding-bottom: 10px;
+padding-top: 10px;
 }
 
 .textHomePop {
@@ -134,12 +230,15 @@ html {
   text-align: center;
   border: 3px solid #000;
   height: 35vh;
+  line-height: 35vh;
+  white-space: nowrap;
   font-size: 3em;
+  vertical-align: center;
+  color: #FFFFFF;
 }
 
 .pSubTBox {
   border: 3px solid #000;
-
 }
 
 .pSubTitle {
@@ -151,33 +250,33 @@ html {
   padding: 5px;
 }
 
-#SFO {
-  background-image: url("/css/img/SFO.png");
+#Bay_Area {
+  background-image: url("/css/img/Bay_Area.png");
   background-size: cover;
 }
 
-#DEN {
-  background-image: url("/css/img/DEN.png");
+#Denver {
+  background-image: url("/css/img/Denver.png");
   background-size: cover;
 }
 
-#BOS {
-  background-image: url("/css/img/BOS.png");
+#Boston {
+  background-image: url("/css/img/Boston.png");
   background-size: cover;
 }
 
-#SEA {
-  background-image: url("/css/img/SEA.png");
+#Seattle {
+  background-image: url("/css/img/Seattle.png");
   background-size: cover;
 }
 
-#DFW {
-  background-image: url("/css/img/DFW.png");
+#Dallas {
+  background-image: url("/css/img/Dallas.png");
   background-size: cover;
 }
 
-#CHI {
-  background-image: url("/css/img/CHI.png");
+#Chicago {
+  background-image: url("/css/img/Chicago.png");
   background-size: cover;
 }
 
@@ -214,4 +313,377 @@ html {
 .postSnip {
   text-align: left;
   border-bottom: 2px solid #000;
+}
+
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+/*  --------BeerPages Animation stagger effect-------------*/
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+
+
+.company.ng-enter-stagger, .company.ng-leave-stagger, .repeat-animation.ng-move-stagger {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  -webkit-transition-duration: 0;
+  transition-duration: 0;
+}
+
+.company.ng-enter {
+  -webkit-transition:0.3s linear all;
+  transition:0.3s linear all;
+  opacity: 0;
+  -webkit-transform:scale(1.15)!important;
+  transform:scale(1.15)!important;
+}
+
+.company.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform:scale(1)!important;
+  transform:scale(1)!important;
+}
+
+.company.ng-leave {
+  -webkit-transition:0.1s linear all;
+  transition:0.1s linear all;
+  opacity: 1;
+}
+
+.company.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.centerbeer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+/*  --------FONTS-------------*/
+/*  -------------------------------------------------------*/
+/*  -------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.intro-text{
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  color: white;
+}
+
+.intro-text .intro-lead-in {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 25px;
+}
+.intro-text .intro-heading {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  margin-bottom: 25px;
+}
+
+.backtext{
+  background-color: #000000;
+  opacity: 0.6;
+}
+
+.outer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 10px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #00c;
+}
+
+/*forgot*/
+/*HTML*/
+/*PAGE*/
+/*CSS*/
+
+.forgotsubmit {
+  display: block;
+  background-color: #5bc0de;
+
+
+  text-decoration: none;
+
+
+}
+
+.forgotinput {
+
+  width: 100px;
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+
+}
+
+/**/ /**/  /**/  /**/  /**/  /**/
+/*Beer Details Comment*/
+/**/  /**/  /**/  /**/  /**/  /**/
+
+.tweet-container {
+  border: 1px solid #eee;
+  padding: 1px 1px;
+  border-radius: 5px;
+  width: 500px;
+  margin: left;
+  font-family: sans-serif;
+
+}
+
+.name-lockup {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.avatar {
+  width:50px;
+  height: 50px;
+  border-radius: 5px;
+  float: left;
+  margin-right: 10px;
+  +size(50);
+}
+
+.nameBD {
+  font-weight: bold;
+  padding-top: 1px;
+}
+
+.pbd {
+  margin: 20px 0;
+  font-family:  georgia;
+
+
+}
+
+.actions {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  margin-left: auto;
+}
+.timeDB {
+  font-weight: normal;
+  color: #999;
+  font-size: 0.7em;
+  padding-top: 1px;
+}
+
+.editlink {
+  margin-right: 20px;
+
+}
+
+.butt {
+  margin-left: 20px;
+}
+
+.beerimagesize{
+  max-height: 250px;
+}
+
+.fiw {
+  width: 100%;
+}
+
+.hotdog {
+    margin-bottom: -3px;
+}
+
+
+/*FOOTER*/
+
+.footer-distributed{
+	background-color: #f2f2f2;
+	box-shadow: 0 1px 1px 0 rgba(3, 0, 0, 0.07);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 12px Myriad-Set-Pro;
+
+
+
+	padding: 10px 50px;
+	margin-top: 80px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #888888
+;
+	font: normal 36px;
+	margin: 0;
+  padding-left: 50px;
+  padding-top: 40px;
+
+}
+
+
+
+
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+  padding-right: 80px;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+  color: black;
+}
+
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  black;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
 }

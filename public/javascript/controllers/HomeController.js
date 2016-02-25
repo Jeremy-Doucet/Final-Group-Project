@@ -10,12 +10,12 @@ var app;
                 this.$location = $location;
                 this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.params = $location.search();
-                if (this.params.code) {
-                    userService.setToken(this.params.code);
+                var params = $location.search();
+                if (params.code) {
+                    userService.setToken(params.code);
                     userService.setUser();
-                    $location.search("code", null);
-                    $location.hash("");
+                    $location.search('code', null);
+                    $location.hash('');
                 }
                 ;
                 this.status = userService.status;
@@ -24,6 +24,16 @@ var app;
                 this.userService.removeToken();
                 this.userService.removeUser();
                 this.$location.path('/');
+            };
+            ;
+            homeController.prototype.searchBeer = function () {
+                var _this = this;
+                this.homeService.searchBeer(this.beer).then(function (res) {
+                    _this.result = res;
+                    _this.beer.name = "";
+                    _this.$location.path('/searchBeer');
+                    _this.beer.name = "";
+                });
             };
             ;
             ;

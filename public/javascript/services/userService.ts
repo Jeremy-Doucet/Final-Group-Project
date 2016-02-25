@@ -1,11 +1,9 @@
 "use strict";
 
 namespace app.Services {
-
   export class userService {
-    public status = { _id: null, email: null, username: null, avatarUrl: null };
+    public status = { _id: null, email: null, username: null, avatarUrl: null, facebook: {email: null, name: null}};
     public uRegResource;
-    public uHomeResource;
     public uLoginResource;
 
     public registerUser(newUser) {
@@ -35,27 +33,37 @@ namespace app.Services {
         this.status.email = user.email;
         this.status.username = user.username;
         this.status.avatarUrl = user.avatarUrl;
-    };
+        this.status.facebook.name = user.facebook_name;
+        this.status.facebook.email = user.facebook_email;
+      };
 
-    public removeUser(){
-      this.status._id = null;
-      this.status.email = null;
-      this.status.username = null;
-      this.status.avatarUrl = null;
-    }
+      public removeUser() {
+        this.status._id = null;
+        this.status.email = null;
+        this.status.username = null;
+        this.status.avatarUrl = null;
+        this.status.facebook.name = null;
+        this.status.facebook.email = null;
+      };
 
-    public loadUHome(username) {
-     return this.uHomeResource.get({username: username});
-    };
+      public getUser(userId) {
+        var q = this.$q.defer();
+        this.$http.get('/usershell/users/' + userId).then(function(res){
+          q.resolve(res.data);
+        }, function(err){
+          q.reject(err);
+        });
+        return q.promise;
+      };
 
-    public getUser(userId){
-      var q = this.$q.defer();
-      this.$http.get('/usershell/users/' + userId).then(function(res){
-        q.resolve(res.data);
-      }, function(err){
-        q.reject(err);
-      });
-      return q.promise;
+    public updateUser(user)   {
+        var q = this.$q.defer();
+        this.$http.put("/usershell/", user).then(function(res){
+            q.resolve(res.data);
+        }, function(err){
+            q.reject(err);
+        });
+        return q.promise;
     }
 
     constructor(
@@ -66,10 +74,8 @@ namespace app.Services {
     ) {
       this.uRegResource = $resource("/usershell/register");
       this.uLoginResource = $resource("/usershell/login");
-      this.uHomeResource = $resource("/usershell/:username");
       if (this.getToken()) this.setUser();
     };
-  };
-
+  }
   angular.module("app").service("userService", userService);
-};
+  };
