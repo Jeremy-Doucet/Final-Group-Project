@@ -7,6 +7,10 @@ a:hover {
   color: #F0AD4E;
 }
 
+footer p {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 body {
   background-color: #E9E9E9;
 }
