@@ -465,18 +465,18 @@ a {
 
 .nameBD {
   font-weight: bold;
-  padding-top: 7px;
+  padding-top: 1px;
 }
 
-.blockquote {
-  margin: 30px 0;
+.pbd {
+  margin: 20px 0;
   font-family:  georgia;
-  font-size: 2em;
+
+
 }
 
 .actions {
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
   margin-bottom: 20px;
   text-decoration: none;
   margin-left: auto;
@@ -485,7 +485,7 @@ a {
   font-weight: normal;
   color: #999;
   font-size: 0.7em;
-  margin-bottom: auto;
+  padding-top: 1px;
 }
 
 .editlink {
@@ -499,4 +499,12 @@ a {
 
 .beerimagesize{
   max-height: 250px;
+}
+
+.fiw {
+  width: 100%;
+}
+
+.hotdog {
+    margin-bottom: -3px;
 }

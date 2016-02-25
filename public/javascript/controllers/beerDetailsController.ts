@@ -27,6 +27,7 @@ namespace app.Controllers {
         this.beer.comments.push(res);
         //this code clear the message once it hit submit
         this.comment.message = "";
+        
       });
     };
 

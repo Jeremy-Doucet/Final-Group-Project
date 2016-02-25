@@ -6,7 +6,7 @@ let mongoose = require('mongoose');
 
 let UserSchema = new mongoose.Schema({
   username: {type: String, unique: true, lowercase: true},
-  email: {type: String, unique: true, lowercase: true},
+  email: {type: String, unique: true, sparse: true, lowercase: true},
   // Added for resetting.
   // they are set only after password reset is submitted
   resetPasswordToken: String,
