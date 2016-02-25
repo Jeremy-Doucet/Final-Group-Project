@@ -19,6 +19,7 @@ namespace app.Controllers {
         this.result = res;
         this.beer.name = "";
         this.$location.path('/searchBeer');
+        this.beer.name = "";
       });
     };
 

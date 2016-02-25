@@ -191,7 +191,12 @@ font-weight: bold;
 }
 
 .imgHomePop {
-  max-height: 30vh;
+  max-height: 200px;
+  padding-left: 50px;
+  background: none;
+  	border: none;
+padding-bottom: 10px;
+padding-top: 10px;
 }
 
 .textHomePop {
@@ -211,6 +216,7 @@ font-weight: bold;
   white-space: nowrap;
   font-size: 3em;
   vertical-align: center;
+  color: #FFFFFF;
 }
 
 .pSubTBox {

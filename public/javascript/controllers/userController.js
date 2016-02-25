@@ -41,15 +41,13 @@ var app;
                     _this.$window.localStorage.setItem('username', _this.user.username);
                     _this.$location.path('/');
                     _this.ngToast.success({
-                        content: "You are now logged in!",
-                        verticalPosition: "right",
-                        timeout: 1200
+                        content: "Congrats you are now logged in successfully!",
+                        verticalPosition: "right"
                     });
                 }, function (err) {
                     _this.ngToast.warning({
                         content: err.data.message,
-                        horizontalPosition: "right",
-                        timeout: 1200
+                        horizontalPosition: "right"
                     });
                 });
             };
