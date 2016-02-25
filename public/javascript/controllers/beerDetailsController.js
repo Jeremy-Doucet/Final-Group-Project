@@ -4,24 +4,21 @@ var app;
     var Controllers;
     (function (Controllers) {
         var beerDetailsController = (function () {
-            function beerDetailsController(commentService, $location, homeService, $routeParams, userService) {
+            function beerDetailsController(commentService, $location, homeService, $routeParams, userService, ngToast) {
                 var _this = this;
                 this.commentService = commentService;
                 this.$location = $location;
                 this.homeService = homeService;
                 this.$routeParams = $routeParams;
                 this.userService = userService;
+                this.ngToast = ngToast;
                 this.comments = [];
                 this.showModal = false;
-                this.heart = false;
                 homeService.getBeer($routeParams['id']).then(function (res) {
                     _this.beer = res;
                 });
                 this.status = userService.status;
             }
-            beerDetailsController.prototype.toggleLike = function () {
-                this.heart = !this.heart;
-            };
             beerDetailsController.prototype.toggleModal = function () {
                 this.showModal = !this.showModal;
             };
@@ -58,12 +55,22 @@ var app;
                 };
                 this.commentService.saveLikedBeer(likedBeer).then(function (res) {
                     _this.beer.likedByUsers.push(_this.status._id);
+                    _this.ngToast.success({
+                        content: "You have added this beer to your favorites!",
+                        verticalPosition: "right",
+                        timeout: 2000
+                    });
                 });
             };
             beerDetailsController.prototype.unlikeBeer = function (beer) {
                 var _this = this;
                 this.commentService.deleteLikedBeer(this.beer).then(function (res) {
                     _this.beer.likedByUsers.splice(_this.beer.likedByUsers.indexOf(_this.status._id), 1);
+                    _this.ngToast.warning({
+                        content: "You have removed this beer from your favorites.",
+                        horizontalPosition: "right",
+                        timeout: 1800
+                    });
                 });
             };
             beerDetailsController.prototype.rateBeer = function (rating) {
