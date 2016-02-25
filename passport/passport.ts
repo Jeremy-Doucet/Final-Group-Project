@@ -1,21 +1,16 @@
 'use strict';
-
 let mongoose = require('mongoose');
 import passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
 let FacebookStrategy = require('passport-facebook').Strategy;
-
 let User = mongoose.model('User');
 let newUser = mongoose.model('newUser');
-
 passport.serializeUser((user, done) => {
   done(null, user);
 });
-
 passport.deserializeUser((object, done) => {
   done(null, object);
 });
-
 passport.use(new LocalStrategy((username, password, done) => {
   User.findOne({username: username}, (error, user: any) => {
     if (error) return done(error);
@@ -24,7 +19,6 @@ passport.use(new LocalStrategy((username, password, done) => {
     return done(null, user);
   });
 }));
-
 /* istanbul ignore next */
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
@@ -43,6 +37,8 @@ passport.use(new FacebookStrategy({
         return done(null, user);
       } else {
         let newUser = new User();
+        if(!profile.emails)profile.emails=[{}]
+        if(!profile.name)profile.name = {}
         newUser.username = profile.name.givenName + '_' + profile.name.familyName;
         newUser.email = profile.emails[0].value;
         newUser.facebook.id = profile.id;
