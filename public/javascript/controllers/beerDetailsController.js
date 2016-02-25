@@ -58,7 +58,7 @@ var app;
                     _this.ngToast.success({
                         content: "You have added this beer to your favorites!",
                         verticalPosition: "right",
-                        timeout: 2000
+                        timeout: 1800
                     });
                 });
             };
