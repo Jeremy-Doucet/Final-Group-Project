@@ -17,6 +17,7 @@ namespace app.Controllers {
     public searchBeer() {
       this.homeService.searchBeer(this.beer).then((res) => {
         this.result = res;
+        this.beer.name = "";
         this.$location.path('/searchBeer');
         this.beer.name = "";
       });
