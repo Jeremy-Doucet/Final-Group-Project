@@ -62,7 +62,7 @@
         Posted on: {{vm.beer.created | date: fullDate }}
       </div>
       <div class="">
-        <img class="userIconReview img-responsive" style="mat" src="{{vm.beer.createdBy.avatarUrl}}"  alt="" />
+        <a href="/userprofile/{{vm.beer.createdBy._id}}"><img class="userIconReview img-responsive" style="mat" src="{{vm.beer.createdBy.avatarUrl}}"  alt="" /></a>
         <a class="text-center" href="/userprofile/{{vm.beer.createdBy._id}}">{{vm.beer.createdBy.username}}</a>
       </div>
 

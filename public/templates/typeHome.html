@@ -1,5 +1,5 @@
 <div class = "container-fluid lgImg">
-  <img class = "img-responsive" ng-src = "{{vm.typeHomeImg}}">
+  <img class = "img-responsive center" ng-src = "{{vm.typeHomeImg}}">
   <div class="intro-text text-center backtext">
       <div class="intro-heading"><h1>{{vm.$routeParams["type"]}}</h1></div>
       <div class="intro-lead-in">Beer</div>
@@ -8,6 +8,7 @@
 
 <div class="container-fluid">
   <div class="container">
+    <hr>
     <div class="row" ng-repeat = "i in vm.beersType | orderBy:createdBy: true">
       <div  class="col-sm-2">
         <a ng-href = '/details/{{i._id}}'><img class="img-responsive beerimagesize"  src="{{i.imgurl || i.imgbeer}}" alt="" /></a>
