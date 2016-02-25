@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var app;
 (function (app) {
     var Services;
@@ -7,9 +7,9 @@ var app;
             function categoryService($resource, $window) {
                 this.$resource = $resource;
                 this.$window = $window;
-                this.beersLocalResource = $resource('/catshell/byLocation/:location');
-                this.beersTypeResource = $resource('/catshell/byType/:type');
-                this.beersPopularResource = $resource('/catshell/popular');
+                this.beersLocalResource = $resource("/catshell/byLocation/:location");
+                this.beersTypeResource = $resource("/catshell/byType/:type");
+                this.beersPopularResource = $resource("/catshell/popular");
             }
             categoryService.prototype.getBeersLocal = function (location) {
                 return this.beersLocalResource.query({ location: location });
@@ -28,7 +28,7 @@ var app;
         }());
         Services.categoryService = categoryService;
         ;
-        angular.module('app').service('categoryService', categoryService);
+        angular.module("app").service("categoryService", categoryService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
 ;

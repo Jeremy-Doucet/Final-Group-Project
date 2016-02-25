@@ -1,15 +1,13 @@
-'use strict';
+"use strict";
 var app;
 (function (app) {
     var Controllers;
     (function (Controllers) {
         var userController = (function () {
-            function userController(userService, $location, $routeParams, $window, ngToast) {
+            function userController(userService, $location, $window) {
                 this.userService = userService;
                 this.$location = $location;
-                this.$routeParams = $routeParams;
                 this.$window = $window;
-                this.ngToast = ngToast;
             }
             userController.prototype.register = function () {
                 var _this = this;
@@ -24,12 +22,12 @@ var app;
                     this.userService.registerUser(this.newUser).then(function (res) {
                         _this.userService.setToken(res.token);
                         _this.userService.setUser();
-                        _this.$window.localStorage.setItem('username', _this.newUser.username);
+                        _this.$window.localStorage.setItem("username", _this.newUser.username);
                         _this.$location.path('/myprofile');
                     });
                 }
                 else {
-                    alert('Passwords do not match');
+                    alert("Passwords do not match");
                 }
             };
             ;
@@ -38,19 +36,8 @@ var app;
                 this.userService.login(this.user).then(function (res) {
                     _this.userService.setToken(res.token);
                     _this.userService.setUser();
-                    _this.$window.localStorage.setItem('username', _this.user.username);
-                    _this.$location.path('/');
-                    _this.ngToast.success({
-                        content: "You are now logged in!",
-                        verticalPosition: "right",
-                        timeout: 1200
-                    });
-                }, function (err) {
-                    _this.ngToast.warning({
-                        content: err.data.message,
-                        horizontalPosition: "right",
-                        timeout: 1200
-                    });
+                    _this.$window.localStorage.setItem("username", _this.user.username);
+                    _this.$location.path("/");
                 });
             };
             ;
@@ -59,7 +46,7 @@ var app;
         }());
         Controllers.userController = userController;
         ;
-        angular.module('app').controller('userController', userController);
+        angular.module("app").controller("userController", userController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 ;

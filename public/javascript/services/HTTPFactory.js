@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var app;
 (function (app) {
     var Services;
@@ -12,11 +12,9 @@ var app;
                     if ($window.localStorage.getItem('token')) {
                         config.headers['Authorization'] = "Bearer " + $window.localStorage.getItem('token');
                     }
-                    ;
                     return config;
                 }
             };
         });
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
-;

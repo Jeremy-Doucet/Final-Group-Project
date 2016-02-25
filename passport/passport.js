@@ -1,10 +1,10 @@
-'use strict';
-var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var User = mongoose.model('User');
-var newUser = mongoose.model('newUser');
+"use strict";
+var mongoose = require("mongoose");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var FacebookStrategy = require("passport-facebook").Strategy;
+var User = mongoose.model("User");
+var newUser = mongoose.model("newUser");
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -16,16 +16,16 @@ passport.use(new LocalStrategy(function (username, password, done) {
         if (error)
             return done(error);
         if (!user)
-            return done(null, false, { message: 'Invalid username' });
+            return done(null, false, { message: "Invalid username" });
         if (!user.validatePassword(password))
-            return done(null, false, { message: 'Invalid password' });
+            return done(null, false, { message: "Invalid password" });
         return done(null, user);
     });
 }));
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    callbackURL: "http://localhost:3000/usershell/auth/facebook/callback",
     passReqToCallback: true,
     profileFields: ['emails', 'name', 'gender', 'profileUrl']
 }, function (req, accessToken, refreshToken, profile, done) {
@@ -41,12 +41,6 @@ passport.use(new FacebookStrategy({
             }
             else {
                 var newUser_1 = new User();
-                if (!profile.emails)
-                    profile.emails = [{}];
-                if (!profile.name)
-                    profile.name = {};
-                newUser_1.username = profile.name.givenName + '_' + profile.name.familyName;
-                newUser_1.email = profile.emails[0].value;
                 newUser_1.facebook.id = profile.id;
                 newUser_1.facebook.token = accessToken;
                 newUser_1.facebook.email = profile.emails[0].value;

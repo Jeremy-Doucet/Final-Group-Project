@@ -4,15 +4,13 @@ var app;
     var Controllers;
     (function (Controllers) {
         var userDetailsController = (function () {
-            function userDetailsController(userService, $routeParams, commentService) {
+            function userDetailsController(userService, $routeParams) {
                 var _this = this;
                 this.userService = userService;
                 this.$routeParams = $routeParams;
-                this.commentService = commentService;
                 userService.getUser($routeParams['id']).then(function (res) {
                     _this.user = res;
                 });
-                this.likedBeers = commentService.getAllLikes();
             }
             return userDetailsController;
         }());
@@ -20,4 +18,3 @@ var app;
         angular.module('app').controller('userDetailsController', userDetailsController);
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
-;

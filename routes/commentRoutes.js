@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var express = require('express');
 var jwt = require('express-jwt');
 var mongoose = require('mongoose');
@@ -18,13 +18,12 @@ router.get('/:id', function (req, res, next) {
 });
 router.post('/', auth, function (req, res, next) {
     console.log(1);
-    Beer.findOne({ _id: req.body.Beer })
-        .exec(function (err, Beer) {
+    Beer.findOne({ _id: req.body.Beer }).exec(function (err, Beer) {
         console.log(12);
         if (err)
             return next(err);
         if (!Beer)
-            return next({ status: 404, message: 'Beer could not be found.' });
+            return next({ status: 404, message: "Beer could not be found." });
         req['Beer'] = Beer;
         next();
     });
@@ -52,7 +51,7 @@ router.post('/', function (req, res, next) {
         });
     });
 });
-router.put('/:_id', function (req, res, next) {
+router.put("/:_id", function (req, res, next) {
     Comment.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, function (err, result) {
         if (err)
             return next(err);

@@ -9,9 +9,10 @@ var app;
                 this.$window = $window;
                 this.$http = $http;
                 this.$q = $q;
-                this.status = { _id: null, email: null, username: null, avatarUrl: null, facebook: { email: null, name: null } };
+                this.status = { _id: null, email: null, username: null, avatarUrl: null };
                 this.uRegResource = $resource("/usershell/register");
                 this.uLoginResource = $resource("/usershell/login");
+                this.uHomeResource = $resource("/usershell/:username");
                 if (this.getToken())
                     this.setUser();
             }
@@ -41,8 +42,6 @@ var app;
                 this.status.email = user.email;
                 this.status.username = user.username;
                 this.status.avatarUrl = user.avatarUrl;
-                this.status.facebook.name = user.facebook_name;
-                this.status.facebook.email = user.facebook_email;
             };
             ;
             userService.prototype.removeUser = function () {
@@ -50,8 +49,9 @@ var app;
                 this.status.email = null;
                 this.status.username = null;
                 this.status.avatarUrl = null;
-                this.status.facebook.name = null;
-                this.status.facebook.email = null;
+            };
+            userService.prototype.loadUHome = function (username) {
+                return this.uHomeResource.get({ username: username });
             };
             ;
             userService.prototype.getUser = function (userId) {
@@ -64,19 +64,10 @@ var app;
                 return q.promise;
             };
             ;
-            userService.prototype.updateUser = function (user) {
-                var q = this.$q.defer();
-                this.$http.put("/usershell/", user).then(function (res) {
-                    q.resolve(res.data);
-                }, function (err) {
-                    q.reject(err);
-                });
-                return q.promise;
-            };
-            ;
             return userService;
         }());
         Services.userService = userService;
+        ;
         angular.module("app").service("userService", userService);
     })(Services = app.Services || (app.Services = {}));
 })(app || (app = {}));
