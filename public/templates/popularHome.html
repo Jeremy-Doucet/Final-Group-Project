@@ -7,7 +7,7 @@
     <hr>
     <div class = 'row postSnip' ng-repeat = 'beer in vm.sortByPopular()'>
       <div class = 'col-md-3'>
-        <a ng-href = '/details/{{beer._id}}'><img class = 'imgHomePop' ng-src = '{{beer.brewerydb.labelImg}}'></a>
+        <a ng-href = '/details/{{beer._id}}'><img class = 'imgHomePop' ng-src="{{beer.imgurl || beer.imgbeer}}"></a>
       </div>
       <div class = 'col-md-9'>
         <div class = 'row'><a ng-href = '/details/{{beer._id}}'><h3>{{beer.name}}</h3></a></div>

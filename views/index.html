@@ -15,10 +15,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-
-
-
-
 </head>
 <body ng-controller = 'homeController as gc'>
 
@@ -52,7 +48,7 @@
       </form>
       <ul class = 'nav navbar-nav navbar-right'>
         <ul class = 'nav navbar-nav navbar-right'>
-          <li><p class = 'navbar-text' ng-show = 'gc.status.username !== null || gc.status.facebook.name !== null'>logged in as: <a ng-href = '/myprofile'>{{gc.status.username || gc.status.facebook.name | uppercase }}</a></p></li>
+          <li><p class = 'navbar-text' ng-show = 'gc.status.username !== null || gc.status.facebook.name !== null' ng-cloak>logged in as: <a ng-href = '/myprofile'>{{gc.status.username || gc.status.facebook.name | uppercase }}</a></p></li>
           <li><a ng-show = 'gc.status.username == null && gc.status.facebook.name == null' ng-href = '/register'>Register </a></li>
           <li><a ng-show = 'gc.status.username == null && gc.status.facebook.name == null' ng-href = '/login'>Login </a></li>
           <li><a ng-show = 'gc.status.username !== null' ng-click = 'gc.logout()' role  = 'button'>Logout</a><br></li>
